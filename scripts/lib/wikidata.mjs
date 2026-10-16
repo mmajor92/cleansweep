@@ -13,8 +13,17 @@ export const PROPERTIES = [
   { cat: "date", pid: "P619", kind: "launch", type: "time" },
 ];
 
-/** Build a SPARQL query for one property. Humans and taxa are excluded. */
-export function buildQuery(prop, { minLinks = 50, limit = 400 } = {}) {
+/**
+ * Build a SPARQL query for one property. Humans and taxa are excluded.
+ *
+ * The property pattern comes FIRST and the optimizer is told to keep the order we wrote. Starting from "everything that
+ * has a height" and then checking how famous it is is far cheaper than starting from "everything famous" and then
+ * checking for a height, which made Wikidata give up (HTTP 504).
+ *
+ * `sample: true` is the lighter version used when the full one times out. It has no ORDER BY, so Wikidata can stop as soon
+ * as it has enough rows. It asks for three times as many, and the caller sorts them by fame and keeps the best.
+ */
+export function buildQuery(prop, { minLinks = 50, limit = 400, sample = false } = {}) {
   const value =
     prop.type === "time"
       ? `?item p:${prop.pid}/psv:${prop.pid} ?node .
@@ -22,15 +31,15 @@ export function buildQuery(prop, { minLinks = 50, limit = 400 } = {}) {
   FILTER(?prec >= 9)`
       : `?item p:${prop.pid}/psn:${prop.pid}/wikibase:quantityAmount ?v .`;
   return `SELECT ?item ?itemLabel ?links ?v WHERE {
+  hint:Query hint:optimizer "None" .
+  ${value}
   ?item wikibase:sitelinks ?links .
   FILTER(?links >= ${minLinks})
-  ${value}
   FILTER NOT EXISTS { ?item wdt:P31 wd:Q5 }
   FILTER NOT EXISTS { ?item wdt:P31 wd:Q16521 }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
-}
-ORDER BY DESC(?links)
-LIMIT ${limit}`;
+}${sample ? "" : "\nORDER BY DESC(?links)"}
+LIMIT ${sample ? limit * 3 : limit}`;
 }
 
 /** Round to 4 significant figures to avoid unit-conversion noise like 61.660000001. */

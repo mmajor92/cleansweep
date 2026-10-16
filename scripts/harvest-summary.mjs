@@ -25,8 +25,24 @@ export function summarise(result, gameNames = [], top = 25) {
   const lines = [];
   lines.push("## Harvest candidates", "");
   lines.push(`Asked Wikidata on ${result.generatedOn}. Settings: at least ${result.params.minLinks} Wikimedia pages, up to ${result.params.limit} rows per kind of fact, at least ${result.params.minCategories} categories.`, "");
+  const skipped = result.skipped || [];
+  const queries = result.queries || [];
+  if (skipped.length) {
+    lines.push(`**${skipped.length} of ${queries.length || skipped.length} kinds of fact were skipped** because Wikidata was too slow or refused. The candidates below are missing those, so run it again later to fill the gaps.`, "");
+  }
   lines.push(`**${entities.length} candidate objects**, of which **${entities.length - fresh.length} look like they are already in the game** (matched by name, so a few repeats may be missed).`, "");
   lines.push("These are candidates only. Each one needs a source and a second check before it goes into the game.", "");
+  if (queries.length) {
+    const how = (q) => (q.via === "full" ? "full query" : q.via === "light" ? "lighter query (a sample of the best known)" : "skipped");
+    lines.push("### What Wikidata sent back", "", "| Kind of fact | Rows | How |", "|---|---|---|");
+    for (const q of queries) lines.push(`| ${q.cat}: ${q.kind} (${q.pid}) | ${q.rows} | ${how(q)} |`);
+    lines.push("");
+  }
+  if (skipped.length) {
+    lines.push("### Why some were skipped", "");
+    for (const s of skipped) lines.push(`- **${s.cat}: ${s.kind} (${s.pid})**: ${s.reason}`);
+    lines.push("");
+  }
   lines.push("### How many categories each candidate has", "", "| Categories | Candidates |", "|---|---|");
   const byCount = {};
   for (const e of fresh) byCount[e.categories] = (byCount[e.categories] || 0) + 1;

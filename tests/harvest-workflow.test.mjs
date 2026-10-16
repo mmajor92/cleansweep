@@ -68,3 +68,27 @@ test("an empty harvest still gives a readable summary", () => {
   const md = summarise({ ...fixture, entities: [] });
   assert.match(md, /\*\*0 candidate objects\*\*/);
 });
+
+test("the summary shows what came back and says plainly which kinds of fact were skipped", () => {
+  const md = summarise({
+    ...fixture,
+    queries: [
+      { cat: "length", pid: "P2048", kind: "height", via: "full", rows: 300 },
+      { cat: "weight", pid: "P2067", kind: "mass", via: "light", rows: 120 },
+      { cat: "speed", pid: "P2052", kind: "top speed", via: null, rows: 0 },
+    ],
+    skipped: [{ cat: "speed", pid: "P2052", kind: "top speed", reason: "full query: HTTP 504 | lighter query: HTTP 504" }],
+  });
+  assert.match(md, /\*\*1 of 3 kinds of fact were skipped\*\*/);
+  assert.match(md, /\| length: height \(P2048\) \| 300 \| full query \|/);
+  assert.match(md, /\| weight: mass \(P2067\) \| 120 \| lighter query/);
+  assert.match(md, /\| speed: top speed \(P2052\) \| 0 \| skipped \|/);
+  assert.match(md, /Why some were skipped/);
+  assert.match(md, /HTTP 504 \| lighter query: HTTP 504/);
+});
+
+test("with nothing skipped there is no skipped warning", () => {
+  const md = summarise({ ...fixture, queries: [{ cat: "length", pid: "P2048", kind: "height", via: "full", rows: 5 }], skipped: [] });
+  assert.ok(!/were skipped/.test(md));
+  assert.ok(!/Why some were skipped/.test(md));
+});

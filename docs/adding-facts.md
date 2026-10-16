@@ -57,7 +57,7 @@ The generator needs neighbours within 1.15x to 4x of each other. A category with
 
 ## Harvesting candidates
 
-**No terminal needed:** on GitHub, open the **Actions** tab, pick **Harvest candidate facts**, press **Run workflow** and wait a minute or two. The run page shows a summary (how many candidates, which pairs of categories they could bridge, the best known ones), and the full list is a download at the bottom of the page called `harvest-candidates` (kept for 30 days). It is manual only and read-only: it never changes the repository or the game.
+**No terminal needed:** on GitHub, open the **Actions** tab, pick **Harvest candidate facts**, press **Run workflow** and wait a minute or two. The run page shows a summary (how many candidates, which pairs of categories they could bridge, the best known ones), and the full list is a download at the bottom of the page called `harvest-candidates` (kept for 30 days). It is manual only and read-only: it never changes the repository or the game. If Wikidata is busy, some kinds of fact may be skipped. The summary says which, and you can simply run it again later.
 
 To run it on your own machine instead:
 
