@@ -39,11 +39,11 @@ Add these to the entity (not to a fact) when players might not know the object:
 
 Both are under 80 characters, written in lowercase, with no final full stop (the game adds one to hints).
 
-## Hinge objects
+## Bridge objects
 
-A hinge is one entity with facts in two or more categories. More categories means more puzzles it can anchor. Aim for objects with three to five.
+A bridge is one entity with facts in two or more categories. A puzzle can switch category up to four times, and every switch goes through a bridge: the object is the last question of one stretch and the starting point of the next, in its other category. More categories means more switches it can carry. Aim for objects with three to five. The thinnest pairs of categories (the linter and the changelog show the counts) are where new bridges help most.
 
-Use `family` to group things that are the same object, for example the Statue of Liberty, its copper skin and its foundation. A puzzle never includes two items from one family, except the hinge itself.
+Use `family` to group things that are the same object, for example the Statue of Liberty, its copper skin and its foundation. A puzzle never includes two items from one family, except a bridge itself, which appears twice (once in each of its categories).
 
 ## Good gaps
 
@@ -54,6 +54,7 @@ The generator needs neighbours within 1.15x to 4x of each other. A category with
 - Whole years only. There is no year 0, so 1 BC is -1.
 - Use `approx: true` for dates that are estimates, like the building of the Great Pyramid.
 - Pick the event date the source states, and say which in the phrase: "the first flight", "the opening", "the sinking".
+- The game writes years below 1000 as "80 AD" and years before 1 as "44 BC". The line under a date's big figure is the phrase without its leading "the" ("the sealing of Magna Carta" becomes "Sealing of Magna Carta"), so write the phrase as an event. If that line would be over 45 characters, the short `label` is shown instead, so keep the label an event too ("Magna Carta sealed", not "Magna Carta").
 
 ## Harvesting candidates
 
@@ -84,7 +85,7 @@ Every object has a `fame` rating, set in `build_data.py` (the `FAME` table near 
 | 2 | Most people know it | the Hubble telescope, Cutty Sark, the Apollo Lunar Module |
 | 1 | Enthusiasts only | the Seikan Tunnel, the Panzer VIII Maus, the Parker Solar Probe |
 
-Rating 1 objects are used only as an occasional "Deep cut" question (the 3rd to 7th question, at most one per puzzle), with a scoring bonus, and never as a hinge. They need a clue, and the linter checks for one. Anything not listed in the table counts as 3. Be honest when rating: a good test is whether a friend who is not a fan of the subject could say roughly what it is. Prefer adding rating 3 objects. The linter prints the familiarity mix and the share of days with a deep cut, and warns if enthusiast objects pass 12% of questions, everyday objects fall under 40%, or deep cuts fall under 25% of days.
+Rating 1 objects are used only as an occasional "Deep cut" question (the 3rd to 7th question, at most one per puzzle), with a scoring bonus, and never as a bridge. They need a clue, and the linter checks for one. Anything not listed in the table counts as 3. Be honest when rating: a good test is whether a friend who is not a fan of the subject could say roughly what it is. Prefer adding rating 3 objects. The linter prints the familiarity mix and the share of days with a deep cut, and warns if enthusiast objects pass 12% of questions, everyday objects fall under 40%, or deep cuts fall under 25% of days.
 
 
 ## A fact needs neighbours

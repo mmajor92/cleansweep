@@ -2,6 +2,16 @@
 
 The version number is in `src/version.js` and shows at the bottom of the page. Change both together.
 
+## v3
+- **The chain can now switch category at any point, and more than once.** Until now every puzzle was two halves joined by one bridge. A puzzle now switches category once to four times (about 34%, 43%, 18% and 4% of days), anywhere in the chain, so a stretch in one category can be a single question or as many as five. The game's look and feel are unchanged: a switch is the same glide the halfway point always had, just not always at the halfway point.
+- **New rules keep it fair.** No category takes more than 5 of the 7 questions. Between 2 and 5 answers are "higher". Never more than 4 answers in a row go the same way, and any stretch of 3 or more questions has both a higher and a lower answer. Difficulty (close call, medium, easy) comes out the same as before.
+- **Bridges:** a bridge object is not reused within 7 days (the generator now tries many plans before accepting a recent one, so this holds every day). Famous bridges still come round more often. Each day starts in a different category: every block of 5 days uses all five. Pacing: the day after a busy one (three or more switches) has at most two, so two wild days never come back to back.
+- **The next puzzles use it from puzzle 3.** Puzzles 1 and 2 stay as they are (they are the older two-half shape, which the game still reads). Puzzles 3 to 21 were rebuilt before anyone could have played them.
+- **New practice puzzles.** Practice 1 has one switch (speed, then how many, through Usain Bolt). Practice 2 has two (date, how many, then weight) and ends on a Deep cut. Both use only objects nearly everyone knows.
+- **How to play** has one new sentence about the same object carrying you into a different kind of measure.
+- **Clearer starting values.** A date under 1000 now shows its era ("80 AD", not a bare "80"; BC already showed), and the line under a date's big figure uses the question's own wording ("Opening of the Colosseum", "Sealing of Magna Carta") instead of a short label that was sometimes just a name. A date whose wording is too long (over 45 characters) keeps its short label. The ruler label above the dot no longer repeats "about" or "c.", since the big figure already says it, but keeps its unit so you can see the measure change at a switch. These apply to every puzzle, including the older two-half ones.
+- **Under the hood:** a puzzle is now a list of "legs" (stretches in one category) joined by bridges instead of two halves and one hinge. `normalizePuzzle` converts older puzzle files on load, so they keep working. The data linter, freezing script and practice script were updated, and the tests grew from 174 to 199. They include games played through the real page with one, two and four switches, reloading the page at every point of those games, and the real puzzles 1 and 2 (still in the older shape) played, resumed part-way and finished, so nobody who is mid-game when v3 goes live loses their place.
+
 ## v2.2
 - **"How to play" no longer opens by itself,** so it does not take over the screen or feel compulsory. It is still one tap away behind the "?".
 - **A slim one-line note** under the title tells someone new: "First time? Tap the ? for a practice round!", with a small "Got it". The "?" has a still yellow ring while the note is showing.

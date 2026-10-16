@@ -3,7 +3,7 @@
 import { readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { CATEGORIES, CATEGORY_KEYS, PRACTICE, RULES, buildEntities, generateSeries, validatePuzzle } from "../src/engine.js";
+import { CATEGORIES, CATEGORY_KEYS, PRACTICE, RULES, buildEntities, generateSeries, normalizePuzzle, questionsOf, validatePuzzle } from "../src/engine.js";
 
 const root = join(fileURLToPath(import.meta.url), "..", "..");
 const args = process.argv.slice(2);
@@ -17,9 +17,9 @@ const err = (m) => errors.push(m);
 const warn = (m) => warnings.push(m);
 
 const MIN_PER_CATEGORY = 12;
-const MIN_HINGES = 12;
-const MAX_HINGE_SHARE = 0.2; // one hinge object may appear on at most 20% of days
-const MAX_REPEAT_WINDOW = 7; // warn when a hinge repeats inside this many days
+const MIN_HINGES = 12; // objects with facts in two or more categories: the only ones that can be bridges
+const MAX_HINGE_SHARE = 0.2; // one bridge object may be a bridge on at most 20% of days
+const MAX_REPEAT_WINDOW = 7; // warn when a bridge repeats inside this many days
 const ISO = /^\d{4}-\d{2}-\d{2}$/;
 const STATUSES = ["verified", "definitional"];
 
@@ -97,7 +97,7 @@ for (const c of CATEGORY_KEYS) {
   if (perCat[c] < MIN_PER_CATEGORY) err(`only ${perCat[c]} usable ${c} facts (need ${MIN_PER_CATEGORY})`);
 }
 const hingeIds = entities.filter((e) => Object.keys(e.facts).length >= 2).map((e) => e.id);
-if (hingeIds.length < MIN_HINGES) err(`only ${hingeIds.length} hinge objects (need ${MIN_HINGES})`);
+if (hingeIds.length < MIN_HINGES) err(`only ${hingeIds.length} bridge objects (need ${MIN_HINGES})`);
 
 // ---------- 3. Candidates must never leak into production ----------
 const cands = await read("data/candidates.json");
@@ -107,36 +107,40 @@ for (const c of cands.entities || []) {
 
 // ---------- 4. Generate a run of days and check every rule ----------
 const series = generateSeries(1, DAYS, entities);
-const pairs = {};
-const hinges = {};
+const pairs = {}; // category switches: "length>weight" and so on
+const hinges = {}; // how many days each object is a bridge
 const factUse = {};
-const lastHinge = [];
+const lastHinge = []; // one array of bridge ids per day
+const switchesPerDay = {};
 let repeats = 0;
 series.forEach((p, i) => {
   const day = i + 1;
   if (!p) return err(`day ${day}: no puzzle could be generated`);
   for (const problem of validatePuzzle(p)) err(`day ${day}: ${problem}`);
   if (p.slack > 1) warn(`day ${day}: needed relaxed gap rules (slack ${p.slack})`);
-  const key = `${p.c1}>${p.c2}`;
-  pairs[key] = (pairs[key] || 0) + 1;
-  hinges[p.hinge.id] = (hinges[p.hinge.id] || 0) + 1;
-  for (const it of [p.seg1.anchor, ...p.seg1.items, ...p.seg2.items]) {
+  p.legs.slice(1).forEach((leg, k) => {
+    const key = `${p.legs[k].cat}>${leg.cat}`;
+    pairs[key] = (pairs[key] || 0) + 1;
+  });
+  switchesPerDay[p.bridges.length] = (switchesPerDay[p.bridges.length] || 0) + 1;
+  for (const id of p.bridges) hinges[id] = (hinges[id] || 0) + 1;
+  for (const it of [p.legs[0].anchor, ...questionsOf(p).map((x) => x.item)]) {
     factUse[`${it.cat}:${it.ent}`] = (factUse[`${it.cat}:${it.ent}`] || 0) + 1;
   }
-  const recent = lastHinge.slice(-MAX_REPEAT_WINDOW);
-  if (recent.includes(p.hinge.id)) repeats++;
-  lastHinge.push(p.hinge.id);
+  const recent = new Set(lastHinge.slice(-MAX_REPEAT_WINDOW).flat());
+  if (p.bridges.some((id) => recent.has(id))) repeats++;
+  lastHinge.push(p.bridges);
 });
 const generated = series.filter(Boolean);
 const allPairs = CATEGORY_KEYS.flatMap((a) => CATEGORY_KEYS.filter((b) => b !== a).map((b) => `${a}>${b}`));
-for (const k of allPairs) if (!pairs[k]) err(`category pair ${k} never appears in ${DAYS} days`);
+for (const k of allPairs) if (!pairs[k]) err(`the switch ${k} never appears in ${DAYS} days`);
 for (const [id, n] of Object.entries(hinges)) {
-  if (n / DAYS > MAX_HINGE_SHARE) warn(`hinge "${id}" is on ${Math.round((100 * n) / DAYS)}% of days (limit ${MAX_HINGE_SHARE * 100}%)`);
+  if (n / DAYS > MAX_HINGE_SHARE) warn(`bridge "${id}" is on ${Math.round((100 * n) / DAYS)}% of days (limit ${MAX_HINGE_SHARE * 100}%)`);
 }
-if (repeats / DAYS > 0.1) warn(`a hinge repeats within ${MAX_REPEAT_WINDOW} days on ${Math.round((100 * repeats) / DAYS)}% of days: add more hinge objects`);
+if (repeats / DAYS > 0.1) warn(`a bridge repeats within ${MAX_REPEAT_WINDOW} days on ${Math.round((100 * repeats) / DAYS)}% of days: add more bridge objects`);
 const fameOf = Object.fromEntries(entities.map((e) => [e.id, e.fame]));
-const neverHinge = hingeIds.filter((id) => !hinges[id] && fameOf[id] >= 2); // enthusiast objects may rarely or never anchor a puzzle
-if (neverHinge.length > 4) warn(`${neverHinge.length} hinge objects never used in a year (a few missing by chance is normal in a big pool): ${neverHinge.join(", ")}`);
+const neverHinge = hingeIds.filter((id) => !hinges[id] && fameOf[id] >= 2); // enthusiast objects may rarely or never be a bridge
+if (neverHinge.length > 4) warn(`${neverHinge.length} bridge objects never used in a year (a few missing by chance is normal in a big pool): ${neverHinge.join(", ")}`);
 
 // Familiarity mix: how well do ordinary players know the objects in the questions?
 const mix = { 3: 0, 2: 0, 1: 0 };
@@ -156,50 +160,55 @@ for (const e of entities) if (e.fame === 1 && !e.clue) warn(`"${e.id}" is rated 
 // Warm-ups: puzzles that open from a reserved, unreachable fact with an easy first question.
 const warmDays = series.filter((p) => p && p.warmUp).length;
 const warmPct = Math.round((100 * warmDays) / DAYS);
-const warmUsed = new Set(series.filter((p) => p && p.warmUp).map((p) => p.seg1.anchor.ent));
+const warmUsed = new Set(series.filter((p) => p && p.warmUp).map((p) => p.legs[0].anchor.ent));
 const warmFacts = entities.filter((e) => Object.values(e.facts).some((f) => f.warmup));
 for (const e of warmFacts) if (!warmUsed.has(e.id)) warn(`reserved warm-up fact "${e.id}" was never used in ${DAYS} days`);
 if (warmDays / DAYS < 0.15) warn(`warm-ups appear on only ${warmPct}% of days (aim for 15% or more): flag more unreachable facts as warm-ups`);
 if (warmDays / DAYS > 0.6) warn(`warm-ups appear on ${warmPct}% of days (limit 60%)`);
 
 // ---------- 5. Published puzzles ----------
+// Puzzles published before v3 have two halves; normalizePuzzle turns them into the same shape as new ones, so every check below applies to both.
 let published = 0;
+let publishedOld = 0;
+const allFacts = (p) => p.legs.flatMap((leg) => [leg.anchor, ...leg.items]);
 try {
   const files = (await readdir(join(root, "puzzles"))).filter((f) => /^\d+\.json$/.test(f));
   const ordered = [];
   for (const f of files.sort((a, b) => parseInt(a) - parseInt(b))) {
     published++;
-    const p = await read(`puzzles/${f}`);
+    const raw = await read(`puzzles/${f}`);
+    if (!raw.legs) publishedOld++;
+    const p = normalizePuzzle(raw);
     ordered.push({ f, p });
-    for (const problem of validatePuzzle(p)) err(`puzzles/${f}: ${problem}`);
-    for (const it of [p.seg1.anchor, ...p.seg1.items, p.seg2.anchor, ...p.seg2.items]) {
+    for (const problem of validatePuzzle(raw)) err(`puzzles/${f}: ${problem}`);
+    for (const it of allFacts(p)) {
       if (!STATUSES.includes(it.status)) err(`puzzles/${f}: "${it.label}" is not a verified or definitional fact`);
     }
   }
   // The two fixed practice puzzles.
   for (let n = 1; n <= PRACTICE.length; n++) {
-    let p = null;
+    let raw = null;
     try {
-      p = await read(`puzzles/practice-${n}.json`);
+      raw = await read(`puzzles/practice-${n}.json`);
     } catch (e) {
       warn(`puzzles/practice-${n}.json is missing: run "npm run practice" (the game rebuilds it from its seed, but the frozen copy keeps it fixed for good)`);
     }
-    if (!p) continue;
-    for (const problem of validatePuzzle(p)) err(`puzzles/practice-${n}.json: ${problem}`);
-    for (const it of [p.seg1.anchor, ...p.seg1.items, p.seg2.anchor, ...p.seg2.items]) {
+    if (!raw) continue;
+    for (const problem of validatePuzzle(raw)) err(`puzzles/practice-${n}.json: ${problem}`);
+    for (const it of allFacts(normalizePuzzle(raw))) {
       if (!STATUSES.includes(it.status)) err(`puzzles/practice-${n}.json: "${it.label}" is not a verified or definitional fact`);
     }
   }
 
   // Cooldowns must hold across the published files too.
-  const lastSeen = { hinge: {}, deep: {}, warm: {} };
+  const lastSeen = { bridge: {}, deep: {}, warm: {} };
   for (const { f, p } of ordered) {
     const n = parseInt(f);
-    const deep = [...p.seg1.items, ...p.seg2.items].find((x) => x.fame === 1);
+    const deep = p.legs.flatMap((l) => l.items).find((x) => x.fame === 1);
     const checks = [
-      ["hinge", p.hinge.id, RULES.hingeCooldown],
+      ...p.bridges.map((id) => ["bridge", id, RULES.hingeCooldown]),
       ["deep", deep ? deep.ent : null, RULES.spiceCooldown],
-      ["warm", p.warmUp ? p.seg1.anchor.ent : null, RULES.warmCooldown],
+      ["warm", p.warmUp ? p.legs[0].anchor.ent : null, RULES.warmCooldown],
     ];
     for (const [kind, id, cooldown] of checks) {
       if (!id) continue;
@@ -216,12 +225,13 @@ try {
 // ---------- Report ----------
 const line = (s) => console.log(s);
 line("Clean Sweep data check");
-line(`  entities: ${entities.length} usable, ${hingeIds.length} hinge objects`);
+line(`  entities: ${entities.length} usable, ${hingeIds.length} bridge objects`);
 line(`  facts per category: ${CATEGORY_KEYS.map((c) => `${c} ${perCat[c]}`).join(", ")}`);
-line(`  days generated: ${generated.length}/${DAYS}, category pairs covered: ${Object.keys(pairs).length}/20`);
-line(`  published puzzle files checked: ${published}`);
+line(`  days generated: ${generated.length}/${DAYS}, category switches covered: ${Object.keys(pairs).length}/20`);
+line(`  switches per day: ${Object.keys(switchesPerDay).sort().map((k) => `${k}: ${Math.round((100 * switchesPerDay[k]) / DAYS)}%`).join(", ")}`);
+line(`  published puzzle files checked: ${published} (${publishedOld} still in the older two-half format)`);
 const topHinges = Object.entries(hinges).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([k, v]) => `${k} ${v}`).join(", ");
-line(`  busiest hinges: ${topHinges}`);
+line(`  busiest bridges: ${topHinges}`);
 line(`  warm-up days: ${warmPct}% (easy opening question from a reserved fact), ${warmFacts.length} reserved facts`);
 line(`  deep-cut days: ${deepPct}% (one later question about an enthusiast-only object)`);
 line(`  question mix by familiarity: everyone knows ${mixPct(3)}%, most people ${mixPct(2)}%, enthusiasts ${mixPct(1)}%`);

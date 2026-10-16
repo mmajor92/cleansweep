@@ -7,7 +7,7 @@
 // A right answer scores BASE points times its tier, then times a streak bonus: each right answer in
 // a row adds 10% more than the one before. A wrong answer scores 0 and resets the streak. The next
 // right answer starts a fresh streak at 1.0x, so one or two slips cost you the streak bonus, not the game.
-import { gapRatio } from "./engine.js";
+import { gapRatio, questionsOf } from "./engine.js";
 
 export const SCORING = {
   base: 100,
@@ -37,20 +37,12 @@ export function streakMultiplier(run) {
 
 /** Which of the 7 questions are "deep cuts" (enthusiast-only objects)? At most one, never the first two. */
 export function questionDeep(puzzle) {
-  return [...puzzle.seg1.items, ...puzzle.seg2.items].map((it) => it.fame === 1);
+  return questionsOf(puzzle).map((x) => x.item.fame === 1);
 }
 
 /** The gap ratio of each of the 7 questions, in order. */
 export function questionRatios(puzzle) {
-  const out = [];
-  for (const [seg, cat] of [[puzzle.seg1, puzzle.c1], [puzzle.seg2, puzzle.c2]]) {
-    let prev = seg.anchor;
-    for (const it of seg.items) {
-      out.push(gapRatio(cat, prev.value, it.value));
-      prev = it;
-    }
-  }
-  return out;
+  return questionsOf(puzzle).map((x) => gapRatio(x.cat, x.prev.value, x.item.value));
 }
 
 /**

@@ -4,7 +4,7 @@
 import { readFile, writeFile, mkdir, access } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { PRACTICE, buildEntities, generatePractice, validatePuzzle } from "../src/engine.js";
+import { PRACTICE, buildEntities, generatePractice, questionsOf, validatePuzzle } from "../src/engine.js";
 
 const root = join(fileURLToPath(import.meta.url), "..", "..");
 const force = process.argv.includes("--force");
@@ -25,6 +25,9 @@ for (let n = 1; n <= PRACTICE.length; n++) {
   if (problems.length) throw new Error(`practice ${n}: ${problems.join("; ")}`);
   if (n === 1 && !(p.warmUp && !p.deepCut)) throw new Error("practice 1 should open with a Warm-up and have no Deep cut");
   if (n === 2 && !(p.deepCut && !p.warmUp)) throw new Error("practice 2 should have a Deep cut and no Warm-up");
+  if (p.bridges.length !== n) throw new Error(`practice ${n} should switch category exactly ${n} time${n > 1 ? "s" : ""}`);
+  const items = [p.legs[0].anchor, ...questionsOf(p).map((x) => x.item)];
+  if (!items.every((it) => it.fame === 3 || (n === 2 && it.fame === 1))) throw new Error(`practice ${n} should use only objects that nearly everyone knows (apart from the Deep cut)`);
   await writeFile(file, JSON.stringify(p, null, 2) + "\n");
   console.log(`Wrote puzzles/practice-${n}.json`);
 }

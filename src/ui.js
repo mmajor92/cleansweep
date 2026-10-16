@@ -1,8 +1,8 @@
 // Rendering and game flow. The only module that touches the DOM.
-import { CATEGORIES, RULES, correctPick, countdownText, gapRatio, puzzleNumber, streaks, shareText } from "./engine.js";
+import { CATEGORIES, RULES, correctPick, countdownText, gapRatio, normalizePuzzle, puzzleNumber, questionsOf, streaks, shareText } from "./engine.js";
 import { slideAt } from "./ruler.js";
 import { captureScreen, playTransition } from "./transition.js";
-import { valueParts, valueText, differenceText, questionText } from "./format.js";
+import { valueParts, valueText, figureText, displayName, differenceText, questionText } from "./format.js";
 import { questionDeep, questionRatios, scoreRun, tierFor, SCORING } from "./score.js";
 import { loadState, saveState, recordPick, completeDay, currentStreak, dayRecord, prune } from "./store.js";
 
@@ -19,13 +19,11 @@ import { loadState, saveState, recordPick, completeDay, currentStreak, dayRecord
 export function mountGame(env) {
   const { root, storage, todayNum } = env;
   let store = prune(loadState(storage), todayNum);
-  let P = null;
+  let P = null; // the puzzle, as a list of stretches ("legs"), each in one category, joined by bridges
+  let Q = null; // its 7 questions in order (see questionsOf)
   let S = null;
 
-  const itemAt = (q) =>
-    q < P.n1
-      ? { cat: P.c1, seg: P.seg1, item: P.seg1.items[q] }
-      : { cat: P.c2, seg: P.seg2, item: P.seg2.items[q - P.n1] };
+  const itemAt = (q) => ({ cat: Q[q].cat, item: Q[q].item });
 
   /* ---------- state ---------- */
   const practiceTotal = () => (env.practicePuzzles || []).length;
@@ -37,8 +35,9 @@ export function mountGame(env) {
       practiceNo = total ? Math.min(total, Math.max(1, Number(requested) || 1)) : 0;
       if (!practiceNo) mode = "daily";
     }
-    P = mode === "daily" ? env.dailyPuzzle : env.practicePuzzles[practiceNo - 1];
-    S = { mode, practiceNo, q: 0, picks: [], results: [], phase: "ask", last: null, prev: P.seg1.anchor, revealed: [P.seg1.anchor.value], ratios: questionRatios(P), deep: questionDeep(P) };
+    P = normalizePuzzle(mode === "daily" ? env.dailyPuzzle : env.practicePuzzles[practiceNo - 1]);
+    Q = questionsOf(P);
+    S = { mode, practiceNo, q: 0, picks: [], results: [], phase: "ask", last: null, prev: P.legs[0].anchor, revealed: [P.legs[0].anchor.value], ratios: questionRatios(P), deep: questionDeep(P) };
     if (mode === "daily") {
       const rec = dayRecord(store, todayNum);
       if (rec) replay(rec.picks);
@@ -51,9 +50,9 @@ export function mountGame(env) {
       const { item } = itemAt(k);
       S.results.push(picks[k] === correctPick(item, S.prev));
       S.picks.push(picks[k]);
-      if (k === P.n1 - 1) {
-        S.prev = P.seg2.anchor;
-        S.revealed = [P.seg2.anchor.value];
+      if (Q[k].bridge) {
+        S.prev = Q[k].nextAnchor;
+        S.revealed = [S.prev.value];
       } else {
         S.prev = item;
         S.revealed.push(item.value);
@@ -140,20 +139,20 @@ export function mountGame(env) {
         S.q += 1;
         finishedNow = true;
         if (S.mode === "daily") finishDaily();
-      } else if (S.q === P.n1 - 1) {
-        // The halfway point: the same object, in a new category. It glides to the middle like any other answer,
+      } else if (Q[S.q].bridge) {
+        // A bridge: the same object, in a new category. It glides to the middle like any other answer,
         // and its old figure fades out as its new figure fades in.
-        S.phase = "ask"; // no separate hinge screen: the next question shows the new starting point
-        S.glideOldFig = valueText(itemAt(S.q).cat, S.prev);
-        S.glideFigOld = valueText(itemAt(S.q).cat, item);
+        S.phase = "ask"; // no separate bridge screen: the next question shows the new starting point
+        S.glideOldFig = figureText(itemAt(S.q).cat, S.prev);
+        S.glideFigOld = figureText(itemAt(S.q).cat, item);
         S.glideFrom = S.lastAt;
         S.glideOk = !!(S.last && S.last.ok);
-        S.prev = P.seg2.anchor;
-        S.revealed = [P.seg2.anchor.value];
+        S.prev = Q[S.q].nextAnchor;
+        S.revealed = [S.prev.value];
         S.q += 1;
       } else {
         S.revealed.push(item.value);
-        S.glideOldFig = valueText(itemAt(S.q).cat, S.prev); // what the old starting dot showed, which fades away
+        S.glideOldFig = figureText(itemAt(S.q).cat, S.prev); // what the old starting dot showed, which fades away
         S.glideFigOld = null;
         S.glideFrom = S.lastAt; // the answer you just saw moves to the middle
         S.glideOk = !!(S.last && S.last.ok); // and keeps its green or red until it arrives
@@ -176,14 +175,14 @@ export function mountGame(env) {
   // Nothing on it depends on anything you have not seen, so it cannot hint at the answer.
   function rulerHTML(cat, newItem, wrong) {
     const side = (p) => (p < 20 ? " at-l" : p > 80 ? " at-r" : " at-c");
-    const fig = (it) => `<b>${valueText(cat, it)}</b>`; // just the figure: the name is in the big answer at the top
+    const fig = (it) => `<b>${figureText(cat, it)}</b>`; // just the figure (no "about"): the name and the "about" are in the big answer at the top
     const calm = calmMotion();
     const from = S.glideFrom; // where the answer dot sat on the reveal screen, if it should now move to the middle
     const gliding = !newItem && !calm && !!S.glideOldFig && from !== null && from !== undefined && Math.abs(from - 50) > 0.5;
     let dots;
     if (gliding) {
       // At the halfway point it is the same object in a new category: its old figure fades out as the new one fades in.
-      const figure = S.glideFigOld ? `<b class="fig-old">${S.glideFigOld}</b><b class="fig-new">${valueText(cat, S.prev)}</b>` : fig(S.prev);
+      const figure = S.glideFigOld ? `<b class="fig-old">${S.glideFigOld}</b><b class="fig-new">${figureText(cat, S.prev)}</b>` : fig(S.prev);
       dots =
         `<div class="mark-pt leaving" style="left:50%"><span class="dot"></span><span class="tag above"><b>${S.glideOldFig}</b></span></div>` +
         `<div class="mark-pt prev glide-in ${S.glideOk ? "from-ok" : "from-wrong"}" style="left:${from}%;--from:${from}%"><span class="dot"></span>` +
@@ -223,7 +222,7 @@ export function mountGame(env) {
   function bigBlockHTML(cat, it, hint = "", hintClass = "") {
     const p = valueParts(cat, it);
     return (
-      `<p class="big">${p.num}${p.unit ? ` <small>${p.unit}</small>` : ""}</p><p class="name">${it.label}</p>` +
+      `<p class="big">${p.num}${p.unit ? ` <small>${p.unit}</small>` : ""}</p><p class="name">${displayName(cat, it)}</p>` +
       `<p class="hintline${hintClass}">${hint}</p>`
     );
   }
@@ -241,9 +240,9 @@ export function mountGame(env) {
   function askHTML() {
     const { cat, item } = itemAt(S.q);
     const c = CATEGORIES[cat];
-    const first = S.q === 0 || S.q === P.n1;
+    const first = Q[S.q].start;
     // The top slot (the tier, where the verdict was), the big answer and the ruler sit where they did on the reveal.
-    // A hint shows on the two starting questions. Straight after a reveal it is still there, fading out, so nothing moves.
+    // A hint shows on the first question of every stretch. Straight after a reveal it is still there, fading out, so nothing moves.
     const justRevealed = S.glideFrom !== null && S.glideFrom !== undefined;
     const hint = first || justRevealed ? hintText(S.prev) : "";
     return (
@@ -310,11 +309,11 @@ export function mountGame(env) {
     const st = streaks(S.results);
     const sc = scoreRun(S.ratios, S.results, S.deep);
     const msg = st.longest === RULES.chainLength ? "A Clean Sweep! \u2728" : sc.pct >= 80 ? "Great sweep." : sc.pct >= 60 ? "Solid sweep." : sc.pct >= 40 ? "Not bad." : "Tomorrow, sweep again.";
-    const facts = [P.seg1.anchor, ...P.seg1.items, P.seg2.anchor, ...P.seg2.items];
+    const facts = P.legs.flatMap((leg) => [leg.anchor, ...leg.items]);
     const list = facts
       .map((f) => {
         const src = /^https?:/.test(f.source) ? `<a href="${f.source}" target="_blank" rel="noopener noreferrer">source</a>` : f.source;
-        return `<li>${f.label}: ${valueText(f.cat, f)} (${src})</li>`;
+        return `<li>${displayName(f.cat, f)}: ${valueText(f.cat, f)} (${src})</li>`;
       })
       .join("");
     const daily = S.mode === "daily";

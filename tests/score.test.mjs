@@ -1,7 +1,10 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { SCORING, difficulty, questionDeep, questionRatios, scoreRun, streakMultiplier, tierFor } from "../src/score.js";
-import { RULES, generate, seedForPuzzle, shareText } from "../src/engine.js";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { RULES, gapRatio, generate, generateSeries, questionsOf, seedForPuzzle, shareText } from "../src/engine.js";
 import { completeDay, emptyState } from "../src/store.js";
 import { entities } from "./helpers.mjs";
 
@@ -150,4 +153,19 @@ test("questionDeep flags only enthusiast objects, never the first two questions"
     assert.ok(flags.filter(Boolean).length <= 1);
     assert.equal(flags.some(Boolean), p.deepCut);
   }
+});
+
+test("the gap ratios and deep-cut flags follow the 7 questions of a mixed puzzle, and of a puzzle published before v3", () => {
+  const mixed = generateSeries(1, 60, entities).find((p) => p.deepCut && p.bridges.length >= 2);
+  assert.ok(mixed, "need a puzzle with a deep cut and two or more switches");
+  const old = JSON.parse(readFileSync(join(fileURLToPath(import.meta.url), "..", "..", "puzzles", "1.json"), "utf8"));
+  for (const p of [mixed, old]) {
+    const qs = questionsOf(p);
+    const ratios = questionRatios(p);
+    assert.equal(ratios.length, 7);
+    ratios.forEach((r, i) => assert.equal(r, gapRatio(qs[i].cat, qs[i].prev.value, qs[i].item.value), `question ${i + 1}`));
+    assert.ok(ratios.every((r) => r >= 1.1), "every gap is at least the minimum");
+    assert.deepEqual(questionDeep(p), qs.map((x) => x.item.fame === 1));
+  }
+  assert.equal(questionDeep(mixed).findIndex(Boolean), mixed.deepCutAt, "the deep cut is flagged on the right question");
 });

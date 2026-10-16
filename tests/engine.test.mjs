@@ -2,9 +2,15 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   CATEGORIES, CATEGORY_KEYS, RULES, buildEntities, correctPick, gapOk, gapRatio, generate, generateDaily, generateSeries,
-  countdownText, nextPuzzleTime, pairForDay, puzzleNumber, seedForPuzzle, shareText, streaks, validatePuzzle, yearsAgo,
+  countdownText, nextPuzzleTime, normalizePuzzle, puzzleNumber, questionsOf, seedForPuzzle, shareText, startCategoryFor, streaks, validatePuzzle, yearsAgo,
 } from "../src/engine.js";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { entities } from "./helpers.mjs";
+
+const root = join(fileURLToPath(import.meta.url), "..", "..");
+const allItems = (p) => [p.legs[0].anchor, ...questionsOf(p).map((x) => x.item)];
 
 // Several tests look at the share card without its web address, which is added on the last line.
 const withoutUrl = (fn) => {
@@ -64,34 +70,112 @@ test("200 puzzles all satisfy every rule", () => {
 test("a puzzle never uses an unverified fact", () => {
   for (let n = 1; n <= 100; n++) {
     const p = generate(seedForPuzzle(n), entities);
-    for (const it of [p.seg1.anchor, ...p.seg1.items, p.seg2.anchor, ...p.seg2.items]) {
+    for (const it of p.legs.flatMap((l) => [l.anchor, ...l.items])) {
       assert.ok(["verified", "definitional"].includes(it.status));
     }
   }
 });
 
-test("the hinge links the two halves", () => {
-  const p = generate(seedForPuzzle(7), entities);
-  assert.equal(p.seg1.items[p.n1 - 1].ent, p.hinge.id);
-  assert.equal(p.seg2.anchor.ent, p.hinge.id);
-  assert.notEqual(p.c1, p.c2);
-  assert.equal(p.n1 + p.n2, RULES.chainLength);
-});
-
-test("pairForDay covers all 20 pairs in every block of 20 days", () => {
-  for (const start of [1, 21, 41]) {
-    const seen = new Set();
-    for (let d = start; d < start + 20; d++) seen.add(pairForDay(d).join(">"));
-    assert.equal(seen.size, 20);
+test("bridges link the stretches: the same object ends one and starts the next, in a different category", () => {
+  for (let n = 1; n <= 60; n++) {
+    const p = generate(seedForPuzzle(n), entities);
+    assert.equal(p.legs.reduce((t, l) => t + l.items.length, 0), RULES.chainLength);
+    assert.equal(p.bridges.length, p.legs.length - 1);
+    p.legs.slice(1).forEach((leg, i) => {
+      const before = p.legs[i];
+      assert.equal(before.items[before.items.length - 1].ent, leg.anchor.ent, `puzzle ${n}: stretch ${i + 2} does not start where the last one ended`);
+      assert.equal(p.bridges[i], leg.anchor.ent);
+      assert.notEqual(before.cat, leg.cat);
+    });
   }
 });
 
-test("a year of daily puzzles covers every category pair and stays valid", () => {
-  const series = generateSeries(1, 120, entities);
+test("a puzzle can have one to four switches, and a run of days uses them all", () => {
+  const counts = new Set();
+  for (const p of generateSeries(1, 200, entities)) {
+    assert.ok(p.bridges.length >= 1 && p.bridges.length <= RULES.bridgeChances.length, `puzzle ${p.num}: ${p.bridges.length} switches`);
+    counts.add(p.bridges.length);
+  }
+  assert.deepEqual([...counts].sort(), [1, 2, 3, 4]);
+});
+
+test("pacing: the day after a busy day (three or more switches) has at most two", () => {
+  const series = generateSeries(1, 250, entities);
+  let busy = 0;
+  for (let i = 1; i < series.length; i++) {
+    if (series[i - 1].bridges.length >= RULES.busyDay) {
+      busy++;
+      assert.ok(series[i].bridges.length < RULES.busyDay, `puzzle ${series[i].num} follows a busy day and is busy itself`);
+    }
+  }
+  assert.ok(busy > 10, "the test should have met some busy days");
+});
+
+test("you can ask for an exact number of switches and a starting category", () => {
+  for (const bridges of [1, 2, 3]) {
+    const p = generate(seedForPuzzle(5), entities, { bridges, startCat: "weight" });
+    assert.equal(p.bridges.length, bridges);
+    assert.equal(p.legs[0].cat, "weight");
+    assert.deepEqual(validatePuzzle(p), []);
+  }
+});
+
+test("no category takes more than 5 of the 7 questions, and the answers are never lopsided", () => {
+  for (const p of generateSeries(1, 200, entities)) {
+    const qs = questionsOf(p);
+    const per = {};
+    qs.forEach((x) => (per[x.cat] = (per[x.cat] || 0) + 1));
+    assert.ok(Math.max(...Object.values(per)) <= RULES.maxPerCategory, `puzzle ${p.num}`);
+    const ups = qs.filter((x) => x.item.value > x.prev.value).length;
+    assert.ok(ups >= RULES.minUps && ups <= RULES.maxUps, `puzzle ${p.num}: ${ups} higher answers`);
+  }
+});
+
+test("answers never run more than 4 in a row, and a stretch of 3 or more has a higher and a lower answer", () => {
+  for (const p of generateSeries(1, 200, entities)) {
+    const dirs = questionsOf(p).map((x) => x.item.value > x.prev.value);
+    let run = 1;
+    for (let i = 1; i < dirs.length; i++) {
+      run = dirs[i] === dirs[i - 1] ? run + 1 : 1;
+      assert.ok(run <= RULES.maxRun, `puzzle ${p.num}: ${run} in a row`);
+    }
+    for (const leg of p.legs) {
+      if (leg.items.length < RULES.stretchBothWays) continue;
+      let prev = leg.anchor;
+      const d = leg.items.map((it) => { const up = it.value > prev.value; prev = it; return up; });
+      assert.ok(d.includes(true) && d.includes(false), `puzzle ${p.num}: a stretch of ${leg.items.length} all went one way`);
+    }
+  }
+});
+
+test("validatePuzzle rejects a run of one-way answers, a stretch that only goes one way, and two stretches in the same category", () => {
+  const base = generateSeries(1, 60, entities).find((p) => p.legs.some((l) => l.items.length >= 3));
+  assert.ok(base);
+  const li = base.legs.findIndex((l) => l.items.length >= 3);
+  const oneWay = structuredClone(base);
+  let prev = oneWay.legs[li].anchor;
+  for (const it of oneWay.legs[li].items) { it.value = prev.value * 1.5; prev = it; }
+  assert.ok(validatePuzzle(oneWay).some((m) => m.includes("all one direction")));
+  const same = structuredClone(generateSeries(1, 60, entities).find((p) => p.legs.length >= 2));
+  same.legs[1].cat = same.legs[0].cat;
+  assert.ok(validatePuzzle(same).some((m) => m.includes("same category")));
+});
+
+test("startCategoryFor uses every category once in each block of 5 days", () => {
+  for (const start of [1, 6, 11, 96]) {
+    const seen = new Set();
+    for (let d = start; d < start + 5; d++) seen.add(startCategoryFor(d));
+    assert.equal(seen.size, CATEGORY_KEYS.length);
+  }
+});
+
+test("a run of daily puzzles covers every switch between categories and stays valid", () => {
+  const series = generateSeries(1, 200, entities);
   assert.equal(series.filter((p) => !p).length, 0);
   for (const p of series) assert.deepEqual(validatePuzzle(p), []);
-  const pairs = new Set(series.map((p) => `${p.c1}>${p.c2}`));
-  assert.equal(pairs.size, 20);
+  const switches = new Set(series.flatMap((p) => p.legs.slice(1).map((l, i) => `${p.legs[i].cat}>${l.cat}`)));
+  assert.equal(switches.size, 20, `only ${switches.size} of the 20 possible switches appeared`);
+  for (const p of series) assert.equal(p.legs[0].cat, startCategoryFor(p.num));
 });
 
 test("generateDaily matches generateSeries", () => {
@@ -101,8 +185,36 @@ test("generateDaily matches generateSeries", () => {
 test("validatePuzzle catches a broken puzzle", () => {
   const p = generate(seedForPuzzle(3), entities);
   const broken = structuredClone(p);
-  broken.seg1.items[0].value = broken.seg1.anchor.value; // a tie
+  broken.legs[0].items[0].value = broken.legs[0].anchor.value; // a tie
   assert.ok(validatePuzzle(broken).length > 0);
+});
+
+test("a puzzle published before v3 (two halves, one hinge) is converted, still valid, and has one bridge", () => {
+  const old = JSON.parse(readFileSync(join(root, "puzzles", "1.json"), "utf8"));
+  assert.ok(old.seg1 && old.hinge, "puzzle 1 is meant to be a two-half puzzle");
+  const p = normalizePuzzle(old);
+  assert.equal(p.legs.length, 2);
+  assert.deepEqual(p.bridges, [old.hinge.id]);
+  assert.deepEqual(validatePuzzle(old), []);
+  const qs = questionsOf(old);
+  assert.equal(qs.length, 7);
+  assert.equal(qs.filter((x) => x.bridge).length, 1);
+  assert.equal(qs.filter((x) => x.start).length, 2);
+  assert.equal(normalizePuzzle(p), p, "a new puzzle passes through unchanged");
+});
+
+test("questionsOf lists the 7 questions with what each starts from, and marks the starts and the bridges", () => {
+  const p = generate(seedForPuzzle(11), entities, { bridges: 2 });
+  const qs = questionsOf(p);
+  assert.equal(qs.length, 7);
+  assert.deepEqual(qs.map((x) => x.q), [0, 1, 2, 3, 4, 5, 6]);
+  assert.equal(qs[0].prev, p.legs[0].anchor);
+  assert.equal(qs.filter((x) => x.start).length, 3);
+  assert.equal(qs.filter((x) => x.bridge).length, 2);
+  for (const x of qs.filter((x) => x.bridge)) {
+    assert.equal(x.nextAnchor.ent, x.item.ent, "the next stretch starts from the same object");
+    assert.ok(qs[x.q + 1].start && qs[x.q + 1].prev === x.nextAnchor);
+  }
 });
 
 test("correctPick and streaks", () => {
@@ -193,19 +305,21 @@ test("clue and hint reach the puzzle items and the hinge", () => {
   assert.equal(ent.clue, "some clue");
 });
 
-test("hinge records its hint", () => {
+test("a bridge carries its hint into both of its stretches", () => {
   let checked = 0;
   for (let n = 1; n <= 60; n++) {
     const p = generate(seedForPuzzle(n), entities);
-    const e = entities.find((x) => x.id === p.hinge.id);
-    assert.equal(p.hinge.hint, e.hint, `puzzle ${n}: hinge ${p.hinge.id}`);
-    if (e.hint) checked++;
+    p.legs.slice(1).forEach((leg) => {
+      const e = entities.find((x) => x.id === leg.anchor.ent);
+      assert.equal(leg.anchor.hint, e.hint, `puzzle ${n}: bridge ${leg.anchor.ent}`);
+      if (e.hint) checked++;
+    });
   }
-  assert.ok(checked > 10, "most hinges should have a hint");
+  assert.ok(checked > 10, "most bridges should have a hint");
 });
 
-test("the hinge may be up to 3.1x from its neighbour, other slots may not", () => {
-  assert.equal(gapOk("length", 100, 305, 1, 1, true), true); // 3.05x as a hinge
+test("a bridge may be up to 3.1x from its neighbour, other slots may not", () => {
+  assert.equal(gapOk("length", 100, 305, 1, 1, true), true); // 3.05x as a bridge
   assert.equal(gapOk("length", 100, 305, 1, 1, false), false); // 3.05x in an ordinary slot
   assert.equal(gapOk("length", 100, 320, 1, 1, true), false); // over 3.1x is still too far
 });
@@ -214,7 +328,7 @@ test("familiarity: well-known objects are picked more often than moderately know
   const fameOf = Object.fromEntries(entities.map((e) => [e.id, e.fame]));
   const count = { 3: 0, 2: 0, 1: 0 };
   for (const p of generateSeries(1, 200, entities)) {
-    for (const it of [p.seg1.anchor, ...p.seg1.items, ...p.seg2.items]) count[fameOf[it.ent]]++;
+    for (const it of allItems(p)) count[fameOf[it.ent]]++;
   }
   const per = (f) => count[f] / entities.filter((e) => e.fame === f).length;
   assert.ok(per(3) > per(2) * 1.05, "rating 3 objects should be used more per object than rating 2");
@@ -222,18 +336,18 @@ test("familiarity: well-known objects are picked more often than moderately know
   assert.ok(share1 < 0.12, `enthusiast objects should stay under 12% of questions, got ${Math.round(share1 * 100)}%`);
 });
 
-test("a deep cut is at most one per puzzle, never question 1 or 2, never the hinge", () => {
+test("a deep cut is at most one per puzzle, never question 1 or 2, never a bridge", () => {
   let deep = 0;
   const positions = new Set();
   const series = generateSeries(1, 200, entities);
   for (const p of series) {
     assert.deepEqual(validatePuzzle(p), []);
-    const asked = [...p.seg1.items, ...p.seg2.items];
-    const idx = asked.map((it, i) => (it.fame === 1 ? i : -1)).filter((i) => i >= 0);
+    const qs = questionsOf(p);
+    const idx = qs.filter((x) => x.item.fame === 1).map((x) => x.q);
     assert.ok(idx.length <= 1, `puzzle ${p.num}: more than one deep cut`);
     assert.ok(idx.every((i) => i >= 2), `puzzle ${p.num}: deep cut in the first two questions`);
-    assert.ok(idx.every((i) => i !== p.n1 - 1), `puzzle ${p.num}: the hinge is a deep cut`);
-    assert.notEqual(p.seg1.anchor.fame, 1, "an obscure starting point");
+    assert.ok(idx.every((i) => !qs[i].bridge), `puzzle ${p.num}: a bridge is a deep cut`);
+    assert.notEqual(p.legs[0].anchor.fame, 1, "an obscure starting point");
     assert.equal(p.deepCut, idx.length === 1);
     assert.equal(p.deepCutAt, idx.length ? idx[0] : -1);
     if (p.deepCut) { deep++; positions.add(p.deepCutAt + 1); }
@@ -251,7 +365,7 @@ test("some days have no deep cut at all", () => {
 test("a deep cut is never repeated inside its cooldown", () => {
   const seen = [];
   for (const p of generateSeries(1, 250, entities)) {
-    const item = [...p.seg1.items, ...p.seg2.items].find((it) => it.fame === 1);
+    const item = allItems(p).find((it) => it.fame === 1);
     const id = item ? item.ent : null;
     if (id) assert.ok(!seen.slice(-RULES.spiceCooldown).includes(id), `deep cut ${id} repeated too soon`);
     seen.push(id);
@@ -259,19 +373,20 @@ test("a deep cut is never repeated inside its cooldown", () => {
 });
 
 test("validatePuzzle rejects a misplaced or doubled deep cut", () => {
-  const base = generate(seedForPuzzle(3), entities);
+  const base = generate(seedForPuzzle(3), entities, { bridges: 2 });
   const early = JSON.parse(JSON.stringify(base));
-  early.seg1.items[0].fame = 1;
+  early.legs[0].items[0].fame = 1;
   assert.ok(validatePuzzle(early).some((m) => m.includes("deep cut too early")));
   const start = JSON.parse(JSON.stringify(base));
-  start.seg1.anchor.fame = 1;
+  start.legs[0].anchor.fame = 1;
   assert.ok(validatePuzzle(start).some((m) => m.includes("starting point")));
-  const hinge = JSON.parse(JSON.stringify(base));
-  hinge.seg1.items[hinge.n1 - 1].fame = 1;
-  assert.ok(validatePuzzle(hinge).some((m) => m.includes("hinge is an obscure object")));
+  const bridge = JSON.parse(JSON.stringify(base));
+  bridge.legs[0].items[bridge.legs[0].items.length - 1].fame = 1;
+  assert.ok(validatePuzzle(bridge).some((m) => m.includes("the bridge is an obscure object")));
   const two = JSON.parse(JSON.stringify(base));
-  two.seg2.items[two.seg2.items.length - 1].fame = 1;
-  two.seg2.items[two.seg2.items.length - 2].fame = 1;
+  const spots = questionsOf(two).filter((x) => x.q >= RULES.deepCutFrom - 1 && !x.bridge).slice(0, 2); // two ordinary questions after the second
+  assert.equal(spots.length, 2);
+  spots.forEach((x) => (x.item.fame = 1)); // questionsOf returns the puzzle's own items, so this marks them in the copy
   assert.ok(validatePuzzle(two).some((m) => m.includes("more than one deep cut")));
 });
 
@@ -280,15 +395,14 @@ test("a warm-up starts from a reserved fact, with an easy first question", () =>
   const series = generateSeries(1, 200, entities);
   for (const p of series) {
     assert.deepEqual(validatePuzzle(p), []);
-    assert.equal(p.seg1.anchor.warmup, p.warmUp);
+    assert.equal(p.legs[0].anchor.warmup, p.warmUp);
     if (p.warmUp) {
       warm++;
-      const first = p.seg1.items[0];
-      assert.ok(gapRatio(p.c1, p.seg1.anchor.value, first.value) >= RULES.warmMinGap, `puzzle ${p.num}: warm-up gap too small`);
-      assert.ok(p.seg1.anchor.fame >= 2, "an obscure warm-up start");
+      const first = p.legs[0].items[0];
+      assert.ok(gapRatio(p.legs[0].cat, p.legs[0].anchor.value, first.value) >= RULES.warmMinGap, `puzzle ${p.num}: warm-up gap too small`);
+      assert.ok(p.legs[0].anchor.fame >= 2, "an obscure warm-up start");
     }
-    const asked = [...p.seg1.items, ...p.seg2.items];
-    assert.ok(asked.every((it) => !it.warmup), `puzzle ${p.num}: a reserved fact was asked as an ordinary question`);
+    assert.ok(questionsOf(p).every((x) => !x.item.warmup), `puzzle ${p.num}: a reserved fact was asked as an ordinary question`);
   }
   const rate = warm / series.length;
   assert.ok(rate > 0.15 && rate < 0.6, `warm-ups on ${Math.round(rate * 100)}% of days`);
@@ -297,7 +411,7 @@ test("a warm-up starts from a reserved fact, with an easy first question", () =>
 test("a warm-up fact is never reused inside its cooldown", () => {
   const seen = [];
   for (const p of generateSeries(1, 250, entities)) {
-    const id = p.warmUp ? p.seg1.anchor.ent : null;
+    const id = p.warmUp ? p.legs[0].anchor.ent : null;
     if (id) assert.ok(!seen.slice(-RULES.warmCooldown).includes(id), `warm-up ${id} repeated too soon`);
     seen.push(id);
   }
@@ -310,16 +424,17 @@ test("validatePuzzle checks the warm-up rules", () => {
   noFlag.warmUp = false;
   assert.ok(validatePuzzle(noFlag).length > 0, "a reserved start without the warm-up flag is invalid");
   const close = JSON.parse(JSON.stringify(base));
-  close.seg1.items[0].value = close.seg1.anchor.value * 1.5;
+  close.legs[0].items[0].value = close.legs[0].anchor.value * 1.5;
   assert.ok(validatePuzzle(close).some((m) => m.includes("warm-up gap")));
 });
 
-test("no hinge is reused inside the cooldown, famous or not", () => {
+test("no bridge is reused inside the cooldown, famous or not", () => {
   const series = generateSeries(1, 250, entities);
-  const seen = [];
+  const days = [];
   for (const p of series) {
-    assert.ok(!seen.slice(-RULES.hingeCooldown).includes(p.hinge.id), `hinge ${p.hinge.id} repeated too soon`);
-    seen.push(p.hinge.id);
+    const recent = new Set(days.slice(-RULES.hingeCooldown).flat());
+    for (const id of p.bridges) assert.ok(!recent.has(id), `puzzle ${p.num}: bridge ${id} repeated too soon`);
+    days.push(p.bridges);
   }
 });
 

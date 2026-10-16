@@ -6,8 +6,14 @@ export function formatNumber(n) {
   return NF.format(n);
 }
 
+/** The era for a year: BC before the year 1, AD for the first thousand years (so "80 AD", not a bare "80"), and nothing after that. */
+export function yearEra(year) {
+  return year < 0 ? "BC" : year < 1000 ? "AD" : "";
+}
+
 export function yearLabel(year, approx = false) {
-  return (approx ? "c. " : "") + (year < 0 ? `${-year} BC` : String(year));
+  const era = yearEra(year);
+  return (approx ? "c. " : "") + Math.abs(year) + (era ? ` ${era}` : "");
 }
 
 /** Split a value into a big number and a unit, like { num: "53,150", unit: "tonnes" }. */
@@ -22,7 +28,7 @@ export function valueParts(category, item) {
     case "count":
       return { num: pre + formatNumber(v), unit: "" };
     case "date":
-      return { num: yearLabel(v, item.approx), unit: "" };
+      return { num: (item.approx ? "c. " : "") + Math.abs(v), unit: yearEra(v) };
     case "weight": {
       if (v < 1000) return { num: pre + formatNumber(v), unit: "kg" };
       const t = v / 1000;
@@ -37,6 +43,30 @@ export function valueParts(category, item) {
 export function valueText(category, item) {
   const p = valueParts(category, item);
   return p.num + (p.unit ? " " + p.unit : "");
+}
+
+/**
+ * Just the figure, for the ruler: the same as valueText but without "about" or "c.", because the big answer above already says that.
+ * The unit stays, so when the chain switches category you can see the measure change.
+ */
+export function figureText(category, item) {
+  return valueText(category, { ...item, approx: false });
+}
+
+const MAX_EVENT_NAME = 45;
+
+/**
+ * The line under the big figure. For a date it is the question's own wording, so "the sealing of Magna Carta" reads
+ * "Sealing of Magna Carta" and the figure is never a mystery. If that is too long to sit well, the short label is used.
+ * Everything else uses its label ("Hadrian's Wall length").
+ */
+export function displayName(category, item) {
+  if (category === "date" && item.phrase) {
+    const t = item.phrase.replace(/^the\s+/i, "");
+    const name = t.charAt(0).toUpperCase() + t.slice(1);
+    if (name.length <= MAX_EVENT_NAME) return name;
+  }
+  return item.label;
 }
 
 /** Whole years between two year numbers. There is no year zero. */

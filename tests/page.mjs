@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
-import { RULES, buildEntities, correctPick } from "../src/engine.js";
+import { RULES, buildEntities, correctPick, questionsOf } from "../src/engine.js";
 
 const root = join(fileURLToPath(import.meta.url), "..", "..");
 execFileSync(process.execPath, [join(root, "scripts/build.mjs")], { stdio: "ignore" });
@@ -58,16 +58,8 @@ export async function openPage({ store = {}, dayOffset = 0 } = {}) {
 
 /** The right answer for every question of a puzzle, and where each question starts from. */
 export function answersFor(P) {
-  const items = [...P.seg1.items, ...P.seg2.items];
-  const starts = [];
-  const picks = [];
-  let prev = P.seg1.anchor;
-  items.forEach((item, q) => {
-    starts.push(prev);
-    picks.push(correctPick(item, prev));
-    prev = q === P.n1 - 1 ? P.seg2.anchor : item;
-  });
-  return { items, starts, picks };
+  const qs = questionsOf(P);
+  return { items: qs.map((x) => x.item), starts: qs.map((x) => x.prev), picks: qs.map((x) => correctPick(x.item, x.prev)) };
 }
 
 /** Plays the puzzle that is on screen to the result card, answering everything correctly. Returns every screen seen. */

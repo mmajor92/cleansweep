@@ -3,6 +3,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { generateDaily, generatePractice } from "../src/engine.js";
+import { displayName } from "../src/format.js";
 import { entities, openPage, pageHtml, playThrough } from "./page.mjs";
 
 const practice = [1, 2].map((n) => generatePractice(n, entities));
@@ -21,10 +22,10 @@ test("you can open either practice puzzle straight away, in any order", async ()
   const page = await openPage();
   page.click({ mode: "practice", practice: "2" });
   assert.equal(page.meta(), "Practice 2 of 2");
-  assert.ok(page.card().includes(`class="name">${practice[1].seg1.anchor.label}<`), "it is the second practice puzzle");
+  assert.ok(page.card().includes(`class="name">${displayName(practice[1].legs[0].cat, practice[1].legs[0].anchor)}<`), "it is the second practice puzzle");
   page.click({ mode: "practice", practice: "1" });
   assert.equal(page.meta(), "Practice 1 of 2");
-  assert.ok(page.card().includes(`class="name">${practice[0].seg1.anchor.label}<`), "it is the first practice puzzle");
+  assert.ok(page.card().includes(`class="name">${displayName(practice[0].legs[0].cat, practice[0].legs[0].anchor)}<`), "it is the first practice puzzle");
 });
 
 test("practice goes round in a loop: 1, then 2, then 1 again, as often as you like", async () => {

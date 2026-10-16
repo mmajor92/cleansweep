@@ -1,6 +1,6 @@
 # Clean Sweep
 
-A daily sweep of seven higher-or-lower questions. The aim is a **Clean Sweep**: all seven right. Each answer you reveal becomes the starting point for the next question. Halfway through, a **hinge object** switches the game from one category to another.
+A daily sweep of seven higher-or-lower questions. The aim is a **Clean Sweep**: all seven right. Each answer you reveal becomes the starting point for the next question. Every so often a **bridge object** carries the chain from one category into another, anywhere in the chain.
 
 Categories: length, weight, date, how many, speed.
 
@@ -9,15 +9,17 @@ Categories: length, weight, date, how many, speed.
 1. You see a starting value, for example the Eiffel Tower is 330 m.
 2. Is the Boeing 747-400 wingspan longer or shorter? You pick.
 3. The true value is revealed and becomes the new starting point.
-4. The last question of the first half is about the hinge object, for example the Titanic's length.
-5. The next question starts from that same object in the next category, for example the Titanic sank in 1912. That is the new starting point. There is no separate screen for this.
+4. Now and then a question is about a **bridge object**, for example the Titanic's length.
+5. The next question starts from that same object in a different category, for example the Titanic sank in 1912. That is the new starting point. There is no separate screen for this.
 6. A wrong answer breaks the chain but you keep playing.
+
+A puzzle switches category once to four times (about 34%, 43%, 18% and 4% of days), in any order, so a stretch in one category can be a single question or as many as five. The rules that keep it fair live in `RULES` in `src/engine.js`: no category takes more than 5 of the 7 questions, between 2 and 5 of the answers are "higher", never more than 4 answers in a row go the same way, and any stretch of 3 or more questions has both a higher and a lower answer. Each day starts in a different category (every block of 5 days uses all five), a bridge object is not reused within 7 days, and the day after a busy one (three or more switches) has at most two, so two wild days never come back to back.
 
 ## Familiarity and deep cuts
 
 Every object has a `fame` rating: 3 for things nearly everyone knows (a snooker table, an Olympic pool, a Routemaster bus, Big Ben), 2 for things most people know, 1 for enthusiast objects. The puzzle generator prefers well-known objects, so most questions are about things players already have a feel for.
 
-Rating 1 objects are kept out of ordinary slots and are never a hinge. Instead, on about 40% of days one question is a **Deep cut** about one of them. It can be any question from the 3rd to the 7th (never the first two, so nobody loses straight away), at most one per puzzle, and some days there is none. It is tagged before the player answers, worth 50% more, and costs nothing extra if missed. A deep-cut object is not reused within 21 days. Ratings live in `FAME` in `build_data.py`. See `docs/adding-facts.md`.
+Rating 1 objects are kept out of ordinary slots and are never a bridge. Instead, on about 40% of days one question is a **Deep cut** about one of them. It can be any question from the 3rd to the 7th (never the first two, so nobody loses straight away), at most one per puzzle, and some days there is none. It is tagged before the player answers, worth 50% more, and costs nothing extra if missed. A deep-cut object is not reused within 21 days. Ratings live in `FAME` in `build_data.py`. See `docs/adding-facts.md`.
 
 ## The ruler
 
@@ -71,7 +73,7 @@ If a question is a **Deep cut** (an enthusiast-only object, shown with its own b
 
 The headline score is the **percentage of the day's maximum**, with the points as the small print. The maximum varies from day to day with how many close calls there are, so the percentage keeps every day comparable. With equal difficulty, a perfect run is 100%, "miss the first, then six right" is 82%, "five right then two wrong" is 66%, and "three right, two wrong, two right" is 59%. The rules live in `src/score.js` and are covered by `tests/score.test.mjs`. The tag boundaries (1.5x and 2.2x) split real questions roughly 30%, 34% and 36%.
 
-Neighbouring values are kept close: at most 4x apart for the first question in a half, tightening to 2x. The hinge question may be up to 3.1x from its neighbour. Dates are compared by "years ago", so 1912 against 1889 is close, and Cleopatra against the pyramid is not.
+Neighbouring values are kept close: at most 4x apart for the first question in a stretch, tightening to 2x. A bridge question may be up to 3.1x from its neighbour. Dates are compared by "years ago", so 1912 against 1889 is close, and Cleopatra against the pyramid is not.
 
 ## Run it
 
@@ -131,7 +133,8 @@ Review the files in a pull request and commit them. A weekly GitHub Action (`gen
 
 ## Known limits
 
-- The pool has 162 objects, 90 of them multi-category, about 77 of which can act as hinges. In a simulated year no hinge repeats inside a week, every pair of categories is covered, and the busiest hinges (the Boeing 747, Concorde, the Space Shuttle, the Wright Flyer) appear on about 12 or 13 days. About 61% of questions use objects nearly everyone knows, 34% objects most people know, and 6% enthusiast objects. 33% of days open with a Warm-up and 46% include a Deep cut. The linter checks all of this and warns when it slips.
+- The pool has 162 objects, 90 of them multi-category, about 77 of which can act as bridges. In a simulated year no bridge repeats inside a week, all 20 possible switches between categories appear, and the busiest bridges (Sputnik 1, Concorde, the Space Shuttle) are a bridge on about 23 days. A bridge object comes back after about 24 days on average, so adding more multi-category objects is the best way to keep the game fresh. About 57% of questions use objects nearly everyone knows, 37% objects most people know, and 6% enthusiast objects. 36% of days open with a Warm-up and 48% include a Deep cut. The linter checks all of this and warns when it slips.
+- Puzzles published before v3 have two halves (`c1`, `c2`, `seg1`, `seg2` and a `hinge`). The game and the linter convert them when they load them (`normalizePuzzle` in `src/engine.js`), so those files never need touching.
 - Dates use a fixed "now" of 2026 (`RULES.nowYear`). Update it each year and re-run the linter. Frozen puzzles are unaffected.
 - The ruler for dates is linear, so a segment that spans millennia crowds its modern points.
 - Streaks and the daily lock live in the browser's `localStorage`. Clearing it resets them.

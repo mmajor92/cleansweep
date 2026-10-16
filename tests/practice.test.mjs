@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { PRACTICE, generatePractice, validatePuzzle } from "../src/engine.js";
+import { PRACTICE, generatePractice, normalizePuzzle, questionsOf, validatePuzzle } from "../src/engine.js";
 import { entities } from "./helpers.mjs";
 
 const root = join(fileURLToPath(import.meta.url), "..", "..");
@@ -19,15 +19,18 @@ test("the practice puzzles are valid and each teaches one badge", () => {
   assert.deepEqual(validatePuzzle(b), []);
   assert.ok(a.warmUp && !a.deepCut, "practice 1 opens with a Warm-up and has no Deep cut");
   assert.ok(b.deepCut && !b.warmUp, "practice 2 has a Deep cut and no Warm-up");
-  assert.notEqual(`${a.c1}>${a.c2}`, `${b.c1}>${b.c2}`, "the two practice puzzles should cover different categories");
+  assert.notEqual(a.legs.map((l) => l.cat).join(">"), b.legs.map((l) => l.cat).join(">"), "the two practice puzzles should cover different categories");
+  assert.equal(a.bridges.length, 1, "practice 1 has one switch of category");
+  assert.equal(b.bridges.length, 2, "practice 2 has two");
 });
 
 // The two practice seeds were found by searching the pool as it stood at launch, so adding facts later can change what a
 // REGENERATION picks. What players see is the FROZEN files, which never change, so "friendly" is checked on those.
 test("the frozen practice puzzles are friendly: everything is nearly universally known, apart from the one Deep cut", async () => {
   for (const [n, deep] of [[1, false], [2, true]]) {
-    const p = JSON.parse(await readFile(join(root, "puzzles", `practice-${n}.json`), "utf8"));
-    const items = [p.seg1.anchor, ...p.seg1.items, p.seg2.anchor, ...p.seg2.items];
+    let p = JSON.parse(await readFile(join(root, "puzzles", `practice-${n}.json`), "utf8"));
+    p = normalizePuzzle(p);
+    const items = p.legs.flatMap((l) => [l.anchor, ...l.items]);
     assert.equal(items.filter((it) => it.fame === 1).length, deep ? 1 : 0, `practice-${n}.json: Deep cut objects`);
     assert.ok(items.every((it) => it.fame === 3 || it.fame === 1), `practice-${n}.json: every other object is one that nearly everyone knows`);
     assert.equal(!!p.warmUp, !deep, `practice-${n}.json: Warm-up badge`);

@@ -1,5 +1,5 @@
 // Entry point. Loads facts, picks today's puzzle, and starts the game.
-import { PRACTICE, buildEntities, generateDaily, generatePractice, puzzleNumber, validatePuzzle } from "./engine.js";
+import { PRACTICE, buildEntities, generateDaily, generatePractice, normalizePuzzle, puzzleNumber, validatePuzzle } from "./engine.js";
 import { mountGame } from "./ui.js";
 import { VERSION } from "./version.js";
 import { GOATCOUNTER_CODE } from "./site.js";
@@ -149,7 +149,7 @@ async function start() {
     let daily = null;
     if (!inlined) {
       try {
-        const frozen = await loadJSON(`puzzles/${num}.json`);
+        const frozen = normalizePuzzle(await loadJSON(`puzzles/${num}.json`)); // days published before v3 have two halves: converted here
         if (validatePuzzle(frozen).length === 0) daily = frozen;
       } catch (e) {
         /* no file for today: fall through to live generation */
@@ -164,7 +164,7 @@ async function start() {
       let p = null;
       if (!inlined) {
         try {
-          const frozen = await loadJSON(`puzzles/practice-${n}.json`);
+          const frozen = normalizePuzzle(await loadJSON(`puzzles/practice-${n}.json`));
           if (validatePuzzle(frozen).length === 0) p = frozen;
         } catch (e) {
           /* no frozen file: rebuild the same puzzle from its fixed seed */
