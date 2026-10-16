@@ -92,3 +92,8 @@ test("with nothing skipped there is no skipped warning", () => {
   assert.ok(!/were skipped/.test(md));
   assert.ok(!/Why some were skipped/.test(md));
 });
+
+test("a query that ran but found nothing is called out, so it does not look like a success", () => {
+  const md = summarise({ ...fixture, queries: [{ cat: "count", pid: "P1083", kind: "capacity", via: "full", rows: 0 }], skipped: [] });
+  assert.match(md, /full query, but it found nothing \(worth a look\)/);
+});

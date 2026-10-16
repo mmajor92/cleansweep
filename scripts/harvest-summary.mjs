@@ -33,7 +33,11 @@ export function summarise(result, gameNames = [], top = 25) {
   lines.push(`**${entities.length} candidate objects**, of which **${entities.length - fresh.length} look like they are already in the game** (matched by name, so a few repeats may be missed).`, "");
   lines.push("These are candidates only. Each one needs a source and a second check before it goes into the game.", "");
   if (queries.length) {
-    const how = (q) => (q.via === "full" ? "full query" : q.via === "light" ? "lighter query (a sample of the best known)" : "skipped");
+    const how = (q) => {
+      if (!q.via) return "skipped";
+      const used = q.via === "full" ? "full query" : "lighter query (a sample of the best known)";
+      return q.rows === 0 ? `${used}, but it found nothing (worth a look)` : used;
+    };
     lines.push("### What Wikidata sent back", "", "| Kind of fact | Rows | How |", "|---|---|---|");
     for (const q of queries) lines.push(`| ${q.cat}: ${q.kind} (${q.pid}) | ${q.rows} | ${how(q)} |`);
     lines.push("");

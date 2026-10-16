@@ -133,3 +133,17 @@ test("the command line still works offline: --dry-run shows both queries for eve
   assert.equal((out.match(/full query/g) || []).length, PROPERTIES.length);
   assert.equal((out.match(/lighter query/g) || []).length, PROPERTIES.length);
 });
+
+test("capacity asks for the value as entered, because plain counts have no normalised value", () => {
+  const q = buildQuery(prop("P1083"));
+  assert.match(q, /p:P1083\/psv:P1083\/wikibase:quantityAmount/);
+  assert.ok(!/psn:P1083/.test(q));
+});
+
+test("heights, masses, lengths and speeds still use the normalised value, so they arrive in metres, kilograms and m/s", () => {
+  for (const pid of ["P2048", "P2043", "P2067", "P2052"]) {
+    const q = buildQuery(prop(pid));
+    assert.match(q, new RegExp(`psn:${pid}`));
+    assert.ok(!new RegExp(`psv:${pid}`).test(q));
+  }
+});

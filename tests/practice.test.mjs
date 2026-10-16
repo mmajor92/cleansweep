@@ -12,7 +12,7 @@ test("there are exactly two fixed practice puzzles", () => {
   assert.equal(PRACTICE.length, 2);
 });
 
-test("the practice puzzles are valid, friendly, and each teaches one badge", () => {
+test("the practice puzzles are valid and each teaches one badge", () => {
   const [a, b] = [1, 2].map((n) => generatePractice(n, entities));
   assert.ok(a && b);
   assert.deepEqual(validatePuzzle(a), []);
@@ -20,9 +20,18 @@ test("the practice puzzles are valid, friendly, and each teaches one badge", () 
   assert.ok(a.warmUp && !a.deepCut, "practice 1 opens with a Warm-up and has no Deep cut");
   assert.ok(b.deepCut && !b.warmUp, "practice 2 has a Deep cut and no Warm-up");
   assert.notEqual(`${a.c1}>${a.c2}`, `${b.c1}>${b.c2}`, "the two practice puzzles should cover different categories");
-  for (const p of [a, b]) {
+});
+
+// The two practice seeds were found by searching the pool as it stood at launch, so adding facts later can change what a
+// REGENERATION picks. What players see is the FROZEN files, which never change, so "friendly" is checked on those.
+test("the frozen practice puzzles are friendly: everything is nearly universally known, apart from the one Deep cut", async () => {
+  for (const [n, deep] of [[1, false], [2, true]]) {
+    const p = JSON.parse(await readFile(join(root, "puzzles", `practice-${n}.json`), "utf8"));
     const items = [p.seg1.anchor, ...p.seg1.items, p.seg2.anchor, ...p.seg2.items];
-    assert.ok(items.every((it) => it.fame === 3 || it.fame === 1), "every non-deep-cut object should be one that nearly everyone knows");
+    assert.equal(items.filter((it) => it.fame === 1).length, deep ? 1 : 0, `practice-${n}.json: Deep cut objects`);
+    assert.ok(items.every((it) => it.fame === 3 || it.fame === 1), `practice-${n}.json: every other object is one that nearly everyone knows`);
+    assert.equal(!!p.warmUp, !deep, `practice-${n}.json: Warm-up badge`);
+    assert.equal(!!p.deepCut, deep, `practice-${n}.json: Deep cut badge`);
   }
 });
 

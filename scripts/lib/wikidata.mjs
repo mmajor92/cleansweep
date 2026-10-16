@@ -6,7 +6,9 @@ export const PROPERTIES = [
   { cat: "length", pid: "P2043", kind: "length", type: "quantity", factor: 1 },
   { cat: "weight", pid: "P2067", kind: "mass", type: "quantity", factor: 1 },
   { cat: "speed", pid: "P2052", kind: "top speed", type: "quantity", factor: 3.6 }, // m/s to km/h
-  { cat: "count", pid: "P1083", kind: "capacity", type: "quantity", factor: 1 },
+  // Capacity is a plain count, often with no unit, and Wikidata only stores the "normalised" value for quantities with a
+  // unit it can convert. The first live run returned 0 rows with the normalised value, so `raw` asks for the value as entered.
+  { cat: "count", pid: "P1083", kind: "capacity", type: "quantity", factor: 1, raw: true },
   { cat: "date", pid: "P571", kind: "creation", type: "time" },
   { cat: "date", pid: "P1619", kind: "opening", type: "time" },
   { cat: "date", pid: "P606", kind: "first flight", type: "time" },
@@ -29,7 +31,7 @@ export function buildQuery(prop, { minLinks = 50, limit = 400, sample = false } 
       ? `?item p:${prop.pid}/psv:${prop.pid} ?node .
   ?node wikibase:timeValue ?v ; wikibase:timePrecision ?prec .
   FILTER(?prec >= 9)`
-      : `?item p:${prop.pid}/psn:${prop.pid}/wikibase:quantityAmount ?v .`;
+      : `?item p:${prop.pid}/${prop.raw ? "psv" : "psn"}:${prop.pid}/wikibase:quantityAmount ?v .`;
   return `SELECT ?item ?itemLabel ?links ?v WHERE {
   hint:Query hint:optimizer "None" .
   ${value}

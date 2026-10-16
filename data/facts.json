@@ -425,6 +425,17 @@
           "source": "https://en.wikipedia.org/wiki/Queen_Mary_2",
           "checkedOn": "2026-10-15",
           "note": "That is 30 knots."
+        },
+        "weight": {
+          "phrase": "the weight of Queen Mary 2 (her displacement)",
+          "label": "Queen Mary 2 displacement",
+          "value": 76000000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://store.titanichistoricalsociety.org/product/queen-mary-2-the-greatest-ocean-liner-of-our-time/",
+          "checkedOn": "2026-10-16",
+          "note": "Some sources give 79,287 tonnes. Her gross tonnage of about 150,000 measures volume, not weight."
         }
       },
       "family": "qm2",
@@ -585,6 +596,28 @@
           "status": "verified",
           "source": "https://www.thisdayinaviation.com/tag/kennedy-space-center/page/2/",
           "checkedOn": "2026-10-15"
+        },
+        "speed": {
+          "phrase": "the speed of the Space Shuttle in orbit",
+          "label": "Space Shuttle orbital speed",
+          "value": 28000,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www3.nasa.gov/centers/kennedy/pdf/566306main_shuttle-era-facts.pdf",
+          "checkedOn": "2026-10-16",
+          "note": "That is about 17,500 miles per hour."
+        },
+        "length": {
+          "phrase": "the length of a Space Shuttle orbiter",
+          "label": "Space Shuttle orbiter length",
+          "value": 37.2,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www3.nasa.gov/centers/kennedy/pdf/566306main_shuttle-era-facts.pdf",
+          "checkedOn": "2026-10-16",
+          "note": "On the launch pad, the whole stack with its tank and boosters stood about 56 metres tall."
         }
       },
       "family": "shuttle",
@@ -645,6 +678,39 @@
           "source": "https://www.museumofflight.org/Exhibits-and-Events/Aircraft/boeing-747-121",
           "checkedOn": "2026-10-15",
           "note": "It entered service with Pan Am on 22 January 1970."
+        },
+        "weight": {
+          "phrase": "the maximum takeoff weight of the Boeing 747-400",
+          "label": "747-400 max takeoff weight",
+          "value": 396890,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.aircraft.com/aircraft/201008611/boeing-747-400",
+          "checkedOn": "2026-10-16",
+          "note": "That is 875,000 pounds."
+        },
+        "speed": {
+          "phrase": "the cruising speed of the Boeing 747-400",
+          "label": "747-400 cruise speed",
+          "value": 913,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.aircraft.com/aircraft/201008611/boeing-747-400",
+          "checkedOn": "2026-10-16",
+          "note": "That is Mach 0.85."
+        },
+        "count": {
+          "phrase": "the typical number of seats in a three-class Boeing 747-400",
+          "label": "747-400 seats (typical)",
+          "value": 416,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.aircraft.com/aircraft/201008611/boeing-747-400",
+          "checkedOn": "2026-10-16",
+          "note": "In a two-class layout it seats 524."
         }
       },
       "family": "b747",
@@ -1221,6 +1287,17 @@
           "source": "https://fr.vikidia.org/wiki/Airbus_A380",
           "checkedOn": "2026-10-15",
           "note": "That is Mach 0.85."
+        },
+        "count": {
+          "phrase": "the typical number of seats in an Airbus A380",
+          "label": "A380 seats (typical)",
+          "value": 525,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://planefyi.com/aircraft/airbus-a380-800/",
+          "checkedOn": "2026-10-16",
+          "note": "Laid out all economy, it can seat up to 853."
         }
       },
       "family": "a380",
@@ -1273,6 +1350,17 @@
           "source": "https://aerospaceweb.org/aircraft/transport-m/an225/",
           "checkedOn": "2026-10-15",
           "note": "Its cruising speed was about 800 km/h."
+        },
+        "count": {
+          "phrase": "the number of wheels on the Antonov An-225 Mriya",
+          "label": "An-225 wheels",
+          "value": 32,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://thepointsguy.com/news/photo-tour-antonov-an-225-largest-aircraft",
+          "checkedOn": "2026-10-16",
+          "note": "Four are on the nose gear and 28 on the main gear."
         }
       },
       "family": "an225",
@@ -4107,6 +4195,17 @@
           "source": "https://kids.britannica.com/students/article/giraffe/274561",
           "checkedOn": "2026-10-16",
           "note": "Females are 30 to 60 centimetres shorter."
+        },
+        "count": {
+          "phrase": "the number of neck vertebrae in a giraffe",
+          "label": "Giraffe neck vertebrae",
+          "value": 7,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://savegiraffesnow.org/how-many-vertebrae-do-giraffes-have/",
+          "checkedOn": "2026-10-16",
+          "note": "Humans have seven too, but each giraffe vertebra is about 25 centimetres long."
         }
       },
       "fame": 3
@@ -4516,6 +4615,17 @@
           "source": "https://en.wikipedia.org/wiki/Usain_Bolt",
           "checkedOn": "2026-10-16",
           "note": "That is 6 feet 5 inches."
+        },
+        "count": {
+          "phrase": "the number of Olympic gold medals Usain Bolt won",
+          "label": "Usain Bolt's Olympic golds",
+          "value": 8,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.cbssports.com/olympics/news/usain-bolt-loses-olympic-gold-medal-due-to-jamaica-teammates-doping-violation",
+          "checkedOn": "2026-10-16",
+          "note": "He won nine, but the 2008 relay gold was withdrawn in 2017."
         }
       },
       "fame": 3
@@ -4969,6 +5079,28 @@
           "status": "definitional",
           "source": "definition",
           "basis": "Definition of a standard piano"
+        },
+        "weight": {
+          "phrase": "the weight of a Steinway concert grand piano (the Model D)",
+          "label": "Concert grand weight",
+          "value": 480,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Steinway_D-274",
+          "checkedOn": "2026-10-16",
+          "note": "That is about 1,060 pounds."
+        },
+        "length": {
+          "phrase": "the length of a Steinway concert grand piano (the Model D)",
+          "label": "Concert grand length",
+          "value": 2.74,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Steinway_D-274",
+          "checkedOn": "2026-10-16",
+          "note": "That is nearly 9 feet."
         }
       },
       "fame": 3

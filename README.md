@@ -131,7 +131,7 @@ Review the files in a pull request and commit them. A weekly GitHub Action (`gen
 
 ## Known limits
 
-- The pool has 162 objects, 89 of them multi-category, about 76 of which can act as hinges. In a simulated year no hinge repeats inside a week, every pair of categories is covered, and the busiest hinges (Concorde, the Titanic, the Wright Flyer) appear on about 12 or 13 days. About 61% of questions use objects nearly everyone knows, 33% objects most people know, and 6% enthusiast objects. 33% of days open with a Warm-up and 46% include a Deep cut. The linter checks all of this and warns when it slips.
+- The pool has 162 objects, 90 of them multi-category, about 77 of which can act as hinges. In a simulated year no hinge repeats inside a week, every pair of categories is covered, and the busiest hinges (the Boeing 747, Concorde, the Space Shuttle, the Wright Flyer) appear on about 12 or 13 days. About 61% of questions use objects nearly everyone knows, 34% objects most people know, and 6% enthusiast objects. 33% of days open with a Warm-up and 46% include a Deep cut. The linter checks all of this and warns when it slips.
 - Dates use a fixed "now" of 2026 (`RULES.nowYear`). Update it each year and re-run the linter. Frozen puzzles are unaffected.
 - The ruler for dates is linear, so a segment that spans millennia crowds its modern points.
 - Streaks and the daily lock live in the browser's `localStorage`. Clearing it resets them.
