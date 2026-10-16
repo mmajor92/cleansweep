@@ -2,6 +2,14 @@
 
 The version number is in `src/version.js` and shows at the bottom of the page. Change both together.
 
+## v2.2
+- **"How to play" no longer opens by itself,** so it does not take over the screen or feel compulsory. It is still one tap away behind the "?".
+- **A slim one-line note** under the title tells someone new: "First time? Tap the ? for a practice round!", with a small "Got it". The "?" has a still yellow ring while the note is showing.
+- The note goes for good when someone taps Got it, taps the "?", or answers a question (in the real game or in practice), and that is remembered on their device. Anyone who already pressed "Got it" on the old panel, or who has already played a game here, never sees it.
+- The "Got it" button is small, so the area you can tap around it is bigger than it looks (about 46 pixels tall).
+- **14 new sourced facts on nine well-known objects,** so more of them can bridge between categories: second facts for the cheetah, peregrine falcon, Usain Bolt, giraffe, hippo and African bush elephant (weight, speed and length), and a length for the humpback, sperm and blue whales. Bridge objects go from 67 to 76, and the thin pairs grow (weight + speed 16 to 21, length + speed 21 to 26, length + weight 30 to 39). Puzzles already frozen are not affected.
+- **A "Harvest candidate facts" button** under Actions on GitHub. It runs the Wikidata harvester in the cloud and saves the list of candidates as a download, with a short summary on the run page. Manual only, read-only, and it never touches the game.
+
 ## v2.1
 - **Practice is always available.** Both practice puzzles are on offer in the "?" panel (Practice 1 and Practice 2), whether or not you have played them or finished today's puzzle. They are the same two puzzles every time, so they work as a practice, a demo to show friends, and a way to test.
 - After a practice puzzle, the buttons are the next practice puzzle (1, then 2, then 1 again) and "Back to today's puzzle". There is still no practice button on today's result card, and no Share button for practice.

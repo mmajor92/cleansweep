@@ -13,6 +13,7 @@ import { loadState, saveState, recordPick, completeDay, currentStreak, dayRecord
  *   todayNum: number,
  *   dailyPuzzle: puzzle,
  *   practicePuzzles: [puzzle, puzzle]   (the two fixed practice puzzles)
+ *   onAnswer: () => void                (called whenever a question is answered, real or practice)
  * }
  */
 export function mountGame(env) {
@@ -115,6 +116,7 @@ export function mountGame(env) {
   }
 
   function answer(pick) {
+    if (env.onAnswer) env.onAnswer();
     const { item } = itemAt(S.q);
     const ok = pick === correctPick(item, S.prev);
     S.picks.push(pick);

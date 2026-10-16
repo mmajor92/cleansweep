@@ -57,6 +57,10 @@ The generator needs neighbours within 1.15x to 4x of each other. A category with
 
 ## Harvesting candidates
 
+**No terminal needed:** on GitHub, open the **Actions** tab, pick **Harvest candidate facts**, press **Run workflow** and wait a minute or two. The run page shows a summary (how many candidates, which pairs of categories they could bridge, the best known ones), and the full list is a download at the bottom of the page called `harvest-candidates` (kept for 30 days). It is manual only and read-only: it never changes the repository or the game.
+
+To run it on your own machine instead:
+
 `HARVEST_CONTACT="you@example.com" npm run harvest` writes `data/harvest.json` from Wikidata. Wikidata asks scripts to identify themselves, so set `HARVEST_CONTACT` to an email or URL. Each entry has a suggested phrase and label, the value converted to our base units, and a Wikidata link. Treat it as a shopping list:
 
 1. Sort by `categories`. Take objects with three or more first.

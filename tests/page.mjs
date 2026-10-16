@@ -17,8 +17,20 @@ export async function openPage({ store = {}, dayOffset = 0 } = {}) {
   const at = Date.UTC(y, m - 1, d + dayOffset, 12);
   const els = {};
   let handler;
-  const el = (id) =>
-    (els[id] ||= { innerHTML: "", textContent: "", hidden: false, style: {}, setAttribute() {}, appendChild() {}, querySelector: () => ({ focus() {}, style: {} }), addEventListener() {} });
+  const hiddenInHtml = (id) => new RegExp(`<[^>]*id="${id}"[^>]*\\bhidden\\b`).test(pageHtml);
+  const classes = (id) => new Set(((new RegExp(`<[^>]*id="${id}"[^>]*class="([^"]*)"|<[^>]*class="([^"]*)"[^>]*id="${id}"`).exec(pageHtml) || [])[1] || (new RegExp(`<[^>]*class="([^"]*)"[^>]*id="${id}"`).exec(pageHtml) || [])[1] || "").split(" ").filter(Boolean));
+  const practiceButtons = [1, 2].map((n) => ({ n, listeners: {}, addEventListener(t, h) { this.listeners[t] = h; } }));
+  const el = (id) => {
+    if (els[id]) return els[id];
+    const cls = classes(id);
+    return (els[id] = {
+      innerHTML: "", textContent: "", hidden: hiddenInHtml(id), style: {}, attrs: {}, listeners: {},
+      classList: { add: (...c) => c.forEach((x) => cls.add(x)), remove: (...c) => c.forEach((x) => cls.delete(x)), contains: (c) => cls.has(c) },
+      setAttribute(k, v) { this.attrs[k] = v; }, appendChild() {}, querySelector: () => ({ focus() {}, style: {} }),
+      querySelectorAll: (sel) => (sel === "[data-practice]" ? practiceButtons : []),
+      addEventListener(t, h) { this.listeners[t] = h; },
+    });
+  };
   const RealDate = Date;
   class FakeDate extends RealDate {
     constructor(...a) {

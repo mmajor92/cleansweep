@@ -4085,6 +4085,28 @@
           "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
           "checkedOn": "2026-10-15",
           "note": "Large males can reach 1,900 kg."
+        },
+        "speed": {
+          "phrase": "the top speed of a giraffe",
+          "label": "Giraffe top speed",
+          "value": 60,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://kids.britannica.com/students/article/giraffe/274561",
+          "checkedOn": "2026-10-16",
+          "note": "It can only keep that up over short distances."
+        },
+        "length": {
+          "phrase": "the height of an adult male giraffe",
+          "label": "Giraffe height (adult male)",
+          "value": 5.2,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://kids.britannica.com/students/article/giraffe/274561",
+          "checkedOn": "2026-10-16",
+          "note": "Females are 30 to 60 centimetres shorter."
         }
       },
       "fame": 3
@@ -4102,6 +4124,28 @@
           "status": "verified",
           "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
           "checkedOn": "2026-10-15"
+        },
+        "speed": {
+          "phrase": "the top running speed of a hippopotamus on land",
+          "label": "Hippo top speed",
+          "value": 30,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://parquedecabarceno.com/english/animals/common-hippopotamus",
+          "checkedOn": "2026-10-16",
+          "note": "It can only keep that up for a short burst."
+        },
+        "length": {
+          "phrase": "the body length of an adult hippopotamus",
+          "label": "Hippo body length",
+          "value": 3.8,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://ielc.libguides.com/sdzg/factsheets/hippopotamus",
+          "checkedOn": "2026-10-16",
+          "note": "Males are about 3 to 5 metres long, females about 3 to 4 metres."
         }
       },
       "fame": 2
@@ -4120,6 +4164,17 @@
           "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
           "checkedOn": "2026-10-15",
           "note": "The record is over 10 tonnes."
+        },
+        "length": {
+          "phrase": "the shoulder height of an adult male African bush elephant",
+          "label": "African elephant shoulder height",
+          "value": 3.3,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://ielc.libguides.com/sdzg/factsheets/african_elephant/characteristics",
+          "checkedOn": "2026-10-16",
+          "note": "Large males can stand over 3.5 metres at the shoulder."
         }
       },
       "fame": 3
@@ -4137,6 +4192,16 @@
           "status": "verified",
           "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
           "checkedOn": "2026-10-15"
+        },
+        "length": {
+          "phrase": "the average length of an adult humpback whale",
+          "label": "Humpback whale length (average)",
+          "value": 13.5,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
+          "checkedOn": "2026-10-16"
         }
       },
       "fame": 2
@@ -4154,6 +4219,17 @@
           "status": "verified",
           "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
           "checkedOn": "2026-10-15"
+        },
+        "length": {
+          "phrase": "the average length of an adult sperm whale",
+          "label": "Sperm whale length (average)",
+          "value": 13.25,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
+          "checkedOn": "2026-10-16",
+          "note": "Males are much longer than females and can reach about 20 metres."
         }
       },
       "fame": 2
@@ -4172,6 +4248,17 @@
           "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
           "checkedOn": "2026-10-15",
           "note": "The record is about 190 tonnes."
+        },
+        "length": {
+          "phrase": "the average length of an adult blue whale",
+          "label": "Blue whale length (average)",
+          "value": 24,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
+          "checkedOn": "2026-10-16",
+          "note": "The longest blue whales are about 30 metres."
         }
       },
       "fame": 3
@@ -4328,6 +4415,28 @@
           "source": "https://en.wikipedia.org/wiki/Fastest_animals",
           "checkedOn": "2026-10-15",
           "note": "Measured top speeds run from about 93 to 121 km/h."
+        },
+        "weight": {
+          "phrase": "the average weight of an adult cheetah",
+          "label": "Cheetah weight (average)",
+          "value": 45,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.torontozoo.com/animals/Cheetah",
+          "checkedOn": "2026-10-16",
+          "note": "Adults weigh roughly 35 to 65 kilograms."
+        },
+        "length": {
+          "phrase": "the head and body length of an adult cheetah",
+          "label": "Cheetah, head and body",
+          "value": 1.2,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://ielc.libguides.com/sdzg/factsheets/cheetah",
+          "checkedOn": "2026-10-16",
+          "note": "The tail adds another 65 to 85 centimetres."
         }
       },
       "fame": 3
@@ -4346,6 +4455,28 @@
           "source": "https://en.wikipedia.org/wiki/Fastest_animals",
           "checkedOn": "2026-10-15",
           "note": "It is the fastest animal on Earth."
+        },
+        "weight": {
+          "phrase": "the average weight of an adult peregrine falcon",
+          "label": "Peregrine falcon weight",
+          "value": 0.7,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.hawkridge.org/raptor/peregrine-falcon/",
+          "checkedOn": "2026-10-16",
+          "note": "Males average about 580 grams and females about 820 grams."
+        },
+        "length": {
+          "phrase": "the length of a peregrine falcon from beak to tail",
+          "label": "Peregrine falcon length",
+          "value": 0.42,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.allaboutbirds.org/guide/Peregrine_Falcon/id",
+          "checkedOn": "2026-10-16",
+          "note": "Its wingspan is about a metre."
         }
       },
       "fame": 2
@@ -4363,6 +4494,28 @@
           "status": "verified",
           "source": "https://www.futura-sciences.com/en/?p=9370",
           "checkedOn": "2026-10-15"
+        },
+        "weight": {
+          "phrase": "Usain Bolt's weight during his racing years",
+          "label": "Usain Bolt's weight",
+          "value": 94,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Usain_Bolt",
+          "checkedOn": "2026-10-16",
+          "note": "That is his listed weight, about 207 pounds."
+        },
+        "length": {
+          "phrase": "Usain Bolt's height",
+          "label": "Usain Bolt's height",
+          "value": 1.95,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Usain_Bolt",
+          "checkedOn": "2026-10-16",
+          "note": "That is 6 feet 5 inches."
         }
       },
       "fame": 3

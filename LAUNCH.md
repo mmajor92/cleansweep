@@ -62,7 +62,7 @@ Settled:
 Still to settle:
 - **Name.** "Clean Sweep" is a common phrase and used by other apps. If the game grows, check the UK Intellectual Property Office's trade mark search before spending money on a domain or ads.
 - **A real domain, one day.** Saved streaks belong to the address, so changing it resets everyone once. Buying a domain (about £7 to £15 a year) and making it the permanent address lets you change hosting later without that. If you move the site, update the TinyURL, or set `RULES.shareUrl` to the new address.
-- **Wikidata harvest** (optional, needs Node): run it with `HARVEST_CONTACT="you@example.com" npm run harvest`.
+- **Wikidata harvest** (optional): the easiest way is on GitHub. Open **Actions**, pick **Harvest candidate facts**, press **Run workflow**, then download `harvest-candidates` from the bottom of the run page. It only finds candidates; each one still needs a source and a second check. With Node you can also run `HARVEST_CONTACT="you@example.com" npm run harvest`.
 
 ## 8. Optional: count your players
 

@@ -3,6 +3,7 @@ import { PRACTICE, buildEntities, generateDaily, generatePractice, puzzleNumber,
 import { mountGame } from "./ui.js";
 import { VERSION } from "./version.js";
 import { GOATCOUNTER_CODE } from "./site.js";
+import { STORAGE_KEY } from "./store.js";
 
 async function loadJSON(url) {
   const res = await fetch(url, { cache: "no-cache" });
@@ -35,12 +36,17 @@ function loadCounter() {
   }
 }
 
-// The "How to play" panel: shown the first time someone visits, and any time they tap the question mark.
+// "How to play" is hidden until someone taps the "?". Someone new gets a slim one-line note under the title instead,
+// and the "?" gets a yellow ring while the note shows. The note goes for good when they tap its "Got it", tap the "?",
+// answer a question (in the real game or in practice), and that is remembered on their device.
+// Anyone who has already played a game here never sees it.
 function setupHelp() {
   const panel = document.getElementById("help");
   const open = document.getElementById("helpbtn");
   const close = document.getElementById("helpclose");
-  if (!panel || !open || !open.addEventListener) return;
+  const note = document.getElementById("firsttime");
+  const noteClose = document.getElementById("firsttimeclose");
+  if (!panel || !open || !open.addEventListener) return null;
   const KEY = "cleansweep:help";
   const seen = () => {
     try {
@@ -56,9 +62,23 @@ function setupHelp() {
       /* it will just show again next time */
     }
   };
+  const hasPlayed = () => {
+    try {
+      const saved = JSON.parse(globalThis.localStorage.getItem(STORAGE_KEY) || "null");
+      return !!(saved && saved.days && Object.keys(saved.days).length > 0);
+    } catch (e) {
+      return false;
+    }
+  };
+  const hideNote = () => {
+    if (note) note.hidden = true;
+    if (open.classList) open.classList.remove("nudge");
+    remember();
+  };
   const show = () => {
     panel.hidden = false;
     open.setAttribute("aria-expanded", "true");
+    hideNote(); // they have found it
   };
   const hide = () => {
     panel.hidden = true;
@@ -71,7 +91,12 @@ function setupHelp() {
     panel.querySelectorAll("[data-practice]").forEach((btn) => btn.addEventListener && btn.addEventListener("click", hide));
   }
   if (close && close.addEventListener) close.addEventListener("click", hide);
-  if (!seen()) show();
+  if (noteClose && noteClose.addEventListener) noteClose.addEventListener("click", hideNote);
+  if (note && !seen() && !hasPlayed()) {
+    note.hidden = false;
+    if (open.classList) open.classList.add("nudge");
+  }
+  return { dismiss: hideNote };
 }
 
 // Light and dark mode. With no saved choice the page follows the phone's own setting.
@@ -104,7 +129,7 @@ function setupTheme() {
 
 async function start() {
   setupTheme();
-  setupHelp();
+  const help = setupHelp();
   loadCounter();
   const ver = document.getElementById("ver");
   if (ver) ver.textContent = VERSION;
@@ -148,7 +173,7 @@ async function start() {
       p = p || generatePractice(n, entities);
       if (p) practicePuzzles.push(p);
     }
-    mountGame({ root, storage: safeStorage(), todayNum: num, dailyPuzzle: daily, practicePuzzles });
+    mountGame({ root, storage: safeStorage(), todayNum: num, dailyPuzzle: daily, practicePuzzles, onAnswer: help ? help.dismiss : null });
   } catch (err) {
     root.card.innerHTML = `<p class="ask">Sorry, the puzzle could not load.</p><p class="fact">${String(err.message || err)}</p>`;
   }

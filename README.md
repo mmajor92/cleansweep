@@ -31,7 +31,7 @@ There are exactly two practice puzzles. They are fixed (the same for everyone, n
 
 ## How to play, sharing and celebrating
 
-- A "?" button next to the light and dark toggle opens a three-line How to play. It opens by itself the first time someone visits, and remembers that they have seen it.
+- A "?" button next to the light and dark toggle opens a three-line How to play, with the two practice puzzles. It never opens by itself. Someone new sees a slim one-line note under the title instead ("First time? Tap the ? for a practice round!", with a Got it), and the "?" gets a yellow ring while it shows. The note goes for good once they tap Got it, tap the "?", or answer a question (real or practice), and that is remembered on their device. Anyone who has already played here never sees it.
 - On phones, the result card has a **Share result** button that opens the phone's share sheet. **Copy result** is always there too.
 - A Clean Sweep (all seven right) sends brooms and sparkles floating up the screen. Anyone whose phone is set to reduce motion does not see it.
 
@@ -113,7 +113,7 @@ Anything else lives in `data/candidates.json` and is never used. The linter fail
 
 ## Growing the fact pool
 
-Hand-adding facts is slow. `npm run harvest` queries Wikidata for famous objects (many language editions) that have a height, length, mass, speed, capacity or date, and writes `data/harvest.json`. Objects with three or more categories make the best hinges.
+Hand-adding facts is slow. The **Harvest candidate facts** button under the **Actions** tab on GitHub (no terminal needed), or `npm run harvest` on your own machine, queries Wikidata for famous objects (many language editions) that have a height, length, mass, speed, capacity or date, and writes `data/harvest.json`. Objects with three or more categories make the best hinges.
 
 Everything it writes is a **candidate**. Nothing reaches a puzzle until a person checks the number against a second source and moves it into `data/facts.json` with a source and a check date. Wikidata contains errors, and BC dates in particular need a manual look. Run `node scripts/harvest.mjs --dry-run` to see the queries without any network access.
 
@@ -131,7 +131,7 @@ Review the files in a pull request and commit them. A weekly GitHub Action (`gen
 
 ## Known limits
 
-- The pool has 162 objects, 80 of them multi-category, about 68 of which can act as hinges. In a simulated year a hinge repeats inside a week on 0 days, 64 hinges get used, the busiest appears 17 days, and about 325 distinct facts appear. About 60% of questions use objects nearly everyone knows, 34% objects most people know, and 6% enthusiast objects. 33% of days open with a Warm-up and 46% include a Deep cut. The linter warns when it slips.
+- The pool has 162 objects, 89 of them multi-category, about 76 of which can act as hinges. In a simulated year no hinge repeats inside a week, every pair of categories is covered, and the busiest hinges (Concorde, the Titanic, the Wright Flyer) appear on about 12 or 13 days. About 61% of questions use objects nearly everyone knows, 33% objects most people know, and 6% enthusiast objects. 33% of days open with a Warm-up and 46% include a Deep cut. The linter checks all of this and warns when it slips.
 - Dates use a fixed "now" of 2026 (`RULES.nowYear`). Update it each year and re-run the linter. Frozen puzzles are unaffected.
 - The ruler for dates is linear, so a segment that spans millennia crowds its modern points.
 - Streaks and the daily lock live in the browser's `localStorage`. Clearing it resets them.
