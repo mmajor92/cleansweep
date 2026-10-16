@@ -1,0 +1,5067 @@
+{
+  "schema": 1,
+  "checkedOn": "2026-10-15",
+  "note": "Production pool. Only facts with status 'verified' or 'definitional' are used by the generator.",
+  "entities": [
+    {
+      "id": "titanic",
+      "name": "The Titanic",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Titanic",
+          "label": "Titanic length",
+          "value": 269.1,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.titanicofficers.com/titanic.html",
+          "checkedOn": "2026-10-15",
+          "note": "Stood on end, it would be almost three times the height of the Statue of Liberty."
+        },
+        "weight": {
+          "phrase": "the weight of the Titanic (its displacement)",
+          "label": "Titanic displacement",
+          "value": 53150000,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.titanicofficers.com/titanic.html",
+          "checkedOn": "2026-10-15",
+          "note": "Displacement is the weight of water the ship pushed aside: 52,310 long tons."
+        },
+        "date": {
+          "phrase": "the sinking of the Titanic",
+          "label": "Titanic sinks",
+          "value": 1912,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://wikieyetracking.di.unito.it/wpcd/wp/r/RMS_Titanic.htm",
+          "checkedOn": "2026-10-15"
+        },
+        "count": {
+          "phrase": "the number of lifeboats the Titanic carried",
+          "label": "Titanic lifeboats",
+          "value": 20,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://simple.wikipedia.com/wiki/Titanic",
+          "checkedOn": "2026-10-15",
+          "note": "That was six more than the rules of the time required."
+        },
+        "speed": {
+          "phrase": "the top speed of the Titanic",
+          "label": "Titanic top speed",
+          "value": 44,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.titanicofficers.com/titanic.html",
+          "checkedOn": "2026-10-15",
+          "note": "That is 24 knots. Its cruising speed was about 39 km/h."
+        }
+      },
+      "family": "titanic",
+      "fame": 3
+    },
+    {
+      "id": "concorde",
+      "name": "Concorde",
+      "facts": {
+        "length": {
+          "phrase": "the length of Concorde",
+          "label": "Concorde length",
+          "value": 61.66,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://cgtrader.com/3d-models/aircraft/jet/aerospatiale-bac-concorde-962f9f33-7bb7-4596-9db9-12817cf0a289",
+          "checkedOn": "2026-10-15"
+        },
+        "weight": {
+          "phrase": "the empty weight of Concorde",
+          "label": "Concorde, empty",
+          "value": 78700,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://cgtrader.com/3d-models/aircraft/jet/aerospatiale-bac-concorde-962f9f33-7bb7-4596-9db9-12817cf0a289",
+          "checkedOn": "2026-10-15"
+        },
+        "date": {
+          "phrase": "the first flight of Concorde",
+          "label": "Concorde first flight",
+          "value": 1969,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://thisdayinaviation.com/tag/concorde",
+          "checkedOn": "2026-10-15",
+          "note": "It flew three weeks after the first Boeing 747."
+        },
+        "count": {
+          "phrase": "the number of Concorde aircraft that entered service",
+          "label": "Concordes in service",
+          "value": 14,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://kids.britannica.com/students/article/Concorde/476918",
+          "checkedOn": "2026-10-15",
+          "note": "British Airways and Air France retired them in 2003."
+        },
+        "speed": {
+          "phrase": "the top cruising speed of Concorde",
+          "label": "Concorde cruise speed",
+          "value": 2179,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.britannica.com/technology/How-Fast-Was-the-Concorde-Jet",
+          "checkedOn": "2026-10-15",
+          "note": "At Mach 2 the heat stretched the airframe by 15 to 25 cm."
+        }
+      },
+      "family": "concorde",
+      "fame": 3
+    },
+    {
+      "id": "eiffel",
+      "name": "The Eiffel Tower",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Eiffel Tower (with antenna)",
+          "label": "Eiffel Tower height",
+          "value": 330,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.toureiffel.paris/en/news/history-and-culture/300-330-meters-story-towers-height",
+          "checkedOn": "2026-10-15",
+          "note": "A new antenna added 6 m in March 2022."
+        },
+        "weight": {
+          "phrase": "the total weight of the Eiffel Tower",
+          "label": "Eiffel Tower, total",
+          "value": 10100000,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.wral.com/eiffel-tower-fast-facts/21522017/",
+          "checkedOn": "2026-10-15",
+          "note": "The iron framework alone is 7,300 tonnes."
+        },
+        "date": {
+          "phrase": "the completion of the Eiffel Tower",
+          "label": "Eiffel Tower inaugurated",
+          "value": 1889,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.manufacturing.net/iot/news/22118992/eiffel-tower-grows-even-higher",
+          "checkedOn": "2026-10-15"
+        },
+        "count": {
+          "phrase": "the number of steps to the top of the Eiffel Tower",
+          "label": "Eiffel Tower steps",
+          "value": 1665,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.wral.com/eiffel-tower-fast-facts/21522017/",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "eiffel",
+      "fame": 3
+    },
+    {
+      "id": "statue",
+      "name": "The Statue of Liberty",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Statue of Liberty (ground to torch tip)",
+          "label": "Statue of Liberty height",
+          "value": 93,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nps.gov/stli/historyculture/statue-statistics.htm",
+          "checkedOn": "2026-10-15",
+          "note": "The statue alone is 46 m. The pedestal and foundation add the rest."
+        },
+        "weight": {
+          "phrase": "the weight of the Statue of Liberty's copper skin",
+          "label": "Statue's copper skin",
+          "value": 79832,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nps.gov/stli/historyculture/statue-statistics.htm",
+          "checkedOn": "2026-10-15",
+          "note": "The copper is 3/32 of an inch thick, like two pennies."
+        },
+        "date": {
+          "phrase": "the dedication of the Statue of Liberty",
+          "label": "Statue dedicated",
+          "value": 1886,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nps.gov/parkhistory/online_books/hh/11/hh11k1.htm",
+          "checkedOn": "2026-10-15",
+          "note": "It was dedicated on 28 October 1886."
+        },
+        "count": {
+          "phrase": "the number of steps from the ground to the Statue of Liberty's crown",
+          "label": "Statue steps to crown",
+          "value": 354,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://austria-forum.org/af/Geography/America/United_States/Special_Information/Statue_of_Liberty",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "statue",
+      "fame": 3
+    },
+    {
+      "id": "bigben",
+      "name": "Big Ben's tower",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Elizabeth Tower (Big Ben)",
+          "label": "Elizabeth Tower height",
+          "value": 96,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Big_Ben",
+          "checkedOn": "2026-10-15"
+        },
+        "weight": {
+          "phrase": "the weight of Big Ben, the bell",
+          "label": "Big Ben, the bell",
+          "value": 13700,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Big_Ben",
+          "checkedOn": "2026-10-15",
+          "note": "Big Ben is the name of the bell, not the tower."
+        },
+        "date": {
+          "phrase": "the completion of the Elizabeth Tower",
+          "label": "Elizabeth Tower completed",
+          "value": 1859,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Big_Ben",
+          "checkedOn": "2026-10-15",
+          "note": "The Great Clock started on 31 May 1859."
+        },
+        "count": {
+          "phrase": "the number of steps to the Elizabeth Tower's belfry",
+          "label": "Big Ben steps",
+          "value": 334,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Big_Ben",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "bigben",
+      "fame": 3
+    },
+    {
+      "id": "wright",
+      "name": "The Wright Flyer",
+      "facts": {
+        "length": {
+          "phrase": "the wingspan of the Wright Flyer",
+          "label": "Wright Flyer wingspan",
+          "value": 12.29,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Wright_Flyer",
+          "checkedOn": "2026-10-15"
+        },
+        "weight": {
+          "phrase": "the empty weight of the Wright Flyer",
+          "label": "Wright Flyer, empty",
+          "value": 274,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Wright_Flyer",
+          "checkedOn": "2026-10-15",
+          "note": "That is 605 pounds."
+        },
+        "date": {
+          "phrase": "the first flight of the Wright Flyer",
+          "label": "Wright Flyer first flight",
+          "value": 1903,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Wright_Flyer",
+          "checkedOn": "2026-10-15",
+          "note": "The first flight lasted 12 seconds."
+        },
+        "speed": {
+          "phrase": "the top speed of the Wright Flyer",
+          "label": "Wright Flyer top speed",
+          "value": 48,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nps.gov/articles/wrightflyer.htm",
+          "checkedOn": "2026-10-15",
+          "note": "That is an estimate of 30 mph."
+        }
+      },
+      "family": "wright",
+      "fame": 3
+    },
+    {
+      "id": "iss",
+      "name": "The International Space Station",
+      "facts": {
+        "length": {
+          "phrase": "the length of the International Space Station's main truss",
+          "label": "ISS truss length",
+          "value": 109,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.guinnessworldrecords.com/world-records/85691-largest-space-station",
+          "checkedOn": "2026-10-15"
+        },
+        "weight": {
+          "phrase": "the mass of the International Space Station",
+          "label": "International Space Station",
+          "value": 419725,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://simple.wikipedia.com/wiki/ISS",
+          "checkedOn": "2026-10-15",
+          "note": "Its mass changes as modules are added."
+        },
+        "date": {
+          "phrase": "the launch of the first International Space Station module",
+          "label": "First ISS module launched",
+          "value": 1998,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://simple.wikipedia.com/wiki/ISS",
+          "checkedOn": "2026-10-15",
+          "note": "The Zarya module launched on 20 November 1998."
+        },
+        "speed": {
+          "phrase": "the orbital speed of the International Space Station",
+          "label": "ISS orbital speed",
+          "value": 27600,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://simple.wikipedia.com/wiki/ISS",
+          "checkedOn": "2026-10-15",
+          "note": "That is 7.66 km per second."
+        }
+      },
+      "family": "iss",
+      "fame": 3
+    },
+    {
+      "id": "qm2",
+      "name": "Queen Mary 2",
+      "facts": {
+        "length": {
+          "phrase": "the length of the ocean liner Queen Mary 2",
+          "label": "Queen Mary 2 length",
+          "value": 345.03,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Queen_Mary_2",
+          "checkedOn": "2026-10-15"
+        },
+        "date": {
+          "phrase": "the maiden voyage of Queen Mary 2",
+          "label": "Queen Mary 2 maiden voyage",
+          "value": 2004,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Queen_Mary_2",
+          "checkedOn": "2026-10-15",
+          "note": "It sailed on 12 January 2004."
+        },
+        "count": {
+          "phrase": "the number of passengers Queen Mary 2 can carry",
+          "label": "Queen Mary 2 passengers",
+          "value": 2695,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Queen_Mary_2",
+          "checkedOn": "2026-10-15",
+          "note": "Its original capacity was 2,620."
+        },
+        "speed": {
+          "phrase": "the top speed of Queen Mary 2",
+          "label": "Queen Mary 2 top speed",
+          "value": 56,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Queen_Mary_2",
+          "checkedOn": "2026-10-15",
+          "note": "That is 30 knots."
+        }
+      },
+      "family": "qm2",
+      "fame": 2
+    },
+    {
+      "id": "wembley",
+      "name": "Wembley Stadium",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Wembley Arch",
+          "label": "Wembley Arch height",
+          "value": 134,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Wembley_Stadium",
+          "checkedOn": "2026-10-15",
+          "note": "Some sources give 133 m."
+        },
+        "date": {
+          "phrase": "the opening of the new Wembley Stadium",
+          "label": "New Wembley opens",
+          "value": 2007,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Wembley_Stadium",
+          "checkedOn": "2026-10-15"
+        },
+        "count": {
+          "phrase": "the number of seats at Wembley Stadium",
+          "label": "Wembley seats",
+          "value": 90000,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Wembley_Stadium",
+          "checkedOn": "2026-10-15",
+          "warmup": true
+        }
+      },
+      "family": "wembley",
+      "fame": 3
+    },
+    {
+      "id": "colosseum",
+      "name": "The Colosseum",
+      "facts": {
+        "length": {
+          "phrase": "the longest length of the Colosseum",
+          "label": "Colosseum length",
+          "value": 189,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.worldhistory.org/Colosseum/.md",
+          "checkedOn": "2026-10-15",
+          "note": "Some sources give 188 m."
+        },
+        "date": {
+          "phrase": "the opening of the Colosseum",
+          "label": "Colosseum opens",
+          "value": 80,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.worldhistory.org/Colosseum/.md",
+          "checkedOn": "2026-10-15"
+        },
+        "count": {
+          "phrase": "the number of spectators the Colosseum could hold",
+          "label": "Colosseum capacity",
+          "value": 50000,
+          "unit": "",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.worldhistory.org/Colosseum/.md",
+          "checkedOn": "2026-10-15",
+          "note": "Estimates run from 50,000 to 75,000.",
+          "warmup": true
+        }
+      },
+      "family": "colosseum",
+      "fame": 3
+    },
+    {
+      "id": "saturn",
+      "name": "The Saturn V",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Saturn V rocket",
+          "label": "Saturn V height",
+          "value": 110.6,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.thisdayinaviation.com/tag/kennedy-space-center/page/2/",
+          "checkedOn": "2026-10-15"
+        },
+        "weight": {
+          "phrase": "the weight of the Saturn V rocket at liftoff",
+          "label": "Saturn V at liftoff",
+          "value": 2970000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.slideshare.net/sanketzade/satellite-launching-vehicles-72055476",
+          "checkedOn": "2026-10-15",
+          "note": "Sources vary between about 2.9 and 3.0 million kg."
+        },
+        "date": {
+          "phrase": "the first launch of the Saturn V",
+          "label": "Saturn V first launch",
+          "value": 1967,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://dlab.epfl.ch/wikispeedia/wpcd/wp/s/Saturn_V.htm",
+          "checkedOn": "2026-10-15",
+          "note": "Apollo 4 flew on 9 November 1967."
+        }
+      },
+      "family": "saturn",
+      "fame": 2
+    },
+    {
+      "id": "shuttle",
+      "name": "The Space Shuttle",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of the Space Shuttle at liftoff",
+          "label": "Space Shuttle at liftoff",
+          "value": 2030000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.slideshare.net/sanketzade/satellite-launching-vehicles-72055476",
+          "checkedOn": "2026-10-15"
+        },
+        "date": {
+          "phrase": "the first Space Shuttle launch",
+          "label": "First Shuttle launch",
+          "value": 1981,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.thisdayinaviation.com/tag/kennedy-space-center/page/2/",
+          "checkedOn": "2026-10-15",
+          "note": "Columbia flew STS-1 on 12 April 1981."
+        },
+        "count": {
+          "phrase": "the number of Space Shuttle missions flown",
+          "label": "Space Shuttle missions",
+          "value": 135,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.thisdayinaviation.com/tag/kennedy-space-center/page/2/",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "shuttle",
+      "fame": 3
+    },
+    {
+      "id": "pyramid",
+      "name": "The Great Pyramid",
+      "facts": {
+        "length": {
+          "phrase": "the original height of the Great Pyramid",
+          "label": "Great Pyramid, original",
+          "value": 146.6,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://wikipedia.com/wiki/Great_Pyramid",
+          "checkedOn": "2026-10-15",
+          "note": "It has lost about 8 m of height since it was built."
+        },
+        "date": {
+          "phrase": "the building of the Great Pyramid",
+          "label": "Great Pyramid built",
+          "value": -2560,
+          "unit": "year",
+          "approx": true,
+          "status": "verified",
+          "source": "https://kolibri.teacherinabox.org.au/modules/en-wikipedia_for_schools-static/wp/g/Great_Pyramid_of_Giza.htm",
+          "checkedOn": "2026-10-15",
+          "note": "It was about 2,500 years old when Cleopatra was born."
+        }
+      },
+      "family": "pyramid",
+      "fame": 3
+    },
+    {
+      "id": "b747",
+      "name": "The Boeing 747",
+      "facts": {
+        "length": {
+          "phrase": "the wingspan of the Boeing 747-400",
+          "label": "747-400 wingspan",
+          "value": 64.4,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.airport-technology.com/projects/747/",
+          "checkedOn": "2026-10-15",
+          "note": "The -400 stretched the wingspan from 59.6 m to 64.4 m."
+        },
+        "date": {
+          "phrase": "the first flight of the Boeing 747",
+          "label": "747 first flight",
+          "value": 1969,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.museumofflight.org/Exhibits-and-Events/Aircraft/boeing-747-121",
+          "checkedOn": "2026-10-15",
+          "note": "It entered service with Pan Am on 22 January 1970."
+        }
+      },
+      "family": "b747",
+      "fame": 3
+    },
+    {
+      "id": "burj",
+      "name": "The Burj Khalifa",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Burj Khalifa",
+          "label": "Burj Khalifa height",
+          "value": 828,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.som.com/?p=8345",
+          "checkedOn": "2026-10-15"
+        },
+        "date": {
+          "phrase": "the opening of the Burj Khalifa",
+          "label": "Burj Khalifa opens",
+          "value": 2010,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://wandernundmehr.at/faq/wie-hoch-ist-der-monument",
+          "checkedOn": "2026-10-15"
+        },
+        "count": {
+          "phrase": "the number of floors in the Burj Khalifa",
+          "label": "Burj Khalifa floors",
+          "value": 163,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://worldatlas.com/articles/which-buildings-have-the-highest-number-of-floors-in-the-world.html",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "burj",
+      "fame": 3
+    },
+    {
+      "id": "goldengate",
+      "name": "The Golden Gate Bridge",
+      "facts": {
+        "length": {
+          "phrase": "the total length of the Golden Gate Bridge",
+          "label": "Golden Gate Bridge length",
+          "value": 2737,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.goldengate.org/exhibits/facts-and-figures-about-the-bridge/",
+          "checkedOn": "2026-10-15"
+        },
+        "date": {
+          "phrase": "the opening of the Golden Gate Bridge",
+          "label": "Golden Gate Bridge opens",
+          "value": 1937,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.goldengate.org/exhibits/facts-and-figures-about-the-bridge/",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "goldengate",
+      "fame": 3
+    },
+    {
+      "id": "everest",
+      "name": "Mount Everest",
+      "facts": {
+        "length": {
+          "phrase": "the height of Mount Everest",
+          "label": "Mount Everest height",
+          "value": 8849,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.focusjunior.it/?p=232186",
+          "checkedOn": "2026-10-15",
+          "note": "The official 2020 survey gives 8,848.86 m."
+        },
+        "date": {
+          "phrase": "the first ascent of Mount Everest",
+          "label": "Everest first climbed",
+          "value": 1953,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://fr.vikidia.org/wiki/Everest",
+          "checkedOn": "2026-10-15",
+          "note": "Hillary and Tenzing reached the summit on 29 May 1953."
+        }
+      },
+      "family": "everest",
+      "fame": 3
+    },
+    {
+      "id": "un",
+      "name": "The United Nations",
+      "facts": {
+        "date": {
+          "phrase": "the founding of the United Nations",
+          "label": "UN founded",
+          "value": 1945,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.iclrs.org/?p=9666",
+          "checkedOn": "2026-10-15",
+          "note": "The charter came into force on 24 October 1945."
+        },
+        "count": {
+          "phrase": "the number of member states of the United Nations",
+          "label": "UN member states",
+          "value": 193,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.iclrs.org/?p=9666",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "un",
+      "fame": 2
+    },
+    {
+      "id": "empire",
+      "name": "The Empire State Building",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Empire State Building (to the roof)",
+          "label": "Empire State Building height",
+          "value": 381,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Empire_State_Building",
+          "checkedOn": "2026-10-15",
+          "note": "The antenna takes it to 443.2 m."
+        },
+        "date": {
+          "phrase": "the opening of the Empire State Building",
+          "label": "Empire State Building opens",
+          "value": 1931,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://edition.cnn.com/us/empire-state-building-fast-facts",
+          "checkedOn": "2026-10-15",
+          "note": "President Hoover switched on its lights from Washington on 1 May 1931."
+        },
+        "count": {
+          "phrase": "the number of steps to the 86th floor of the Empire State Building",
+          "label": "Empire State steps",
+          "value": 1576,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://edition.cnn.com/us/empire-state-building-fast-facts",
+          "checkedOn": "2026-10-15",
+          "note": "An annual race called the Run-Up climbs them."
+        }
+      },
+      "family": "empire",
+      "fame": 3
+    },
+    {
+      "id": "hubble",
+      "name": "The Hubble Space Telescope",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Hubble Space Telescope",
+          "label": "Hubble length",
+          "value": 13.2,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://sci.esa.int/web/hubble/47358-fact-sheet",
+          "checkedOn": "2026-10-15",
+          "note": "It is about the size of a school bus."
+        },
+        "weight": {
+          "phrase": "the launch mass of the Hubble Space Telescope",
+          "label": "Hubble at launch",
+          "value": 11110,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://sci.esa.int/web/hubble/47358-fact-sheet",
+          "checkedOn": "2026-10-15",
+          "note": "That is about two to three African elephants."
+        },
+        "date": {
+          "phrase": "the launch of the Hubble Space Telescope",
+          "label": "Hubble launched",
+          "value": 1990,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nasa.gov/content/goddard/nasa-refresher-on-hubble-facts-for-the-25th-anniversary",
+          "checkedOn": "2026-10-15",
+          "note": "Space Shuttle Discovery carried it up on 24 April 1990."
+        },
+        "speed": {
+          "phrase": "the orbital speed of the Hubble Space Telescope",
+          "label": "Hubble orbital speed",
+          "value": 27300,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nasa.gov/content/goddard/nasa-refresher-on-hubble-facts-for-the-25th-anniversary",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "hubble",
+      "fame": 2
+    },
+    {
+      "id": "voyager1",
+      "name": "Voyager 1",
+      "facts": {
+        "weight": {
+          "phrase": "the launch mass of the Voyager 1 probe",
+          "label": "Voyager 1 at launch",
+          "value": 825.5,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://simple.wikipedia.com/wiki/Voyager_1",
+          "checkedOn": "2026-10-15"
+        },
+        "date": {
+          "phrase": "the launch of Voyager 1",
+          "label": "Voyager 1 launched",
+          "value": 1977,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://simple.wikipedia.com/wiki/Voyager_1",
+          "checkedOn": "2026-10-15",
+          "note": "It left the heliosphere in August 2012."
+        },
+        "speed": {
+          "phrase": "the speed of Voyager 1 away from the Sun",
+          "label": "Voyager 1 speed",
+          "value": 61000,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://simple.wikipedia.com/wiki/Voyager_1",
+          "checkedOn": "2026-10-15",
+          "note": "That is about 17 km per second."
+        }
+      },
+      "family": "voyager1",
+      "fame": 2
+    },
+    {
+      "id": "parker",
+      "name": "The Parker Solar Probe",
+      "facts": {
+        "weight": {
+          "phrase": "the launch mass of the Parker Solar Probe",
+          "label": "Parker Solar Probe",
+          "value": 685,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Parker_Solar_Probe",
+          "checkedOn": "2026-10-15"
+        },
+        "date": {
+          "phrase": "the launch of the Parker Solar Probe",
+          "label": "Parker Solar Probe launched",
+          "value": 2018,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Parker_Solar_Probe",
+          "checkedOn": "2026-10-15",
+          "note": "It launched on 12 August 2018."
+        },
+        "speed": {
+          "phrase": "the top speed of the Parker Solar Probe",
+          "label": "Parker Solar Probe speed",
+          "value": 690000,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Parker_Solar_Probe",
+          "checkedOn": "2026-10-15",
+          "note": "It is the fastest human-made object."
+        }
+      },
+      "family": "parker",
+      "fame": 1,
+      "clue": "a NASA probe sent to study the Sun",
+      "hint": "the spacecraft that flies closer to the Sun than any other"
+    },
+    {
+      "id": "sputnik1",
+      "name": "Sputnik 1",
+      "facts": {
+        "length": {
+          "phrase": "the diameter of Sputnik 1",
+          "label": "Sputnik 1 diameter",
+          "value": 0.58,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Sputnik_1",
+          "checkedOn": "2026-10-15",
+          "note": "It was a polished metal sphere with four antennas."
+        },
+        "weight": {
+          "phrase": "the mass of Sputnik 1",
+          "label": "Sputnik 1 mass",
+          "value": 83.6,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nasa.gov/history/sputnik/14.html",
+          "checkedOn": "2026-10-15"
+        },
+        "date": {
+          "phrase": "the launch of Sputnik 1",
+          "label": "Sputnik 1 launched",
+          "value": 1957,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Sputnik_1",
+          "checkedOn": "2026-10-15",
+          "note": "Its radio beeped for 22 days."
+        },
+        "count": {
+          "phrase": "the number of orbits Sputnik 1 made",
+          "label": "Sputnik 1 orbits",
+          "value": 1440,
+          "unit": "",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.thisdayinaviation.com/tag/tyuratam/page/2/",
+          "checkedOn": "2026-10-15",
+          "note": "It burned up on 4 January 1958."
+        },
+        "speed": {
+          "phrase": "the peak speed of Sputnik 1",
+          "label": "Sputnik 1 peak speed",
+          "value": 28800,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Sputnik_1",
+          "checkedOn": "2026-10-15",
+          "note": "That is about 8 km per second."
+        }
+      },
+      "family": "sputnik1",
+      "fame": 2
+    },
+    {
+      "id": "taipei101",
+      "name": "Taipei 101",
+      "facts": {
+        "length": {
+          "phrase": "the height of Taipei 101",
+          "label": "Taipei 101 height",
+          "value": 508,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Taipei_101",
+          "checkedOn": "2026-10-15"
+        },
+        "date": {
+          "phrase": "the opening of Taipei 101",
+          "label": "Taipei 101 opens",
+          "value": 2004,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Taipei_101",
+          "checkedOn": "2026-10-15",
+          "note": "It was the tallest building in the world until 2010."
+        },
+        "count": {
+          "phrase": "the number of floors in Taipei 101",
+          "label": "Taipei 101 floors",
+          "value": 101,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Taipei_101",
+          "checkedOn": "2026-10-15",
+          "note": "The name comes from the floor count."
+        },
+        "speed": {
+          "phrase": "the speed of the express elevators in Taipei 101",
+          "label": "Taipei 101 elevator speed",
+          "value": 60.6,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Taipei_101",
+          "checkedOn": "2026-10-15",
+          "note": "They reach the 89th floor in 37 seconds."
+        }
+      },
+      "family": "taipei101",
+      "fame": 2
+    },
+    {
+      "id": "shanghai",
+      "name": "Shanghai Tower",
+      "facts": {
+        "length": {
+          "phrase": "the height of Shanghai Tower",
+          "label": "Shanghai Tower height",
+          "value": 632,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://blog.sothebysrealty.ae/the-journal/fastest-lift-in-the-world",
+          "checkedOn": "2026-10-15"
+        },
+        "date": {
+          "phrase": "the opening of Shanghai Tower",
+          "label": "Shanghai Tower opens",
+          "value": 2016,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://blog.sothebysrealty.ae/the-journal/fastest-lift-in-the-world",
+          "checkedOn": "2026-10-15"
+        },
+        "speed": {
+          "phrase": "the speed of the fastest elevators in Shanghai Tower",
+          "label": "Shanghai Tower elevator",
+          "value": 74,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://blog.sothebysrealty.ae/the-journal/fastest-lift-in-the-world",
+          "checkedOn": "2026-10-15",
+          "note": "That is 20.5 metres per second."
+        },
+        "count": {
+          "phrase": "the number of floors in the Shanghai Tower",
+          "label": "Shanghai Tower floors",
+          "value": 128,
+          "unit": "",
+          "approx": true,
+          "status": "verified",
+          "source": "https://worldatlas.com/articles/which-buildings-have-the-highest-number-of-floors-in-the-world.html",
+          "checkedOn": "2026-10-15",
+          "note": "Some lists say 121 above ground."
+        }
+      },
+      "family": "shanghai",
+      "fame": 2
+    },
+    {
+      "id": "londoneye",
+      "name": "The London Eye",
+      "facts": {
+        "length": {
+          "phrase": "the height of the London Eye",
+          "label": "London Eye height",
+          "value": 135,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.com/wiki/London_Eye",
+          "checkedOn": "2026-10-15"
+        },
+        "weight": {
+          "phrase": "the weight of the London Eye wheel and capsules",
+          "label": "London Eye, total",
+          "value": 2100000,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://dev.bookbrowse.com/mag/btb/index.cfm/book_number/2090/the-london-eye-mystery",
+          "checkedOn": "2026-10-15",
+          "note": "Each of the 32 capsules weighs 10 tonnes."
+        },
+        "date": {
+          "phrase": "the opening of the London Eye to the public",
+          "label": "London Eye opens",
+          "value": 2000,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.com/wiki/London_Eye",
+          "checkedOn": "2026-10-15",
+          "note": "Paying passengers rode from 9 March 2000."
+        },
+        "count": {
+          "phrase": "the number of passengers the London Eye can carry per rotation",
+          "label": "London Eye capacity",
+          "value": 800,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://dev.bookbrowse.com/mag/btb/index.cfm/book_number/2090/the-london-eye-mystery",
+          "checkedOn": "2026-10-15",
+          "note": "That is 32 capsules of 25 people."
+        },
+        "speed": {
+          "phrase": "the speed of the London Eye wheel",
+          "label": "London Eye speed",
+          "value": 0.9,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.com/wiki/London_Eye",
+          "checkedOn": "2026-10-15",
+          "note": "It moves at 26 cm per second, so people step on while it turns.",
+          "warmup": true
+        }
+      },
+      "family": "londoneye",
+      "fame": 3
+    },
+    {
+      "id": "a380",
+      "name": "The Airbus A380",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Airbus A380",
+          "label": "A380 length",
+          "value": 72.7,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://skybrary.aero/aircraft/a388",
+          "checkedOn": "2026-10-15"
+        },
+        "weight": {
+          "phrase": "the maximum takeoff weight of the Airbus A380",
+          "label": "A380 max takeoff weight",
+          "value": 575000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://planefyi.com/es/aircraft/airbus-a380-800/",
+          "checkedOn": "2026-10-15",
+          "note": "Sources give 560 to 575 tonnes depending on the version."
+        },
+        "date": {
+          "phrase": "the first flight of the Airbus A380",
+          "label": "A380 first flight",
+          "value": 2005,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://fr.vikidia.org/wiki/Airbus_A380",
+          "checkedOn": "2026-10-15",
+          "note": "It first flew on 27 April 2005."
+        },
+        "speed": {
+          "phrase": "the cruising speed of the Airbus A380",
+          "label": "A380 cruise speed",
+          "value": 907,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://fr.vikidia.org/wiki/Airbus_A380",
+          "checkedOn": "2026-10-15",
+          "note": "That is Mach 0.85."
+        }
+      },
+      "family": "a380",
+      "fame": 2
+    },
+    {
+      "id": "an225",
+      "name": "The Antonov An-225 Mriya",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Antonov An-225 Mriya",
+          "label": "An-225 length",
+          "value": 84,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://aerospaceweb.org/aircraft/transport-m/an225/",
+          "checkedOn": "2026-10-15",
+          "note": "Its cargo hold was longer than the Wright Flyer's first flight."
+        },
+        "weight": {
+          "phrase": "the maximum takeoff weight of the Antonov An-225 Mriya (after its 2001 upgrade)",
+          "label": "An-225 max takeoff weight",
+          "value": 640000,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Antonov_An-225_Mriya",
+          "checkedOn": "2026-10-15",
+          "note": "Its limit rose from 600 to 640 tonnes in the 2001 upgrade."
+        },
+        "date": {
+          "phrase": "the first flight of the Antonov An-225 Mriya",
+          "label": "An-225 first flight",
+          "value": 1988,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://aerospaceweb.org/aircraft/transport-m/an225/",
+          "checkedOn": "2026-10-15",
+          "note": "Only one was ever finished. It was destroyed in February 2022."
+        },
+        "speed": {
+          "phrase": "the maximum speed of the Antonov An-225 Mriya",
+          "label": "An-225 maximum speed",
+          "value": 850,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://aerospaceweb.org/aircraft/transport-m/an225/",
+          "checkedOn": "2026-10-15",
+          "note": "Its cruising speed was about 800 km/h."
+        }
+      },
+      "family": "an225",
+      "clue": "a Ukrainian six-engine cargo plane",
+      "hint": "the heaviest aircraft ever built",
+      "fame": 2
+    },
+    {
+      "id": "x15",
+      "name": "The North American X-15",
+      "facts": {
+        "date": {
+          "phrase": "the first flight of the North American X-15",
+          "label": "X-15 first flight",
+          "value": 1959,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.com/wiki/X15",
+          "checkedOn": "2026-10-15",
+          "note": "Twelve pilots flew it, including Neil Armstrong."
+        },
+        "speed": {
+          "phrase": "the top speed of the North American X-15 (set by the X-15A-2 in 1967)",
+          "label": "X-15 top speed",
+          "value": 7274,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.thisdayinaviation.com/tag/william-j-knight/",
+          "checkedOn": "2026-10-15",
+          "note": "Pete Knight set the record on 3 October 1967. It still stands."
+        }
+      },
+      "family": "x15",
+      "clue": "an American rocket plane from the 1960s",
+      "hint": "a rocket plane that flew to the edge of space",
+      "fame": 1
+    },
+    {
+      "id": "seawise",
+      "name": "The Seawise Giant",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Seawise Giant supertanker",
+          "label": "Seawise Giant length",
+          "value": 458.45,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Seawise_Giant",
+          "checkedOn": "2026-10-15",
+          "note": "It was longer than the Petronas Towers are tall."
+        },
+        "weight": {
+          "phrase": "the fully laden displacement of the Seawise Giant",
+          "label": "Seawise Giant, fully laden",
+          "value": 657019000,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Seawise_Giant",
+          "checkedOn": "2026-10-15",
+          "note": "Fully laden it sat 24.6 m deep, too deep for the English Channel."
+        },
+        "date": {
+          "phrase": "the delivery of the Seawise Giant",
+          "label": "Seawise Giant delivered",
+          "value": 1979,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Seawise_Giant",
+          "checkedOn": "2026-10-15",
+          "note": "It was scrapped in India after 2009."
+        }
+      },
+      "family": "seawise",
+      "clue": "an oil tanker",
+      "hint": "the longest ship ever built",
+      "fame": 1
+    },
+    {
+      "id": "bismarck",
+      "name": "The battleship Bismarck",
+      "facts": {
+        "length": {
+          "phrase": "the overall length of the battleship Bismarck",
+          "label": "Bismarck length",
+          "value": 251,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/German_battleship_Bismarck",
+          "checkedOn": "2026-10-15",
+          "note": "She and her sister Tirpitz were the largest battleships Germany ever built."
+        },
+        "weight": {
+          "phrase": "the full-load displacement of the battleship Bismarck",
+          "label": "Bismarck, full load",
+          "value": 50300000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/German_battleship_Bismarck",
+          "checkedOn": "2026-10-15",
+          "note": "That was well over the 35,000 tons the naval treaty allowed."
+        },
+        "date": {
+          "phrase": "the commissioning of the battleship Bismarck",
+          "label": "Bismarck commissioned",
+          "value": 1940,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/German_battleship_Bismarck",
+          "checkedOn": "2026-10-15",
+          "note": "She sailed on only one offensive operation, in May 1941."
+        },
+        "speed": {
+          "phrase": "the speed of the battleship Bismarck on her sea trials",
+          "label": "Bismarck trial speed",
+          "value": 55.58,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/German_battleship_Bismarck",
+          "checkedOn": "2026-10-15",
+          "note": "That is 30.01 knots. Her design speed was 29."
+        }
+      },
+      "family": "bismarck",
+      "clue": "a German battleship from World War II",
+      "hint": "one of the largest battleships Germany ever built",
+      "fame": 2
+    },
+    {
+      "id": "maus",
+      "name": "The Panzer VIII Maus",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Panzer VIII Maus tank",
+          "label": "Maus tank length",
+          "value": 10.2,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Panzer_VIII_Maus",
+          "checkedOn": "2026-10-15",
+          "note": "Its turret carried a 128 mm gun."
+        },
+        "weight": {
+          "phrase": "the weight of the Panzer VIII Maus tank",
+          "label": "Maus tank weight",
+          "value": 188000,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Panzer_VIII_Maus",
+          "checkedOn": "2026-10-15",
+          "note": "It was too heavy for most bridges, so it was built to ford or submerge."
+        },
+        "date": {
+          "phrase": "the completion of the Panzer VIII Maus prototypes",
+          "label": "Maus prototypes completed",
+          "value": 1944,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Panzer_VIII_Maus",
+          "checkedOn": "2026-10-15",
+          "note": "Soviet forces captured the testing grounds."
+        },
+        "count": {
+          "phrase": "the number of Panzer VIII Maus tanks built",
+          "label": "Maus tanks built",
+          "value": 2,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Panzer_VIII_Maus",
+          "checkedOn": "2026-10-15",
+          "note": "Only one of the two had its turret fitted."
+        },
+        "speed": {
+          "phrase": "the designed top speed of the Panzer VIII Maus",
+          "label": "Maus designed top speed",
+          "value": 20,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Panzer_VIII_Maus",
+          "checkedOn": "2026-10-15",
+          "note": "In tests it managed only 13 km/h."
+        }
+      },
+      "family": "maus",
+      "clue": "a German tank prototype from World War II",
+      "hint": "the heaviest fully enclosed armoured vehicle ever built",
+      "fame": 1
+    },
+    {
+      "id": "bellx1",
+      "name": "The Bell X-1",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Bell X-1",
+          "label": "Bell X-1 length",
+          "value": 9.42,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://sandiegoairandspace.org/collection/item/bell-x-1-mock-up",
+          "checkedOn": "2026-10-15",
+          "note": "Its shape copied a .50 calibre bullet."
+        },
+        "date": {
+          "phrase": "the Bell X-1's first supersonic flight",
+          "label": "Bell X-1 breaks Mach 1",
+          "value": 1947,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://sandiegoairandspace.org/collection/item/bell-x-1-mock-up",
+          "checkedOn": "2026-10-15",
+          "note": "Chuck Yeager flew it past Mach 1 on 14 October 1947."
+        },
+        "speed": {
+          "phrase": "the top speed of the original Bell X-1",
+          "label": "Bell X-1 top speed",
+          "value": 1540,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://migflug.com/?p=18917",
+          "checkedOn": "2026-10-15",
+          "note": "That was Mach 1.45 in March 1948. The later X-1A reached Mach 2.44."
+        }
+      },
+      "family": "bellx1",
+      "clue": "an American rocket plane from the 1940s",
+      "hint": "the first plane to fly faster than sound",
+      "fame": 1
+    },
+    {
+      "id": "curiosity",
+      "name": "The Curiosity rover",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Curiosity rover",
+          "label": "Curiosity length",
+          "value": 2.9,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Curiosity_(rover)",
+          "checkedOn": "2026-10-15",
+          "note": "The earlier Mars Exploration Rovers were 1.5 m long."
+        },
+        "weight": {
+          "phrase": "the mass of the Curiosity rover",
+          "label": "Curiosity mass",
+          "value": 899,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Curiosity_(rover)",
+          "checkedOn": "2026-10-15",
+          "note": "That is more than five times heavier than any rover before it."
+        },
+        "date": {
+          "phrase": "the landing of the Curiosity rover on Mars",
+          "label": "Curiosity lands on Mars",
+          "value": 2012,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Curiosity_(rover)",
+          "checkedOn": "2026-10-15",
+          "note": "A rocket-powered sky crane lowered it to the surface."
+        },
+        "count": {
+          "phrase": "the number of wheels on the Curiosity rover",
+          "label": "Curiosity wheels",
+          "value": 6,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Curiosity_(rover)",
+          "checkedOn": "2026-10-15",
+          "note": "Each wheel is about 50 cm across."
+        },
+        "speed": {
+          "phrase": "the top design speed of the Curiosity rover",
+          "label": "Curiosity top speed",
+          "value": 0.09,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://guinnessworldrecords.com/news/2012/8/nasa-curiosity-rover-lands-our-top-ten-mars-related-records-44096",
+          "checkedOn": "2026-10-15",
+          "note": "That is 90 metres an hour.",
+          "warmup": true
+        }
+      },
+      "family": "curiosity",
+      "clue": "a NASA Mars rover",
+      "hint": "NASA's car-sized Mars rover",
+      "fame": 2
+    },
+    {
+      "id": "jwst",
+      "name": "The James Webb Space Telescope",
+      "facts": {
+        "length": {
+          "phrase": "the length of the James Webb Space Telescope's sunshield",
+          "label": "Webb sunshield length",
+          "value": 21.197,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://smnewsnet.com/archives/499364/watch-history-the-james-webb-space-telescope-launch-is-set-for-christmas-eve/",
+          "checkedOn": "2026-10-15",
+          "note": "The sunshield is about the size of a tennis court."
+        },
+        "weight": {
+          "phrase": "the launch mass of the James Webb Space Telescope",
+          "label": "Webb at launch",
+          "value": 6200,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://science.nasa.gov/blogs/webb/2021/12/27/more-details-on-webbs-launch",
+          "checkedOn": "2026-10-15",
+          "note": "Sources give between 6,200 and 6,500 kg."
+        },
+        "date": {
+          "phrase": "the launch of the James Webb Space Telescope",
+          "label": "Webb launched",
+          "value": 2021,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Ariane_flight_VA256",
+          "checkedOn": "2026-10-15",
+          "note": "An Ariane 5 launched it on Christmas Day."
+        }
+      },
+      "family": "jwst",
+      "clue": "a NASA infrared space telescope",
+      "hint": "the successor to Hubble",
+      "fame": 2
+    },
+    {
+      "id": "spirit",
+      "name": "The Spirit of St. Louis",
+      "facts": {
+        "length": {
+          "phrase": "the wingspan of the Spirit of St. Louis",
+          "label": "Spirit of St. Louis wingspan",
+          "value": 14.02,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.thisdayinaviation.com/?p=47306",
+          "checkedOn": "2026-10-15",
+          "note": "The wings were made bigger to carry extra fuel."
+        },
+        "weight": {
+          "phrase": "the empty weight of the Spirit of St. Louis",
+          "label": "Spirit of St. Louis, empty",
+          "value": 975,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.pbs.org/wgbh/americanexperience/features/lindbergh-spirit-st-louis",
+          "checkedOn": "2026-10-15",
+          "note": "That is 2,150 pounds."
+        },
+        "date": {
+          "phrase": "Lindbergh's flight across the Atlantic in the Spirit of St. Louis",
+          "label": "Lindbergh crosses the Atlantic",
+          "value": 1927,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://cradleofaviation.org/history/exhibits/exhibit-galleries/the_golden_age/spirit_of_st_louis.html",
+          "checkedOn": "2026-10-15",
+          "note": "He took off from Long Island on 20 May 1927 and flew for 33.5 hours."
+        },
+        "count": {
+          "phrase": "the number of flights the Spirit of St. Louis made",
+          "label": "Spirit of St. Louis flights",
+          "value": 174,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.thisdayinaviation.com/?p=47306",
+          "checkedOn": "2026-10-15",
+          "note": "Together they added up to about 489 hours in the air."
+        },
+        "speed": {
+          "phrase": "the top speed of the Spirit of St. Louis",
+          "label": "Spirit of St. Louis top speed",
+          "value": 214,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://cradleofaviation.org/history/exhibits/exhibit-galleries/the_golden_age/spirit_of_st_louis.html",
+          "checkedOn": "2026-10-15",
+          "note": "Sources give 130 to 133 mph."
+        }
+      },
+      "family": "spirit",
+      "clue": "Charles Lindbergh's 1927 monoplane",
+      "hint": "Lindbergh's plane for the first solo nonstop Atlantic crossing",
+      "fame": 2
+    },
+    {
+      "id": "mir",
+      "name": "The Mir core module",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Mir core module",
+          "label": "Mir core module length",
+          "value": 13.13,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Mir_Core_Module",
+          "checkedOn": "2026-10-15",
+          "note": "It was about the size of a railway carriage."
+        },
+        "weight": {
+          "phrase": "the launch mass of the Mir core module",
+          "label": "Mir core module mass",
+          "value": 20400,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Mir_Core_Module",
+          "checkedOn": "2026-10-15",
+          "note": "It was sized to fit the Proton rocket's 20 tonne payload class."
+        },
+        "date": {
+          "phrase": "the launch of the Mir core module",
+          "label": "Mir core module launched",
+          "value": 1986,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://nextspaceflight.com/launches/details/5250",
+          "checkedOn": "2026-10-15",
+          "note": "It was the first module of the first modular space station."
+        },
+        "count": {
+          "phrase": "the number of docking ports on the Mir core module",
+          "label": "Mir core module ports",
+          "value": 6,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://nextspaceflight.com/launches/details/5250",
+          "checkedOn": "2026-10-15",
+          "note": "They let five more modules be added over the next decade."
+        }
+      },
+      "family": "mir",
+      "clue": "a Soviet space station module",
+      "hint": "the first module of the Mir space station",
+      "fame": 2
+    },
+    {
+      "id": "f9ft",
+      "name": "The Falcon 9 Full Thrust",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Falcon 9 Full Thrust rocket",
+          "label": "Falcon 9 height",
+          "value": 70,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://blogs.nasa.gov/commercialcrew/2020/05/30/the-spacex-falcon-9-rocket/",
+          "checkedOn": "2026-10-15",
+          "note": "This version was 1.2 m taller than the one before."
+        },
+        "weight": {
+          "phrase": "the liftoff mass of the Falcon 9 Full Thrust rocket",
+          "label": "Falcon 9 at liftoff",
+          "value": 549054,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://blogs.nasa.gov/commercialcrew/2020/05/30/the-spacex-falcon-9-rocket/",
+          "checkedOn": "2026-10-15",
+          "note": "It can lift 22,800 kg to low Earth orbit."
+        },
+        "date": {
+          "phrase": "the first flight of the Falcon 9 Full Thrust rocket",
+          "label": "Falcon 9 Full Thrust debuts",
+          "value": 2015,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Falcon_9_Full_Thrust",
+          "checkedOn": "2026-10-15",
+          "note": "It made the first vertical landing of an orbital rocket's first stage."
+        }
+      },
+      "family": "f9ft",
+      "clue": "a modern American rocket",
+      "hint": "SpaceX's partly reusable rocket",
+      "fame": 1
+    },
+    {
+      "id": "shinkansen0",
+      "name": "The 0 Series Shinkansen",
+      "facts": {
+        "length": {
+          "phrase": "the length of an intermediate car of the 0 Series Shinkansen",
+          "label": "0 Series car length",
+          "value": 25,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/0_Series_Shinkansen",
+          "checkedOn": "2026-10-15",
+          "note": "A full 16-car train was about a quarter of a mile long."
+        },
+        "date": {
+          "phrase": "the first service of the 0 Series Shinkansen",
+          "label": "0 Series Shinkansen starts",
+          "value": 1964,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/0_Series_Shinkansen",
+          "checkedOn": "2026-10-15",
+          "note": "It began nine days before the 1964 Tokyo Olympics opened."
+        },
+        "speed": {
+          "phrase": "the original top speed of the 0 Series Shinkansen",
+          "label": "0 Series top speed",
+          "value": 210,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/0_Series_Shinkansen",
+          "checkedOn": "2026-10-15",
+          "note": "That was raised to 220 km/h in 1986."
+        },
+        "count": {
+          "phrase": "the number of cars in a full-length 0 Series Shinkansen train",
+          "label": "0 Series cars per train",
+          "value": 16,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/0_Series_Shinkansen",
+          "checkedOn": "2026-10-15",
+          "note": "The first trains had only 12 cars."
+        }
+      },
+      "family": "shinkansen0",
+      "clue": "a Japanese high-speed train",
+      "hint": "Japan's first bullet train",
+      "fame": 2
+    },
+    {
+      "id": "sydney",
+      "name": "The Sydney Harbour Bridge",
+      "facts": {
+        "length": {
+          "phrase": "the total length of the Sydney Harbour Bridge",
+          "label": "Sydney Harbour Bridge length",
+          "value": 1149,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Sydney_Harbour_Bridge",
+          "checkedOn": "2026-10-15",
+          "note": "Its arch spans 503 m."
+        },
+        "weight": {
+          "phrase": "the weight of the steelwork in the Sydney Harbour Bridge",
+          "label": "Sydney Harbour Bridge steel",
+          "value": 52800000,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Sydney_Harbour_Bridge",
+          "checkedOn": "2026-10-15",
+          "note": "The arch alone weighs 39,000 tonnes."
+        },
+        "date": {
+          "phrase": "the opening of the Sydney Harbour Bridge",
+          "label": "Sydney Harbour Bridge opens",
+          "value": 1932,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Sydney_Harbour_Bridge",
+          "checkedOn": "2026-10-15",
+          "note": "It opened on 19 March 1932."
+        },
+        "count": {
+          "phrase": "the number of traffic lanes on the Sydney Harbour Bridge",
+          "label": "Sydney Harbour Bridge lanes",
+          "value": 8,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.bridgeinfo.broer.no/bridge/index.php?ID=102",
+          "checkedOn": "2026-10-15",
+          "note": "It also carries two railway lines."
+        }
+      },
+      "family": "sydney",
+      "clue": "a famous Australian steel arch bridge",
+      "hint": "Sydney's steel arch bridge, nicknamed the Coathanger",
+      "fame": 2
+    },
+    {
+      "id": "panama",
+      "name": "The Panama Canal",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Panama Canal",
+          "label": "Panama Canal length",
+          "value": 82000,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Panama_Canal",
+          "checkedOn": "2026-10-15",
+          "note": "It saves ships the long trip around Cape Horn."
+        },
+        "date": {
+          "phrase": "the opening of the Panama Canal",
+          "label": "Panama Canal opens",
+          "value": 1914,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Panama_Canal",
+          "checkedOn": "2026-10-15",
+          "note": "It opened on 15 August 1914."
+        }
+      },
+      "family": "panama",
+      "clue": "a canal in Central America",
+      "hint": "the canal joining the Atlantic and Pacific oceans",
+      "fame": 2
+    },
+    {
+      "id": "lhc",
+      "name": "The Large Hadron Collider",
+      "facts": {
+        "length": {
+          "phrase": "the circumference of the Large Hadron Collider",
+          "label": "LHC circumference",
+          "value": 26659,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Large_Hadron_Collider",
+          "checkedOn": "2026-10-15",
+          "note": "It sits in a tunnel as deep as 175 m under the France-Switzerland border."
+        },
+        "date": {
+          "phrase": "the first beams circulating in the Large Hadron Collider",
+          "label": "LHC first beams",
+          "value": 2008,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://lhc-machine-outreach.web.cern.ch",
+          "checkedOn": "2026-10-15",
+          "note": "A magnet fault stopped it nine days later."
+        },
+        "count": {
+          "phrase": "the maximum number of proton bunches per beam in the Large Hadron Collider",
+          "label": "LHC bunches per beam",
+          "value": 2808,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Large_Hadron_Collider",
+          "checkedOn": "2026-10-15",
+          "note": "Each bunch holds about 115 billion protons."
+        }
+      },
+      "family": "lhc",
+      "clue": "a particle accelerator at CERN",
+      "hint": "the world's largest particle collider",
+      "fame": 2
+    },
+    {
+      "id": "kilimanjaro",
+      "name": "Mount Kilimanjaro",
+      "facts": {
+        "length": {
+          "phrase": "the height of Mount Kilimanjaro",
+          "label": "Kilimanjaro height",
+          "value": 5895,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Mount_Kilimanjaro",
+          "checkedOn": "2026-10-15",
+          "note": "It is the tallest free-standing mountain in the world."
+        },
+        "date": {
+          "phrase": "the first ascent of Mount Kilimanjaro",
+          "label": "Kilimanjaro first climbed",
+          "value": 1889,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Mount_Kilimanjaro",
+          "checkedOn": "2026-10-15",
+          "note": "Hans Meyer and Ludwig Purtscheller reached the top on 6 October 1889."
+        }
+      },
+      "family": "kilimanjaro",
+      "clue": "a mountain in Tanzania",
+      "hint": "Africa's highest mountain",
+      "fame": 2
+    },
+    {
+      "id": "denali",
+      "name": "Denali",
+      "facts": {
+        "length": {
+          "phrase": "the height of Denali",
+          "label": "Denali height",
+          "value": 6190,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://geographyworlds.com/blog/is-denali-taller-than-mount-kilimanjaro/",
+          "checkedOn": "2026-10-15",
+          "note": "Some sources give 6,194 m."
+        },
+        "date": {
+          "phrase": "the first ascent of Denali's south peak",
+          "label": "Denali first climbed",
+          "value": 1913,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://geographyworlds.com/blog/is-denali-taller-than-mount-kilimanjaro/",
+          "checkedOn": "2026-10-15",
+          "note": "Hudson Stuck and Harry Karstens led the party on 7 June 1913."
+        }
+      },
+      "family": "denali",
+      "clue": "a mountain in Alaska",
+      "hint": "North America's highest mountain",
+      "fame": 2
+    },
+    {
+      "id": "akashi",
+      "name": "The Akashi Kaikyo Bridge",
+      "facts": {
+        "length": {
+          "phrase": "the main span of the Akashi Kaikyo Bridge",
+          "label": "Akashi Kaikyo main span",
+          "value": 1991,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://britannica.com/technology/bridge-engineering/U-S-designs",
+          "checkedOn": "2026-10-15",
+          "note": "The 1995 Kobe earthquake stretched it by almost a metre during construction."
+        },
+        "date": {
+          "phrase": "the opening of the Akashi Kaikyo Bridge",
+          "label": "Akashi Kaikyo Bridge opens",
+          "value": 1998,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://britannica.com/technology/bridge-engineering/U-S-designs",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "akashi",
+      "clue": "a Japanese suspension bridge",
+      "hint": "a Japanese suspension bridge",
+      "fame": 1
+    },
+    {
+      "id": "hzmb",
+      "name": "The Hong Kong-Zhuhai-Macau Bridge",
+      "facts": {
+        "length": {
+          "phrase": "the total length of the Hong Kong-Zhuhai-Macau Bridge",
+          "label": "Hong Kong-Zhuhai-Macau length",
+          "value": 55000,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Hong_Kong%E2%80%93Zhuhai%E2%80%93Macau_Bridge",
+          "checkedOn": "2026-10-15",
+          "note": "It joins bridges, a 6.7 km undersea tunnel and four artificial islands."
+        },
+        "date": {
+          "phrase": "the opening of the Hong Kong-Zhuhai-Macau Bridge",
+          "label": "Hong Kong-Zhuhai-Macau opens",
+          "value": 2018,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Hong_Kong%E2%80%93Zhuhai%E2%80%93Macau_Bridge",
+          "checkedOn": "2026-10-15",
+          "note": "It opened to traffic on 24 October 2018."
+        }
+      },
+      "family": "hzmb",
+      "clue": "a bridge and tunnel link in China",
+      "hint": "the longest sea-crossing bridge system in the world",
+      "fame": 1
+    },
+    {
+      "id": "gotthard",
+      "name": "The Gotthard Base Tunnel",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Gotthard Base Tunnel",
+          "label": "Gotthard Base Tunnel length",
+          "value": 57104,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/List_of_longest_railway_tunnels",
+          "checkedOn": "2026-10-15",
+          "note": "It runs up to 2.3 km under the Swiss Alps."
+        },
+        "date": {
+          "phrase": "the opening of the Gotthard Base Tunnel",
+          "label": "Gotthard Base Tunnel opens",
+          "value": 2016,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/List_of_longest_railway_tunnels",
+          "checkedOn": "2026-10-15",
+          "note": "Regular passenger service began in December 2016."
+        }
+      },
+      "family": "gotthard",
+      "clue": "a railway tunnel in the Alps",
+      "hint": "the world's longest railway tunnel",
+      "fame": 1
+    },
+    {
+      "id": "seikan",
+      "name": "The Seikan Tunnel",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Seikan Tunnel",
+          "label": "Seikan Tunnel length",
+          "value": 53850,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/List_of_longest_railway_tunnels",
+          "checkedOn": "2026-10-15",
+          "note": "23.3 km of it runs under the seabed."
+        },
+        "date": {
+          "phrase": "the opening of the Seikan Tunnel",
+          "label": "Seikan Tunnel opens",
+          "value": 1988,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.railtarget.eu/technologies-and-infrastructure/longest-train-tunnels-world-underground-marvels-10067.html",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "seikan",
+      "clue": "a Japanese railway tunnel",
+      "hint": "a Japanese undersea railway tunnel",
+      "fame": 1
+    },
+    {
+      "id": "channeltunnel",
+      "name": "The Channel Tunnel",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Channel Tunnel",
+          "label": "Channel Tunnel length",
+          "value": 50450,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/List_of_longest_railway_tunnels",
+          "checkedOn": "2026-10-15",
+          "note": "38 km of it runs under the sea."
+        },
+        "date": {
+          "phrase": "the opening of the Channel Tunnel",
+          "label": "Channel Tunnel opens",
+          "value": 1994,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.railtarget.eu/technologies-and-infrastructure/longest-train-tunnels-world-underground-marvels-10067.html",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "channeltunnel",
+      "clue": "a rail tunnel between two countries",
+      "hint": "the rail tunnel between England and France",
+      "fame": 2
+    },
+    {
+      "id": "fuji",
+      "name": "Mount Fuji",
+      "facts": {
+        "length": {
+          "phrase": "the height of Mount Fuji",
+          "label": "Mount Fuji height",
+          "value": 3776,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.mon-sejour-en-montagne.com/?p=14205",
+          "checkedOn": "2026-10-15",
+          "note": "It last erupted in 1707."
+        }
+      },
+      "family": "fuji",
+      "clue": "a mountain in Japan",
+      "hint": "Japan's highest mountain",
+      "fame": 3
+    },
+    {
+      "id": "marathon",
+      "name": "A marathon",
+      "facts": {
+        "length": {
+          "phrase": "the official distance of a marathon",
+          "label": "Marathon distance",
+          "value": 42195,
+          "unit": "m",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "Official distance set by World Athletics: 42.195 km"
+        }
+      },
+      "family": "marathon",
+      "fame": 3
+    },
+    {
+      "id": "evergiven",
+      "name": "The Ever Given",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Ever Given",
+          "label": "Ever Given length",
+          "value": 399.94,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Ever_Given",
+          "checkedOn": "2026-10-15"
+        },
+        "weight": {
+          "phrase": "the deadweight of the Ever Given (the cargo weight it can carry)",
+          "label": "Ever Given deadweight",
+          "value": 199629000,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Ever_Given",
+          "checkedOn": "2026-10-15",
+          "note": "Its gross tonnage is 220,940, which measures volume, not weight."
+        },
+        "speed": {
+          "phrase": "the top speed of the Ever Given",
+          "label": "Ever Given top speed",
+          "value": 42.2,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Ever_Given",
+          "checkedOn": "2026-10-15"
+        },
+        "count": {
+          "phrase": "the number of 20-foot containers the Ever Given can carry",
+          "label": "Ever Given containers",
+          "value": 20124,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Ever_Given",
+          "checkedOn": "2026-10-15",
+          "warmup": true
+        },
+        "date": {
+          "phrase": "the completion of the Ever Given",
+          "label": "Ever Given completed",
+          "value": 2018,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Ever_Given",
+          "checkedOn": "2026-10-15",
+          "note": "It was launched in May 2018 and completed in September 2018."
+        }
+      },
+      "family": "evergiven",
+      "clue": "a container ship",
+      "hint": "the ship that blocked the Suez Canal in 2021",
+      "fame": 2
+    },
+    {
+      "id": "cuttysark",
+      "name": "The Cutty Sark",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Cutty Sark",
+          "label": "Cutty Sark length",
+          "value": 85.4,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Cutty_Sark",
+          "checkedOn": "2026-10-15",
+          "note": "That is her length overall, from bow to stern."
+        },
+        "weight": {
+          "phrase": "the displacement of the Cutty Sark",
+          "label": "Cutty Sark displacement",
+          "value": 2133700,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Cutty_Sark",
+          "checkedOn": "2026-10-15",
+          "note": "About 2,100 tons."
+        },
+        "speed": {
+          "phrase": "the top speed of the Cutty Sark",
+          "label": "Cutty Sark top speed",
+          "value": 32.4,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Cutty_Sark",
+          "checkedOn": "2026-10-15",
+          "note": "The highest speed logged was 17.5 knots."
+        },
+        "date": {
+          "phrase": "the launch of the Cutty Sark",
+          "label": "Cutty Sark launched",
+          "value": 1869,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Cutty_Sark",
+          "checkedOn": "2026-10-15",
+          "note": "She launched on 22 November 1869."
+        }
+      },
+      "family": "cuttysark",
+      "clue": "a sailing ship from the 1800s",
+      "hint": "the tea clipper now preserved in Greenwich",
+      "fame": 2
+    },
+    {
+      "id": "costaconcordia",
+      "name": "The Costa Concordia",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Costa Concordia",
+          "label": "Costa Concordia length",
+          "value": 290.2,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Costa_Concordia",
+          "checkedOn": "2026-10-15"
+        },
+        "speed": {
+          "phrase": "the top speed of the Costa Concordia",
+          "label": "Costa Concordia top speed",
+          "value": 43,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Costa_Concordia",
+          "checkedOn": "2026-10-15",
+          "note": "She reached 23 knots on sea trials. Her normal service speed was lower."
+        },
+        "count": {
+          "phrase": "the number of passengers the Costa Concordia could carry",
+          "label": "Costa Concordia passengers",
+          "value": 3780,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.cbsnews.com/news/fact-sheet-the-costa-concordia-cruise-liner",
+          "checkedOn": "2026-10-15"
+        },
+        "date": {
+          "phrase": "the entry into service of the Costa Concordia",
+          "label": "Costa Concordia enters service",
+          "value": 2006,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Costa_Concordia",
+          "checkedOn": "2026-10-15",
+          "note": "She was the largest cruise ship built in Italy at the time."
+        }
+      },
+      "family": "costaconcordia",
+      "clue": "an Italian cruise ship",
+      "hint": "the Italian cruise ship that ran aground off Tuscany in 2012",
+      "fame": 2
+    },
+    {
+      "id": "lusitania",
+      "name": "The Lusitania",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Lusitania",
+          "label": "Lusitania length",
+          "value": 239.9,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/RMS_Lusitania",
+          "checkedOn": "2026-10-15"
+        },
+        "weight": {
+          "phrase": "the displacement of the Lusitania",
+          "label": "Lusitania displacement",
+          "value": 44767000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/RMS_Lusitania",
+          "checkedOn": "2026-10-15"
+        },
+        "speed": {
+          "phrase": "the top speed of the Lusitania",
+          "label": "Lusitania top speed",
+          "value": 49.4,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/RMS_Lusitania",
+          "checkedOn": "2026-10-15",
+          "note": "That was her best single day's run, 26.7 knots, in 1914."
+        },
+        "count": {
+          "phrase": "the number of passengers the Lusitania could carry",
+          "label": "Lusitania passengers",
+          "value": 2198,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/RMS_Lusitania",
+          "checkedOn": "2026-10-15"
+        },
+        "date": {
+          "phrase": "the sinking of the Lusitania",
+          "label": "Lusitania sunk",
+          "value": 1915,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/RMS_Lusitania",
+          "checkedOn": "2026-10-15",
+          "note": "She was launched in 1906."
+        }
+      },
+      "family": "lusitania",
+      "clue": "a British ocean liner",
+      "hint": "the Cunard liner sunk by a German U-boat in 1915",
+      "fame": 2
+    },
+    {
+      "id": "exxonvaldez",
+      "name": "The Exxon Valdez",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Exxon Valdez",
+          "label": "Exxon Valdez length",
+          "value": 301,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Exxon_Valdez",
+          "checkedOn": "2026-10-15"
+        },
+        "weight": {
+          "phrase": "the full-load displacement of the Exxon Valdez",
+          "label": "Exxon Valdez displacement",
+          "value": 244150000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Exxon_Valdez",
+          "checkedOn": "2026-10-15",
+          "note": "Sources differ on this figure."
+        },
+        "speed": {
+          "phrase": "the top speed of the Exxon Valdez",
+          "label": "Exxon Valdez top speed",
+          "value": 30.1,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Exxon_Valdez",
+          "checkedOn": "2026-10-15",
+          "note": "That is 16.25 knots."
+        },
+        "count": {
+          "phrase": "the number of crew on the Exxon Valdez",
+          "label": "Exxon Valdez crew",
+          "value": 21,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://shipstamps.co.uk/forum/viewtopic.php?p=10206",
+          "checkedOn": "2026-10-15"
+        },
+        "date": {
+          "phrase": "the Exxon Valdez running aground in Alaska",
+          "label": "Exxon Valdez aground",
+          "value": 1989,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Exxon_Valdez",
+          "checkedOn": "2026-10-15",
+          "note": "It spilled about 11 million gallons of crude oil into Prince William Sound."
+        }
+      },
+      "family": "exxonvaldez",
+      "clue": "an American oil tanker",
+      "hint": "the tanker behind the 1989 Alaska oil spill",
+      "fame": 1
+    },
+    {
+      "id": "skylab",
+      "name": "Skylab",
+      "facts": {
+        "length": {
+          "phrase": "the length of Skylab",
+          "label": "Skylab length",
+          "value": 25.1,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Skylab",
+          "checkedOn": "2026-10-15",
+          "note": "That is without the Apollo capsule attached."
+        },
+        "weight": {
+          "phrase": "the mass of Skylab",
+          "label": "Skylab mass",
+          "value": 76540,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Skylab",
+          "checkedOn": "2026-10-15",
+          "note": "That is without the Apollo capsule attached."
+        },
+        "count": {
+          "phrase": "the number of days Skylab spent in orbit",
+          "label": "Skylab days in orbit",
+          "value": 2249,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Skylab",
+          "checkedOn": "2026-10-15"
+        },
+        "date": {
+          "phrase": "the launch of Skylab",
+          "label": "Skylab launched",
+          "value": 1973,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Skylab",
+          "checkedOn": "2026-10-15",
+          "note": "Three crews of three astronauts lived aboard."
+        }
+      },
+      "family": "skylab",
+      "clue": "an American space station",
+      "hint": "NASA's first space station",
+      "fame": 2
+    },
+    {
+      "id": "pioneer10",
+      "name": "Pioneer 10",
+      "facts": {
+        "weight": {
+          "phrase": "the launch mass of Pioneer 10",
+          "label": "Pioneer 10 mass",
+          "value": 258,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Pioneer_10",
+          "checkedOn": "2026-10-15"
+        },
+        "speed": {
+          "phrase": "the speed of Pioneer 10 as it left Earth",
+          "label": "Pioneer 10 launch speed",
+          "value": 51700,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://aas.org/posts/news/2023/11/month-astronomical-history-november-2023",
+          "checkedOn": "2026-10-15",
+          "note": "It was the fastest human-made object to leave Earth at the time."
+        },
+        "date": {
+          "phrase": "the launch of Pioneer 10",
+          "label": "Pioneer 10 launched",
+          "value": 1972,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Pioneer_10",
+          "checkedOn": "2026-10-15",
+          "note": "It was the first spacecraft to cross the asteroid belt."
+        }
+      },
+      "family": "pioneer10",
+      "clue": "an American space probe",
+      "hint": "the first spacecraft to fly past Jupiter",
+      "fame": 1
+    },
+    {
+      "id": "ingenuity",
+      "name": "The Ingenuity helicopter",
+      "facts": {
+        "length": {
+          "phrase": "the rotor span of the Ingenuity helicopter",
+          "label": "Ingenuity rotor span",
+          "value": 1.2,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.avinc.com/solution/ingenuity-mars-helicopter/",
+          "checkedOn": "2026-10-15"
+        },
+        "weight": {
+          "phrase": "the mass of the Ingenuity helicopter",
+          "label": "Ingenuity mass",
+          "value": 1.8,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Ingenuity_(helicopter)",
+          "checkedOn": "2026-10-15"
+        },
+        "speed": {
+          "phrase": "the top speed of the Ingenuity helicopter",
+          "label": "Ingenuity top speed",
+          "value": 36,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Ingenuity_(helicopter)",
+          "checkedOn": "2026-10-15",
+          "note": "That is 10 metres per second."
+        },
+        "count": {
+          "phrase": "the number of flights the Ingenuity helicopter made",
+          "label": "Ingenuity flights",
+          "value": 72,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Ingenuity_(helicopter)",
+          "checkedOn": "2026-10-15",
+          "note": "It was only planned to make five."
+        },
+        "date": {
+          "phrase": "the first flight of the Ingenuity helicopter",
+          "label": "Ingenuity first flight",
+          "value": 2021,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Ingenuity_(helicopter)",
+          "checkedOn": "2026-10-15",
+          "note": "It flew on 19 April 2021."
+        }
+      },
+      "family": "ingenuity",
+      "clue": "a small robotic aircraft",
+      "hint": "the first helicopter to fly on Mars",
+      "fame": 2
+    },
+    {
+      "id": "apollolm",
+      "name": "The Apollo Lunar Module",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Apollo Lunar Module",
+          "label": "Lunar Module height",
+          "value": 7.04,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Apollo_Lunar_Module",
+          "checkedOn": "2026-10-15"
+        },
+        "weight": {
+          "phrase": "the fully fuelled mass of the Apollo Lunar Module",
+          "label": "Lunar Module launch mass",
+          "value": 15200,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Apollo_Lunar_Module",
+          "checkedOn": "2026-10-15",
+          "note": "Its dry mass was only about 4,280 kg."
+        },
+        "date": {
+          "phrase": "the first landing of an Apollo Lunar Module on the Moon",
+          "label": "First Lunar Module landing",
+          "value": 1969,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Apollo_Lunar_Module",
+          "checkedOn": "2026-10-15",
+          "note": "Its crew of two flew it from lunar orbit to the surface."
+        }
+      },
+      "family": "apollolm",
+      "clue": "a two-stage American spacecraft",
+      "hint": "the spidery lander that carried astronauts to the Moon",
+      "fame": 2
+    },
+    {
+      "id": "tiangong",
+      "name": "The Tiangong space station",
+      "facts": {
+        "date": {
+          "phrase": "the launch of the first Tiangong module (Tianhe)",
+          "label": "Tianhe launched",
+          "value": 2021,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Tiangong_space_station",
+          "checkedOn": "2026-10-15",
+          "note": "Its name means Heavenly Palace."
+        }
+      },
+      "family": "tiangong",
+      "clue": "a Chinese space station",
+      "hint": "China's space station",
+      "fame": 1
+    },
+    {
+      "id": "snooker",
+      "name": "A full-size snooker table",
+      "facts": {
+        "length": {
+          "phrase": "the length of the playing area of a full-size snooker table",
+          "label": "Snooker table length",
+          "value": 3.569,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://wpbsa.com/wp-content/uploads/Rulebook-Website-Updated-May-2022.pdf",
+          "checkedOn": "2026-10-15",
+          "note": "The playing area is 11 ft 8.5 in by 5 ft 10 in."
+        },
+        "count": {
+          "phrase": "the number of balls used in a game of snooker",
+          "label": "Snooker balls",
+          "value": 22,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://wpbsa.com/wp-content/uploads/Rulebook-Website-Updated-May-2022.pdf",
+          "checkedOn": "2026-10-15",
+          "note": "That is 15 reds, six colours and the white cue ball."
+        },
+        "date": {
+          "phrase": "the invention of snooker",
+          "label": "Snooker invented",
+          "value": 1875,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://wpbsa.com/wp-content/uploads/Rulebook-Website-Updated-May-2022.pdf",
+          "checkedOn": "2026-10-15",
+          "note": "It was invented by army officers in Jubbulpore, India."
+        }
+      },
+      "family": "snooker",
+      "clue": "a full-size table for a cue sport",
+      "hint": "the 12-foot table used in professional snooker",
+      "fame": 3
+    },
+    {
+      "id": "snookermax",
+      "name": "A maximum snooker break",
+      "facts": {
+        "count": {
+          "phrase": "the highest possible break in snooker",
+          "label": "Maximum snooker break",
+          "value": 147,
+          "unit": "",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "15 reds each followed by a black (15 x 8 = 120), then the six colours (2+3+4+5+6+7 = 27): 147"
+        }
+      },
+      "family": "snooker",
+      "clue": "a scoring record in a cue sport",
+      "hint": "a maximum break, potting every ball in order",
+      "fame": 3
+    },
+    {
+      "id": "olympicpool",
+      "name": "An Olympic swimming pool",
+      "facts": {
+        "length": {
+          "phrase": "the length of an Olympic swimming pool",
+          "label": "Olympic pool length",
+          "value": 50,
+          "unit": "m",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "World Aquatics standard: an Olympic pool is 50 m long, 25 m wide and at least 2 m deep"
+        },
+        "weight": {
+          "phrase": "the weight of the water in an Olympic swimming pool of minimum depth",
+          "label": "Olympic pool water",
+          "value": 2500000,
+          "unit": "kg",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "50 x 25 x 2 m is 2,500 cubic metres, and a cubic metre of water weighs about 1,000 kg"
+        }
+      },
+      "family": "olympicpool",
+      "clue": "a competition swimming pool",
+      "hint": "the 50-metre pool used at the Olympics",
+      "fame": 3
+    },
+    {
+      "id": "routemaster",
+      "name": "A Routemaster double-decker bus",
+      "facts": {
+        "length": {
+          "phrase": "the length of a Routemaster double-decker bus",
+          "label": "Routemaster length",
+          "value": 8.38,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/AEC_Routemaster",
+          "checkedOn": "2026-10-15",
+          "note": "That is 27 ft 6 in. A longer version was 30 ft."
+        },
+        "weight": {
+          "phrase": "the empty weight of a Routemaster double-decker bus",
+          "label": "Routemaster weight",
+          "value": 7470,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/AEC_Routemaster",
+          "checkedOn": "2026-10-15",
+          "note": "Aluminium kept it light for a bus that seated 64."
+        },
+        "count": {
+          "phrase": "the number of seats on a Routemaster double-decker bus",
+          "label": "Routemaster seats",
+          "value": 64,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/AEC_Routemaster",
+          "checkedOn": "2026-10-15"
+        },
+        "date": {
+          "phrase": "the first Routemaster bus entering service in London",
+          "label": "Routemaster enters service",
+          "value": 1956,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/AEC_Routemaster",
+          "checkedOn": "2026-10-15",
+          "note": "They were withdrawn from regular service in 2005."
+        }
+      },
+      "family": "routemaster",
+      "clue": "London's classic red double-decker bus",
+      "hint": "the open-platform red bus that served London until 2005",
+      "fame": 3
+    },
+    {
+      "id": "cricket",
+      "name": "A cricket pitch",
+      "facts": {
+        "length": {
+          "phrase": "the length of a cricket pitch",
+          "label": "Cricket pitch length",
+          "value": 20.12,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Cricket_field",
+          "checkedOn": "2026-10-15",
+          "note": "That is 22 yards, also called one chain."
+        },
+        "date": {
+          "phrase": "the first international cricket match, Australia against England",
+          "label": "First international cricket match",
+          "value": 1877,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://cec.nic.in/webpath/curriculum/Module/BPED/Paper06/11/downloads/script.pdf",
+          "checkedOn": "2026-10-15",
+          "note": "Australia won by 45 runs in Melbourne."
+        }
+      },
+      "family": "cricket",
+      "clue": "part of a cricket ground",
+      "hint": "the strip between the wickets, 22 yards long",
+      "fame": 3
+    },
+    {
+      "id": "tennis",
+      "name": "A tennis court",
+      "facts": {
+        "length": {
+          "phrase": "the length of a tennis court",
+          "label": "Tennis court length",
+          "value": 23.77,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://itftennis.com/media/7221/2025-rules-of-tennis-english.pdf",
+          "checkedOn": "2026-10-15",
+          "note": "That is 78 feet."
+        },
+        "date": {
+          "phrase": "the first Wimbledon championship",
+          "label": "First Wimbledon",
+          "value": 1877,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Tennis_court",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "tennis",
+      "clue": "a court for a racket sport",
+      "hint": "the court used at Wimbledon, 78 feet long",
+      "fame": 3
+    },
+    {
+      "id": "tennisnet",
+      "name": "A tennis net",
+      "facts": {
+        "length": {
+          "phrase": "the height of a tennis net at the centre",
+          "label": "Tennis net height",
+          "value": 0.914,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://itftennis.com/media/7221/2025-rules-of-tennis-english.pdf",
+          "checkedOn": "2026-10-15",
+          "note": "That is exactly 3 feet. It is higher at the posts."
+        }
+      },
+      "family": "tennis",
+      "clue": "part of a racket-sport court",
+      "hint": "the net across the middle of a tennis court",
+      "fame": 3
+    },
+    {
+      "id": "towerbridge",
+      "name": "Tower Bridge",
+      "facts": {
+        "length": {
+          "phrase": "the total length of Tower Bridge",
+          "label": "Tower Bridge length",
+          "value": 244,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://indarch.mtu.edu/node/127",
+          "checkedOn": "2026-10-15",
+          "note": "That is 800 feet."
+        },
+        "date": {
+          "phrase": "the opening of Tower Bridge",
+          "label": "Tower Bridge opens",
+          "value": 1894,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://indarch.mtu.edu/node/127",
+          "checkedOn": "2026-10-15",
+          "note": "It opened on 30 June 1894."
+        }
+      },
+      "family": "towerbridge",
+      "clue": "a bridge over a river in London",
+      "hint": "the bascule bridge people often mistake for London Bridge",
+      "fame": 3
+    },
+    {
+      "id": "towerbridgetowers",
+      "name": "The towers of Tower Bridge",
+      "facts": {
+        "length": {
+          "phrase": "the height of the towers of Tower Bridge",
+          "label": "Tower Bridge tower height",
+          "value": 65,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://indarch.mtu.edu/node/127",
+          "checkedOn": "2026-10-15",
+          "note": "That is 213 feet."
+        }
+      },
+      "family": "towerbridge",
+      "clue": "part of a London bridge",
+      "hint": "the two towers joined by high walkways",
+      "fame": 3
+    },
+    {
+      "id": "angel",
+      "name": "The Angel of the North",
+      "facts": {
+        "length": {
+          "phrase": "the wingspan of the Angel of the North",
+          "label": "Angel of the North wingspan",
+          "value": 54,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://itv.com/news/tyne-tees/2023-02-15/angel-of-the-north-celebrates-25th-birthday",
+          "checkedOn": "2026-10-15",
+          "note": "That is almost the same as a jumbo jet."
+        },
+        "weight": {
+          "phrase": "the weight of the Angel of the North",
+          "label": "Angel of the North weight",
+          "value": 200000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://itv.com/news/tyne-tees/2023-02-15/angel-of-the-north-celebrates-25th-birthday",
+          "checkedOn": "2026-10-15",
+          "note": "Some sources say 208 tonnes."
+        },
+        "date": {
+          "phrase": "the erection of the Angel of the North",
+          "label": "Angel of the North erected",
+          "value": 1998,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://itv.com/news/tyne-tees/2023-02-15/angel-of-the-north-celebrates-25th-birthday",
+          "checkedOn": "2026-10-15",
+          "note": "It was first put up on 15 February 1998."
+        }
+      },
+      "family": "angel",
+      "clue": "a huge sculpture in northern England",
+      "hint": "the giant steel angel beside the A1 at Gateshead",
+      "fame": 3
+    },
+    {
+      "id": "angelheight",
+      "name": "The height of the Angel of the North",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Angel of the North",
+          "label": "Angel of the North height",
+          "value": 20,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://itv.com/news/tyne-tees/2023-02-15/angel-of-the-north-celebrates-25th-birthday",
+          "checkedOn": "2026-10-15",
+          "note": "There is enough steel in it to make 16 double-decker buses."
+        }
+      },
+      "family": "angel",
+      "clue": "a huge sculpture in northern England",
+      "hint": "the steel figure with outstretched wings",
+      "fame": 3
+    },
+    {
+      "id": "footballpitch",
+      "name": "A football pitch",
+      "facts": {
+        "length": {
+          "phrase": "the length of a football pitch (the size FIFA recommends)",
+          "label": "Football pitch length",
+          "value": 105,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Football_pitch",
+          "checkedOn": "2026-10-15",
+          "note": "Many top stadiums, including Wembley, use 105 by 68 metres."
+        }
+      },
+      "family": "football",
+      "clue": "the playing surface for a team sport",
+      "hint": "the pitch used at most top stadiums",
+      "fame": 3
+    },
+    {
+      "id": "footballgoal",
+      "name": "A football goal",
+      "facts": {
+        "length": {
+          "phrase": "the width of a football goal",
+          "label": "Football goal width",
+          "value": 7.32,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Football_pitch",
+          "checkedOn": "2026-10-15",
+          "note": "That is 8 yards, unchanged since 1863."
+        }
+      },
+      "family": "football",
+      "clue": "part of a team-sport pitch",
+      "hint": "the goal between the posts",
+      "fame": 3
+    },
+    {
+      "id": "tube",
+      "name": "The London Underground",
+      "facts": {
+        "length": {
+          "phrase": "the total length of the London Underground network",
+          "label": "Tube network length",
+          "value": 402000,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/London_Underground",
+          "checkedOn": "2026-10-15",
+          "note": "That is 250 miles of track."
+        },
+        "speed": {
+          "phrase": "the average speed of a London Underground train",
+          "label": "Tube average speed",
+          "value": 33,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/London_Underground",
+          "checkedOn": "2026-10-15"
+        },
+        "count": {
+          "phrase": "the number of stations on the London Underground",
+          "label": "Tube stations",
+          "value": 272,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/London_Underground",
+          "checkedOn": "2026-10-15",
+          "note": "It has 11 lines."
+        },
+        "date": {
+          "phrase": "the opening of the first London Underground line",
+          "label": "Tube opens",
+          "value": 1863,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/London_Underground",
+          "checkedOn": "2026-10-15",
+          "note": "It ran between Paddington and Farringdon on 10 January 1863."
+        }
+      },
+      "family": "tube",
+      "clue": "a capital city's underground railway",
+      "hint": "the Tube, the world's oldest underground railway",
+      "fame": 3
+    },
+    {
+      "id": "eurostar",
+      "name": "A Eurostar train",
+      "facts": {
+        "length": {
+          "phrase": "the length of a full-length Eurostar e300 train",
+          "label": "Eurostar length",
+          "value": 394,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/British_Rail_Class_373",
+          "checkedOn": "2026-10-15",
+          "note": "Some sources say 387 metres."
+        },
+        "speed": {
+          "phrase": "the top service speed of a Eurostar e300 train",
+          "label": "Eurostar top speed",
+          "value": 300,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/British_Rail_Class_373",
+          "checkedOn": "2026-10-15"
+        },
+        "count": {
+          "phrase": "the number of seats on a full-length Eurostar e300 train",
+          "label": "Eurostar seats",
+          "value": 750,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/British_Rail_Class_373",
+          "checkedOn": "2026-10-15"
+        },
+        "date": {
+          "phrase": "the first Eurostar passenger service",
+          "label": "Eurostar starts",
+          "value": 1994,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/British_Rail_Class_373",
+          "checkedOn": "2026-10-15",
+          "note": "It began on 14 November 1994."
+        }
+      },
+      "family": "eurostar",
+      "clue": "an international high-speed train",
+      "hint": "the high-speed train through the Channel Tunnel",
+      "fame": 2
+    },
+    {
+      "id": "mallard",
+      "name": "The steam locomotive Mallard",
+      "facts": {
+        "length": {
+          "phrase": "the length of the steam locomotive Mallard with its tender",
+          "label": "Mallard length",
+          "value": 21.65,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://collection.sciencemuseum.org.uk/objects/co205732",
+          "checkedOn": "2026-10-15",
+          "note": "Wikipedia gives 70 feet."
+        },
+        "weight": {
+          "phrase": "the weight of the steam locomotive Mallard with its tender",
+          "label": "Mallard weight",
+          "value": 167600,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nli.org.il/en/authorities/987007566307405171",
+          "checkedOn": "2026-10-15",
+          "note": "The engine alone weighs about 105 tonnes."
+        },
+        "speed": {
+          "phrase": "the world speed record for a steam locomotive, set by Mallard",
+          "label": "Mallard speed record",
+          "value": 202.6,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/LNER_Class_A4_4468_Mallard",
+          "checkedOn": "2026-10-15",
+          "note": "That is about 126 mph, and the record still stands."
+        },
+        "date": {
+          "phrase": "Mallard's world steam speed record",
+          "label": "Mallard breaks the record",
+          "value": 1938,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/LNER_Class_A4_4468_Mallard",
+          "checkedOn": "2026-10-15",
+          "note": "It happened on 3 July 1938."
+        }
+      },
+      "family": "mallard",
+      "clue": "a streamlined British steam locomotive",
+      "hint": "the world's fastest steam locomotive",
+      "fame": 1
+    },
+    {
+      "id": "mini",
+      "name": "The original Mini",
+      "facts": {
+        "length": {
+          "phrase": "the length of an original Mini car",
+          "label": "Mini length",
+          "value": 3.05,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://dlab.epfl.ch/wikispeedia/wpcd/wp/m/Mini.htm",
+          "checkedOn": "2026-10-15",
+          "note": "The brief was a box 10 feet long."
+        },
+        "weight": {
+          "phrase": "the weight of an original Mini car",
+          "label": "Mini weight",
+          "value": 617,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://dlab.epfl.ch/wikispeedia/wpcd/wp/m/Mini.htm",
+          "checkedOn": "2026-10-15",
+          "note": "Kerb weights ran from 617 to 686 kg."
+        },
+        "count": {
+          "phrase": "the number of classic Minis built",
+          "label": "Classic Minis built",
+          "value": 5300000,
+          "unit": "",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.lanemotormuseum.org/?p=237",
+          "checkedOn": "2026-10-15",
+          "warmup": true
+        },
+        "date": {
+          "phrase": "the launch of the original Mini",
+          "label": "Mini launched",
+          "value": 1959,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://dlab.epfl.ch/wikispeedia/wpcd/wp/m/Mini.htm",
+          "checkedOn": "2026-10-15",
+          "note": "It was announced on 26 August 1959."
+        }
+      },
+      "family": "mini",
+      "clue": "a small British car",
+      "hint": "the classic small car designed by Alec Issigonis",
+      "fame": 3
+    },
+    {
+      "id": "gherkin",
+      "name": "The Gherkin",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Gherkin",
+          "label": "Gherkin height",
+          "value": 180,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/The_Gherkin",
+          "checkedOn": "2026-10-15"
+        },
+        "weight": {
+          "phrase": "the weight of the steel in the Gherkin",
+          "label": "Gherkin steel",
+          "value": 10000000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.visitlondon.com/things-to-do/place/951036-gherkin",
+          "checkedOn": "2026-10-15"
+        },
+        "count": {
+          "phrase": "the number of steps in each stairwell of the Gherkin",
+          "label": "Gherkin steps",
+          "value": 1037,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.visitlondon.com/things-to-do/place/951036-gherkin",
+          "checkedOn": "2026-10-15",
+          "note": "It has 41 floors."
+        },
+        "date": {
+          "phrase": "the opening of the Gherkin",
+          "label": "Gherkin opens",
+          "value": 2004,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/The_Gherkin",
+          "checkedOn": "2026-10-15",
+          "note": "It was completed in December 2003."
+        }
+      },
+      "family": "gherkin",
+      "clue": "a skyscraper in the City of London",
+      "hint": "30 St Mary Axe, the skyscraper shaped like a pickle",
+      "fame": 2
+    },
+    {
+      "id": "nelson",
+      "name": "Nelson's Column",
+      "facts": {
+        "length": {
+          "phrase": "the height of Nelson's Column",
+          "label": "Nelson's Column height",
+          "value": 51.59,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Nelson%27s_Column",
+          "checkedOn": "2026-10-15",
+          "note": "A 2006 survey found it about 4.4 metres shorter than the 56 metres once quoted."
+        },
+        "date": {
+          "phrase": "the completion of Nelson's Column",
+          "label": "Nelson's Column completed",
+          "value": 1843,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Nelson%27s_Column",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "nelson",
+      "clue": "a monument in a London square",
+      "hint": "the column in Trafalgar Square",
+      "fame": 2
+    },
+    {
+      "id": "nelsonstatue",
+      "name": "The statue on Nelson's Column",
+      "facts": {
+        "length": {
+          "phrase": "the height of the statue of Nelson on top of Nelson's Column",
+          "label": "Nelson statue height",
+          "value": 5.5,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Nelson%27s_Column",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "nelson",
+      "clue": "part of a London monument",
+      "hint": "the statue of Admiral Nelson at the top",
+      "fame": 2
+    },
+    {
+      "id": "buckingham",
+      "name": "Buckingham Palace",
+      "facts": {
+        "count": {
+          "phrase": "the number of rooms in Buckingham Palace",
+          "label": "Buckingham Palace rooms",
+          "value": 775,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.royal.uk/royal-residences-buckingham-palace",
+          "checkedOn": "2026-10-15",
+          "note": "That includes 78 bathrooms."
+        },
+        "date": {
+          "phrase": "Queen Victoria moving into Buckingham Palace",
+          "label": "Victoria moves into the Palace",
+          "value": 1837,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.royal.uk/royal-residences-buckingham-palace",
+          "checkedOn": "2026-10-15",
+          "note": "She was the first sovereign to live there."
+        }
+      },
+      "family": "buckingham",
+      "clue": "a royal residence in London",
+      "hint": "the King's London home at the end of The Mall",
+      "fame": 3
+    },
+    {
+      "id": "hadrian",
+      "name": "Hadrian's Wall",
+      "facts": {
+        "length": {
+          "phrase": "the length of Hadrian's Wall",
+          "label": "Hadrian's Wall length",
+          "value": 117500,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.wikipedia.com/wiki/Hadrians_Wall",
+          "checkedOn": "2026-10-15",
+          "note": "That is 73 miles, or 80 Roman miles."
+        },
+        "date": {
+          "phrase": "the start of building Hadrian's Wall",
+          "label": "Hadrian's Wall begun",
+          "value": 122,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.wikipedia.com/wiki/Hadrians_Wall",
+          "checkedOn": "2026-10-15",
+          "note": "That is 122 AD."
+        }
+      },
+      "family": "hadrian",
+      "clue": "a Roman frontier in northern England",
+      "hint": "the Roman wall across northern England",
+      "fame": 2
+    },
+    {
+      "id": "bowlingball",
+      "name": "A ten-pin bowling ball",
+      "facts": {
+        "weight": {
+          "phrase": "the maximum weight of a ten-pin bowling ball",
+          "label": "Bowling ball weight",
+          "value": 7.26,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.topendsports.com/resources/equipment/ball-weight.htm",
+          "checkedOn": "2026-10-15",
+          "note": "That is 16 pounds."
+        }
+      },
+      "family": "bowlingball",
+      "clue": "a sports ball",
+      "hint": "the heaviest ball allowed in ten-pin bowling",
+      "fame": 3
+    },
+    {
+      "id": "f1car",
+      "name": "A Formula 1 car",
+      "facts": {
+        "speed": {
+          "phrase": "the highest speed recorded by a Formula 1 car in a Grand Prix",
+          "label": "F1 record speed",
+          "value": 372.5,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.williamsf1.com/posts/253b1dc5-aee9-4d3b-b720-8e30f3a83093/how-fast-can-an-f1-car-go",
+          "checkedOn": "2026-10-15",
+          "note": "Valtteri Bottas hit it in a Williams at the 2016 Mexican Grand Prix."
+        }
+      },
+      "family": "f1car",
+      "clue": "a racing car",
+      "hint": "the fastest speed ever recorded in an F1 race",
+      "fame": 3
+    },
+    {
+      "id": "greyhound",
+      "name": "A greyhound",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of a greyhound",
+          "label": "Greyhound top speed",
+          "value": 72,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.dogster.com/lifestyle/how-fast-can-greyhounds-run",
+          "checkedOn": "2026-10-15",
+          "note": "That is about 45 mph, the fastest of any dog breed."
+        },
+        "weight": {
+          "phrase": "the weight of an adult greyhound",
+          "label": "Greyhound weight",
+          "value": 30,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.hillsvet.com.mx/content/dam/cp-sites/hills/hills-vet/es_mx/general/pdf/breeding_ideal_weight_ranges_canine_feline-secured.pdf",
+          "checkedOn": "2026-10-15",
+          "note": "Greyhounds weigh 27 to 32 kilograms."
+        }
+      },
+      "family": "greyhound",
+      "clue": "a racing dog",
+      "hint": "the fastest dog breed",
+      "fame": 3
+    },
+    {
+      "id": "earthorbit",
+      "name": "The Earth in orbit",
+      "facts": {
+        "speed": {
+          "phrase": "the speed of the Earth as it travels around the Sun",
+          "label": "Earth's orbital speed",
+          "value": 107200,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.worldatlas.com/space/how-fast-is-the-earth-moving.html",
+          "checkedOn": "2026-10-15",
+          "note": "That is about 29.8 kilometres every second."
+        }
+      },
+      "family": "earth",
+      "clue": "a planet",
+      "hint": "how fast the Earth moves along its orbit",
+      "fame": 2
+    },
+    {
+      "id": "earthspin",
+      "name": "The spinning Earth",
+      "facts": {
+        "speed": {
+          "phrase": "the speed of the Earth's surface at the equator as it spins",
+          "label": "Earth's spin at the equator",
+          "value": 1670,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://space.com/33527-how-fast-is-earth-moving.html",
+          "checkedOn": "2026-10-15",
+          "note": "At the poles the spin speed is close to zero."
+        }
+      },
+      "family": "earth",
+      "clue": "a spinning planet",
+      "hint": "how fast you move at the equator without going anywhere",
+      "fame": 2
+    },
+    {
+      "id": "motorwaylimit",
+      "name": "The UK motorway speed limit",
+      "facts": {
+        "speed": {
+          "phrase": "the national speed limit for cars on UK motorways",
+          "label": "UK motorway limit",
+          "value": 112.65,
+          "unit": "km/h",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "70 miles per hour is 70 x 1.609344 = 112.65 km/h"
+        }
+      },
+      "family": "motorwaylimit",
+      "clue": "a road rule in Britain",
+      "hint": "the 70 mph limit",
+      "fame": 2
+    },
+    {
+      "id": "cyclist",
+      "name": "The bicycle speed record",
+      "facts": {
+        "speed": {
+          "phrase": "the world record speed on a bicycle, set riding behind a dragster",
+          "label": "Bicycle speed record",
+          "value": 296,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.guinnessworldrecords.com/world-records/541331-fastest-bicycle-speed-in-slipstream-overall",
+          "checkedOn": "2026-10-15",
+          "note": "Denise Mueller-Korenek set it on the Bonneville Salt Flats on 16 September 2018."
+        }
+      },
+      "family": "cyclist",
+      "clue": "a cycling record",
+      "hint": "a woman cyclist in the slipstream of a dragster",
+      "fame": 1
+    },
+    {
+      "id": "cricketspeed",
+      "name": "The fastest cricket delivery",
+      "facts": {
+        "speed": {
+          "phrase": "the fastest recorded delivery in cricket",
+          "label": "Fastest cricket delivery",
+          "value": 161.3,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://guinnessworldrecords.com/world-records/fastest-bowl-of-a-cricket-ball",
+          "checkedOn": "2026-10-15",
+          "note": "Shoaib Akhtar bowled it against England at the 2003 World Cup."
+        }
+      },
+      "family": "cricket",
+      "clue": "a fast bowler",
+      "hint": "the Rawalpindi Express bowling against England",
+      "fame": 2
+    },
+    {
+      "id": "tennisserve",
+      "name": "The fastest tennis serve",
+      "facts": {
+        "speed": {
+          "phrase": "the fastest recorded tennis serve",
+          "label": "Fastest tennis serve",
+          "value": 263.4,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.onlinegambling.com/fastest-tennis-serve",
+          "checkedOn": "2026-10-15",
+          "note": "Sam Groth served it in 2012. It is widely quoted but is not an official record."
+        }
+      },
+      "family": "tennis",
+      "clue": "a big server",
+      "hint": "Sam Groth at a Challenger event in South Korea",
+      "fame": 1
+    },
+    {
+      "id": "premier",
+      "name": "The Premier League",
+      "facts": {
+        "count": {
+          "phrase": "the number of matches in a Premier League season",
+          "label": "Premier League matches",
+          "value": 380,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/List_of_Premier_League_seasons",
+          "checkedOn": "2026-10-15",
+          "note": "20 clubs each play 38 games."
+        },
+        "date": {
+          "phrase": "the formation of the Premier League",
+          "label": "Premier League formed",
+          "value": 1992,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/List_of_Premier_League_seasons",
+          "checkedOn": "2026-10-15",
+          "note": "The first season was 1992-93."
+        }
+      },
+      "family": "premier",
+      "clue": "an English football league",
+      "hint": "the top flight of English football",
+      "fame": 3
+    },
+    {
+      "id": "commons",
+      "name": "The House of Commons",
+      "facts": {
+        "count": {
+          "phrase": "the number of MPs in the House of Commons",
+          "label": "House of Commons MPs",
+          "value": 650,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Number_of_Westminster_MPs",
+          "checkedOn": "2026-10-15",
+          "note": "There is one MP for each constituency."
+        }
+      },
+      "family": "commons",
+      "clue": "a parliament",
+      "hint": "the elected chamber of the UK Parliament",
+      "fame": 2
+    },
+    {
+      "id": "monopoly",
+      "name": "A Monopoly board",
+      "facts": {
+        "count": {
+          "phrase": "the number of spaces on a Monopoly board",
+          "label": "Monopoly board spaces",
+          "value": 40,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://toytales.ca/monopoly-turns-80",
+          "checkedOn": "2026-10-15",
+          "note": "A standard game has 28 properties."
+        },
+        "date": {
+          "phrase": "Parker Brothers buying the rights to Monopoly",
+          "label": "Monopoly bought",
+          "value": 1935,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://toytales.ca/monopoly-turns-80",
+          "checkedOn": "2026-10-15",
+          "note": "They bought the rights on 19 March 1935."
+        }
+      },
+      "family": "monopoly",
+      "clue": "a famous board game",
+      "hint": "the board game with Mayfair and Old Kent Road",
+      "fame": 3
+    },
+    {
+      "id": "monopolyprops",
+      "name": "Monopoly properties",
+      "facts": {
+        "count": {
+          "phrase": "the number of properties that can be bought on a Monopoly board",
+          "label": "Monopoly properties",
+          "value": 28,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://toytales.ca/monopoly-turns-80",
+          "checkedOn": "2026-10-15",
+          "note": "That is 22 streets, 4 stations and 2 utilities."
+        }
+      },
+      "family": "monopoly",
+      "clue": "part of a famous board game",
+      "hint": "the streets, stations and utilities you can buy",
+      "fame": 2
+    },
+    {
+      "id": "cat",
+      "name": "A domestic cat",
+      "facts": {
+        "weight": {
+          "phrase": "the average weight of a domestic cat",
+          "label": "Domestic cat weight",
+          "value": 4.5,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nrich.maths.org/content/id/7449/DiscussChoose.pdf",
+          "checkedOn": "2026-10-15",
+          "note": "That is about 10 pounds."
+        }
+      },
+      "family": "cat",
+      "clue": "a household pet",
+      "hint": "an ordinary house cat",
+      "fame": 3
+    },
+    {
+      "id": "corgi",
+      "name": "A Pembroke Welsh corgi",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an adult Pembroke Welsh corgi",
+          "label": "Corgi weight",
+          "value": 12,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.hillsvet.com.mx/content/dam/cp-sites/hills/hills-vet/es_mx/general/pdf/breeding_ideal_weight_ranges_canine_feline-secured.pdf",
+          "checkedOn": "2026-10-15",
+          "note": "Corgis weigh 10 to 14 kilograms."
+        }
+      },
+      "family": "corgi",
+      "clue": "a small short-legged dog",
+      "hint": "the dog the royal family is famous for",
+      "fame": 3
+    },
+    {
+      "id": "fourminutemile",
+      "name": "A four-minute mile",
+      "facts": {
+        "speed": {
+          "phrase": "the speed needed to run a mile in four minutes",
+          "label": "Four-minute mile speed",
+          "value": 24.14,
+          "unit": "km/h",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "1.609344 km in 4 minutes is 24.14 km/h"
+        }
+      },
+      "family": "fourminutemile",
+      "clue": "a famous barrier in running",
+      "hint": "the barrier Roger Bannister broke in 1954",
+      "fame": 2
+    },
+    {
+      "id": "statuealone",
+      "name": "The Statue of Liberty (statue only)",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Statue of Liberty without its pedestal",
+          "label": "Statue without pedestal",
+          "value": 46.05,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nps.gov/stli/historyculture/statue-statistics.htm",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "statue",
+      "fame": 3
+    },
+    {
+      "id": "titanicbeam",
+      "name": "The Titanic's width",
+      "facts": {
+        "length": {
+          "phrase": "the width (beam) of the Titanic",
+          "label": "Titanic width",
+          "value": 28.2,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.titanicofficers.com/titanic.html",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "titanic",
+      "fame": 1,
+      "clue": "part of a famous ocean liner",
+      "hint": "the widest point of the Titanic's hull"
+    },
+    {
+      "id": "titanicheight",
+      "name": "The Titanic's height",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Titanic from keel to funnel tops",
+          "label": "Titanic height",
+          "value": 53.3,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.titanicofficers.com/titanic.html",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "titanic",
+      "fame": 1,
+      "clue": "part of a famous ocean liner",
+      "hint": "from the keel to the top of the funnels"
+    },
+    {
+      "id": "concordespan",
+      "name": "Concorde's wingspan",
+      "facts": {
+        "length": {
+          "phrase": "the wingspan of Concorde",
+          "label": "Concorde wingspan",
+          "value": 25.6,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://cgtrader.com/3d-models/aircraft/jet/aerospatiale-bac-concorde-962f9f33-7bb7-4596-9db9-12817cf0a289",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "concorde",
+      "fame": 1,
+      "clue": "part of a supersonic airliner",
+      "hint": "Concorde's delta wing, tip to tip"
+    },
+    {
+      "id": "wrightlength",
+      "name": "The Wright Flyer's length",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Wright Flyer",
+          "label": "Wright Flyer length",
+          "value": 6.43,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Wright_Flyer",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "wright",
+      "fame": 1,
+      "clue": "the first powered aeroplane",
+      "hint": "the aircraft that flew at Kitty Hawk in 1903"
+    },
+    {
+      "id": "bigbendial",
+      "name": "Big Ben's clock dial",
+      "facts": {
+        "length": {
+          "phrase": "the diameter of a Big Ben clock dial",
+          "label": "Big Ben dial",
+          "value": 7,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Big_Ben",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "bigben",
+      "fame": 1,
+      "clue": "part of London's most famous clock",
+      "hint": "one of the four clock faces of Big Ben"
+    },
+    {
+      "id": "bigbenbell",
+      "name": "Big Ben's bell height",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Big Ben bell",
+          "label": "Big Ben bell height",
+          "value": 2.2,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Big_Ben",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "bigben",
+      "fame": 1,
+      "clue": "part of London's most famous clock",
+      "hint": "the Great Bell, which is Big Ben itself"
+    },
+    {
+      "id": "washington",
+      "name": "The Washington Monument",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Washington Monument",
+          "label": "Washington Monument",
+          "value": 169,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nps.gov/jeff/planyourvisit/arch-height.htm",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 2
+    },
+    {
+      "id": "unity",
+      "name": "The Statue of Unity",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Statue of Unity in India (without its base)",
+          "label": "Statue of Unity",
+          "value": 182,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.wandernundmehr.at/faq/was-ist-das-hochste-nationaldenkmal",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 2
+    },
+    {
+      "id": "shard",
+      "name": "The Shard",
+      "facts": {
+        "length": {
+          "phrase": "the height of The Shard in London",
+          "label": "The Shard",
+          "value": 310,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.som.com/?p=8345",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "giraffe",
+      "name": "A giraffe",
+      "facts": {
+        "weight": {
+          "phrase": "the average weight of an adult giraffe",
+          "label": "Giraffe (average)",
+          "value": 1000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
+          "checkedOn": "2026-10-15",
+          "note": "Large males can reach 1,900 kg."
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "hippo",
+      "name": "A hippo",
+      "facts": {
+        "weight": {
+          "phrase": "the average weight of an adult hippopotamus",
+          "label": "Hippo (average)",
+          "value": 1800,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 2
+    },
+    {
+      "id": "elephant",
+      "name": "An elephant",
+      "facts": {
+        "weight": {
+          "phrase": "the average weight of an adult African bush elephant",
+          "label": "African elephant (average)",
+          "value": 6000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
+          "checkedOn": "2026-10-15",
+          "note": "The record is over 10 tonnes."
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "humpback",
+      "name": "A humpback whale",
+      "facts": {
+        "weight": {
+          "phrase": "the average weight of an adult humpback whale",
+          "label": "Humpback whale (average)",
+          "value": 29000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 2
+    },
+    {
+      "id": "sperm",
+      "name": "A sperm whale",
+      "facts": {
+        "weight": {
+          "phrase": "the average weight of an adult sperm whale",
+          "label": "Sperm whale (average)",
+          "value": 31250,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 2
+    },
+    {
+      "id": "bluewhale",
+      "name": "A blue whale",
+      "facts": {
+        "weight": {
+          "phrase": "the average weight of an adult blue whale",
+          "label": "Blue whale (average)",
+          "value": 110000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
+          "checkedOn": "2026-10-15",
+          "note": "The record is about 190 tonnes."
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "foundation",
+      "name": "The Statue of Liberty's foundation",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of the Statue of Liberty's concrete foundation",
+          "label": "Statue's concrete foundation",
+          "value": 24494000,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nps.gov/stli/historyculture/statue-statistics.htm",
+          "checkedOn": "2026-10-15",
+          "note": "That is 54 million pounds."
+        }
+      },
+      "family": "statue",
+      "fame": 1,
+      "clue": "part of a famous statue",
+      "hint": "the concrete block under the Statue of Liberty"
+    },
+    {
+      "id": "apollo10",
+      "name": "Apollo 10",
+      "facts": {
+        "speed": {
+          "phrase": "the fastest speed humans have travelled (Apollo 10)",
+          "label": "Apollo 10 return speed",
+          "value": 39897,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.drivespark.com/off-beat/fastest-vehicles-in-the-world-across-land-water-air-space/articlecontent-pf18738-010560.html",
+          "checkedOn": "2026-10-15",
+          "note": "It set the record on 26 May 1969."
+        },
+        "date": {
+          "phrase": "the Apollo 10 record-setting return to Earth",
+          "label": "Apollo 10 returns",
+          "value": 1969,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.redbull.com/jp-ja/incredible-speed-records-achieved-by-humans",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "apollo10",
+      "fame": 2
+    },
+    {
+      "id": "sr71",
+      "name": "The SR-71",
+      "facts": {
+        "speed": {
+          "phrase": "the speed record of the SR-71 Blackbird",
+          "label": "SR-71 record",
+          "value": 3530,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://tvovermind.com/fastest-things-humans-invented/",
+          "checkedOn": "2026-10-15"
+        },
+        "date": {
+          "phrase": "the SR-71's air speed record flight",
+          "label": "SR-71 record flight",
+          "value": 1976,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://tpautorepair.net/what-is-the-worlds-highest-speed-record/",
+          "checkedOn": "2026-10-15",
+          "note": "It set the record on 28 July 1976."
+        }
+      },
+      "family": "sr71",
+      "fame": 2
+    },
+    {
+      "id": "maglev",
+      "name": "The record maglev train",
+      "facts": {
+        "speed": {
+          "phrase": "the speed record of a maglev train",
+          "label": "Maglev train record",
+          "value": 603,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.blick.ch/fr/monde/plus-haut-plus-vite-plus-loin-les-11-machines-les-plus-rapides-du-monde-id18312982.html",
+          "checkedOn": "2026-10-15",
+          "note": "Japan's L0 Series set it in April 2015."
+        },
+        "date": {
+          "phrase": "the maglev train's 603 km/h record run",
+          "label": "Maglev record run",
+          "value": 2015,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.blick.ch/fr/monde/plus-haut-plus-vite-plus-loin-les-11-machines-les-plus-rapides-du-monde-id18312982.html",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "maglev",
+      "fame": 2
+    },
+    {
+      "id": "bugatti",
+      "name": "The Bugatti Chiron",
+      "facts": {
+        "speed": {
+          "phrase": "the one-way record speed of a Bugatti Chiron Super Sport 300+",
+          "label": "Bugatti record",
+          "value": 490,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.xataka.com/energia/thrust-ssc-a-393-044-km-h-sonda-parker-vehiculos-rapidos-hechos-hombre-sus-record-velocidad",
+          "checkedOn": "2026-10-15",
+          "note": "That run was one-way in a modified car."
+        },
+        "date": {
+          "phrase": "the Bugatti Chiron's 490 km/h record run",
+          "label": "Bugatti record run",
+          "value": 2019,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.xataka.com/energia/thrust-ssc-a-393-044-km-h-sonda-parker-vehiculos-rapidos-hechos-hombre-sus-record-velocidad",
+          "checkedOn": "2026-10-15",
+          "note": "It happened on 2 August 2019."
+        }
+      },
+      "family": "bugatti",
+      "fame": 2
+    },
+    {
+      "id": "cheetah",
+      "name": "A cheetah",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of a cheetah",
+          "label": "Cheetah top speed",
+          "value": 110,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Fastest_animals",
+          "checkedOn": "2026-10-15",
+          "note": "Measured top speeds run from about 93 to 121 km/h."
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "falcon",
+      "name": "A peregrine falcon",
+      "facts": {
+        "speed": {
+          "phrase": "the diving speed of a peregrine falcon",
+          "label": "Peregrine falcon dive",
+          "value": 389,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Fastest_animals",
+          "checkedOn": "2026-10-15",
+          "note": "It is the fastest animal on Earth."
+        }
+      },
+      "fame": 2
+    },
+    {
+      "id": "bolt",
+      "name": "Usain Bolt",
+      "facts": {
+        "speed": {
+          "phrase": "Usain Bolt's peak sprinting speed",
+          "label": "Usain Bolt, peak",
+          "value": 44,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.futura-sciences.com/en/?p=9370",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "sound",
+      "name": "Sound",
+      "facts": {
+        "speed": {
+          "phrase": "the speed of sound in air at 20 degrees C",
+          "label": "Speed of sound",
+          "value": 1235,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.xataka.com/energia/thrust-ssc-a-393-044-km-h-sonda-parker-vehiculos-rapidos-hechos-hombre-sus-record-velocidad",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "alexander",
+      "name": "Alexander the Great",
+      "facts": {
+        "date": {
+          "phrase": "the death of Alexander the Great",
+          "label": "Alexander dies",
+          "value": -323,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://sheg.stanford.edu/sites/default/files/download-pdf/Cleopatra%20Student%20Materials.pdf",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 2
+    },
+    {
+      "id": "caesar",
+      "name": "Julius Caesar",
+      "facts": {
+        "date": {
+          "phrase": "the assassination of Julius Caesar",
+          "label": "Caesar assassinated",
+          "value": -44,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.history.com/this-day-in-history/august-10/cleopatra-commits-suicide",
+          "checkedOn": "2026-10-15",
+          "note": "He was killed on the Ides of March."
+        }
+      },
+      "fame": 2
+    },
+    {
+      "id": "cleopatra",
+      "name": "Cleopatra",
+      "facts": {
+        "date": {
+          "phrase": "the death of Cleopatra",
+          "label": "Cleopatra dies",
+          "value": -30,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.history.com/this-day-in-history/august-10/cleopatra-commits-suicide",
+          "checkedOn": "2026-10-15",
+          "warmup": true
+        }
+      },
+      "fame": 2
+    },
+    {
+      "id": "hastings",
+      "name": "The Battle of Hastings",
+      "facts": {
+        "date": {
+          "phrase": "the Battle of Hastings",
+          "label": "Battle of Hastings",
+          "value": 1066,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.teachervision.com/world-history/resource/3851.html",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "magna",
+      "name": "Magna Carta",
+      "facts": {
+        "date": {
+          "phrase": "the sealing of Magna Carta",
+          "label": "Magna Carta",
+          "value": 1215,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.teachervision.com/world-history/resource/3851.html",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "gutenberg",
+      "name": "The Gutenberg Bible",
+      "facts": {
+        "date": {
+          "phrase": "the printing of the Gutenberg Bible",
+          "label": "Gutenberg Bible",
+          "value": 1455,
+          "unit": "year",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.teachervision.com/world-history/resource/3851.html",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 2
+    },
+    {
+      "id": "columbus",
+      "name": "Columbus",
+      "facts": {
+        "date": {
+          "phrase": "Columbus's first landing in the Americas",
+          "label": "Columbus lands",
+          "value": 1492,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.teachervision.com/world-history/resource/3851.html",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "fire",
+      "name": "The Great Fire of London",
+      "facts": {
+        "date": {
+          "phrase": "the Great Fire of London",
+          "label": "Great Fire of London",
+          "value": 1666,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://vocapp.com/history-flashcards-3372796",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "declaration",
+      "name": "The Declaration of Independence",
+      "facts": {
+        "date": {
+          "phrase": "the US Declaration of Independence",
+          "label": "Declaration of Independence",
+          "value": 1776,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.teachervision.com/world-history/resource/3851.html",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "bastille",
+      "name": "The French Revolution",
+      "facts": {
+        "date": {
+          "phrase": "the start of the French Revolution",
+          "label": "French Revolution begins",
+          "value": 1789,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.teachervision.com/world-history/resource/3851.html",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "ww1",
+      "name": "The First World War",
+      "facts": {
+        "date": {
+          "phrase": "the start of the First World War",
+          "label": "WW1 begins",
+          "value": 1914,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.teachervision.com/world-history/resource/3851.html",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "wall",
+      "name": "The Berlin Wall",
+      "facts": {
+        "date": {
+          "phrase": "the fall of the Berlin Wall",
+          "label": "Berlin Wall falls",
+          "value": 1989,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://britannica.com/quiz/what-very-big-thing-happened-on-this-day",
+          "checkedOn": "2026-10-15",
+          "note": "It fell on 9 November 1989."
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "moon",
+      "name": "The Moon landing",
+      "facts": {
+        "date": {
+          "phrase": "the first Moon landing",
+          "label": "First Moon landing",
+          "value": 1969,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://britannica.com/quiz/what-very-big-thing-happened-on-this-day",
+          "checkedOn": "2026-10-15",
+          "note": "Armstrong stepped out on 20 July 1969."
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "bones",
+      "name": "Human bones",
+      "facts": {
+        "count": {
+          "phrase": "the number of bones in an adult human body",
+          "label": "Adult human bones",
+          "value": 206,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.themeasureofthings.com/CountOfThings/results.php?amt=127",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "elements",
+      "name": "The periodic table",
+      "facts": {
+        "count": {
+          "phrase": "the number of elements in the periodic table",
+          "label": "Chemical elements",
+          "value": 118,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.themeasureofthings.com/CountOfThings/results.php?amt=127",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "fame": 2
+    },
+    {
+      "id": "eiffelpieces",
+      "name": "The Eiffel Tower's iron pieces",
+      "facts": {
+        "count": {
+          "phrase": "the number of metal pieces in the Eiffel Tower",
+          "label": "Eiffel Tower metal pieces",
+          "value": 18038,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.wral.com/eiffel-tower-fast-facts/21522017/",
+          "checkedOn": "2026-10-15"
+        }
+      },
+      "family": "eiffel",
+      "fame": 1,
+      "clue": "a famous Paris landmark",
+      "hint": "the pieces of wrought iron that make up the Eiffel Tower"
+    },
+    {
+      "id": "rivets",
+      "name": "The Titanic's rivets",
+      "facts": {
+        "count": {
+          "phrase": "the number of rivets used to build the Titanic",
+          "label": "Titanic rivets",
+          "value": 3000000,
+          "unit": "",
+          "approx": true,
+          "status": "verified",
+          "source": "https://simple.wikipedia.com/wiki/Titanic",
+          "checkedOn": "2026-10-15",
+          "note": "Sources say nearly three million."
+        }
+      },
+      "family": "titanic",
+      "fame": 1,
+      "clue": "a famous ocean liner",
+      "hint": "the rivets that held the Titanic's hull together"
+    },
+    {
+      "id": "players",
+      "name": "A football match",
+      "facts": {
+        "count": {
+          "phrase": "the number of players on the pitch at kick-off in football",
+          "label": "Players on the pitch",
+          "value": 22,
+          "unit": "",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "Laws of the Game: 11 per side"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "letters",
+      "name": "The alphabet",
+      "facts": {
+        "count": {
+          "phrase": "the number of letters in the English alphabet",
+          "label": "Letters in the alphabet",
+          "value": 26,
+          "unit": "",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "Definition of the alphabet"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "teeth",
+      "name": "Adult teeth",
+      "facts": {
+        "count": {
+          "phrase": "the number of teeth in a full adult set",
+          "label": "Adult teeth",
+          "value": 32,
+          "unit": "",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "28 plus 4 wisdom teeth"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "dice",
+      "name": "A pair of dice",
+      "facts": {
+        "count": {
+          "phrase": "the number of dots on a pair of dice",
+          "label": "Dots on two dice",
+          "value": 42,
+          "unit": "",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "Arithmetic: 21 per die"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "states",
+      "name": "The United States",
+      "facts": {
+        "count": {
+          "phrase": "the number of US states",
+          "label": "US states",
+          "value": 50,
+          "unit": "",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "Fixed since 1959"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "cards",
+      "name": "A deck of cards",
+      "facts": {
+        "count": {
+          "phrase": "the number of cards in a standard deck",
+          "label": "Cards in a deck",
+          "value": 52,
+          "unit": "",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "Definition of a standard deck"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "chess",
+      "name": "A chess board",
+      "facts": {
+        "count": {
+          "phrase": "the number of squares on a chess board",
+          "label": "Chess squares",
+          "value": 64,
+          "unit": "",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "Arithmetic: 8 x 8"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "piano",
+      "name": "A piano",
+      "facts": {
+        "count": {
+          "phrase": "the number of keys on a standard piano",
+          "label": "Piano keys",
+          "value": 88,
+          "unit": "",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "Definition of a standard piano"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "tiles",
+      "name": "Scrabble tiles",
+      "facts": {
+        "count": {
+          "phrase": "the number of tiles in a standard Scrabble set",
+          "label": "Scrabble tiles",
+          "value": 100,
+          "unit": "",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "Rules of Scrabble"
+        }
+      },
+      "fame": 2
+    },
+    {
+      "id": "scrabble",
+      "name": "A Scrabble board",
+      "facts": {
+        "count": {
+          "phrase": "the number of squares on a Scrabble board",
+          "label": "Scrabble squares",
+          "value": 225,
+          "unit": "",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "Arithmetic: 15 x 15"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "week",
+      "name": "A week",
+      "facts": {
+        "count": {
+          "phrase": "the number of hours in a week",
+          "label": "Hours in a week",
+          "value": 168,
+          "unit": "",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "Arithmetic: 7 x 24"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "days",
+      "name": "A year",
+      "facts": {
+        "count": {
+          "phrase": "the number of days in a non-leap year",
+          "label": "Days in a year",
+          "value": 365,
+          "unit": "",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "Calendar definition"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "minday",
+      "name": "A day",
+      "facts": {
+        "count": {
+          "phrase": "the number of minutes in a day",
+          "label": "Minutes in a day",
+          "value": 1440,
+          "unit": "",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "Arithmetic: 24 x 60"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "sechour",
+      "name": "An hour",
+      "facts": {
+        "count": {
+          "phrase": "the number of seconds in an hour",
+          "label": "Seconds in an hour",
+          "value": 3600,
+          "unit": "",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "Arithmetic: 60 x 60"
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "secday",
+      "name": "A day in seconds",
+      "facts": {
+        "count": {
+          "phrase": "the number of seconds in a day",
+          "label": "Seconds in a day",
+          "value": 86400,
+          "unit": "",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "Arithmetic: 24 x 3600",
+          "warmup": true
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "minyear",
+      "name": "A year in minutes",
+      "facts": {
+        "count": {
+          "phrase": "the number of minutes in a non-leap year",
+          "label": "Minutes in a year",
+          "value": 525600,
+          "unit": "",
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "basis": "Arithmetic: 365 x 1440",
+          "warmup": true
+        }
+      },
+      "fame": 3
+    },
+    {
+      "id": "golfball",
+      "name": "A golf ball",
+      "facts": {
+        "weight": {
+          "phrase": "the maximum weight of a golf ball",
+          "label": "Golf ball weight",
+          "value": 0.04593,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.topendsports.com/resources/equipment/ball-weight.htm",
+          "checkedOn": "2026-10-15",
+          "note": "That is 1.62 ounces.",
+          "warmup": true
+        }
+      },
+      "family": "golfball",
+      "clue": "a small sports ball",
+      "hint": "the heaviest a golf ball is allowed to be"
+    },
+    {
+      "id": "tennisball",
+      "name": "A tennis ball",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a tennis ball",
+          "label": "Tennis ball weight",
+          "value": 0.0577,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.topendsports.com/resources/equipment/ball-weight.htm",
+          "checkedOn": "2026-10-15",
+          "note": "The rules allow 56.0 to 59.4 grams.",
+          "warmup": true
+        }
+      },
+      "family": "tennis",
+      "clue": "a sports ball",
+      "hint": "the ball used at Wimbledon"
+    },
+    {
+      "id": "cricketball",
+      "name": "A cricket ball",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a cricket ball",
+          "label": "Cricket ball weight",
+          "value": 0.1595,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://lords.org/mcc/laws/the-ball",
+          "checkedOn": "2026-10-15",
+          "note": "The laws allow 155.9 to 163 grams.",
+          "warmup": true
+        }
+      },
+      "family": "cricket",
+      "clue": "a sports ball",
+      "hint": "the hard red leather ball"
+    },
+    {
+      "id": "footballball",
+      "name": "A football",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a football",
+          "label": "Football weight",
+          "value": 0.43,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.theifab.com/laws/chapter/22/section/32",
+          "checkedOn": "2026-10-15",
+          "note": "The laws allow 410 to 450 grams.",
+          "warmup": true
+        }
+      },
+      "family": "football",
+      "clue": "a sports ball",
+      "hint": "a regulation size 5 football"
+    },
+    {
+      "id": "tortoise",
+      "name": "The fastest tortoise",
+      "facts": {
+        "speed": {
+          "phrase": "the world record speed for a tortoise",
+          "label": "Tortoise speed record",
+          "value": 1,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.guinnessworldrecords.com/world-records/77951-fastest-tortoise",
+          "checkedOn": "2026-10-15",
+          "note": "Bertie, a leopard tortoise, covered 5.48 metres in 19.59 seconds in 2014.",
+          "warmup": true
+        }
+      },
+      "family": "tortoise",
+      "clue": "a slow reptile",
+      "hint": "Bertie, a leopard tortoise from Durham"
+    }
+  ]
+}

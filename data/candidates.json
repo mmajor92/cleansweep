@@ -1,0 +1,251 @@
+{
+  "schema": 1,
+  "note": "Facts that are NOT verified. They are never used in daily puzzles. Move an entry to facts.json only after adding a source and a checkedOn date.",
+  "entities": [
+    {
+      "id": "pool",
+      "category": "length",
+      "label": "Olympic pool length",
+      "value": 50,
+      "needs": "source"
+    },
+    {
+      "id": "pitch",
+      "category": "length",
+      "label": "Football pitch length (FIFA standard)",
+      "value": 105,
+      "needs": "source"
+    },
+    {
+      "id": "hoover",
+      "category": "length",
+      "label": "Hoover Dam height",
+      "value": 221,
+      "needs": "source"
+    },
+    {
+      "id": "mtblanc",
+      "category": "length",
+      "label": "Mont Blanc height",
+      "value": 4806,
+      "needs": "sources conflict (4,805 to 4,810)"
+    },
+    {
+      "id": "pisa",
+      "category": "length",
+      "label": "Leaning Tower of Pisa height",
+      "value": 56,
+      "needs": "source"
+    },
+    {
+      "id": "liberty",
+      "category": "weight",
+      "label": "Liberty Bell",
+      "value": 943,
+      "needs": "source"
+    },
+    {
+      "id": "grandpiano",
+      "category": "weight",
+      "label": "Concert grand piano",
+      "value": 450,
+      "needs": "source (Steinway D is about 449 kg)"
+    },
+    {
+      "id": "b737",
+      "category": "weight",
+      "label": "737-800 empty weight",
+      "value": 41400,
+      "needs": "source"
+    },
+    {
+      "id": "ford",
+      "category": "weight",
+      "label": "USS Gerald R. Ford",
+      "value": 101600000,
+      "needs": "source"
+    },
+    {
+      "id": "pyramidweight",
+      "category": "weight",
+      "label": "Great Pyramid weight",
+      "value": 5900000000,
+      "needs": "source"
+    },
+    {
+      "id": "polar",
+      "category": "weight",
+      "label": "Polar bear (average male)",
+      "value": 450,
+      "needs": "source for an average, ranges vary widely"
+    },
+    {
+      "id": "orca",
+      "category": "weight",
+      "label": "Orca (male)",
+      "value": 5600,
+      "needs": "source"
+    },
+    {
+      "id": "thrustssc",
+      "category": "speed",
+      "label": "ThrustSSC land speed record",
+      "value": 1228,
+      "needs": "official figure (1,227.985 km/h)"
+    },
+    {
+      "id": "gust",
+      "category": "speed",
+      "label": "Strongest wind gust",
+      "value": 408,
+      "needs": "source"
+    },
+    {
+      "id": "b747speed",
+      "category": "speed",
+      "label": "747-400 cruise speed",
+      "value": 913,
+      "needs": "Boeing source (Mach 0.855)"
+    },
+    {
+      "id": "iphone",
+      "category": "date",
+      "label": "First iPhone released",
+      "value": 2007,
+      "needs": "source"
+    },
+    {
+      "id": "ww2",
+      "category": "date",
+      "label": "End of the Second World War",
+      "value": 1945,
+      "needs": "source"
+    },
+    {
+      "id": "vesuvius",
+      "category": "date",
+      "label": "Vesuvius erupts",
+      "value": 79,
+      "needs": "source"
+    },
+    {
+      "id": "shakespeare",
+      "category": "date",
+      "label": "Shakespeare dies",
+      "value": 1616,
+      "needs": "source"
+    },
+    {
+      "id": "phone",
+      "category": "date",
+      "label": "Telephone patented",
+      "value": 1876,
+      "needs": "source"
+    },
+    {
+      "id": "olympics",
+      "category": "date",
+      "label": "First modern Olympics",
+      "value": 1896,
+      "needs": "source"
+    },
+    {
+      "id": "bellx1weight",
+      "category": "weight",
+      "label": "Bell X-1 empty weight",
+      "value": 3175,
+      "needs": "sources conflict (7,000 lb vs 6,130 lb)"
+    },
+    {
+      "id": "x15length",
+      "category": "length",
+      "label": "X-15 length",
+      "value": 15.45,
+      "needs": "variant dependent (X-15 vs X-15A-2); Gemini gave 14.99, sources gave 15.45 to 15.98"
+    },
+    {
+      "id": "x15weight",
+      "category": "weight",
+      "label": "X-15 launch weight",
+      "value": 14200,
+      "needs": "variant dependent (about 14,200 to 25,500 kg)"
+    },
+    {
+      "id": "mircore",
+      "category": "weight",
+      "label": "Mir Core Module mass",
+      "value": 20100,
+      "needs": "Gemini JSON was cut off; value unchecked"
+    },
+    {
+      "id": "spiritbuilt",
+      "category": "count",
+      "label": "Spirit of St. Louis built",
+      "value": 1,
+      "needs": "ambiguous: sister ships and replicas exist"
+    },
+    {
+      "id": "panamalocks",
+      "category": "count",
+      "label": "Panama Canal lock steps per transit",
+      "value": 6,
+      "needs": "wording: 3 steps up and 3 down; Gatun alone has 3 steps and 6 chambers"
+    },
+    {
+      "id": "f9stages",
+      "category": "count",
+      "label": "Falcon 9 stages",
+      "value": 2,
+      "needs": "trivial and duplicates other small counts"
+    },
+    {
+      "id": "lhccollisions",
+      "category": "date",
+      "label": "LHC first collisions",
+      "value": 2010,
+      "needs": "ambiguous: 450 GeV collisions Nov 2009, 3.5 TeV collisions Mar 2010"
+    },
+    {
+      "id": "litrewater",
+      "category": "weight",
+      "label": "Litre of water",
+      "value": 1,
+      "needs": "verified, but isolated: no neighbouring facts within the 4x gap rule, so it never gets asked"
+    },
+    {
+      "id": "greatdane",
+      "category": "weight",
+      "label": "Great Dane weight",
+      "value": 67,
+      "needs": "verified, but isolated: no neighbouring facts within the 4x gap rule, so it never gets asked"
+    },
+    {
+      "id": "walking",
+      "category": "speed",
+      "label": "Average walking speed",
+      "value": 5,
+      "needs": "verified, but isolated: no neighbouring facts within the 4x gap rule, so it never gets asked"
+    },
+    {
+      "id": "briskwalk",
+      "category": "speed",
+      "label": "Brisk walking speed",
+      "value": 6.5,
+      "needs": "verified (about 6.5 km/h), but it almost never gets chosen: needs more speeds between 1 and 25 km/h"
+    },
+    {
+      "id": "tiangong-mass",
+      "category": "weight",
+      "label": "Tiangong mass",
+      "value": 100000,
+      "needs": "sources conflict: about 69 t for the three modules, about 100 t counting visiting craft"
+    },
+    {
+      "id": "hindenburg",
+      "category": "length",
+      "label": "Hindenburg length",
+      "value": 245,
+      "needs": "source"
+    }
+  ]
+}
