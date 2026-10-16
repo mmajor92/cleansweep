@@ -149,7 +149,6 @@ details.facts li { margin: 2px 0; }
   position: absolute; left: -9px; top: -9px; width: 18px; height: 18px; border-radius: 50%;
   background: var(--ink); border: 3px solid var(--surface);
 }
-.old .dot { width: 10px; height: 10px; left: -5px; top: -5px; opacity: .55; border-width: 2px; }
 .new .dot { background: var(--ok); animation: pop .35s ease-out; }
 .new.wrong .dot { background: var(--bad); }
 .tag {
@@ -252,3 +251,62 @@ details.facts p { margin: 8px 0 0; }
 /* the "Play it" link when a new puzzle is ready */
 .linkbtn { font: inherit; color: var(--ink); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
 .linkbtn:focus-visible { outline: 3px solid var(--tape); outline-offset: 3px; }
+
+/* captions at the ends of the ruler, before you answer */
+.endcap { position: absolute; top: calc(50% + 20px); font: 700 13px var(--display); color: var(--muted); }
+.endcap.l { left: 3%; }
+.endcap.r { right: 3%; }
+
+/* the glide ruler.
+   The top slot (the verdict, then the tier), the big answer and the ruler sit in the same place on the reveal and on the
+   question, so nothing at the top moves. When you move on, everything overlaps in one movement (0.85s, same ease as the slide):
+     the old starting dot and its figure fade out,
+     the green or red dot moves to the middle, and its figure rises from under it to above it,
+     and the dot settles to its usual colour as it arrives.
+   Meanwhile the old screen cross-fades into the new one (see src/transition.js). */
+.topslot { min-height: 58px; display: flex; align-items: center; margin: 0 0 8px; }
+.topslot .verdict, .topslot .tierrow { margin: 0; }
+.hintline { min-height: 1.5em; }
+.hintline:not(:empty):not(.ghost) { animation: fadeIn 0.35s ease; }
+.hintline.ghost { animation: fadeOut 0.5s ease 0.25s forwards; }
+.axis.glide { background: var(--tape); overflow: hidden; }
+.axis.glide .ticks {
+  position: absolute; left: -50%; width: 200%; bottom: 0; height: 6px;
+  background: repeating-linear-gradient(90deg, var(--on-tape) 0 2px, transparent 2px 10px);
+}
+.mark-pt.slide { transition: left 0.85s cubic-bezier(0.2, 0.75, 0.25, 1); }
+.mark-pt.leaving { animation: fadeOut 0.85s cubic-bezier(0.2, 0.75, 0.25, 1) forwards; }
+
+/* the answer's figure: under the green or red dot */
+.tag.rider { top: 18px; bottom: auto; left: 0; transform: translate(-50%, 0) scale(1); transform-origin: 50% 0; }
+.tag.rider.at-l { left: -9px; transform: translate(0, 0) scale(1); transform-origin: 0 0; text-align: left; }
+.tag.rider.at-r { left: 9px; transform: translate(-100%, 0) scale(1); transform-origin: 100% 0; text-align: right; }
+.mark-pt.new .tag.rider { opacity: 0; animation: tagIn 0.3s ease 0.55s forwards; }
+@keyframes tagIn { to { opacity: 1; } }
+
+/* then the dot moves to the middle, and the figure rises from under it to above it */
+.mark-pt.glide-in { animation: glideToMiddle 0.85s cubic-bezier(0.2, 0.75, 0.25, 1) forwards; }
+.mark-pt.glide-in .tag.rider { animation: riseAbove 0.85s cubic-bezier(0.2, 0.75, 0.25, 1) forwards; }
+.mark-pt.glide-in.from-ok .dot { background: var(--ok); }
+.mark-pt.glide-in.from-wrong .dot { background: var(--bad); }
+.mark-pt.glide-in .dot { animation: settle 0.3s ease 0.55s forwards; }
+/* at the halfway point the figure changes as it goes: the old one fades out as the new one fades in */
+.tag.rider .fig-old { animation: fadeOut 0.85s cubic-bezier(0.2, 0.75, 0.25, 1) forwards; }
+.tag.rider .fig-new { position: absolute; left: 50%; top: 0; transform: translateX(-50%); white-space: nowrap; opacity: 0; animation: fadeIn 0.85s cubic-bezier(0.2, 0.75, 0.25, 1) forwards; }
+@keyframes glideToMiddle { from { left: var(--from); } to { left: 50%; } }
+@keyframes riseAbove { to { top: -18px; left: 0; transform: translate(-50%, -100%) scale(1); text-align: center; } }
+@keyframes fadeOut { to { opacity: 0; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes settle { to { background: var(--ink); } }
+@media (prefers-reduced-motion: reduce) {
+  .mark-pt.slide { transition: none; }
+  .mark-pt.leaving { display: none; }
+  .mark-pt.glide-in, .mark-pt.glide-in .dot, .mark-pt.glide-in .tag.rider, .mark-pt.new .tag.rider, .hintline { animation: none; }
+  .mark-pt.glide-in { left: 50%; }
+  .mark-pt.glide-in .dot { background: var(--ink); }
+  .mark-pt.glide-in .tag.rider { top: -18px; left: 0; transform: translate(-50%, -100%) scale(1); text-align: center; }
+  .tag.rider .fig-old { display: none; }
+  .tag.rider .fig-new { animation: none; opacity: 1; }
+  .mark-pt.new .tag.rider { opacity: 1; }
+  .hintline.ghost { display: none; }
+}

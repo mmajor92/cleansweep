@@ -27,7 +27,7 @@ export function valueParts(category, item) {
       if (v < 1000) return { num: pre + formatNumber(v), unit: "kg" };
       const t = v / 1000;
       if (t >= 1e6) return { num: pre + formatNumber(t / 1e6), unit: "million tonnes" };
-      return { num: pre + formatNumber(t), unit: "tonnes" };
+      return { num: pre + formatNumber(t), unit: t === 1 ? "tonne" : "tonnes" };
     }
     default:
       throw new Error(`unknown category: ${category}`);

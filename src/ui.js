@@ -1,5 +1,7 @@
 // Rendering and game flow. The only module that touches the DOM.
-import { CATEGORIES, RULES, correctPick, countdownText, puzzleNumber, streaks, shareText } from "./engine.js";
+import { CATEGORIES, RULES, correctPick, countdownText, gapRatio, puzzleNumber, streaks, shareText } from "./engine.js";
+import { slideAt } from "./ruler.js";
+import { captureScreen, playTransition } from "./transition.js";
 import { valueParts, valueText, differenceText, questionText } from "./format.js";
 import { questionDeep, questionRatios, scoreRun, tierFor, SCORING } from "./score.js";
 import { loadState, saveState, recordPick, completeDay, currentStreak, dayRecord, prune, markPracticeDone, practiceNext } from "./store.js";
@@ -122,6 +124,7 @@ export function mountGame(env) {
     S.picks.push(pick);
     S.results.push(ok);
     S.last = { ok };
+    S.lastAt = slideAt(itemAt(S.q).cat, S.prev.value, item.value);
     S.phase = "reveal";
     if (S.mode === "daily") {
       recordPick(store, todayNum, pick);
@@ -144,12 +147,22 @@ export function mountGame(env) {
           saveState(storage, store);
         }
       } else if (S.q === P.n1 - 1) {
+        // The halfway point: the same object, in a new category. It glides to the middle like any other answer,
+        // and its old figure fades out as its new figure fades in.
         S.phase = "ask"; // no separate hinge screen: the next question shows the new starting point
+        S.glideOldFig = valueText(itemAt(S.q).cat, S.prev);
+        S.glideFigOld = valueText(itemAt(S.q).cat, item);
+        S.glideFrom = S.lastAt;
+        S.glideOk = !!(S.last && S.last.ok);
         S.prev = P.seg2.anchor;
         S.revealed = [P.seg2.anchor.value];
         S.q += 1;
       } else {
         S.revealed.push(item.value);
+        S.glideOldFig = valueText(itemAt(S.q).cat, S.prev); // what the old starting dot showed, which fades away
+        S.glideFigOld = null;
+        S.glideFrom = S.lastAt; // the answer you just saw moves to the middle
+        S.glideOk = !!(S.last && S.last.ok); // and keeps its green or red until it arrives
         S.prev = item;
         S.q += 1;
         S.phase = "ask";
@@ -160,66 +173,89 @@ export function mountGame(env) {
   }
 
   /* ---------- ruler ---------- */
-  function pos(cat, v, vals) {
-    const mn = Math.min(...vals);
-    const mx = Math.max(...vals);
-    let p;
-    if (CATEGORIES[cat].scale === "log") {
-      const lo = mn * 0.8;
-      const hi = mx * 1.25;
-      p = (Math.log(v) - Math.log(lo)) / (Math.log(hi) - Math.log(lo));
+  const calmMotion = () => typeof globalThis.matchMedia === "function" && globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // The glide ruler. Your current value is always in the middle, labelled above the dot.
+  // After you answer, the new dot slides out of the middle with its figure under it.
+  // When you move on, the old starting dot fades, and the green or red dot and its label glide to the middle together:
+  // the figure rises from under the dot to above it and stays there as the new starting figure.
+  // Nothing on it depends on anything you have not seen, so it cannot hint at the answer.
+  function rulerHTML(cat, newItem, wrong) {
+    const side = (p) => (p < 20 ? " at-l" : p > 80 ? " at-r" : " at-c");
+    const fig = (it) => `<b>${valueText(cat, it)}</b>`; // just the figure: the name is in the big answer at the top
+    const calm = calmMotion();
+    const from = S.glideFrom; // where the answer dot sat on the reveal screen, if it should now move to the middle
+    const gliding = !newItem && !calm && !!S.glideOldFig && from !== null && from !== undefined && Math.abs(from - 50) > 0.5;
+    let dots;
+    if (gliding) {
+      // At the halfway point it is the same object in a new category: its old figure fades out as the new one fades in.
+      const figure = S.glideFigOld ? `<b class="fig-old">${S.glideFigOld}</b><b class="fig-new">${valueText(cat, S.prev)}</b>` : fig(S.prev);
+      dots =
+        `<div class="mark-pt leaving" style="left:50%"><span class="dot"></span><span class="tag above"><b>${S.glideOldFig}</b></span></div>` +
+        `<div class="mark-pt prev glide-in ${S.glideOk ? "from-ok" : "from-wrong"}" style="left:${from}%;--from:${from}%"><span class="dot"></span>` +
+        `<span class="tag rider${side(from)}">${figure}</span></div>`;
     } else {
-      p = mx === mn ? 0.5 : (v - mn) / (mx - mn);
+      dots = `<div class="mark-pt prev" style="left:50%"><span class="dot"></span><span class="tag above">${fig(S.prev)}</span></div>`;
     }
-    return 14 + 72 * p;
+    let landed = "";
+    let caps = "";
+    if (newItem) {
+      const to = slideAt(cat, S.prev.value, newItem.value);
+      landed =
+        `<div class="mark-pt new slide${wrong ? " wrong" : ""}" style="left:50%" data-to="${to}"><span class="dot"></span>` +
+        `<span class="tag rider${side(to)}">${fig(newItem)}</span></div>`;
+    } else {
+      const b = CATEGORIES[cat].buttons;
+      caps = `<span class="endcap l">&larr; ${b[0]}</span><span class="endcap r">${b[1]} &rarr;</span>`;
+    }
+    return `<div class="ruler" aria-hidden="true"><div class="axis glide"><div class="ticks"></div></div>${dots}${landed}${caps}</div>`;
   }
 
-  function rulerHTML(cat, seg, showNew, newItem, wrong) {
-    const vals = [seg.anchor.value, ...seg.items.map((i) => i.value)];
-    const pts = [];
-    S.revealed.slice(0, -1).forEach((v) => {
-      pts.push(`<div class="mark-pt old" style="left:${pos(cat, v, vals)}%"><span class="dot"></span></div>`);
-    });
-    const pv = S.revealed[S.revealed.length - 1];
-    pts.push(
-      `<div class="mark-pt prev" style="left:${pos(cat, pv, vals)}%"><span class="dot"></span>` +
-        `<span class="tag above"><b>${valueText(cat, S.prev)}</b>${S.prev.label}</span></div>`
-    );
-    if (showNew) {
-      pts.push(
-        `<div class="mark-pt new${wrong ? " wrong" : ""}" style="left:${pos(cat, newItem.value, vals)}%"><span class="dot"></span>` +
-          `<span class="tag below"><b>${valueText(cat, newItem)}</b>${newItem.label}</span></div>`
-      );
-    }
-    return `<div class="ruler" aria-hidden="true"><div class="axis"></div>${pts.join("")}</div>`;
+  // After the reveal screen is drawn, slide the new dot from your starting point to where the answer is.
+  function startSlide() {
+    const el = root.card.querySelector(".mark-pt.slide");
+    if (!el || !el.getAttribute) return;
+    const to = el.getAttribute("data-to");
+    const go = () => {
+      el.style.left = `${to}%`;
+    };
+    const calm = typeof globalThis.matchMedia === "function" && globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (calm || typeof requestAnimationFrame !== "function") return go();
+    requestAnimationFrame(() => requestAnimationFrame(go));
   }
 
-  /* ---------- views ---------- */
-  function bigHTML(cat, it) {
+  const hintText = (it) => (it && it.hint ? `${it.hint.charAt(0).toUpperCase() + it.hint.slice(1)}.` : "");
+  // The big answer, with a hint line that always takes up its space (empty when there is no hint), so the ruler never moves.
+  function bigBlockHTML(cat, it, hint = "", hintClass = "") {
     const p = valueParts(cat, it);
-    const hint = it.hint ? `<p class="hintline">${it.hint.charAt(0).toUpperCase() + it.hint.slice(1)}.</p>` : "";
-    return `<p class="big">${p.num}${p.unit ? ` <small>${p.unit}</small>` : ""}</p><p class="name">${it.label}</p>${hint}`;
+    return (
+      `<p class="big">${p.num}${p.unit ? ` <small>${p.unit}</small>` : ""}</p><p class="name">${it.label}</p>` +
+      `<p class="hintline${hintClass}">${hint}</p>`
+    );
   }
 
   function tierBadge(q) {
     const t = tierFor(S.ratios[q]);
     const worth = t.mult === 1 ? "worth 1x" : t.mult === 2 ? "worth double" : "worth 1.5x";
-    const deep = S.deep[q]
+    const deep = S.deep[q] && S.mode === "daily"
       ? ` <span class="tier deep">Deep cut</span> <span class="tierworth">+${Math.round((SCORING.deepCut - 1) * 100)}% for an expert question</span>`
       : "";
-    const warm = q === 0 && P.warmUp ? ` <span class="tier warm">Warm-up</span> <span class="tierworth">an easy start</span>` : "";
+    const warm = q === 0 && P.warmUp && S.mode === "daily" ? ` <span class="tier warm">Warm-up</span> <span class="tierworth">an easy start</span>` : "";
     return `<p class="tierrow"><span class="tier ${t.key}">${t.label}</span> <span class="tierworth">${worth}</span>${warm}${deep}</p>`;
   }
 
   function askHTML() {
-    const { cat, seg, item } = itemAt(S.q);
+    const { cat, item } = itemAt(S.q);
     const c = CATEGORIES[cat];
     const first = S.q === 0 || S.q === P.n1;
+    // The top slot (the tier, where the verdict was), the big answer and the ruler sit where they did on the reveal.
+    // A hint shows on the two starting questions. Straight after a reveal it is still there, fading out, so nothing moves.
+    const justRevealed = S.glideFrom !== null && S.glideFrom !== undefined;
+    const hint = first || justRevealed ? hintText(S.prev) : "";
     return (
-      `<p class="kicker">${first ? "Starting point" : "Last answer"}</p>` +
-      bigHTML(cat, S.prev) +
-      rulerHTML(cat, seg, false) +
-      tierBadge(S.q) +
+      `<div class="topslot">${tierBadge(S.q)}</div>` +
+      bigBlockHTML(cat, S.prev, hint, !first && hint ? " ghost" : "") +
+      rulerHTML(cat, null, false) +
       `<p class="ask">${questionText(cat, c.words, item, S.prev)}</p>` +
       (item.clue ? `<p class="clue">(${item.clue})</p>` : "") +
       `<div class="choices">` +
@@ -228,34 +264,35 @@ export function mountGame(env) {
       `</div>`
     );
   }
-
-  function verdictHTML(ok, sc) {
+  function verdictParts(ok, sc) {
     const d = sc.detail[S.q];
     const note = ok
-      ? `${d.tier.label} x${d.difficulty}${d.deep ? `, deep cut x${SCORING.deepCut}` : ""}, sweep x${d.multiplier.toFixed(1)}`
+      ? `${d.tier.label} x${d.difficulty}${d.deep && S.mode === "daily" ? `, deep cut x${SCORING.deepCut}` : ""}, sweep x${d.multiplier.toFixed(1)}`
       : "Sweep broken. Your next right answer starts a new one";
-    return (
-      `<p class="verdict ${ok ? "ok" : "miss"}"><span class="mark">${ok ? "&#10003;" : "&#10005;"}</span>` +
-      `${ok ? "Swept" : "Left in the dust"} <span class="pts">+${d.points}</span></p>` +
-      `<p class="ptsnote">${note}. Score so far: ${sc.total.toLocaleString("en-GB")}</p>`
-    );
+    return {
+      line:
+        `<p class="verdict ${ok ? "ok" : "miss"}"><span class="mark">${ok ? "&#10003;" : "&#10005;"}</span>` +
+        `${ok ? "Swept" : "Left in the dust"} <span class="pts">+${d.points}</span></p>`,
+      note: `<p class="ptsnote">${note}. Score so far: ${sc.total.toLocaleString("en-GB")}</p>`,
+    };
   }
-
   function revealHTML() {
-    const { cat, seg, item } = itemAt(S.q);
+    const { cat, item } = itemAt(S.q);
     const c = CATEGORIES[cat];
     const label = S.q === RULES.chainLength - 1 ? "See result" : "Next question";
+    // The top slot, the big answer and the ruler sit in exactly the same place on the question screen, so nothing jumps.
+    const v = verdictParts(S.last.ok, scoreRun(S.ratios, S.results, S.deep));
     return (
-      verdictHTML(S.last.ok, scoreRun(S.ratios, S.results, S.deep)) +
-      bigHTML(cat, item) +
-      rulerHTML(cat, seg, true, item, !S.last.ok) +
+      `<div class="topslot">${v.line}</div>` +
+      bigBlockHTML(cat, item, hintText(item)) +
+      rulerHTML(cat, item, !S.last.ok) +
+      v.note +
       `<p class="diff">${differenceText(cat, c.words, item, S.prev)}</p>` +
       (item.note ? `<p class="fact">${item.note}</p>` : "") +
       `<div class="row"><button class="btn" id="next">${label}</button></div>`
     );
   }
 
-  // One emoji per question, the same as the share card: a broom for right, a puff of dust for wrong.
   function gridHTML() {
     return S.results.map((r) => (r ? "\u{1F9F9}" : "\u{1F4A8}")).join("");
   }
@@ -368,6 +405,7 @@ export function mountGame(env) {
 
   function render() {
     stopCountdown();
+    const movie = !calmMotion() ? captureScreen(root.card) : null;
     renderTop();
     renderChain();
     let focus = null;
@@ -380,6 +418,12 @@ export function mountGame(env) {
     } else {
       root.card.innerHTML = revealHTML();
       focus = "#next";
+    }
+    if (movie && S.phase !== "done") playTransition(movie, { card: root.card, doc: document });
+    if (S.phase === "reveal") startSlide();
+    if (S.phase === "ask") {
+      S.glideFrom = null; // these only play once, straight after the reveal
+      S.glideOldFig = null;
     }
     if (S.phase === "done" && S.mode === "daily") startCountdown();
     if (focus && S.results.length > 0) {

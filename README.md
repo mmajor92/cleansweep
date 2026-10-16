@@ -19,6 +19,12 @@ Every object has a `fame` rating: 3 for things nearly everyone knows (a snooker 
 
 Rating 1 objects are kept out of ordinary slots and are never a hinge. Instead, on about 40% of days one question is a **Deep cut** about one of them. It can be any question from the 3rd to the 7th (never the first two, so nobody loses straight away), at most one per puzzle, and some days there is none. It is tagged before the player answers, worth 50% more, and costs nothing extra if missed. A deep-cut object is not reused within 21 days. Ratings live in `FAME` in `build_data.py`. See `docs/adding-facts.md`.
 
+## The ruler
+
+The yellow tape measure shows how close each answer was. Your current value is always in the middle, so the ruler can never hint at the answer. When you answer, the new dot slides out of the middle: the closer the two values, the less far it goes. When you move on, the dot and its figure glide back to the middle to become the next starting point, and the old screen cross-fades into the new one.
+
+The one rule for how far the dot slides is in `src/ruler.js`. The cross-fade between screens is in `src/transition.js`. The animation timings in `styles.css` and `src/transition.js` have to match, and tests check that they do. All of it is skipped for anyone whose phone is set to reduce motion.
+
 ## Practice
 
 There are exactly two practice puzzles. They are fixed (the same for everyone, never changing with the date), so practice cannot become a way to play endless games. They are offered in the How to play panel, each can be played once per device, and they are not offered once today's puzzle is finished. Practice 1 opens with a Warm-up and practice 2 has a Deep cut, so players meet both badges before the daily. They never touch streaks or best scores. The two puzzles are set by `PRACTICE` in `src/engine.js` and frozen in `puzzles/practice-1.json` and `puzzles/practice-2.json`. To change them, run `npm run practice -- --force` (this replaces the frozen files, so only do it before launch).

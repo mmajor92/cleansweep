@@ -18,6 +18,8 @@ test("weight formatting switches units", () => {
   assert.deepEqual(valueParts("weight", { value: 274 }), { num: "274", unit: "kg" });
   assert.deepEqual(valueParts("weight", { value: 6000, approx: true }), { num: "about 6", unit: "tonnes" });
   assert.deepEqual(valueParts("weight", { value: 53150000 }), { num: "53,150", unit: "tonnes" });
+  assert.deepEqual(valueParts("weight", { value: 1000, approx: true }), { num: "about 1", unit: "tonne" }); // one tonne, not "1 tonnes"
+  assert.deepEqual(valueParts("weight", { value: 1500 }), { num: "1.5", unit: "tonnes" });
   assert.deepEqual(valueParts("weight", { value: 5.9e9 }), { num: "5.9", unit: "million tonnes" });
 });
 

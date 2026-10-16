@@ -2,6 +2,18 @@
 
 The version number is in `src/version.js` and shows at the bottom of the page. Change both together.
 
+## v2
+- **The ruler no longer gives anything away.** It used to be drawn to fit the whole half, so its shape hinted at which way the answer lay (in 44% of questions the answer was certain, if you noticed). Now your current value is always in the middle, and nothing on the ruler depends on anything you have not seen yet.
+- **New movement.** After you answer, the new dot slides out of the middle. The closer the two values, the less far it goes: a close call moves a clear distance, an easy one nearly to the end. When you move on, the old starting dot fades while the green or red dot (and its figure) glide to the middle together, the figure rising from under the dot to above it. It settles to its usual colour as it arrives. At the halfway point (for example height to weight) the same happens, and the figure changes as it goes. It all runs at one speed and ease, with no overshoot.
+- **One smooth movement between screens.** The top slot (the verdict, then the tier), the big answer and the ruler stay put. The old screen cross-fades into the new one, the big answer only fades when it actually changes, and the card eases to its new height without cutting anything off.
+- **The ruler labels show only the figure.** The name stays in the big answer at the top.
+- **Layout.** The tier row ("Close call, worth double") takes the verdict's place at the top of the question screen, and the points note moved below the ruler. The "Last answer" caption is gone.
+- **Hints** show with the big answer on the reveal and on the two starting questions. A hint left over from a reveal fades out, and the hint line keeps its space even when it is empty, so nothing moves.
+- **Practice puzzles no longer show the Warm-up and Deep cut badges.** The daily puzzles still do.
+- **Fixed:** "about 1 tonnes" now reads "about 1 tonne".
+- **Code:** one ruler (the experiments are gone), the ruler's one rule in `src/ruler.js`, the cross-fade in `src/transition.js`, and new tests, including one that plays a whole game and checks every screen.
+- This includes everything from v1.6 to v1.9 (below).
+
 ## v1.9
 - The "Date (question 3 of 7)" line above each question is gone. The chain at the top shows where you are.
 - The "Hinge" screen between the two halves is gone. After the last question of the first half, "Next question" goes straight to the next question, which shows the new starting point.
