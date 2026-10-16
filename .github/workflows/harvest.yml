@@ -1,0 +1,53 @@
+name: Harvest candidate facts
+# Manual only: open the Actions tab, pick "Harvest candidate facts", press "Run workflow".
+# It asks Wikidata for well-known objects with facts in several categories and saves the list as a download
+# on the run page (kept for 30 days). Nothing is committed and the game is never touched.
+# Every candidate still has to be checked against a source before it goes into data/facts.json
+# (see docs/adding-facts.md).
+on:
+  workflow_dispatch:
+    inputs:
+      min_links:
+        description: "How famous: the fewest Wikimedia pages a thing must have (higher means fewer, better known things)"
+        default: "50"
+      limit:
+        description: "The most rows to ask for, for each kind of fact"
+        default: "400"
+      min_categories:
+        description: "Keep things with facts in at least this many categories (2 finds possible bridges)"
+        default: "2"
+permissions:
+  contents: read
+env:
+  MIN_LINKS: ${{ inputs.min_links }}
+  LIMIT: ${{ inputs.limit }}
+  MIN_CATEGORIES: ${{ inputs.min_categories }}
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check the settings are whole numbers
+        run: |
+          for v in "$MIN_LINKS" "$LIMIT" "$MIN_CATEGORIES"; do
+            case "$v" in
+              ''|*[!0-9]*) echo "Not a whole number: '$v'"; exit 1 ;;
+            esac
+          done
+      - name: Ask Wikidata
+        env:
+          # Wikidata asks scripts to say who is calling. The repository address does that, so no email is needed.
+          HARVEST_CONTACT: https://github.com/${{ github.repository }}
+        run: node scripts/harvest.mjs --min-links "$MIN_LINKS" --limit "$LIMIT" --min-categories "$MIN_CATEGORIES" --out "$RUNNER_TEMP/harvest.json"
+      - name: Write a summary on the run page
+        run: node scripts/harvest-summary.mjs "$RUNNER_TEMP/harvest.json" >> "$GITHUB_STEP_SUMMARY"
+      - name: Save the list as a download
+        uses: actions/upload-artifact@v4
+        with:
+          name: harvest-candidates
+          path: ${{ runner.temp }}/harvest.json
+          if-no-files-found: error
+          retention-days: 30
