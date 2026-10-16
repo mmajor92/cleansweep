@@ -159,7 +159,7 @@ export function mountGame(env) {
     const c = CATEGORIES[cat];
     const first = S.q === 0 || S.q === P.n1;
     return (
-      `<p class="kicker">${c.icon} ${c.name} (question ${S.q + 1} of ${RULES.chainLength})</p>` +
+      `<p class="kicker">${c.name} (question ${S.q + 1} of ${RULES.chainLength})</p>` +
       `<p class="kicker">${first ? "Starting point" : "Last answer"}</p>` +
       bigHTML(cat, S.prev) +
       rulerHTML(cat, seg, false) +
@@ -212,12 +212,9 @@ export function mountGame(env) {
     );
   }
 
+  // One emoji per question, the same as the share card: a broom for right, a puff of dust for wrong.
   function gridHTML() {
-    const mark = (r) => (r ? "\u2705" : "\u274C");
-    return (
-      `${CATEGORIES[P.c1].icon}${S.results.slice(0, P.n1).map(mark).join("")} ` +
-      `${CATEGORIES[P.c2].icon}${S.results.slice(P.n1).map(mark).join("")}`
-    );
+    return S.results.map((r) => (r ? "\u{1F9F9}" : "\u{1F4A8}")).join("");
   }
 
   function doneHTML() {
@@ -239,7 +236,7 @@ export function mountGame(env) {
         `<div class="stat"><b>${store.stats.bestPct || 0}%</b><span>best score</span></div></div>`
       : "";
     return (
-      `<p class="kicker">${CATEGORIES[P.c1].icon} ${CATEGORIES[P.c1].name} to ${CATEGORIES[P.c2].icon} ${CATEGORIES[P.c2].name}</p>` +
+      `<p class="kicker">${CATEGORIES[P.c1].name} to ${CATEGORIES[P.c2].name}</p>` +
       `<p class="score">${sc.pct}<small>%</small></p>` +
       `<p class="name">${sc.total.toLocaleString("en-GB")} of ${sc.max.toLocaleString("en-GB")} points. ${msg}</p>` +
       `<p class="name">Longest sweep ${st.longest}. Cleaned ${st.correct} of ${RULES.chainLength}.</p>` +
@@ -276,10 +273,10 @@ export function mountGame(env) {
       const r = S.results[i];
       if (r === true) {
         cls += " ok";
-        txt = "&#10003;";
+        txt = "\u{1F9F9}";
       } else if (r === false) {
         cls += " miss";
-        txt = "&#10005;";
+        txt = "\u{1F4A8}";
       } else if (i === S.results.length && S.phase !== "done") cls += " now";
       if (i > 0 && r === true && S.results[i - 1] === true) cls += " joined";
       if (i === P.n1) cls += " post";
@@ -289,8 +286,8 @@ export function mountGame(env) {
     const st = streaks(S.results);
     root.chain.setAttribute("aria-label", `Sweep: ${st.correct} clean of ${S.results.length} answered`);
     root.caps.innerHTML =
-      `<span style="flex:${P.n1}">${CATEGORIES[P.c1].icon} ${CATEGORIES[P.c1].name}</span>` +
-      `<span style="flex:${P.n2}">${CATEGORIES[P.c2].icon} ${CATEGORIES[P.c2].name}</span>`;
+      `<span style="flex:${P.n1}">${CATEGORIES[P.c1].name}</span>` +
+      `<span style="flex:${P.n2}">${CATEGORIES[P.c2].name}</span>`;
   }
 
   function render() {

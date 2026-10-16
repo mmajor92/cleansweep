@@ -167,7 +167,7 @@ details.facts li { margin: 2px 0; }
 
 /* done */
 .score { font-family: var(--display); font-weight: 800; font-size: 56px; letter-spacing: -0.03em; line-height: 1; margin: 0; }
-.grid-out { font-size: 30px; letter-spacing: 4px; margin: 14px 0 6px; }
+.grid-out { font-size: 30px; letter-spacing: 6px; margin: 14px 0 6px; }
 .toast { min-height: 24px; margin: 10px 0 0; color: var(--muted); font-size: 16px; }
 textarea.copybox { width: 100%; margin-top: 8px; font: 500 15px var(--display); background: var(--bg); color: var(--ink); border: 2px solid var(--line); border-radius: 10px; padding: 10px; resize: none; }
 
@@ -209,3 +209,6 @@ details.facts p { margin: 8px 0 0; }
 .tier.deep { background: var(--ink); border-color: var(--ink); color: var(--bg); }
 .tierrow { flex-wrap: wrap; }
 .tier.warm { border-color: var(--ok); color: var(--ok); }
+
+/* brooms and dust inside the chain */
+.link.ok, .link.miss { font-size: 18px; line-height: 1; }
