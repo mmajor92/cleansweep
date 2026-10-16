@@ -1,67 +1,26 @@
 // Plays a whole game in a pretend page and checks what every screen contains, so a missing piece of a screen is caught.
 import test from "node:test";
 import assert from "node:assert/strict";
-import { execFileSync } from "node:child_process";
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
-import vm from "node:vm";
-import { fileURLToPath } from "node:url";
-import { RULES, buildEntities, correctPick, generateDaily } from "../src/engine.js";
-
-const root = join(fileURLToPath(import.meta.url), "..", "..");
-execFileSync(process.execPath, [join(root, "scripts/build.mjs")], { stdio: "ignore" });
-const page = readFileSync(join(root, "dist/index.html"), "utf8");
-const facts = JSON.parse(readFileSync(join(root, "data/facts.json"), "utf8"));
+import { generateDaily } from "../src/engine.js";
+import { answersFor, entities, openPage } from "./page.mjs";
 
 async function playOneGame() {
-  const [y, m, d] = RULES.launchDate.split("-").map(Number);
-  const at = Date.UTC(y, m - 1, d, 12);
-  const P = generateDaily(1, buildEntities(facts));
-  const items = [...P.seg1.items, ...P.seg2.items];
-  const starts = [];
-  let prev = P.seg1.anchor;
-  for (let q = 0; q < 7; q++) {
-    starts.push(prev);
-    prev = q === P.n1 - 1 ? P.seg2.anchor : items[q];
-  }
-  const els = {};
-  let handler;
-  const el = (id) =>
-    (els[id] ||= { innerHTML: "", textContent: "", hidden: false, style: {}, setAttribute() {}, appendChild() {}, querySelector: () => ({ focus() {}, style: {} }), addEventListener() {} });
-  const RealDate = Date;
-  class FakeDate extends RealDate {
-    constructor(...a) {
-      if (a.length === 0) super(at);
-      else super(...a);
-    }
-    static now() {
-      return at;
-    }
-  }
-  const sandbox = {
-    console, Intl, Math, JSON, Date: FakeDate, Object, Array, Set, Map, Number, String, Error, Promise,
-    setTimeout: () => 0, setInterval: () => 0, clearInterval() {}, matchMedia: () => ({ matches: false }),
-    document: { body: { appendChild() {} }, documentElement: { getAttribute: () => null, setAttribute() {} }, getElementById: el, addEventListener: (t, h) => t === "click" && (handler = h), createElement: () => ({ style: {}, setAttribute() {}, appendChild() {}, remove() {} }), execCommand: () => true },
-    navigator: {}, localStorage: { getItem: () => null, setItem() {}, removeItem() {} },
-  };
-  sandbox.globalThis = sandbox;
-  vm.createContext(sandbox);
-  vm.runInContext(page.split("<script>").pop().split("</script>")[0], sandbox);
-  await new Promise((r) => setTimeout(r, 20));
-  const click = (dataset, id) => handler({ target: { closest: () => ({ dataset: dataset || {}, id: id || "" }) } });
+  const page = await openPage();
+  const P = generateDaily(1, entities);
+  const { picks, starts } = answersFor(P);
   const questions = [];
   const reveals = [];
   let q = 0;
-  for (let guard = 0; !/class="score"/.test(els.card.innerHTML) && guard < 80; guard++) {
-    const html = els.card.innerHTML;
+  for (let guard = 0; !/class="score"/.test(page.card()) && guard < 80; guard++) {
+    const html = page.card();
     if (/data-pick="up"/.test(html)) {
       questions.push({ html, start: starts[q], q });
-      click({ pick: correctPick(items[q], starts[q]) });
-      reveals.push(els.card.innerHTML);
+      page.click({ pick: picks[q] });
+      reveals.push(page.card());
       q++;
-    } else click({}, "next");
+    } else page.click({}, "next");
   }
-  return { P, questions, reveals, done: /class="score"/.test(els.card.innerHTML) };
+  return { P, questions, reveals, done: /class="score"/.test(page.card()) };
 }
 
 const game = await playOneGame();

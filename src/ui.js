@@ -4,11 +4,11 @@ import { slideAt } from "./ruler.js";
 import { captureScreen, playTransition } from "./transition.js";
 import { valueParts, valueText, differenceText, questionText } from "./format.js";
 import { questionDeep, questionRatios, scoreRun, tierFor, SCORING } from "./score.js";
-import { loadState, saveState, recordPick, completeDay, currentStreak, dayRecord, prune, markPracticeDone, practiceNext } from "./store.js";
+import { loadState, saveState, recordPick, completeDay, currentStreak, dayRecord, prune } from "./store.js";
 
 /**
  * env: {
- *   root: { tabs, meta, chain, card, practiceBox, practiceBtn },
+ *   root: { tabs, meta, chain, card },
  *   storage: Storage | null,
  *   todayNum: number,
  *   dailyPuzzle: puzzle,
@@ -28,16 +28,12 @@ export function mountGame(env) {
 
   /* ---------- state ---------- */
   const practiceTotal = () => (env.practicePuzzles || []).length;
-  const dailyDone = () => {
-    const r = dayRecord(store, todayNum);
-    return !!(r && r.done);
-  };
-
-  function begin(mode) {
+  function begin(mode, requested) {
     let practiceNo = 0;
     if (mode === "practice") {
-      // Practice is only for people who have not finished today's puzzle, and each practice puzzle is played once.
-      practiceNo = dailyDone() ? 0 : practiceNext(store, practiceTotal());
+      // The two practice puzzles are always on offer, in any order, as often as you like. They count for nothing and are not saved.
+      const total = practiceTotal();
+      practiceNo = total ? Math.min(total, Math.max(1, Number(requested) || 1)) : 0;
       if (!practiceNo) mode = "daily";
     }
     P = mode === "daily" ? env.dailyPuzzle : env.practicePuzzles[practiceNo - 1];
@@ -142,10 +138,6 @@ export function mountGame(env) {
         S.q += 1;
         finishedNow = true;
         if (S.mode === "daily") finishDaily();
-        else {
-          markPracticeDone(store, S.practiceNo);
-          saveState(storage, store);
-        }
       } else if (S.q === P.n1 - 1) {
         // The halfway point: the same object, in a new category. It glides to the middle like any other answer,
         // and its old figure fades out as its new figure fades in.
@@ -299,15 +291,16 @@ export function mountGame(env) {
 
   function actionsHTML() {
     if (S.mode === "daily") {
-      // No practice here: once today's puzzle is done, it is done until tomorrow.
+      // No practice button here: practice is always in the "?" panel, and this card is for sharing today's result.
       return canShare()
         ? `<button class="btn" id="share">Share result</button><button class="btn quiet" id="copy">Copy result</button>`
         : `<button class="btn" id="copy">Copy result</button>`;
     }
-    const next = practiceNext(store, practiceTotal());
+    // Practice goes round in a loop: 1, then 2, then 1 again.
+    const next = (S.practiceNo % practiceTotal()) + 1;
     return (
-      (next ? `<button class="btn" data-mode="practice">Practice puzzle ${next} of ${practiceTotal()}</button>` : "") +
-      `<button class="btn${next ? " quiet" : ""}" data-mode="daily">Back to today's puzzle</button>`
+      `<button class="btn" data-mode="practice" data-practice="${next}">Practice puzzle ${next}</button>` +
+      `<button class="btn quiet" data-mode="daily">Back to today's puzzle</button>`
     );
   }
 
@@ -352,13 +345,6 @@ export function mountGame(env) {
     // The only button here is the way back from a practice puzzle. There is no Practice tab.
     root.tabs.innerHTML = S.mode === "daily" ? "" : `<button class="tab" data-mode="daily">Back to today's puzzle</button>`;
     root.meta.textContent = S.mode === "daily" ? `Puzzle #${todayNum}` : `Practice ${S.practiceNo} of ${practiceTotal()}`;
-    // The practice offer lives in the How to play panel, and only while there is something to offer.
-    if (root.practiceBox && root.practiceBtn) {
-      const next = practiceNext(store, practiceTotal());
-      const show = S.mode === "daily" && !dailyDone() && next > 0;
-      root.practiceBox.hidden = !show;
-      if (show) root.practiceBtn.textContent = `Try practice puzzle ${next} of ${practiceTotal()}`;
-    }
   }
 
   function renderChain() {
@@ -485,7 +471,7 @@ export function mountGame(env) {
   document.addEventListener("click", (e) => {
     const t = e.target.closest("button");
     if (!t) return;
-    if (t.dataset.mode) return begin(t.dataset.mode);
+    if (t.dataset.mode) return begin(t.dataset.mode, t.dataset.practice);
     if (t.dataset.pick) return answer(t.dataset.pick);
     if (t.id === "next") return advance();
     if (t.id === "copy") return copyResult();

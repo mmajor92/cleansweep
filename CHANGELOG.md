@@ -2,6 +2,11 @@
 
 The version number is in `src/version.js` and shows at the bottom of the page. Change both together.
 
+## v2.1
+- **Practice is always available.** Both practice puzzles are on offer in the "?" panel (Practice 1 and Practice 2), whether or not you have played them or finished today's puzzle. They are the same two puzzles every time, so they work as a practice, a demo to show friends, and a way to test.
+- After a practice puzzle, the buttons are the next practice puzzle (1, then 2, then 1 again) and "Back to today's puzzle". There is still no practice button on today's result card, and no Share button for practice.
+- Practice still counts for nothing: it never touches your streak, scores or player counts, and nothing about it is saved any more.
+
 ## v2
 - **The ruler no longer gives anything away.** It used to be drawn to fit the whole half, so its shape hinted at which way the answer lay (in 44% of questions the answer was certain, if you noticed). Now your current value is always in the middle, and nothing on the ruler depends on anything you have not seen yet.
 - **New movement.** After you answer, the new dot slides out of the middle. The closer the two values, the less far it goes: a close call moves a clear distance, an easy one nearly to the end. When you move on, the old starting dot fades while the green or red dot (and its figure) glide to the middle together, the figure rising from under the dot to above it. It settles to its usual colour as it arrives. At the halfway point (for example height to weight) the same happens, and the figure changes as it goes. It all runs at one speed and ease, with no overshoot.

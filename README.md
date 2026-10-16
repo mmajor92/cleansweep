@@ -27,7 +27,7 @@ The one rule for how far the dot slides is in `src/ruler.js`. The cross-fade bet
 
 ## Practice
 
-There are exactly two practice puzzles. They are fixed (the same for everyone, never changing with the date), so practice cannot become a way to play endless games. They are offered in the How to play panel, each can be played once per device, and they are not offered once today's puzzle is finished. Practice 1 opens with a Warm-up and practice 2 has a Deep cut, so players meet both badges before the daily. They never touch streaks or best scores. The two puzzles are set by `PRACTICE` in `src/engine.js` and frozen in `puzzles/practice-1.json` and `puzzles/practice-2.json`. To change them, run `npm run practice -- --force` (this replaces the frozen files, so only do it before launch).
+There are exactly two practice puzzles. They are fixed (the same for everyone, never changing with the date), so they are a practice, a demo to show friends, and a way to test. Both are always on offer in the How to play panel, in any order and as often as you like, and after one finishes the next is offered (1, then 2, then 1 again). They never touch streaks, best scores or player counts, and nothing about them is saved. They have no Share button and no Warm-up or Deep cut badges. The two puzzles are set by `PRACTICE` in `src/engine.js` and frozen in `puzzles/practice-1.json` and `puzzles/practice-2.json`. To change them, run `npm run practice -- --force` (this replaces the frozen files, so only do it before launch).
 
 ## How to play, sharing and celebrating
 

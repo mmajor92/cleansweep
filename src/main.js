@@ -66,8 +66,10 @@ function setupHelp() {
     remember();
   };
   open.addEventListener("click", () => (panel.hidden ? show() : hide()));
-  const practice = document.getElementById("practicebtn");
-  if (practice && practice.addEventListener) practice.addEventListener("click", hide);
+  // Choosing a practice puzzle closes the panel.
+  if (typeof panel.querySelectorAll === "function") {
+    panel.querySelectorAll("[data-practice]").forEach((btn) => btn.addEventListener && btn.addEventListener("click", hide));
+  }
   if (close && close.addEventListener) close.addEventListener("click", hide);
   if (!seen()) show();
 }
@@ -111,8 +113,6 @@ async function start() {
     meta: document.getElementById("meta"),
     chain: document.getElementById("chain"),
     card: document.getElementById("card"),
-    practiceBox: document.getElementById("practicebox"),
-    practiceBtn: document.getElementById("practicebtn"),
   };
   try {
     const inlined = globalThis.__CLEANSWEEP_FACTS__;
