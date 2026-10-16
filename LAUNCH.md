@@ -52,12 +52,16 @@ When you publish any change, bump the version in `src/version.js` and add a line
 
 Frozen puzzles never change when you edit facts later. Only unfrozen days pick up the new facts.
 
-## 7. Small things to settle
+## 7. Settled, and still to settle
 
-- **Licence.** Choose one (MIT is common for code) and decide how others may reuse `data/facts.json`. Until you do, the default is "all rights reserved".
-- **Name.** Check "Clean Sweep" for clashes: domain, GitHub name, app stores, existing games.
-- **Web address on the share card.** Once friends have tried it, set `RULES.shareUrl` in `src/engine.js`. It is then added as the last line of every share card.
-- **Google Fonts.** The page loads two fonts from Google. For UK and EU visitors, consider hosting them yourself so visitors' addresses are not sent to Google.
+Settled:
+- **Licence:** all rights reserved, in the name of Michael Major (the `LICENSE` file).
+- **Fonts:** hosted on this site in `src/fonts`, so visitors' addresses are not sent to Google.
+- **Address:** the game stays at the GitHub address. The share card ends with `tinyurl.com/cleansweepdaily`, which redirects there. It is set by `RULES.shareUrl` in `src/engine.js` (set it to an empty pair of quotes to leave it off).
+
+Still to settle:
+- **Name.** "Clean Sweep" is a common phrase and used by other apps. If the game grows, check the UK Intellectual Property Office's trade mark search before spending money on a domain or ads.
+- **A real domain, one day.** Saved streaks belong to the address, so changing it resets everyone once. Buying a domain (about £7 to £15 a year) and making it the permanent address lets you change hosting later without that. If you move the site, update the TinyURL, or set `RULES.shareUrl` to the new address.
 - **Wikidata harvest** (optional, needs Node): run it with `HARVEST_CONTACT="you@example.com" npm run harvest`.
 
 ## 8. Optional: count your players

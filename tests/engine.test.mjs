@@ -2,9 +2,20 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   CATEGORIES, CATEGORY_KEYS, RULES, buildEntities, correctPick, gapOk, gapRatio, generate, generateDaily, generateSeries,
-  nextPuzzleTime, pairForDay, puzzleNumber, seedForPuzzle, shareText, streaks, validatePuzzle, yearsAgo,
+  countdownText, nextPuzzleTime, pairForDay, puzzleNumber, seedForPuzzle, shareText, streaks, validatePuzzle, yearsAgo,
 } from "../src/engine.js";
 import { entities } from "./helpers.mjs";
+
+// Several tests look at the share card without its web address, which is added on the last line.
+const withoutUrl = (fn) => {
+  const before = RULES.shareUrl;
+  RULES.shareUrl = "";
+  try {
+    return fn();
+  } finally {
+    RULES.shareUrl = before;
+  }
+};
 
 test("yearsAgo has no year zero", () => {
   assert.equal(yearsAgo(2026), 0);
@@ -124,7 +135,7 @@ test("nextPuzzleTime is the next 00:00 UTC", () => {
 
 test("shareText has the grid and totals", () => {
   const p = generate(seedForPuzzle(5), entities);
-  const text = shareText(p, [true, true, false, true, true, true, true], 5);
+  const text = withoutUrl(() => shareText(p, [true, true, false, true, true, true, true], 5));
   assert.match(text, /^Clean Sweep #5\n/);
   assert.match(text, /Longest Sweep: 4 \| Cleaned: 6\/7$/);
   assert.equal((text.match(/\u{1F9F9}/gu) || []).length, 6); // six brooms
@@ -135,7 +146,7 @@ test("shareText has the grid and totals", () => {
 
 test("a perfect run gets the sparkle header", () => {
   const p = generate(seedForPuzzle(5), entities);
-  const text = shareText(p, [true, true, true, true, true, true, true], 14);
+  const text = withoutUrl(() => shareText(p, [true, true, true, true, true, true, true], 14));
   assert.match(text, /^\u2728 Clean Sweep #14 \u2728\n/);
   assert.match(text, /Longest Sweep: 7 \| Cleaned: 7\/7$/);
   assert.ok(!/\u{1F4A8}/u.test(text));
@@ -145,7 +156,7 @@ test("a perfect run gets the sparkle header", () => {
 test("the share card has no web address until one is set, then ends with it", () => {
   const p = generate(seedForPuzzle(5), entities);
   const results = [true, false, true, true, true, true, true];
-  assert.ok(!/http|www\./.test(shareText(p, results, 3)));
+  assert.ok(!/http|www\.|\.com/.test(withoutUrl(() => shareText(p, results, 3))));
   const before = RULES.shareUrl;
   RULES.shareUrl = "cleansweep.example";
   try {
@@ -153,6 +164,12 @@ test("the share card has no web address until one is set, then ends with it", ()
   } finally {
     RULES.shareUrl = before;
   }
+});
+
+test("the share card ends with the TinyURL by default", () => {
+  const p = generate(seedForPuzzle(5), entities);
+  assert.equal(RULES.shareUrl, "tinyurl.com/cleansweepdaily");
+  assert.ok(shareText(p, [true, false, true, true, true, true, true], 3).endsWith("\ntinyurl.com/cleansweepdaily"));
 });
 
 test("no category icon clashes with the broom or the dust puff", () => {
@@ -313,4 +330,20 @@ test("entities carry their familiarity rating, defaulting to 2", () => {
   ] });
   assert.equal(built[0].fame, 3);
   assert.equal(built[1].fame, 2);
+});
+
+test("the countdown counts real time to the next puzzle, rounded up to the minute", () => {
+  assert.equal(countdownText(new Date("2026-10-16T18:00:00Z")), "6h");
+  assert.equal(countdownText(new Date("2026-10-16T17:47:50Z")), "6h 13m"); // 6h 12m 10s left rounds up
+  assert.equal(countdownText(new Date("2026-10-16T12:30:15Z")), "11h 30m");
+  assert.equal(countdownText(new Date("2026-10-16T23:20:00Z")), "40m");
+  assert.equal(countdownText(new Date("2026-10-16T23:59:30Z")), "1m");
+  assert.equal(countdownText(new Date("2026-10-16T00:00:00Z")), "24h"); // the moment a puzzle arrives, the next is a day away
+});
+
+test("the countdown does not depend on the time zone or on UK clocks changing", () => {
+  // The same instant gives the same answer wherever the phone is, because it counts real time to 00:00 UTC.
+  const now = new Date("2026-10-24T22:00:00Z"); // the night before UK clocks go back
+  assert.equal(countdownText(now), "2h");
+  assert.equal(countdownText(new Date("2026-10-25T22:00:00Z")), "2h");
 });

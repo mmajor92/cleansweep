@@ -12,7 +12,7 @@ export const CATEGORY_KEYS = Object.keys(CATEGORIES);
 
 export const RULES = {
   chainLength: 7,
-  shareUrl: "", // add the web address here once there is one, and it is appended to every share card
+  shareUrl: "tinyurl.com/cleansweepdaily", // the last line of every share card. Set it to "" to leave it off.
   splits: [3, 4], // questions in the first half: 3 or 4, the second half gets the rest
   maxGap: [4, 3, 2.5, 2], // widest allowed gap by question position within a half
   fameWeight: { 3: 10, 2: 3, 1: 0.5 }, // how much more often well-known objects are picked than obscure ones
@@ -427,6 +427,18 @@ export function shareText(puzzle, results, num, score = null) {
     RULES.shareUrl || "",
   ];
   return lines.filter(Boolean).join("\n");
+}
+
+/**
+ * How long until the next puzzle, rounded up to the minute: "6h 12m", "6h" or "42m".
+ * It counts real time, so it stays right when the clocks change.
+ */
+export function countdownText(now = new Date()) {
+  const mins = Math.max(1, Math.ceil((nextPuzzleTime(now).getTime() - now.getTime()) / 60000));
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  if (h === 0) return `${m}m`;
+  return m === 0 ? `${h}h` : `${h}h ${m}m`;
 }
 
 /**

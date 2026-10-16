@@ -2,6 +2,17 @@
 
 The version number is in `src/version.js` and shows at the bottom of the page. Change both together.
 
+## v1.9
+- The "Date (question 3 of 7)" line above each question is gone. The chain at the top shows where you are.
+- The "Hinge" screen between the two halves is gone. After the last question of the first half, "Next question" goes straight to the next question, which shows the new starting point.
+- The "new puzzle arrives at 1:00 your time (midnight UTC)" line is now a countdown: "Next puzzle in 6h 12m". It updates by itself, stays right when the clocks change, and when the time comes it says "A new puzzle is ready" with a "Play it" link.
+
+## v1.8
+- The fonts (Bricolage Grotesque and Newsreader) are now hosted on the site itself, in `src/fonts`, instead of being loaded from Google. The look is the same, on every device, and visitors' addresses are no longer sent to Google. Total size is about 285 KB, loaded once and then cached.
+- A `LICENSE` file: all rights reserved, Michael Major. The fonts keep their own licence in `src/fonts/OFL.txt`.
+- The share card now ends with `tinyurl.com/cleansweepdaily`.
+- A test checks that the page never loads fonts from Google again.
+
 ## v1.7
 - The light and dark button now shows the mode you are in: a moon in dark mode and a sun in light mode. Its tooltip and screen-reader label still say what a tap does.
 

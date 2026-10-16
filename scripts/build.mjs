@@ -20,9 +20,15 @@ for (const file of order) {
 }
 
 const facts = JSON.parse(await read("data/facts.json"));
-const css = await read("styles.css");
+let css = await read("styles.css");
+// The single-file page cannot load font files from a folder, so the fonts are embedded in it. The real site loads them from src/fonts.
+for (const m of [...css.matchAll(/url\("(src\/fonts\/[^"]+\.woff)"\)/g)]) {
+  const data = (await readFile(join(root, m[1]))).toString("base64");
+  css = css.replace(m[0], `url("data:font/woff;base64,${data}")`);
+}
 let html = await read("index.html");
 html = html
+  .replace(/<link rel="preload"[^>]*fonts\/[^>]*>\n?/g, "")
   .replace(/<link rel="stylesheet" href="styles.css">/, `<style>\n${css}\n</style>`)
   .replace(/<script type="module" src="src\/main.js"><\/script>/, `<script>\nglobalThis.__CLEANSWEEP_FACTS__ = ${JSON.stringify(facts)};\n(function () {\n${code}\n})();\n</script>`);
 

@@ -1,3 +1,8 @@
+/* Fonts are served from this site (src/fonts), not from Google. Licence: src/fonts/OFL.txt */
+@font-face { font-family: "Bricolage Grotesque"; src: url("src/fonts/bricolage-grotesque.woff") format("woff"); font-weight: 500 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("src/fonts/newsreader.woff") format("woff"); font-weight: 400 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("src/fonts/newsreader-italic.woff") format("woff"); font-weight: 400; font-style: italic; font-display: swap; }
+
 :root {
   --bg: #E9EEF2;
   --surface: #FFFFFF;
@@ -243,3 +248,7 @@ details.facts p { margin: 8px 0 0; }
   .theme { width: 32px; height: 32px; font-size: 16px; }
   .topright { gap: 8px; }
 }
+
+/* the "Play it" link when a new puzzle is ready */
+.linkbtn { font: inherit; color: var(--ink); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
+.linkbtn:focus-visible { outline: 3px solid var(--tape); outline-offset: 3px; }

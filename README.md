@@ -10,7 +10,7 @@ Categories: length, weight, date, how many, speed.
 2. Is the Boeing 747-400 wingspan longer or shorter? You pick.
 3. The true value is revealed and becomes the new starting point.
 4. The last question of the first half is about the hinge object, for example the Titanic's length.
-5. The hinge then reveals that same object in the next category, for example the Titanic sank in 1912. That is the new starting point.
+5. The next question starts from that same object in the next category, for example the Titanic sank in 1912. That is the new starting point. There is no separate screen for this.
 6. A wrong answer breaks the chain but you keep playing.
 
 ## Familiarity and deep cuts
@@ -32,6 +32,14 @@ There are exactly two practice puzzles. They are fixed (the same for everyone, n
 ## Counting players (optional)
 
 Set `GOATCOUNTER_CODE` in `src/site.js` to switch on GoatCounter. It counts visits, plus two events: `finished` (a daily puzzle was completed) and `clean-sweep` (a perfect 7 out of 7). It does not use cookies or track individuals. Only you can see the dashboard. Practice games and reloads of a finished day are not counted. Leave the code empty to switch it all off.
+
+## Fonts
+
+The fonts are Bricolage Grotesque (headings and labels) and Newsreader (text). They are hosted in `src/fonts`, not loaded from Google, so every visitor sees the same fonts and their address is not shared with Google. They are free to reuse under the SIL Open Font License (see `src/fonts/OFL.txt`). To change them, download the new fonts from fonts.google.com and run `python3 scripts/make-fonts.py` (instructions inside the script).
+
+## Licence
+
+All rights reserved, Michael Major (see `LICENSE`). The fonts are licensed separately, as above.
 
 ## Versions
 

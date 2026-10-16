@@ -1,5 +1,5 @@
 // Rendering and game flow. The only module that touches the DOM.
-import { CATEGORIES, RULES, correctPick, streaks, shareText, nextPuzzleTime } from "./engine.js";
+import { CATEGORIES, RULES, correctPick, countdownText, puzzleNumber, streaks, shareText } from "./engine.js";
 import { valueParts, valueText, differenceText, questionText } from "./format.js";
 import { questionDeep, questionRatios, scoreRun, tierFor, SCORING } from "./score.js";
 import { loadState, saveState, recordPick, completeDay, currentStreak, dayRecord, prune, markPracticeDone, practiceNext } from "./store.js";
@@ -61,7 +61,7 @@ export function mountGame(env) {
       }
     }
     S.q = picks.length;
-    S.phase = S.q >= RULES.chainLength ? "done" : S.q === P.n1 ? "hinge" : "ask";
+    S.phase = S.q >= RULES.chainLength ? "done" : "ask";
     if (S.phase === "done" && S.mode === "daily") finishDaily();
   }
 
@@ -144,7 +144,7 @@ export function mountGame(env) {
           saveState(storage, store);
         }
       } else if (S.q === P.n1 - 1) {
-        S.phase = "hinge";
+        S.phase = "ask"; // no separate hinge screen: the next question shows the new starting point
         S.prev = P.seg2.anchor;
         S.revealed = [P.seg2.anchor.value];
         S.q += 1;
@@ -154,8 +154,6 @@ export function mountGame(env) {
         S.q += 1;
         S.phase = "ask";
       }
-    } else if (S.phase === "hinge") {
-      S.phase = "ask";
     }
     render();
     if (finishedNow) afterFinish();
@@ -218,7 +216,6 @@ export function mountGame(env) {
     const c = CATEGORIES[cat];
     const first = S.q === 0 || S.q === P.n1;
     return (
-      `<p class="kicker">${c.name} (question ${S.q + 1} of ${RULES.chainLength})</p>` +
       `<p class="kicker">${first ? "Starting point" : "Last answer"}</p>` +
       bigHTML(cat, S.prev) +
       rulerHTML(cat, seg, false) +
@@ -247,7 +244,7 @@ export function mountGame(env) {
   function revealHTML() {
     const { cat, seg, item } = itemAt(S.q);
     const c = CATEGORIES[cat];
-    const label = S.q === RULES.chainLength - 1 ? "See result" : S.q === P.n1 - 1 ? "Continue" : "Next question";
+    const label = S.q === RULES.chainLength - 1 ? "See result" : "Next question";
     return (
       verdictHTML(S.last.ok, scoreRun(S.ratios, S.results, S.deep)) +
       bigHTML(cat, item) +
@@ -255,19 +252,6 @@ export function mountGame(env) {
       `<p class="diff">${differenceText(cat, c.words, item, S.prev)}</p>` +
       (item.note ? `<p class="fact">${item.note}</p>` : "") +
       `<div class="row"><button class="btn" id="next">${label}</button></div>`
-    );
-  }
-
-  function hingeHTML() {
-    const from = P.seg1.items[P.n1 - 1];
-    const c1 = CATEGORIES[P.c1];
-    const c2 = CATEGORIES[P.c2];
-    return (
-      `<p class="kicker">Hinge: switching from ${c1.name.toLowerCase()} to ${c2.name.toLowerCase()}</p>` +
-      `<p class="subject">${P.hinge.name}</p>` +
-      `<p class="hingeline">You just placed ${from.phrase}. Here is a free fact about it, and your new starting point.</p>` +
-      `<div style="margin-top:16px">${bigHTML(P.c2, P.seg2.anchor)}</div>` +
-      `<div class="row"><button class="btn" id="next">Start the ${c2.name.toLowerCase()} questions</button></div>`
     );
   }
 
@@ -318,7 +302,7 @@ export function mountGame(env) {
       `<div class="row">` +
       actionsHTML() +
       `</div>` +
-      (daily ? `<p class="lockline">Today's puzzle is done. A new one arrives at ${nextPuzzleTime().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })} your time (midnight UTC).</p>` : `<p class="lockline">Practice puzzles do not count towards your streak or best score.</p>`) +
+      (daily ? `<p class="lockline" id="countdown">Next puzzle in ${countdownText()}.</p>` : `<p class="lockline">Practice puzzles do not count towards your streak or best score.</p>`) +
       `<p class="toast" id="toast"></p>` +
       `<details class="facts"><summary>How scoring works</summary>` +
       `<ul class="how"><li>Each right answer scores 100 points.</li><li>Easy x1, Medium x1.5, Close call x2. You see the tag first.</li><li>Deep cut (some days): x1.5 on top.</li><li>Each right answer in a row adds 10%.</li><li>A wrong answer scores 0 and breaks your sweep.</li><li>Your score is a % of the day's maximum.</li></ul></details>` +
@@ -361,16 +345,35 @@ export function mountGame(env) {
     root.chain.setAttribute("aria-label", `Sweep: ${st.correct} clean of ${S.results.length} answered`);
   }
 
+  // "Next puzzle in 6h 12m", updated every half minute while the result card is on screen.
+  let countdownTimer = null;
+  function stopCountdown() {
+    if (countdownTimer !== null && typeof clearInterval === "function") clearInterval(countdownTimer);
+    countdownTimer = null;
+  }
+  function updateCountdown() {
+    const el = document.getElementById("countdown");
+    if (!el) return stopCountdown();
+    if (puzzleNumber(new Date()) > todayNum) {
+      el.innerHTML = `A new puzzle is ready. <button class="linkbtn" id="newpuzzle" type="button">Play it</button>`;
+      stopCountdown();
+    } else {
+      el.textContent = `Next puzzle in ${countdownText()}.`;
+    }
+  }
+  function startCountdown() {
+    stopCountdown();
+    if (typeof setInterval === "function") countdownTimer = setInterval(updateCountdown, 30000);
+  }
+
   function render() {
+    stopCountdown();
     renderTop();
     renderChain();
     let focus = null;
     if (S.phase === "done") {
       root.card.innerHTML = doneHTML();
       focus = "#share, #copy, .row .btn";
-    } else if (S.phase === "hinge") {
-      root.card.innerHTML = hingeHTML();
-      focus = "#next";
     } else if (S.phase === "ask") {
       root.card.innerHTML = askHTML();
       focus = ".choice";
@@ -378,6 +381,7 @@ export function mountGame(env) {
       root.card.innerHTML = revealHTML();
       focus = "#next";
     }
+    if (S.phase === "done" && S.mode === "daily") startCountdown();
     if (focus && S.results.length > 0) {
       const el = root.card.querySelector(focus);
       if (el) {
@@ -442,7 +446,14 @@ export function mountGame(env) {
     if (t.id === "next") return advance();
     if (t.id === "copy") return copyResult();
     if (t.id === "share") return shareResult();
+    if (t.id === "newpuzzle") return globalThis.location && globalThis.location.reload();
   });
+
+  if (typeof document.addEventListener === "function") {
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible" && countdownTimer !== null) updateCountdown();
+    });
+  }
 
   begin("daily");
 }

@@ -110,7 +110,7 @@ test("share text carries the score", () => {
   const s = scoreRun(questionRatios(p), [R, R, W, R, R, R, R]);
   const text = shareText(p, [R, R, W, R, R, R, R], 5, s);
   assert.ok(text.includes(`Score: ${s.pct}% (${s.total.toLocaleString("en-GB")} pts)`));
-  assert.match(text, /Longest Sweep: 4 \| Cleaned: 6\/7$/);
+  assert.match(text, /Longest Sweep: 4 \| Cleaned: 6\/7(\n|$)/);
 });
 
 test("the store remembers the best score", () => {
