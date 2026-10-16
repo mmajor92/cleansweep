@@ -2,6 +2,11 @@
 
 The version number is in `src/version.js` and shows at the bottom of the page. Change both together.
 
+## v3.1
+- **Six new objects, found with the harvest button, and two new facts for the SR-71.** The Douglas DC-3 (first flight, typical passengers, top speed, maximum takeoff weight, length), the Tiger I tank (entering service, crew, road speed, combat weight, length), the Sydney Opera House (opening, Concert Hall seats, length), and Old Trafford, the Stade de France and the Berlin Olympic Stadium (opening and capacity). The SR-71 gains its crew and length, and now has a hint and a clue. That is 21 new facts, each read in at least two places. The SR-71's weight was left out because the sources disagree.
+- **The pool grows from 162 to 168 objects, and bridge objects from 77 to 83.** Count + speed goes from 19 to 22, weight + count from 24 to 26, weight + speed from 24 to 26. A bridge object now returns after a median of 25 days.
+- Puzzles already saved are not affected. The new objects can appear from puzzle 22 onwards.
+
 ## v3
 - **The chain can now switch category at any point, and more than once.** Until now every puzzle was two halves joined by one bridge. A puzzle now switches category once to four times (about 34%, 43%, 18% and 4% of days), anywhere in the chain, so a stretch in one category can be a single question or as many as five. The game's look and feel are unchanged: a switch is the same glide the halfway point always had, just not always at the halfway point.
 - **New rules keep it fair.** No category takes more than 5 of the 7 questions. Between 2 and 5 answers are "higher". Never more than 4 answers in a row go the same way, and any stretch of 3 or more questions has both a higher and a lower answer. Difficulty (close call, medium, easy) comes out the same as before.

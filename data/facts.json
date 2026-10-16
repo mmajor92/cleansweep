@@ -4436,9 +4436,33 @@
           "source": "https://tpautorepair.net/what-is-the-worlds-highest-speed-record/",
           "checkedOn": "2026-10-15",
           "note": "It set the record on 28 July 1976."
+        },
+        "count": {
+          "phrase": "the number of crew in an SR-71",
+          "label": "SR-71 crew",
+          "value": 2,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nationalmuseum.af.mil/Visit/Museum-Exhibits/Fact-Sheets/Display/Article/198054/",
+          "checkedOn": "2026-10-16",
+          "note": "A pilot and a reconnaissance systems officer."
+        },
+        "length": {
+          "phrase": "the length of the SR-71",
+          "label": "SR-71 length",
+          "value": 32.7,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.smithsonianmag.com/science-nature/a-rare-bird-35805717/",
+          "checkedOn": "2026-10-16",
+          "note": "That is 107 feet 5 inches."
         }
       },
       "family": "sr71",
+      "hint": "a Cold War spy plane that flew at over three times the speed of sound",
+      "clue": "an American high-altitude spy plane",
       "fame": 2
     },
     {
@@ -5242,6 +5266,273 @@
         }
       },
       "fame": 3
+    },
+    {
+      "id": "dc3",
+      "name": "The Douglas DC-3",
+      "facts": {
+        "date": {
+          "phrase": "the first flight of the Douglas DC-3",
+          "label": "DC-3 first flight",
+          "value": 1935,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Douglas_DC-3",
+          "checkedOn": "2026-10-16",
+          "note": "It first flew on 17 December 1935, 32 years to the day after the Wright brothers."
+        },
+        "count": {
+          "phrase": "the typical number of passengers in a Douglas DC-3",
+          "label": "DC-3 passengers (typical)",
+          "value": 21,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://ingeniumcanada.org/artifact/douglas-dc-3",
+          "checkedOn": "2026-10-16",
+          "note": "It could carry up to 32."
+        },
+        "speed": {
+          "phrase": "the top speed of the Douglas DC-3",
+          "label": "DC-3 top speed",
+          "value": 370,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Douglas_DC-3",
+          "checkedOn": "2026-10-16",
+          "note": "It cruised more slowly, at roughly 275 to 335 kilometres per hour."
+        },
+        "weight": {
+          "phrase": "the maximum takeoff weight of the Douglas DC-3",
+          "label": "DC-3 max takeoff weight",
+          "value": 11430,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://ingeniumcanada.org/artifact/douglas-dc-3",
+          "checkedOn": "2026-10-16",
+          "note": "That is 25,200 pounds."
+        },
+        "length": {
+          "phrase": "the length of the Douglas DC-3",
+          "label": "DC-3 length",
+          "value": 19.6,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://ingeniumcanada.org/artifact/douglas-dc-3",
+          "checkedOn": "2026-10-16",
+          "note": "That is 64 feet 5 inches."
+        }
+      },
+      "family": "dc3",
+      "clue": "a twin-engine propeller airliner from the 1930s",
+      "hint": "the twin-engine airliner that made air travel pay in the 1930s",
+      "fame": 2
+    },
+    {
+      "id": "tiger1",
+      "name": "The Tiger I tank",
+      "facts": {
+        "date": {
+          "phrase": "the Tiger I tank entering service",
+          "label": "Tiger I enters service",
+          "value": 1942,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Tiger_I",
+          "checkedOn": "2026-10-16",
+          "note": "It first fought in Tunisia in late 1942."
+        },
+        "count": {
+          "phrase": "the number of crew in a Tiger I tank",
+          "label": "Tiger I crew",
+          "value": 5,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Tiger_I",
+          "checkedOn": "2026-10-16",
+          "note": "A commander, gunner, loader, driver and radio operator."
+        },
+        "speed": {
+          "phrase": "the road speed of the Tiger I tank",
+          "label": "Tiger I road speed",
+          "value": 38,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://science.howstuffworks.com/panzerkampfwagen-vi-tiger-i.htm",
+          "checkedOn": "2026-10-16",
+          "note": "Some sources give up to 45 kilometres per hour on a road. It was slower across country."
+        },
+        "weight": {
+          "phrase": "the combat weight of the Tiger I tank",
+          "label": "Tiger I combat weight",
+          "value": 55000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Tiger_I",
+          "checkedOn": "2026-10-16",
+          "note": "Sources give 54 to 57 tonnes."
+        },
+        "length": {
+          "phrase": "the length of the Tiger I tank with its gun pointing forward",
+          "label": "Tiger I length, gun forward",
+          "value": 8.45,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Tiger_I",
+          "checkedOn": "2026-10-16",
+          "note": "The hull alone is 6.3 metres."
+        }
+      },
+      "family": "tiger1",
+      "clue": "a German heavy tank from World War II",
+      "hint": "a famous German heavy tank of World War II",
+      "fame": 2
+    },
+    {
+      "id": "sydneyoperahouse",
+      "name": "The Sydney Opera House",
+      "facts": {
+        "date": {
+          "phrase": "the opening of the Sydney Opera House",
+          "label": "Sydney Opera House opens",
+          "value": 1973,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Sydney_Opera_House",
+          "checkedOn": "2026-10-16",
+          "note": "Queen Elizabeth II opened it, 16 years after the design was chosen."
+        },
+        "count": {
+          "phrase": "the number of seats in the Concert Hall of the Sydney Opera House",
+          "label": "Opera House Concert Hall seats",
+          "value": 2679,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Sydney_Opera_House",
+          "checkedOn": "2026-10-16",
+          "note": "All its venues together seat 5,738."
+        },
+        "length": {
+          "phrase": "the length of the Sydney Opera House",
+          "label": "Sydney Opera House length",
+          "value": 183,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Sydney_Opera_House",
+          "checkedOn": "2026-10-16",
+          "note": "It is about 120 metres wide."
+        }
+      },
+      "family": "sydneyoperahouse",
+      "fame": 3
+    },
+    {
+      "id": "oldtrafford",
+      "name": "Old Trafford",
+      "facts": {
+        "date": {
+          "phrase": "the opening of Old Trafford",
+          "label": "Old Trafford opens",
+          "value": 1910,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Old_Trafford",
+          "checkedOn": "2026-10-16",
+          "note": "The first match was on 19 February 1910, against Liverpool."
+        },
+        "count": {
+          "phrase": "the seating capacity of Old Trafford",
+          "label": "Old Trafford capacity",
+          "value": 74000,
+          "unit": "",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Old_Trafford",
+          "checkedOn": "2026-10-16",
+          "note": "Sources give between about 74,000 and 76,000."
+        }
+      },
+      "family": "oldtrafford",
+      "clue": "a football stadium in Greater Manchester",
+      "hint": "Manchester United's home ground",
+      "fame": 2
+    },
+    {
+      "id": "stadedefrance",
+      "name": "The Stade de France",
+      "facts": {
+        "date": {
+          "phrase": "the opening of the Stade de France",
+          "label": "Stade de France opens",
+          "value": 1998,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Stade_de_France",
+          "checkedOn": "2026-10-16",
+          "note": "It opened on 28 January 1998 with a friendly: France 1, Spain 0."
+        },
+        "count": {
+          "phrase": "the seating capacity of the Stade de France for football",
+          "label": "Stade de France capacity",
+          "value": 81338,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Stade_de_France",
+          "checkedOn": "2026-10-16",
+          "note": "It holds about 77,000 for athletics."
+        }
+      },
+      "family": "stadedefrance",
+      "clue": "a national stadium north of Paris",
+      "hint": "France's national stadium, just north of Paris",
+      "fame": 2
+    },
+    {
+      "id": "olympiastadion",
+      "name": "The Berlin Olympic Stadium",
+      "facts": {
+        "date": {
+          "phrase": "the opening of the Berlin Olympic Stadium",
+          "label": "Berlin Olympic Stadium opens",
+          "value": 1936,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Olympiastadion_(Berlin)",
+          "checkedOn": "2026-10-16",
+          "note": "It opened on 1 August 1936, for the Berlin Olympic Games."
+        },
+        "count": {
+          "phrase": "the seating capacity of the Berlin Olympic Stadium",
+          "label": "Berlin Olympic Stadium capacity",
+          "value": 74475,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Olympiastadion_(Berlin)",
+          "checkedOn": "2026-10-16",
+          "note": "It held far more spectators in 1936, before the 2004 rebuild."
+        }
+      },
+      "family": "olympiastadion",
+      "clue": "a large stadium in Berlin",
+      "hint": "the stadium built for the 1936 Olympic Games",
+      "fame": 2
     },
     {
       "id": "golfball",
