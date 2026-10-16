@@ -2,15 +2,15 @@
 import { CATEGORIES, RULES, correctPick, streaks, shareText, nextPuzzleTime } from "./engine.js";
 import { valueParts, valueText, differenceText, questionText } from "./format.js";
 import { questionDeep, questionRatios, scoreRun, tierFor, SCORING } from "./score.js";
-import { loadState, saveState, recordPick, completeDay, currentStreak, dayRecord, prune } from "./store.js";
+import { loadState, saveState, recordPick, completeDay, currentStreak, dayRecord, prune, markPracticeDone, practiceNext } from "./store.js";
 
 /**
  * env: {
- *   root: { tabs, meta, chain, card },
+ *   root: { tabs, meta, chain, card, practiceBox, practiceBtn },
  *   storage: Storage | null,
  *   todayNum: number,
  *   dailyPuzzle: puzzle,
- *   practicePuzzle: () => puzzle
+ *   practicePuzzles: [puzzle, puzzle]   (the two fixed practice puzzles)
  * }
  */
 export function mountGame(env) {
@@ -25,18 +25,25 @@ export function mountGame(env) {
       : { cat: P.c2, seg: P.seg2, item: P.seg2.items[q - P.n1] };
 
   /* ---------- state ---------- */
+  const practiceTotal = () => (env.practicePuzzles || []).length;
+  const dailyDone = () => {
+    const r = dayRecord(store, todayNum);
+    return !!(r && r.done);
+  };
+
   function begin(mode) {
-    P = mode === "daily" ? env.dailyPuzzle : env.practicePuzzle();
-    S = { mode, q: 0, picks: [], results: [], phase: "ask", last: null, prev: P.seg1.anchor, revealed: [P.seg1.anchor.value], ratios: questionRatios(P), deep: questionDeep(P) };
+    let practiceNo = 0;
+    if (mode === "practice") {
+      // Practice is only for people who have not finished today's puzzle, and each practice puzzle is played once.
+      practiceNo = dailyDone() ? 0 : practiceNext(store, practiceTotal());
+      if (!practiceNo) mode = "daily";
+    }
+    P = mode === "daily" ? env.dailyPuzzle : env.practicePuzzles[practiceNo - 1];
+    S = { mode, practiceNo, q: 0, picks: [], results: [], phase: "ask", last: null, prev: P.seg1.anchor, revealed: [P.seg1.anchor.value], ratios: questionRatios(P), deep: questionDeep(P) };
     if (mode === "daily") {
       const rec = dayRecord(store, todayNum);
       if (rec) replay(rec.picks);
     }
-    render();
-  }
-
-  function restart() {
-    S = { mode: S.mode, q: 0, picks: [], results: [], phase: "ask", last: null, prev: P.seg1.anchor, revealed: [P.seg1.anchor.value], ratios: questionRatios(P), deep: questionDeep(P) };
     render();
   }
 
@@ -132,6 +139,10 @@ export function mountGame(env) {
         S.q += 1;
         finishedNow = true;
         if (S.mode === "daily") finishDaily();
+        else {
+          markPracticeDone(store, S.practiceNo);
+          saveState(storage, store);
+        }
       } else if (S.q === P.n1 - 1) {
         S.phase = "hinge";
         S.prev = P.seg2.anchor;
@@ -265,6 +276,20 @@ export function mountGame(env) {
     return S.results.map((r) => (r ? "\u{1F9F9}" : "\u{1F4A8}")).join("");
   }
 
+  function actionsHTML() {
+    if (S.mode === "daily") {
+      // No practice here: once today's puzzle is done, it is done until tomorrow.
+      return canShare()
+        ? `<button class="btn" id="share">Share result</button><button class="btn quiet" id="copy">Copy result</button>`
+        : `<button class="btn" id="copy">Copy result</button>`;
+    }
+    const next = practiceNext(store, practiceTotal());
+    return (
+      (next ? `<button class="btn" data-mode="practice">Practice puzzle ${next} of ${practiceTotal()}</button>` : "") +
+      `<button class="btn${next ? " quiet" : ""}" data-mode="daily">Back to today's puzzle</button>`
+    );
+  }
+
   function doneHTML() {
     const st = streaks(S.results);
     const sc = scoreRun(S.ratios, S.results, S.deep);
@@ -284,21 +309,16 @@ export function mountGame(env) {
         `<div class="stat"><b>${store.stats.bestPct || 0}%</b><span>best score</span></div></div>`
       : "";
     return (
-      `<p class="kicker">${CATEGORIES[P.c1].name} to ${CATEGORIES[P.c2].name}</p>` +
+      `<p class="kicker">${daily ? `Puzzle #${todayNum}` : `Practice ${S.practiceNo} of ${practiceTotal()}`}</p>` +
       `<p class="score">${sc.pct}<small>%</small></p>` +
       `<p class="name">${sc.total.toLocaleString("en-GB")} of ${sc.max.toLocaleString("en-GB")} points. ${msg}</p>` +
       `<p class="name">Longest sweep ${st.longest}. Cleaned ${st.correct} of ${RULES.chainLength}.</p>` +
       `<p class="grid-out" aria-hidden="true">${gridHTML()}</p>` +
       stats +
       `<div class="row">` +
-      (canShare()
-        ? `<button class="btn" id="share">Share result</button><button class="btn quiet" id="copy">Copy result</button>`
-        : `<button class="btn" id="copy">Copy result</button>`) +
-      (daily
-        ? `<button class="btn quiet" data-mode="practice">Practice puzzle</button>`
-        : `<button class="btn quiet" id="again">Play again</button><button class="btn quiet" data-mode="practice">New practice puzzle</button>`) +
+      actionsHTML() +
       `</div>` +
-      (daily ? `<p class="lockline">Today's puzzle is done. A new one arrives at ${nextPuzzleTime().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })} your time (midnight UTC).</p>` : "") +
+      (daily ? `<p class="lockline">Today's puzzle is done. A new one arrives at ${nextPuzzleTime().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })} your time (midnight UTC).</p>` : `<p class="lockline">Practice puzzles do not count towards your streak or best score.</p>`) +
       `<p class="toast" id="toast"></p>` +
       `<details class="facts"><summary>How scoring works</summary>` +
       `<ul class="how"><li>Each right answer scores 100 points.</li><li>Easy x1, Medium x1.5, Close call x2. You see the tag first.</li><li>Deep cut (some days): x1.5 on top.</li><li>Each right answer in a row adds 10%.</li><li>A wrong answer scores 0 and breaks your sweep.</li><li>Your score is a % of the day's maximum.</li></ul></details>` +
@@ -308,10 +328,16 @@ export function mountGame(env) {
 
   /* ---------- chrome ---------- */
   function renderTop() {
-    root.tabs.innerHTML =
-      `<button class="tab" data-mode="daily" aria-pressed="${S.mode === "daily"}">Today's puzzle</button>` +
-      `<button class="tab" data-mode="practice" aria-pressed="${S.mode === "practice"}">Practice</button>`;
-    root.meta.textContent = S.mode === "daily" ? `Puzzle #${todayNum}` : "Practice";
+    // The only button here is the way back from a practice puzzle. There is no Practice tab.
+    root.tabs.innerHTML = S.mode === "daily" ? "" : `<button class="tab" data-mode="daily">Back to today's puzzle</button>`;
+    root.meta.textContent = S.mode === "daily" ? `Puzzle #${todayNum}` : `Practice ${S.practiceNo} of ${practiceTotal()}`;
+    // The practice offer lives in the How to play panel, and only while there is something to offer.
+    if (root.practiceBox && root.practiceBtn) {
+      const next = practiceNext(store, practiceTotal());
+      const show = S.mode === "daily" && !dailyDone() && next > 0;
+      root.practiceBox.hidden = !show;
+      if (show) root.practiceBtn.textContent = `Try practice puzzle ${next} of ${practiceTotal()}`;
+    }
   }
 
   function renderChain() {
@@ -341,7 +367,7 @@ export function mountGame(env) {
     let focus = null;
     if (S.phase === "done") {
       root.card.innerHTML = doneHTML();
-      focus = "#again, #copy";
+      focus = "#share, #copy, .row .btn";
     } else if (S.phase === "hinge") {
       root.card.innerHTML = hingeHTML();
       focus = "#next";
@@ -414,7 +440,6 @@ export function mountGame(env) {
     if (t.dataset.mode) return begin(t.dataset.mode);
     if (t.dataset.pick) return answer(t.dataset.pick);
     if (t.id === "next") return advance();
-    if (t.id === "again") return restart();
     if (t.id === "copy") return copyResult();
     if (t.id === "share") return shareResult();
   });

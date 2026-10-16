@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { STORAGE_KEY, completeDay, currentStreak, emptyState, loadState, prune, recordPick, saveState } from "../src/store.js";
+import { STORAGE_KEY, completeDay, currentStreak, emptyState, loadState, markPracticeDone, practiceNext, prune, recordPick, saveState } from "../src/store.js";
 
 const memory = () => {
   const m = new Map();
@@ -73,4 +73,35 @@ test("prune drops old days only", () => {
   state.days[90] = { picks: [], done: true, results: [] };
   prune(state, 100);
   assert.deepEqual(Object.keys(state.days), ["90"]);
+});
+
+test("practice is played once each, in order, and then it is gone", () => {
+  const s = emptyState();
+  assert.equal(practiceNext(s, 2), 1);
+  markPracticeDone(s, 1);
+  assert.equal(practiceNext(s, 2), 2);
+  markPracticeDone(s, 1); // twice is harmless
+  assert.deepEqual(s.practice.done, [1]);
+  markPracticeDone(s, 2);
+  assert.equal(practiceNext(s, 2), 0);
+});
+
+test("practice progress is saved, and never touches streaks or scores", () => {
+  const storage = memory();
+  const s = emptyState();
+  markPracticeDone(s, 1);
+  saveState(storage, s);
+  const back = loadState(storage);
+  assert.deepEqual(back.practice.done, [1]);
+  assert.equal(back.stats.played, 0);
+  assert.deepEqual(back.days, {});
+});
+
+test("older saved games without practice data still load", () => {
+  const storage = memory();
+  storage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, days: {}, stats: { played: 3, streak: 2, bestStreak: 2, lastDone: 5, distribution: {} } }));
+  const s = loadState(storage);
+  assert.equal(s.stats.played, 3);
+  assert.deepEqual(s.practice.done, []);
+  assert.equal(practiceNext(s, 2), 1);
 });

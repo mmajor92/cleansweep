@@ -1,0 +1,51 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { PRACTICE, generatePractice, validatePuzzle } from "../src/engine.js";
+import { entities } from "./helpers.mjs";
+
+const root = join(fileURLToPath(import.meta.url), "..", "..");
+
+test("there are exactly two fixed practice puzzles", () => {
+  assert.equal(PRACTICE.length, 2);
+});
+
+test("the practice puzzles are valid, friendly, and each teaches one badge", () => {
+  const [a, b] = [1, 2].map((n) => generatePractice(n, entities));
+  assert.ok(a && b);
+  assert.deepEqual(validatePuzzle(a), []);
+  assert.deepEqual(validatePuzzle(b), []);
+  assert.ok(a.warmUp && !a.deepCut, "practice 1 opens with a Warm-up and has no Deep cut");
+  assert.ok(b.deepCut && !b.warmUp, "practice 2 has a Deep cut and no Warm-up");
+  assert.notEqual(`${a.c1}>${a.c2}`, `${b.c1}>${b.c2}`, "the two practice puzzles should cover different categories");
+  for (const p of [a, b]) {
+    const items = [p.seg1.anchor, ...p.seg1.items, p.seg2.anchor, ...p.seg2.items];
+    assert.ok(items.every((it) => it.fame === 3 || it.fame === 1), "every non-deep-cut object should be one that nearly everyone knows");
+  }
+});
+
+test("the practice puzzles do not depend on the date", () => {
+  const first = JSON.stringify(generatePractice(1, entities));
+  const realNow = Date.now;
+  Date.now = () => realNow() + 90 * 86400000;
+  try {
+    assert.equal(JSON.stringify(generatePractice(1, entities)), first);
+  } finally {
+    Date.now = realNow;
+  }
+});
+
+test("the frozen practice files exist and are valid", async () => {
+  for (const n of [1, 2]) {
+    const p = JSON.parse(await readFile(join(root, "puzzles", `practice-${n}.json`), "utf8"));
+    assert.deepEqual(validatePuzzle(p), [], `practice-${n}.json`);
+    assert.equal(p.practice, n);
+  }
+});
+
+test("there is no practice puzzle 3", () => {
+  assert.equal(generatePractice(3, entities), null);
+  assert.equal(generatePractice(0, entities), null);
+});

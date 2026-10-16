@@ -3,7 +3,7 @@
 import { readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { CATEGORIES, CATEGORY_KEYS, RULES, buildEntities, generateSeries, validatePuzzle } from "../src/engine.js";
+import { CATEGORIES, CATEGORY_KEYS, PRACTICE, RULES, buildEntities, generateSeries, validatePuzzle } from "../src/engine.js";
 
 const root = join(fileURLToPath(import.meta.url), "..", "..");
 const args = process.argv.slice(2);
@@ -176,6 +176,21 @@ try {
       if (!STATUSES.includes(it.status)) err(`puzzles/${f}: "${it.label}" is not a verified or definitional fact`);
     }
   }
+  // The two fixed practice puzzles.
+  for (let n = 1; n <= PRACTICE.length; n++) {
+    let p = null;
+    try {
+      p = await read(`puzzles/practice-${n}.json`);
+    } catch (e) {
+      warn(`puzzles/practice-${n}.json is missing: run "npm run practice" (the game rebuilds it from its seed, but the frozen copy keeps it fixed for good)`);
+    }
+    if (!p) continue;
+    for (const problem of validatePuzzle(p)) err(`puzzles/practice-${n}.json: ${problem}`);
+    for (const it of [p.seg1.anchor, ...p.seg1.items, p.seg2.anchor, ...p.seg2.items]) {
+      if (!STATUSES.includes(it.status)) err(`puzzles/practice-${n}.json: "${it.label}" is not a verified or definitional fact`);
+    }
+  }
+
   // Cooldowns must hold across the published files too.
   const lastSeen = { hinge: {}, deep: {}, warm: {} };
   for (const { f, p } of ordered) {

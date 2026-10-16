@@ -1,5 +1,5 @@
 // Entry point. Loads facts, picks today's puzzle, and starts the game.
-import { buildEntities, generate, generateDaily, puzzleNumber, validatePuzzle } from "./engine.js";
+import { PRACTICE, buildEntities, generateDaily, generatePractice, puzzleNumber, validatePuzzle } from "./engine.js";
 import { mountGame } from "./ui.js";
 import { VERSION } from "./version.js";
 import { GOATCOUNTER_CODE } from "./site.js";
@@ -66,6 +66,8 @@ function setupHelp() {
     remember();
   };
   open.addEventListener("click", () => (panel.hidden ? show() : hide()));
+  const practice = document.getElementById("practicebtn");
+  if (practice && practice.addEventListener) practice.addEventListener("click", hide);
   if (close && close.addEventListener) close.addEventListener("click", hide);
   if (!seen()) show();
 }
@@ -80,7 +82,7 @@ function setupTheme() {
   const current = () => html.getAttribute("data-theme") || (systemDark() ? "dark" : "light");
   const show = () => {
     const dark = current() === "dark";
-    btn.textContent = dark ? "\u2600\uFE0F" : "\uD83C\uDF19"; // sun to go light, moon to go dark
+    btn.textContent = dark ? "\uD83C\uDF19" : "\u2600\uFE0F"; // the icon shows the mode you are in: moon for dark, sun for light
     const label = dark ? "Switch to light mode" : "Switch to dark mode";
     btn.setAttribute("aria-label", label);
     btn.setAttribute("title", label);
@@ -109,6 +111,8 @@ async function start() {
     meta: document.getElementById("meta"),
     chain: document.getElementById("chain"),
     card: document.getElementById("card"),
+    practiceBox: document.getElementById("practicebox"),
+    practiceBtn: document.getElementById("practicebtn"),
   };
   try {
     const inlined = globalThis.__CLEANSWEEP_FACTS__;
@@ -129,14 +133,22 @@ async function start() {
     daily = daily || generateDaily(num, entities);
     if (!daily) throw new Error("could not build a puzzle");
 
-    const practicePuzzle = () => {
-      for (let i = 0; i < 20; i++) {
-        const p = generate(Math.floor(Math.random() * 1e9), entities);
-        if (p) return p;
+    // The two fixed practice puzzles: the same for everyone, never changing with the date.
+    const practicePuzzles = [];
+    for (let n = 1; n <= PRACTICE.length; n++) {
+      let p = null;
+      if (!inlined) {
+        try {
+          const frozen = await loadJSON(`puzzles/practice-${n}.json`);
+          if (validatePuzzle(frozen).length === 0) p = frozen;
+        } catch (e) {
+          /* no frozen file: rebuild the same puzzle from its fixed seed */
+        }
       }
-      return daily;
-    };
-    mountGame({ root, storage: safeStorage(), todayNum: num, dailyPuzzle: daily, practicePuzzle });
+      p = p || generatePractice(n, entities);
+      if (p) practicePuzzles.push(p);
+    }
+    mountGame({ root, storage: safeStorage(), todayNum: num, dailyPuzzle: daily, practicePuzzles });
   } catch (err) {
     root.card.innerHTML = `<p class="ask">Sorry, the puzzle could not load.</p><p class="fact">${String(err.message || err)}</p>`;
   }

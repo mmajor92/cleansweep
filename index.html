@@ -14,11 +14,13 @@
 <body>
 <div class="wrap">
   <div class="top">
-    <h1>Clean Sweep</h1>
+    <div class="titleblock">
+      <h1>Clean Sweep</h1>
+      <span class="proto" id="meta"></span>
+    </div>
     <div class="topright">
       <button class="theme" id="helpbtn" type="button" aria-label="How to play" aria-expanded="false" title="How to play">?</button>
       <button class="theme" id="theme" type="button" aria-label="Switch theme"></button>
-      <span class="proto" id="meta"></span>
     </div>
   </div>
   <div class="help" id="help" hidden>
@@ -28,6 +30,10 @@
       <li>The true value is revealed and becomes your new starting point.</li>
       <li>Seven questions. Get them all right for a Clean Sweep.</li>
     </ol>
+    <div class="practice" id="practicebox" hidden>
+      <p>Want to try one first? There are two practice puzzles. They are the same for everyone and do not count towards your streak.</p>
+      <button class="btn quiet" id="practicebtn" type="button" data-mode="practice">Try practice puzzle 1 of 2</button>
+    </div>
     <button class="btn" id="helpclose" type="button">Got it</button>
   </div>
   <div class="tabs" id="tabs"></div>

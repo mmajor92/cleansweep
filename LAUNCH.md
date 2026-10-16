@@ -40,7 +40,11 @@ Everything below can be done in the browser. You do not need Node, git or a term
 2. Under **Workflow permissions**, tick **Allow GitHub Actions to create and approve pull requests**, then **Save**.
 3. Open the **Actions** tab, choose **Generate upcoming puzzles**, click **Run workflow**, and check a pull request appears under **Pull requests**. Merge it: it adds puzzle files for the next three weeks.
 
-## 5. Each week
+## 5. The two practice puzzles
+
+`puzzles/practice-1.json` and `puzzles/practice-2.json` are the fixed practice puzzles. They are uploaded with everything else and never change. The weekly puzzle job ignores them.
+
+## 6. Each week
 
 Every Monday a pull request appears with new puzzle files. Skim a couple, then merge it. The aim is to always have at least two weeks frozen ahead. If you miss a week the game still works: it falls back to generating the day's puzzle on the spot.
 
@@ -48,7 +52,7 @@ When you publish any change, bump the version in `src/version.js` and add a line
 
 Frozen puzzles never change when you edit facts later. Only unfrozen days pick up the new facts.
 
-## 6. Small things to settle
+## 7. Small things to settle
 
 - **Licence.** Choose one (MIT is common for code) and decide how others may reuse `data/facts.json`. Until you do, the default is "all rights reserved".
 - **Name.** Check "Clean Sweep" for clashes: domain, GitHub name, app stores, existing games.
@@ -56,7 +60,7 @@ Frozen puzzles never change when you edit facts later. Only unfrozen days pick u
 - **Google Fonts.** The page loads two fonts from Google. For UK and EU visitors, consider hosting them yourself so visitors' addresses are not sent to Google.
 - **Wikidata harvest** (optional, needs Node): run it with `HARVEST_CONTACT="you@example.com" npm run harvest`.
 
-## 7. Optional: count your players
+## 8. Optional: count your players
 
 Counting is off until you give it a code. It is free for non-commercial sites, uses no cookies and keeps no personal data.
 

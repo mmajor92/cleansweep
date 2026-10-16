@@ -2,6 +2,17 @@
 
 The version number is in `src/version.js` and shows at the bottom of the page. Change both together.
 
+## v1.7
+- The light and dark button now shows the mode you are in: a moon in dark mode and a sun in light mode. Its tooltip and screen-reader label still say what a tap does.
+
+## v1.6
+- Header: "Puzzle #1" now sits in italics under the title, and the "?" and light and dark buttons are top right on one row, on phones too.
+- The Practice tab is gone. There are now exactly two fixed practice puzzles, the same for everyone and never changing with the date. They are offered inside How to play, each can be played once per device, and they are not offered once today's puzzle is finished. Practice 1 opens with a Warm-up and practice 2 has a Deep cut, so players meet both badges first.
+- Practice results do not count towards streaks or best scores, and there is no Share or Copy button for them.
+- After a practice puzzle, the only buttons are the next practice (if any) and "Back to today's puzzle". There is no "Play again".
+- The result card heading is now "Puzzle #1" (or "Practice 1 of 2"), not the two category names.
+- New files: `puzzles/practice-1.json` and `puzzles/practice-2.json`.
+
 ## v1.5
 - A "?" button next to the light and dark toggle opens a short How to play. It also opens by itself the first time someone visits.
 - A Share result button on phones, which opens the phone's own share sheet (WhatsApp, Messages and so on). Copy result is still there.

@@ -7,6 +7,7 @@ export function emptyState() {
     version: 1,
     days: {}, // puzzle number -> { picks: [], done: bool, results: [] }
     stats: { played: 0, streak: 0, bestStreak: 0, lastDone: 0, distribution: {}, bestScore: 0, bestPct: 0 },
+    practice: { done: [] }, // which of the fixed practice puzzles this device has finished
   };
 }
 
@@ -16,7 +17,8 @@ export function loadState(storage) {
     if (!raw) return emptyState();
     const parsed = JSON.parse(raw);
     if (!parsed || parsed.version !== 1 || typeof parsed.days !== "object") return emptyState();
-    return { ...emptyState(), ...parsed, stats: { ...emptyState().stats, ...parsed.stats } };
+    const done = parsed.practice && Array.isArray(parsed.practice.done) ? parsed.practice.done : [];
+    return { ...emptyState(), ...parsed, stats: { ...emptyState().stats, ...parsed.stats }, practice: { done } };
   } catch (e) {
     return emptyState();
   }
@@ -78,4 +80,18 @@ export function prune(state, todayNum) {
     if (Number(key) < todayNum - 60) delete state.days[key];
   }
   return state;
+}
+
+/** Remember that a practice puzzle has been finished. Practice never touches streaks or scores. */
+export function markPracticeDone(state, n) {
+  if (!state.practice) state.practice = { done: [] };
+  if (!state.practice.done.includes(n)) state.practice.done = [...state.practice.done, n];
+  return state;
+}
+
+/** The next practice puzzle not yet finished (1, 2 ...), or 0 when they are all done. */
+export function practiceNext(state, total) {
+  const done = (state.practice && state.practice.done) || [];
+  for (let n = 1; n <= total; n++) if (!done.includes(n)) return n;
+  return 0;
 }

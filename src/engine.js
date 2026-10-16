@@ -428,3 +428,22 @@ export function shareText(puzzle, results, num, score = null) {
   ];
   return lines.filter(Boolean).join("\n");
 }
+
+/**
+ * The two fixed practice puzzles. They are the same for everyone, forever, and never change with the date,
+ * so practice cannot become a way to play endless games. Each can be played once per device.
+ * The first opens with a Warm-up and the second has a Deep cut, so players meet both badges before the daily puzzle.
+ * Frozen copies live in puzzles/practice-1.json and puzzles/practice-2.json (see scripts/make-practice.mjs).
+ */
+export const PRACTICE = [
+  { seed: 5090, options: { warm: true, spice: false } },
+  { seed: 105030, options: { warm: false, spice: true } },
+];
+
+export function generatePractice(n, entities) {
+  const c = PRACTICE[n - 1];
+  if (!c) return null;
+  const p = generate(c.seed, entities, c.options);
+  if (p) p.practice = n;
+  return p;
+}
