@@ -19,6 +19,10 @@ Every object has a `fame` rating: 3 for things nearly everyone knows (a snooker 
 
 Rating 1 objects are kept out of ordinary slots and are never a hinge. Instead, on about 40% of days one question is a **Deep cut** about one of them. It can be any question from the 3rd to the 7th (never the first two, so nobody loses straight away), at most one per puzzle, and some days there is none. It is tagged before the player answers, worth 50% more, and costs nothing extra if missed. A deep-cut object is not reused within 21 days. Ratings live in `FAME` in `build_data.py`. See `docs/adding-facts.md`.
 
+## Versions
+
+The version number (v1.1, v1.2 and so on) is in `src/version.js` and shows in small type at the bottom of the page. Bump it whenever you publish an update, so you can tell at a glance that the new files are live. Small changes go v1.1 to v1.9, then v2, then v2.1, and so on. Add a line to `CHANGELOG.md` too.
+
 ## Warm-ups
 
 Some well-known facts have nothing near them (a golf ball's weight, the seats at Wembley, the seconds in a day), so they can never be chained to a neighbour. They are flagged as reserved warm-up facts in `WARM` in `build_data.py`. On about a third of days the puzzle starts from one of them and the first question compares it with something at least 5 times away, so it is an easy one to get on the board. It is tagged "Warm-up" before the player answers and scores like any Easy question. A warm-up fact is not reused within 14 days and is never asked as an ordinary question.

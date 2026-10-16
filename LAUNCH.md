@@ -44,6 +44,8 @@ Everything below can be done in the browser. You do not need Node, git or a term
 
 Every Monday a pull request appears with new puzzle files. Skim a couple, then merge it. The aim is to always have at least two weeks frozen ahead. If you miss a week the game still works: it falls back to generating the day's puzzle on the spot.
 
+When you publish any change, bump the version in `src/version.js` and add a line to `CHANGELOG.md`, so you can see on the live page that the new files have arrived.
+
 Frozen puzzles never change when you edit facts later. Only unfrozen days pick up the new facts.
 
 ## 6. Small things to settle

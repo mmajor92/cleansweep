@@ -1,6 +1,7 @@
 // Entry point. Loads facts, picks today's puzzle, and starts the game.
 import { buildEntities, generate, generateDaily, puzzleNumber, validatePuzzle } from "./engine.js";
 import { mountGame } from "./ui.js";
+import { VERSION } from "./version.js";
 
 async function loadJSON(url) {
   const res = await fetch(url, { cache: "no-cache" });
@@ -19,7 +20,38 @@ function safeStorage() {
   }
 }
 
+// Light and dark mode. With no saved choice the page follows the phone's own setting.
+function setupTheme() {
+  const btn = document.getElementById("theme");
+  const html = document.documentElement;
+  if (!btn || !html || !btn.addEventListener) return;
+  const KEY = "cleansweep:theme";
+  const systemDark = () => typeof globalThis.matchMedia === "function" && globalThis.matchMedia("(prefers-color-scheme: dark)").matches;
+  const current = () => html.getAttribute("data-theme") || (systemDark() ? "dark" : "light");
+  const show = () => {
+    const dark = current() === "dark";
+    btn.textContent = dark ? "\u2600\uFE0F" : "\uD83C\uDF19"; // sun to go light, moon to go dark
+    const label = dark ? "Switch to light mode" : "Switch to dark mode";
+    btn.setAttribute("aria-label", label);
+    btn.setAttribute("title", label);
+  };
+  btn.addEventListener("click", () => {
+    const next = current() === "dark" ? "light" : "dark";
+    html.setAttribute("data-theme", next);
+    try {
+      globalThis.localStorage.setItem(KEY, next);
+    } catch (e) {
+      /* the choice just will not be remembered */
+    }
+    show();
+  });
+  show();
+}
+
 async function start() {
+  setupTheme();
+  const ver = document.getElementById("ver");
+  if (ver) ver.textContent = VERSION;
   const root = {
     tabs: document.getElementById("tabs"),
     meta: document.getElementById("meta"),
