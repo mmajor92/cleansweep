@@ -19,6 +19,16 @@ Every object has a `fame` rating: 3 for things nearly everyone knows (a snooker 
 
 Rating 1 objects are kept out of ordinary slots and are never a hinge. Instead, on about 40% of days one question is a **Deep cut** about one of them. It can be any question from the 3rd to the 7th (never the first two, so nobody loses straight away), at most one per puzzle, and some days there is none. It is tagged before the player answers, worth 50% more, and costs nothing extra if missed. A deep-cut object is not reused within 21 days. Ratings live in `FAME` in `build_data.py`. See `docs/adding-facts.md`.
 
+## How to play, sharing and celebrating
+
+- A "?" button next to the light and dark toggle opens a three-line How to play. It opens by itself the first time someone visits, and remembers that they have seen it.
+- On phones, the result card has a **Share result** button that opens the phone's share sheet. **Copy result** is always there too.
+- A Clean Sweep (all seven right) sends brooms and sparkles floating up the screen. Anyone whose phone is set to reduce motion does not see it.
+
+## Counting players (optional)
+
+Set `GOATCOUNTER_CODE` in `src/site.js` to switch on GoatCounter. It counts visits, plus two events: `finished` (a daily puzzle was completed) and `clean-sweep` (a perfect 7 out of 7). It does not use cookies or track individuals. Only you can see the dashboard. Practice games and reloads of a finished day are not counted. Leave the code empty to switch it all off.
+
 ## Versions
 
 The version number (v1.1, v1.2 and so on) is in `src/version.js` and shows in small type at the bottom of the page. Bump it whenever you publish an update, so you can tell at a glance that the new files are live. Small changes go v1.1 to v1.9, then v2, then v2.1, and so on. Add a line to `CHANGELOG.md` too.

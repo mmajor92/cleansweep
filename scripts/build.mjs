@@ -9,7 +9,7 @@ const read = (p) => readFile(join(root, p), "utf8");
 
 // Concatenate modules in dependency order, dropping import/export syntax.
 // Rule for contributors: top-level names must be unique across src/*.js.
-const order = ["src/format.js", "src/engine.js", "src/score.js", "src/store.js", "src/version.js", "src/ui.js", "src/main.js"];
+const order = ["src/format.js", "src/engine.js", "src/score.js", "src/store.js", "src/version.js", "src/site.js", "src/ui.js", "src/main.js"];
 let code = "";
 for (const file of order) {
   let src = await read(file);

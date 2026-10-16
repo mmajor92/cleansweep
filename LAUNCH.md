@@ -56,6 +56,16 @@ Frozen puzzles never change when you edit facts later. Only unfrozen days pick u
 - **Google Fonts.** The page loads two fonts from Google. For UK and EU visitors, consider hosting them yourself so visitors' addresses are not sent to Google.
 - **Wikidata harvest** (optional, needs Node): run it with `HARVEST_CONTACT="you@example.com" npm run harvest`.
 
+## 7. Optional: count your players
+
+Counting is off until you give it a code. It is free for non-commercial sites, uses no cookies and keeps no personal data.
+
+1. Go to goatcounter.com and sign up.
+2. Choose a **site code** (for example `cleansweep`). Your dashboard will be at `https://cleansweep.goatcounter.com`.
+3. On GitHub, open `src/site.js`, click the pencil, put the code between the quotes (`GOATCOUNTER_CODE = "cleansweep"`), and click **Commit changes**. Bump the version in `src/version.js` too.
+4. After the site redeploys, open the game once, then check the dashboard. You should see a visit.
+5. The dashboard shows visits and the two events: `finished` (a daily puzzle completed) and `clean-sweep` (7 out of 7). Keep the dashboard private, which is the default.
+
 ## If you prefer the command line
 
 ```

@@ -16,12 +16,22 @@
   <div class="top">
     <h1>Clean Sweep</h1>
     <div class="topright">
+      <button class="theme" id="helpbtn" type="button" aria-label="How to play" aria-expanded="false" title="How to play">?</button>
       <button class="theme" id="theme" type="button" aria-label="Switch theme"></button>
       <span class="proto" id="meta"></span>
     </div>
   </div>
+  <div class="help" id="help" hidden>
+    <h2>How to play</h2>
+    <ol>
+      <li>Is the next thing higher or lower than the last one? Tap your answer.</li>
+      <li>The true value is revealed and becomes your new starting point.</li>
+      <li>Seven questions. Get them all right for a Clean Sweep.</li>
+    </ol>
+    <button class="btn" id="helpclose" type="button">Got it</button>
+  </div>
   <div class="tabs" id="tabs"></div>
-  <div class="chainbox"><div class="chain" id="chain"></div><div class="caps" id="caps"></div></div>
+  <div class="chainbox"><div class="chain" id="chain"></div></div>
   <div class="card" id="card" aria-live="polite"></div>
   <p class="ver" id="ver"></p>
 </div>

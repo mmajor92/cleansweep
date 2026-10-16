@@ -6,7 +6,7 @@ import { loadState, saveState, recordPick, completeDay, currentStreak, dayRecord
 
 /**
  * env: {
- *   root: { tabs, meta, chain, caps, card },
+ *   root: { tabs, meta, chain, card },
  *   storage: Storage | null,
  *   todayNum: number,
  *   dailyPuzzle: puzzle,
@@ -64,6 +64,51 @@ export function mountGame(env) {
     saveState(storage, store);
   }
 
+  // Counting players (optional, only if a GoatCounter code is set in src/site.js). Counts only, nothing personal.
+  function countEvent(name) {
+    try {
+      const gc = globalThis.goatcounter;
+      if (gc && typeof gc.count === "function") gc.count({ path: name, title: name, event: true });
+    } catch (e) {
+      /* counting must never get in the way of the game */
+    }
+  }
+
+  // A few brooms and sparkles float up the screen for a Clean Sweep. Skipped for people who prefer less motion.
+  function sweepFx() {
+    try {
+      if (!document.body || typeof document.createElement !== "function") return;
+      if (typeof globalThis.matchMedia === "function" && globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const layer = document.createElement("div");
+      layer.className = "sweepfx";
+      layer.setAttribute("aria-hidden", "true");
+      const faces = ["\u{1F9F9}", "\u2728", "\u{1F9F9}", "\u{1F9FC}"];
+      for (let i = 0; i < 22; i++) {
+        const s = document.createElement("span");
+        s.textContent = faces[i % faces.length];
+        s.style.left = Math.round(4 + Math.random() * 92) + "%";
+        s.style.animationDelay = (Math.random() * 0.9).toFixed(2) + "s";
+        s.style.animationDuration = (2.2 + Math.random() * 1.4).toFixed(2) + "s";
+        s.style.fontSize = 22 + Math.round(Math.random() * 18) + "px";
+        layer.appendChild(s);
+      }
+      document.body.appendChild(layer);
+      setTimeout(() => layer.remove(), 4800);
+    } catch (e) {
+      /* the celebration is a bonus: never let it break the game */
+    }
+  }
+
+  // Runs once, the moment a game is finished live (not when a finished day is reloaded).
+  function afterFinish() {
+    const perfect = streaks(S.results).longest === RULES.chainLength;
+    if (S.mode === "daily") {
+      countEvent("finished");
+      if (perfect) countEvent("clean-sweep");
+    }
+    if (perfect) sweepFx();
+  }
+
   function answer(pick) {
     const { item } = itemAt(S.q);
     const ok = pick === correctPick(item, S.prev);
@@ -79,11 +124,13 @@ export function mountGame(env) {
   }
 
   function advance() {
+    let finishedNow = false;
     if (S.phase === "reveal") {
       const { item } = itemAt(S.q);
       if (S.q === RULES.chainLength - 1) {
         S.phase = "done";
         S.q += 1;
+        finishedNow = true;
         if (S.mode === "daily") finishDaily();
       } else if (S.q === P.n1 - 1) {
         S.phase = "hinge";
@@ -100,6 +147,7 @@ export function mountGame(env) {
       S.phase = "ask";
     }
     render();
+    if (finishedNow) afterFinish();
   }
 
   /* ---------- ruler ---------- */
@@ -243,7 +291,9 @@ export function mountGame(env) {
       `<p class="grid-out" aria-hidden="true">${gridHTML()}</p>` +
       stats +
       `<div class="row">` +
-      `<button class="btn" id="copy">Copy result</button>` +
+      (canShare()
+        ? `<button class="btn" id="share">Share result</button><button class="btn quiet" id="copy">Copy result</button>`
+        : `<button class="btn" id="copy">Copy result</button>`) +
       (daily
         ? `<button class="btn quiet" data-mode="practice">Practice puzzle</button>`
         : `<button class="btn quiet" id="again">Play again</button><button class="btn quiet" data-mode="practice">New practice puzzle</button>`) +
@@ -251,7 +301,7 @@ export function mountGame(env) {
       (daily ? `<p class="lockline">Today's puzzle is done. A new one arrives at ${nextPuzzleTime().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })} your time (midnight UTC).</p>` : "") +
       `<p class="toast" id="toast"></p>` +
       `<details class="facts"><summary>How scoring works</summary>` +
-      `<p>Each question is tagged before you answer. Easy is worth 1x, Medium 1.5x and a Close call double. A right answer scores 100 points times its tag. Every right answer in a row adds 10% more than the last, so a run of right answers is your sweep. Some days the first question is a Warm-up, an easy one to get you on the board. Some days one of the later questions (never the first two) is a Deep cut, a question about something only enthusiasts know. It is worth 50% more, and getting it wrong costs nothing extra. A wrong answer scores 0 and breaks your sweep, but you keep playing and can start a new one. Get all seven for a Clean Sweep. Your headline score is the percentage of the day's maximum, so every day is comparable.</p></details>` +
+      `<ul class="how"><li>Each right answer scores 100 points.</li><li>Easy x1, Medium x1.5, Close call x2. You see the tag first.</li><li>Deep cut (some days): x1.5 on top.</li><li>Each right answer in a row adds 10%.</li><li>A wrong answer scores 0 and breaks your sweep.</li><li>Your score is a % of the day's maximum.</li></ul></details>` +
       `<details class="facts"><summary>Facts in this puzzle</summary><ul>${list}</ul></details>`
     );
   }
@@ -267,7 +317,6 @@ export function mountGame(env) {
   function renderChain() {
     let html = "";
     for (let i = 0; i < RULES.chainLength; i++) {
-      if (i === P.n1) html += `<span class="swivel" aria-hidden="true"></span>`;
       let cls = "link";
       let txt = "";
       const r = S.results[i];
@@ -279,15 +328,11 @@ export function mountGame(env) {
         txt = "\u{1F4A8}";
       } else if (i === S.results.length && S.phase !== "done") cls += " now";
       if (i > 0 && r === true && S.results[i - 1] === true) cls += " joined";
-      if (i === P.n1) cls += " post";
       html += `<span class="${cls}">${txt}</span>`;
     }
     root.chain.innerHTML = html;
     const st = streaks(S.results);
     root.chain.setAttribute("aria-label", `Sweep: ${st.correct} clean of ${S.results.length} answered`);
-    root.caps.innerHTML =
-      `<span style="flex:${P.n1}">${CATEGORIES[P.c1].name}</span>` +
-      `<span style="flex:${P.n2}">${CATEGORIES[P.c2].name}</span>`;
   }
 
   function render() {
@@ -320,8 +365,23 @@ export function mountGame(env) {
   }
 
   /* ---------- sharing ---------- */
+  const resultText = () => shareText(P, S.results, S.mode === "daily" ? todayNum : null, scoreRun(S.ratios, S.results, S.deep));
+  const canShare = () => typeof navigator !== "undefined" && !!navigator && typeof navigator.share === "function";
+
+  // The phone's own share sheet (WhatsApp, Messages and so on). Falls back to copying if it is not available.
+  function shareResult() {
+    try {
+      Promise.resolve(navigator.share({ text: resultText() })).catch((err) => {
+        if (err && err.name === "AbortError") return; // they closed the sheet: nothing to do
+        copyResult();
+      });
+    } catch (e) {
+      copyResult();
+    }
+  }
+
   function copyResult() {
-    const text = shareText(P, S.results, S.mode === "daily" ? todayNum : null, scoreRun(S.ratios, S.results, S.deep));
+    const text = resultText();
     const toast = document.getElementById("toast");
     const fallback = () => {
       const ta = document.createElement("textarea");
@@ -356,6 +416,7 @@ export function mountGame(env) {
     if (t.id === "next") return advance();
     if (t.id === "again") return restart();
     if (t.id === "copy") return copyResult();
+    if (t.id === "share") return shareResult();
   });
 
   begin("daily");

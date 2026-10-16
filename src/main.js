@@ -2,6 +2,7 @@
 import { buildEntities, generate, generateDaily, puzzleNumber, validatePuzzle } from "./engine.js";
 import { mountGame } from "./ui.js";
 import { VERSION } from "./version.js";
+import { GOATCOUNTER_CODE } from "./site.js";
 
 async function loadJSON(url) {
   const res = await fetch(url, { cache: "no-cache" });
@@ -18,6 +19,55 @@ function safeStorage() {
   } catch (e) {
     return null; // private mode or blocked: the game works, it just cannot save
   }
+}
+
+// Optional visitor counting. Does nothing unless a GoatCounter code is set in src/site.js.
+function loadCounter() {
+  if (!GOATCOUNTER_CODE || !document.head || typeof document.createElement !== "function") return;
+  try {
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = "https://gc.zgo.at/count.js";
+    s.setAttribute("data-goatcounter", `https://${GOATCOUNTER_CODE}.goatcounter.com/count`);
+    document.head.appendChild(s);
+  } catch (e) {
+    /* counting is optional */
+  }
+}
+
+// The "How to play" panel: shown the first time someone visits, and any time they tap the question mark.
+function setupHelp() {
+  const panel = document.getElementById("help");
+  const open = document.getElementById("helpbtn");
+  const close = document.getElementById("helpclose");
+  if (!panel || !open || !open.addEventListener) return;
+  const KEY = "cleansweep:help";
+  const seen = () => {
+    try {
+      return globalThis.localStorage.getItem(KEY) === "1";
+    } catch (e) {
+      return true; // storage blocked: do not nag on every visit
+    }
+  };
+  const remember = () => {
+    try {
+      globalThis.localStorage.setItem(KEY, "1");
+    } catch (e) {
+      /* it will just show again next time */
+    }
+  };
+  const show = () => {
+    panel.hidden = false;
+    open.setAttribute("aria-expanded", "true");
+  };
+  const hide = () => {
+    panel.hidden = true;
+    open.setAttribute("aria-expanded", "false");
+    remember();
+  };
+  open.addEventListener("click", () => (panel.hidden ? show() : hide()));
+  if (close && close.addEventListener) close.addEventListener("click", hide);
+  if (!seen()) show();
 }
 
 // Light and dark mode. With no saved choice the page follows the phone's own setting.
@@ -50,13 +100,14 @@ function setupTheme() {
 
 async function start() {
   setupTheme();
+  setupHelp();
+  loadCounter();
   const ver = document.getElementById("ver");
   if (ver) ver.textContent = VERSION;
   const root = {
     tabs: document.getElementById("tabs"),
     meta: document.getElementById("meta"),
     chain: document.getElementById("chain"),
-    caps: document.getElementById("caps"),
     card: document.getElementById("card"),
   };
   try {

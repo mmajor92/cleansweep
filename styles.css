@@ -67,14 +67,6 @@ h1 { font-family: var(--display); font-weight: 800; font-size: 40px; letter-spac
 /* chain box */
 .chainbox { display: grid; justify-content: center; padding: 24px 0 18px; }
 .chain { display: flex; align-items: center; justify-content: center; min-height: 40px; }
-.caps { display: flex; margin-top: 8px; gap: 8px; font: 700 14px var(--display); color: var(--muted); }
-.caps span { text-align: center; white-space: nowrap; }
-.swivel {
-  width: 18px; height: 18px; transform: rotate(45deg); background: var(--tape);
-  border: 3px solid var(--ink); border-radius: 4px; margin: 0 -2px 0 6px; z-index: 1; flex: none;
-}
-.link.post { margin-left: 4px; }
-.link.post.joined { margin-left: 4px; }
 details.facts { margin-top: 18px; border-top: 2px solid var(--line); padding-top: 12px; font-size: 16px; }
 details.facts summary { cursor: pointer; font: 700 15px var(--display); color: var(--muted); }
 details.facts ul { margin: 8px 0 0; padding-left: 18px; }
@@ -222,3 +214,20 @@ details.facts p { margin: 8px 0 0; }
 }
 .theme:focus-visible { outline: 3px solid var(--tape); outline-offset: 3px; }
 .ver { text-align: center; margin: 22px 0 0; font: 600 12px var(--display); letter-spacing: 0.04em; color: var(--muted); opacity: 0.8; }
+
+/* how to play */
+.help { margin: 16px 0 0; padding: 14px 16px 16px; border: 2px solid var(--line); border-radius: 14px; background: var(--surface); }
+.help[hidden] { display: none; }
+.help h2 { margin: 0 0 6px; font: 800 18px var(--display); }
+.help ol { margin: 0 0 12px; padding-left: 22px; font-size: 17px; }
+.help li { margin: 3px 0; }
+
+/* the Clean Sweep celebration */
+.sweepfx { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 50; }
+.sweepfx span { position: absolute; bottom: -48px; animation: sweepRise 3s ease-out forwards; will-change: transform, opacity; }
+@keyframes sweepRise {
+  0% { transform: translateY(0) rotate(-12deg); opacity: 0; }
+  12% { opacity: 1; }
+  100% { transform: translateY(-115vh) rotate(18deg); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .sweepfx { display: none; } }
