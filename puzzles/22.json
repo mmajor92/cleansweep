@@ -1,0 +1,222 @@
+{
+  "seed": 174231,
+  "slack": 1,
+  "bridges": [
+    "hubble",
+    "dc3",
+    "sydney"
+  ],
+  "legs": [
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "wembley",
+        "family": "wembley",
+        "name": "Wembley Stadium",
+        "hint": "",
+        "clue": "",
+        "cat": "date",
+        "phrase": "the opening of the new Wembley Stadium",
+        "label": "New Wembley opens",
+        "value": 2007,
+        "approx": false,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/Wembley_Stadium",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "hubble",
+          "family": "hubble",
+          "name": "The Hubble Space Telescope",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the launch of the Hubble Space Telescope",
+          "label": "Hubble launched",
+          "value": 1990,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nasa.gov/content/goddard/nasa-refresher-on-hubble-facts-for-the-25th-anniversary",
+          "note": "Space Shuttle Discovery carried it up on 24 April 1990.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "length",
+      "anchor": {
+        "ent": "hubble",
+        "family": "hubble",
+        "name": "The Hubble Space Telescope",
+        "hint": "",
+        "clue": "",
+        "cat": "length",
+        "phrase": "the length of the Hubble Space Telescope",
+        "label": "Hubble length",
+        "value": 13.2,
+        "approx": false,
+        "status": "verified",
+        "source": "https://sci.esa.int/web/hubble/47358-fact-sheet",
+        "note": "It is about the size of a school bus.",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "nelsonstatue",
+          "family": "nelson",
+          "name": "The statue on Nelson's Column",
+          "hint": "the statue of Admiral Nelson at the top",
+          "clue": "part of a London monument",
+          "cat": "length",
+          "phrase": "the height of the statue of Nelson on top of Nelson's Column",
+          "label": "Nelson statue height",
+          "value": 5.5,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Nelson%27s_Column",
+          "note": "",
+          "warmup": false,
+          "fame": 2
+        },
+        {
+          "ent": "bellx1",
+          "family": "bellx1",
+          "name": "The Bell X-1",
+          "hint": "the first plane to fly faster than sound",
+          "clue": "an American rocket plane from the 1940s",
+          "cat": "length",
+          "phrase": "the length of the Bell X-1",
+          "label": "Bell X-1 length",
+          "value": 9.42,
+          "approx": false,
+          "status": "verified",
+          "source": "https://sandiegoairandspace.org/collection/item/bell-x-1-mock-up",
+          "note": "Its shape copied a .50 calibre bullet.",
+          "warmup": false,
+          "fame": 1
+        },
+        {
+          "ent": "dc3",
+          "family": "dc3",
+          "name": "The Douglas DC-3",
+          "hint": "the twin-engine airliner that made air travel pay in the 1930s",
+          "clue": "a twin-engine propeller airliner from the 1930s",
+          "cat": "length",
+          "phrase": "the length of the Douglas DC-3",
+          "label": "DC-3 length",
+          "value": 19.6,
+          "approx": false,
+          "status": "verified",
+          "source": "https://ingeniumcanada.org/artifact/douglas-dc-3",
+          "note": "That is 64 feet 5 inches.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "dc3",
+        "family": "dc3",
+        "name": "The Douglas DC-3",
+        "hint": "the twin-engine airliner that made air travel pay in the 1930s",
+        "clue": "a twin-engine propeller airliner from the 1930s",
+        "cat": "date",
+        "phrase": "the first flight of the Douglas DC-3",
+        "label": "DC-3 first flight",
+        "value": 1935,
+        "approx": false,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/Douglas_DC-3",
+        "note": "It first flew on 17 December 1935, 32 years to the day after the Wright brothers.",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "declaration",
+          "family": "declaration",
+          "name": "The Declaration of Independence",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the US Declaration of Independence",
+          "label": "Declaration of Independence",
+          "value": 1776,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.teachervision.com/world-history/resource/3851.html",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "sydney",
+          "family": "sydney",
+          "name": "The Sydney Harbour Bridge",
+          "hint": "Sydney's steel arch bridge, nicknamed the Coathanger",
+          "clue": "a famous Australian steel arch bridge",
+          "cat": "date",
+          "phrase": "the opening of the Sydney Harbour Bridge",
+          "label": "Sydney Harbour Bridge opens",
+          "value": 1932,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Sydney_Harbour_Bridge",
+          "note": "It opened on 19 March 1932.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "sydney",
+        "family": "sydney",
+        "name": "The Sydney Harbour Bridge",
+        "hint": "Sydney's steel arch bridge, nicknamed the Coathanger",
+        "clue": "a famous Australian steel arch bridge",
+        "cat": "weight",
+        "phrase": "the weight of the steelwork in the Sydney Harbour Bridge",
+        "label": "Sydney Harbour Bridge steel",
+        "value": 52800000,
+        "approx": false,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/Sydney_Harbour_Bridge",
+        "note": "The arch alone weighs 39,000 tonnes.",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "qm2",
+          "family": "qm2",
+          "name": "Queen Mary 2",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the weight of Queen Mary 2 (her displacement)",
+          "label": "Queen Mary 2 displacement",
+          "value": 76000000,
+          "approx": true,
+          "status": "verified",
+          "source": "https://store.titanichistoricalsociety.org/product/queen-mary-2-the-greatest-ocean-liner-of-our-time/",
+          "note": "Some sources give 79,287 tonnes. Her gross tonnage of about 150,000 measures volume, not weight.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": true,
+  "deepCutAt": 2,
+  "num": 22
+}

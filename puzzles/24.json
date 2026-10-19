@@ -1,0 +1,222 @@
+{
+  "seed": 190069,
+  "slack": 1,
+  "bridges": [
+    "titanic",
+    "qm2",
+    "tiger1"
+  ],
+  "legs": [
+    {
+      "cat": "count",
+      "anchor": {
+        "ent": "giraffe",
+        "family": "giraffe",
+        "name": "A giraffe",
+        "hint": "",
+        "clue": "",
+        "cat": "count",
+        "phrase": "the number of neck vertebrae in a giraffe",
+        "label": "Giraffe neck vertebrae",
+        "value": 7,
+        "approx": false,
+        "status": "verified",
+        "source": "https://savegiraffesnow.org/how-many-vertebrae-do-giraffes-have/",
+        "note": "Humans have seven too, but each giraffe vertebra is about 25 centimetres long.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "letters",
+          "family": "letters",
+          "name": "The alphabet",
+          "hint": "",
+          "clue": "",
+          "cat": "count",
+          "phrase": "the number of letters in the English alphabet",
+          "label": "Letters in the alphabet",
+          "value": 26,
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "titanic",
+          "family": "titanic",
+          "name": "The Titanic",
+          "hint": "",
+          "clue": "",
+          "cat": "count",
+          "phrase": "the number of lifeboats the Titanic carried",
+          "label": "Titanic lifeboats",
+          "value": 20,
+          "approx": false,
+          "status": "verified",
+          "source": "https://simple.wikipedia.com/wiki/Titanic",
+          "note": "That was six more than the rules of the time required.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "titanic",
+        "family": "titanic",
+        "name": "The Titanic",
+        "hint": "",
+        "clue": "",
+        "cat": "weight",
+        "phrase": "the weight of the Titanic (its displacement)",
+        "label": "Titanic displacement",
+        "value": 53150000,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.titanicofficers.com/titanic.html",
+        "note": "Displacement is the weight of water the ship pushed aside: 52,310 long tons.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "qm2",
+          "family": "qm2",
+          "name": "Queen Mary 2",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the weight of Queen Mary 2 (her displacement)",
+          "label": "Queen Mary 2 displacement",
+          "value": 76000000,
+          "approx": true,
+          "status": "verified",
+          "source": "https://store.titanichistoricalsociety.org/product/queen-mary-2-the-greatest-ocean-liner-of-our-time/",
+          "note": "Some sources give 79,287 tonnes. Her gross tonnage of about 150,000 measures volume, not weight.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "speed",
+      "anchor": {
+        "ent": "qm2",
+        "family": "qm2",
+        "name": "Queen Mary 2",
+        "hint": "",
+        "clue": "",
+        "cat": "speed",
+        "phrase": "the top speed of Queen Mary 2",
+        "label": "Queen Mary 2 top speed",
+        "value": 56,
+        "approx": true,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/Queen_Mary_2",
+        "note": "That is 30 knots.",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "cheetah",
+          "family": "cheetah",
+          "name": "A cheetah",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the top speed of a cheetah",
+          "label": "Cheetah top speed",
+          "value": 110,
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Fastest_animals",
+          "note": "Measured top speeds run from about 93 to 121 km/h.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "tiger1",
+          "family": "tiger1",
+          "name": "The Tiger I tank",
+          "hint": "a famous German heavy tank of World War II",
+          "clue": "a German heavy tank from World War II",
+          "cat": "speed",
+          "phrase": "the road speed of the Tiger I tank",
+          "label": "Tiger I road speed",
+          "value": 38,
+          "approx": true,
+          "status": "verified",
+          "source": "https://science.howstuffworks.com/panzerkampfwagen-vi-tiger-i.htm",
+          "note": "Some sources give up to 45 kilometres per hour on a road. It was slower across country.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "count",
+      "anchor": {
+        "ent": "tiger1",
+        "family": "tiger1",
+        "name": "The Tiger I tank",
+        "hint": "a famous German heavy tank of World War II",
+        "clue": "a German heavy tank from World War II",
+        "cat": "count",
+        "phrase": "the number of crew in a Tiger I tank",
+        "label": "Tiger I crew",
+        "value": 5,
+        "approx": false,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/Tiger_I",
+        "note": "A commander, gunner, loader, driver and radio operator.",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "bolt",
+          "family": "bolt",
+          "name": "Usain Bolt",
+          "hint": "",
+          "clue": "",
+          "cat": "count",
+          "phrase": "the number of Olympic gold medals Usain Bolt won",
+          "label": "Usain Bolt's Olympic golds",
+          "value": 8,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.cbssports.com/olympics/news/usain-bolt-loses-olympic-gold-medal-due-to-jamaica-teammates-doping-violation",
+          "note": "He won nine, but the 2008 relay gold was withdrawn in 2017.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "mir",
+          "family": "mir",
+          "name": "The Mir core module",
+          "hint": "the first module of the Mir space station",
+          "clue": "a Soviet space station module",
+          "cat": "count",
+          "phrase": "the number of docking ports on the Mir core module",
+          "label": "Mir core module ports",
+          "value": 6,
+          "approx": false,
+          "status": "verified",
+          "source": "https://nextspaceflight.com/launches/details/5250",
+          "note": "They let five more modules be added over the next decade.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": false,
+  "deepCutAt": -1,
+  "num": 24
+}
