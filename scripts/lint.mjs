@@ -38,6 +38,19 @@ for (const e of raw.entities || []) {
   if (ids.has(e.id)) err(`${where}: duplicate id`);
   ids.add(e.id);
   if (!e.name) err(`${where}: missing name`);
+  if (e.object !== undefined) {
+    // an extra number: one more fact about an object that is already in the game
+    const parent = (raw.entities || []).find((x) => x.id === e.object);
+    if (e.object === e.id || !parent) err(`${where}: object "${e.object}" is not another entity in facts.json (an extra number belongs to an object that is already there)`);
+    else if (parent.object !== undefined) err(`${where}: object "${e.object}" is itself an extra: point at the main object`);
+    if (Object.keys(e.facts || {}).length !== 1) err(`${where}: an extra number holds exactly one fact`);
+    else if (parent) {
+      const [c, f] = Object.entries(e.facts)[0];
+      const p = parent.facts && parent.facts[c];
+      const same = p && (c === "date" ? p.value === f.value : Math.abs(Math.log(p.value / f.value)) < 0.01); // within 1%. For dates only the same year counts: two dates a year or two apart are different events
+      if (same) warn(`${where}: ${c} ${f.value} is the same as the ${c} already on "${e.object}" (${p.value}): the same number twice?`);
+    }
+  }
   if (!e.facts || !Object.keys(e.facts).length) err(`${where}: no facts`);
   for (const key of ["hint", "clue"]) {
     if (e[key] === undefined) continue;
@@ -96,7 +109,7 @@ const perCat = Object.fromEntries(CATEGORY_KEYS.map((c) => [c, entities.filter((
 for (const c of CATEGORY_KEYS) {
   if (perCat[c] < MIN_PER_CATEGORY) err(`only ${perCat[c]} usable ${c} facts (need ${MIN_PER_CATEGORY})`);
 }
-const hingeIds = entities.filter((e) => Object.keys(e.facts).length >= 2).map((e) => e.id);
+const hingeIds = entities.filter((e) => Object.keys(e.facts).length >= 2).map((e) => e.id); // an extra number holds one fact, so it is never a bridge
 if (hingeIds.length < MIN_HINGES) err(`only ${hingeIds.length} bridge objects (need ${MIN_HINGES})`);
 
 // ---------- 3. Candidates must never leak into production ----------
@@ -142,10 +155,11 @@ const generated = series.filter(Boolean);
 // How evenly is the pool used? An everyday object (rated 2 or 3) that almost never appears is wasted research.
 const appearDays = {};
 for (const p of generated) for (const id of objectsOf(p)) appearDays[id] = (appearDays[id] || 0) + 1;
-const everyday = entities.filter((e) => e.fame >= 2);
+const everyday = entities.filter((e) => e.fame >= 2 && e.object === e.id); // objects, counted once however many numbers they hold
 const rarelySeen = everyday.filter((e) => (appearDays[e.id] || 0) < 5);
-if (rarelySeen.length / everyday.length > 0.12) {
-  warn(`${rarelySeen.length} of ${everyday.length} everyday objects appear on fewer than 5 days a year (${rarelySeen.map((e) => e.id).slice(0, 12).join(", ")}${rarelySeen.length > 12 ? ", ..." : ""}): their facts may not fit next to any other, so add facts or objects with similar values`);
+const almostNever = everyday.filter((e) => (appearDays[e.id] || 0) < 2); // about once a year or less: the research is wasted
+if (almostNever.length / everyday.length > 0.12) {
+  warn(`${almostNever.length} of ${everyday.length} everyday objects appear on fewer than 2 days a year (${almostNever.map((e) => e.id).slice(0, 12).join(", ")}${almostNever.length > 12 ? ", ..." : ""}): their facts may not fit next to any other, so add facts or objects with similar values`);
 }
 const allPairs = CATEGORY_KEYS.flatMap((a) => CATEGORY_KEYS.filter((b) => b !== a).map((b) => `${a}>${b}`));
 for (const k of allPairs) if (!pairs[k]) err(`the switch ${k} never appears in ${DAYS} days`);
@@ -251,7 +265,14 @@ line(`  entities: ${entities.length} usable, ${hingeIds.length} bridge objects`)
 line(`  facts per category: ${CATEGORY_KEYS.map((c) => `${c} ${perCat[c]}`).join(", ")}`);
 line(`  days generated: ${generated.length}/${DAYS}, category switches covered: ${Object.keys(pairs).length}/20`);
 line(`  switches per day: ${Object.keys(switchesPerDay).sort().map((k) => `${k}: ${Math.round((100 * switchesPerDay[k]) / DAYS)}%`).join(", ")}`);
-line(`  everyday objects seen on fewer than 5 days a year: ${rarelySeen.length} of ${everyday.length}`);
+line(`  everyday objects seen on fewer than 2 days a year: ${almostNever.length} of ${everyday.length} (fewer than 5 days: ${rarelySeen.length})`);
+{
+  // Is a category oversupplied? If a fact is asked about only a few times a year, that category has more facts than it needs.
+  const asked = {}, facts = {};
+  for (const p of generated) for (const q of questionsOf(p)) asked[q.cat] = (asked[q.cat] || 0) + 1;
+  for (const e of entities) for (const c of CATEGORY_KEYS) if (e.facts[c] && !e.facts[c].warmup) facts[c] = (facts[c] || 0) + 1;
+  line(`  times an average fact is asked about in a year: ${CATEGORY_KEYS.map((c) => `${c} ${((asked[c] || 0) / (facts[c] || 1)).toFixed(1)}`).join(", ")}`);
+}
 line(`  published puzzle files checked: ${published} (${publishedOld} still in the older two-half format)`);
 const topHinges = Object.entries(hinges).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([k, v]) => `${k} ${v}`).join(", ");
 line(`  busiest bridges: ${topHinges}`);

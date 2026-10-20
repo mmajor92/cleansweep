@@ -13,7 +13,20 @@ export const PROPERTIES = [
   { cat: "date", pid: "P1619", kind: "opening", type: "time" },
   { cat: "date", pid: "P606", kind: "first flight", type: "time" },
   { cat: "date", pid: "P619", kind: "launch", type: "time" },
+  // Dates of EVENTS and famous people. These items have a date and nothing else, so they are `standalone`: they are kept even
+  // though they are in only one category (the others need two, so that they can bridge).
+  { cat: "date", pid: "P585", kind: "event", type: "time", standalone: true }, // a battle, an eruption, a disaster, a treaty
+  { cat: "date", pid: "P580", kind: "start", type: "time", standalone: true }, // the start of a war, a reign, a project
+  { cat: "date", pid: "P582", kind: "end", type: "time", standalone: true },
+  { cat: "date", pid: "P575", kind: "discovery", type: "time", standalone: true }, // a discovery or an invention
+  { cat: "date", pid: "P577", kind: "publication", type: "time", standalone: true }, // a book, a film, an album
+  // Humans are excluded from every other query. These two ask for humans ONLY, and set the fame bar higher so that only the most famous come back.
+  { cat: "date", pid: "P569", kind: "birth", type: "time", subject: "person", standalone: true },
+  { cat: "date", pid: "P570", kind: "death", type: "time", subject: "person", standalone: true },
 ];
+
+/** People need many more language editions than objects before we ask about them: this keeps the list to the very famous. */
+export const PERSON_MIN_LINKS = 120;
 
 /**
  * Build a SPARQL query for one property. Humans and taxa are excluded.
@@ -26,6 +39,8 @@ export const PROPERTIES = [
  * as it has enough rows. It asks for three times as many, and the caller sorts them by fame and keeps the best.
  */
 export function buildQuery(prop, { minLinks = 50, limit = 400, sample = false } = {}) {
+  const person = prop.subject === "person";
+  const fame = person ? Math.max(minLinks, PERSON_MIN_LINKS) : minLinks;
   const value =
     prop.type === "time"
       ? `?item p:${prop.pid}/psv:${prop.pid} ?node .
@@ -36,9 +51,8 @@ export function buildQuery(prop, { minLinks = 50, limit = 400, sample = false } 
   hint:Query hint:optimizer "None" .
   ${value}
   ?item wikibase:sitelinks ?links .
-  FILTER(?links >= ${minLinks})
-  FILTER NOT EXISTS { ?item wdt:P31 wd:Q5 }
-  FILTER NOT EXISTS { ?item wdt:P31 wd:Q16521 }
+  FILTER(?links >= ${fame})
+  ${person ? "?item wdt:P31 wd:Q5 ." : "FILTER NOT EXISTS { ?item wdt:P31 wd:Q5 }\n  FILTER NOT EXISTS { ?item wdt:P31 wd:Q16521 }"}
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }${sample ? "" : "\nORDER BY DESC(?links)"}
 LIMIT ${sample ? limit * 3 : limit}`;
@@ -82,7 +96,7 @@ export function parseBindings(json, prop) {
       if (!Number.isFinite(raw) || raw <= 0) continue;
       value = tidy(raw * prop.factor);
     }
-    rows.push({ qid, label, links, cat: prop.cat, pid: prop.pid, kind: prop.kind, value, review });
+    rows.push({ qid, label, links, cat: prop.cat, pid: prop.pid, kind: prop.kind, value, review, standalone: !!prop.standalone });
   }
   return rows;
 }
@@ -92,8 +106,10 @@ const UNITS = { length: "m", weight: "kg", speed: "km/h", date: "year", count: "
 function suggestPhrase(row) {
   const L = row.label;
   switch (row.cat) {
-    case "date":
-      return row.kind === "first flight" ? `the first flight of ${L}` : row.kind === "launch" ? `the launch of ${L}` : row.kind === "opening" ? `the opening of ${L}` : `the creation of ${L}`;
+    case "date": {
+      const words = { "first flight": "the first flight of", launch: "the launch of", opening: "the opening of", event: "the date of", start: "the start of", end: "the end of", discovery: "the discovery of", publication: "the publication of", birth: "the birth of", death: "the death of" };
+      return `${words[row.kind] || "the creation of"} ${L}`;
+    }
     case "weight":
       return `the weight of ${L}`;
     case "speed":
@@ -115,13 +131,16 @@ export function mergeRows(rows, { minCategories = 2 } = {}) {
   for (const r of rows) {
     const e = byQid.get(r.qid) || { qid: r.qid, label: r.label, links: r.links, options: {} };
     (e.options[r.cat] ||= []);
-    if (!e.options[r.cat].some((o) => o.pid === r.pid)) e.options[r.cat].push(r);
+    const same = e.options[r.cat].find((o) => o.pid === r.pid);
+    if (!same) e.options[r.cat].push({ ...r });
+    else if (same.value !== r.value) (same.others ||= new Set()).add(r.value); // Wikidata lists more than one value: a reviewer must choose
     byQid.set(r.qid, e);
   }
   const out = [];
   for (const e of byQid.values()) {
     const cats = Object.keys(e.options);
-    if (cats.length < minCategories) continue;
+    const standalone = cats.some((c) => e.options[c].some((o) => o.standalone)); // an event or a famous person: a date is all it has
+    if (cats.length < minCategories && !standalone) continue;
     const facts = {};
     for (const cat of cats) {
       const [first, ...rest] = e.options[cat];
@@ -133,7 +152,7 @@ export function mergeRows(rows, { minCategories = 2 } = {}) {
         kind: first.kind,
         source: `https://www.wikidata.org/wiki/${e.qid}`,
         status: "candidate",
-        ...(first.review ? { needsReview: first.review } : {}),
+        ...(first.review || first.others ? { needsReview: [first.review, first.others && `Wikidata lists more than one value (${[first.value, ...first.others].join(", ")}): check which is right`].filter(Boolean).join("; ") } : {}),
         ...(rest.length ? { alternatives: rest.map((o) => ({ kind: o.kind, value: o.value })) } : {}),
       };
     }

@@ -88,14 +88,19 @@ export function warmGapOk(category, a, b) {
 
 export function buildEntities(raw, allowedStatuses = RULES.allowedStatuses) {
   const out = [];
-  for (const e of raw.entities || raw) {
+  const list = raw.entities || raw;
+  const byId = Object.fromEntries(list.map((x) => [x.id, x]));
+  for (const e of list) {
+    const object = e.object || e.id; // an "extra" number (the Eiffel Tower's rivets, as well as its steps) names the object it belongs to
+    const parent = object !== e.id ? byId[object] : null;
     const facts = {};
     for (const [cat, f] of Object.entries(e.facts)) {
       if (!CATEGORIES[cat]) continue;
       if (!allowedStatuses.includes(f.status)) continue;
       facts[cat] = f;
     }
-    if (Object.keys(facts).length) out.push({ id: e.id, name: e.name, family: e.family || e.id, hint: e.hint || "", clue: e.clue || "", facts, fame: e.fame || 2 });
+    // An extra shares its object's family (so the two never appear in one puzzle), and its fame, hint and clue unless it sets its own.
+    if (Object.keys(facts).length) out.push({ id: e.id, object, name: e.name, family: e.family || (parent && parent.family) || object, hint: e.hint || (parent && parent.hint) || "", clue: e.clue || (parent && parent.clue) || "", facts, fame: e.fame || (parent && parent.fame) || 2 });
   }
   return out;
 }
@@ -103,7 +108,7 @@ export function buildEntities(raw, allowedStatuses = RULES.allowedStatuses) {
 export function toItem(entity, category) {
   const f = entity.facts[category];
   return {
-    ent: entity.id,
+    ent: entity.object || entity.id, // the object, so the day-to-day rules treat an extra number as the same object
     family: entity.family,
     name: entity.name,
     hint: entity.hint || "", // shown after the answer
@@ -232,7 +237,7 @@ export function generate(seed, entities, options = {}) {
   const wantWarm = options.warm !== undefined ? options.warm : rng() < RULES.warmChance;
   const warmHistory = options.warmHistory || [];
   const warmSince = (e) => {
-    const i = warmHistory.lastIndexOf(e.id);
+    const i = warmHistory.lastIndexOf(e.object || e.id);
     return i < 0 ? 1e6 : warmHistory.length - i;
   };
   // Does this puzzle include a "deep cut"? Decided once per puzzle so the rate stays steady.
@@ -240,7 +245,7 @@ export function generate(seed, entities, options = {}) {
   // Deep cuts rotate: the obscure object that has gone longest without appearing is tried first.
   const spiceHistory = options.spiceHistory || [];
   const spiceSince = (e) => {
-    const i = spiceHistory.lastIndexOf(e.id);
+    const i = spiceHistory.lastIndexOf(e.object || e.id);
     return i < 0 ? 1e6 : spiceHistory.length - i;
   };
   const startCat = options.startCat || CATEGORY_KEYS[Math.floor(rng() * CATEGORY_KEYS.length)];
@@ -252,7 +257,7 @@ export function generate(seed, entities, options = {}) {
   seenDays.forEach((ids, i) => {
     for (const id of ids) lastSeen.set(id, seenDays.length - i);
   });
-  const pickWeight = (e) => weightOf(e) * freshness(lastSeen.get(e.id));
+  const pickWeight = (e) => weightOf(e) * freshness(lastSeen.get(e.object || e.id));
 
   /** Plan the shape of the chain: where it switches, and into which categories. */
   function makePlan() {
@@ -297,7 +302,7 @@ export function generate(seed, entities, options = {}) {
     const { isB, cat, posInLeg, legLen } = plan;
     const N = RULES.chainLength;
     const warmFirst = !!warmAnchor;
-    const anchors = warmAnchor ? [warmAnchor] : wshuffle(poolBy[cat[0]].filter((e) => e.fame !== 1 && !avoidNow.has(e.id))).map((e) => toItem(e, cat[0]));
+    const anchors = warmAnchor ? [warmAnchor] : wshuffle(poolBy[cat[0]].filter((e) => e.fame !== 1 && !avoidNow.has(e.object || e.id))).map((e) => toItem(e, cat[0]));
     let budget = RULES.searchBudget; // a search gives up quickly rather than exploring every combination
     for (const anchor of anchors) {
       const seq = [];
@@ -311,7 +316,7 @@ export function generate(seed, entities, options = {}) {
         const b = isB[q];
         const spiceHere = q === spiceAt;
         // Enthusiast-only objects (fame 1) are kept out of ordinary slots: at most one deep cut per puzzle, only in its chosen slot.
-        const base = (spiceHere ? poolBy[c].filter((e) => e.fame === 1 && spiceSince(e) > RULES.spiceCooldown) : poolBy[c].filter((e) => e.fame !== 1)).filter((e) => !avoidNow.has(e.id));
+        const base = (spiceHere ? poolBy[c].filter((e) => e.fame === 1 && spiceSince(e) > RULES.spiceCooldown) : poolBy[c].filter((e) => e.fame !== 1)).filter((e) => !avoidNow.has(e.object || e.id));
         const stepOk = (e) =>
           warmFirst && q === 0 ? warmGapOk(c, prev.value, e.facts[c].value) : gapOk(c, prev.value, e.facts[c].value, gapSlot(posInLeg[q], b), slack, b);
         let workable = base.filter((e) => !families.has(e.family) && stepOk(e));
@@ -320,7 +325,7 @@ export function generate(seed, entities, options = {}) {
         if (b) {
           // Bridges: nothing used within the cooldown comes first, weighted by how well known the object is and by how long
           // since it last appeared (capped), so famous bridges come round more often than obscure ones.
-          const rated = workable.map((e) => ({ e, s: sinceUsed(e.id) }));
+          const rated = workable.map((e) => ({ e, s: sinceUsed(e.object || e.id) }));
           const ready = rated
             .filter((x) => x.s > RULES.hingeCooldown)
             .map((x) => ({ ...x, k: Math.pow(rng(), 1 / (pickWeight(x.e) * Math.min(x.s, RULES.hingeSinceCap))) }))
@@ -375,7 +380,7 @@ export function generate(seed, entities, options = {}) {
     // A warm-up: the puzzle starts from a reserved easy fact, and the first question is a big-gap gimme.
     let warmAnchor = null;
     if (wantWarm && attempt < RULES.warmAttempts) {
-      const ready = warmBy[plan.cat[0]].filter((e) => warmSince(e) > RULES.warmCooldown && !(attempt < avoidTries && avoid.has(e.id)));
+      const ready = warmBy[plan.cat[0]].filter((e) => warmSince(e) > RULES.warmCooldown && !(attempt < avoidTries && avoid.has(e.object || e.id)));
       if (ready.length) warmAnchor = toItem(shuffle(ready)[0], plan.cat[0]);
     }
     const built = tryBuild(plan, slack, spice ? target : -1, warmAnchor, attempt >= RULES.hardAttempts, attempt < avoidTries ? avoid : nothing);

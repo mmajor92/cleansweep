@@ -330,7 +330,7 @@ test("familiarity: well-known objects are picked more often than moderately know
   for (const p of generateSeries(1, 200, entities)) {
     for (const it of allItems(p)) count[fameOf[it.ent]]++;
   }
-  const per = (f) => count[f] / entities.filter((e) => e.fame === f).length;
+  const per = (f) => count[f] / entities.filter((e) => e.fame === f && e.object === e.id).length; // objects, counted once however many numbers they hold
   assert.ok(per(3) > per(2) * 1.05, "rating 3 objects should be used more per object than rating 2");
   const share1 = count[1] / (count[1] + count[2] + count[3]);
   assert.ok(share1 < 0.12, `enthusiast objects should stay under 12% of questions, got ${Math.round(share1 * 100)}%`);

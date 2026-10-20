@@ -557,6 +557,27 @@
           "source": "https://dlab.epfl.ch/wikispeedia/wpcd/wp/s/Saturn_V.htm",
           "checkedOn": "2026-10-15",
           "note": "Apollo 4 flew on 9 November 1967."
+        },
+        "count": {
+          "phrase": "the number of F-1 engines on the first stage of the Saturn V",
+          "label": "Saturn V engines",
+          "value": 5,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nasa.gov/history/sp-4206/ch3.htm",
+          "checkedOn": "2026-10-20"
+        },
+        "speed": {
+          "phrase": "the speed of the Saturn V when its first stage burned out",
+          "label": "Saturn V speed at burnout",
+          "value": 9900,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nasa.gov/history/sp-4206/ch3.htm",
+          "checkedOn": "2026-10-20",
+          "note": "That was at a height of about 67 km."
         }
       },
       "family": "saturn",
@@ -648,6 +669,16 @@
           "source": "https://kolibri.teacherinabox.org.au/modules/en-wikipedia_for_schools-static/wp/g/Great_Pyramid_of_Giza.htm",
           "checkedOn": "2026-10-15",
           "note": "It was about 2,500 years old when Cleopatra was born."
+        },
+        "count": {
+          "phrase": "the number of stone blocks in the Great Pyramid",
+          "label": "Pyramid blocks",
+          "value": 2300000,
+          "unit": "",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/facts/Great-Pyramid-of-Giza",
+          "checkedOn": "2026-10-20"
         }
       },
       "family": "pyramid",
@@ -749,6 +780,17 @@
           "status": "verified",
           "source": "https://worldatlas.com/articles/which-buildings-have-the-highest-number-of-floors-in-the-world.html",
           "checkedOn": "2026-10-15"
+        },
+        "speed": {
+          "phrase": "the top speed of the fastest lifts in the Burj Khalifa",
+          "label": "Burj Khalifa lift speed",
+          "value": 36,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.burjkhalifa.ae/en/the-tower/facts-figures/",
+          "checkedOn": "2026-10-20",
+          "note": "That is 10 metres per second."
         }
       },
       "family": "burj",
@@ -1393,6 +1435,17 @@
           "source": "https://www.thisdayinaviation.com/tag/william-j-knight/",
           "checkedOn": "2026-10-15",
           "note": "Pete Knight set the record on 3 October 1967. It still stands."
+        },
+        "weight": {
+          "phrase": "the empty weight of the X-15",
+          "label": "X-15 empty weight",
+          "value": 6620,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://airwingmedia.com/?p=10460",
+          "checkedOn": "2026-10-20",
+          "note": "Fully loaded it weighed 15,420 kg."
         }
       },
       "family": "x15",
@@ -1436,6 +1489,17 @@
           "source": "https://en.wikipedia.org/wiki/Seawise_Giant",
           "checkedOn": "2026-10-15",
           "note": "It was scrapped in India after 2009."
+        },
+        "speed": {
+          "phrase": "the top speed of the supertanker Seawise Giant",
+          "label": "Seawise Giant speed",
+          "value": 30.6,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.guinnessworldrecords.com/world-records/largest-oil-tanker-ever",
+          "checkedOn": "2026-10-20",
+          "note": "That is 16.5 knots."
         }
       },
       "family": "seawise",
@@ -1490,6 +1554,17 @@
           "source": "https://en.wikipedia.org/wiki/German_battleship_Bismarck",
           "checkedOn": "2026-10-15",
           "note": "That is 30.01 knots. Her design speed was 29."
+        },
+        "count": {
+          "phrase": "the number of main guns on the Bismarck",
+          "label": "Bismarck main guns",
+          "value": 8,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/Bismarck-German-battleship",
+          "checkedOn": "2026-10-20",
+          "note": "They were 38 cm guns in four twin turrets."
         }
       },
       "family": "bismarck",
@@ -1598,6 +1673,17 @@
           "source": "https://migflug.com/?p=18917",
           "checkedOn": "2026-10-15",
           "note": "That was Mach 1.45 in March 1948. The later X-1A reached Mach 2.44."
+        },
+        "weight": {
+          "phrase": "the empty weight of the Bell X-1",
+          "label": "Bell X-1 empty weight",
+          "value": 3175,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://airwingmedia.com/downloads/bell-x1-x1e-x2-douglas-x3-northrop-x4-bell-x5/",
+          "checkedOn": "2026-10-20",
+          "note": "It was the first aircraft to fly faster than sound."
         }
       },
       "family": "bellx1",
@@ -1707,6 +1793,17 @@
           "source": "https://en.wikipedia.org/wiki/Ariane_flight_VA256",
           "checkedOn": "2026-10-15",
           "note": "An Ariane 5 launched it on Christmas Day."
+        },
+        "count": {
+          "phrase": "the number of mirror segments in the James Webb Space Telescope",
+          "label": "Webb mirror segments",
+          "value": 18,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://webb.nasa.gov/content/observatory/ote/mirrors/index.html",
+          "checkedOn": "2026-10-20",
+          "note": "Each is a gold-coated beryllium hexagon."
         }
       },
       "family": "jwst",
@@ -1869,6 +1966,17 @@
           "source": "https://en.wikipedia.org/wiki/Falcon_9_Full_Thrust",
           "checkedOn": "2026-10-15",
           "note": "It made the first vertical landing of an orbital rocket's first stage."
+        },
+        "count": {
+          "phrase": "the number of Merlin engines on the first stage of a Falcon 9",
+          "label": "Falcon 9 engines",
+          "value": 9,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.spacex.com/vehicles/falcon-9/",
+          "checkedOn": "2026-10-20",
+          "note": "Eight surround one in the middle."
         }
       },
       "family": "f9ft",
@@ -2273,6 +2381,17 @@
           "status": "verified",
           "source": "https://www.railtarget.eu/technologies-and-infrastructure/longest-train-tunnels-world-underground-marvels-10067.html",
           "checkedOn": "2026-10-15"
+        },
+        "count": {
+          "phrase": "the number of tunnels that make up the Channel Tunnel",
+          "label": "Channel Tunnel tunnels",
+          "value": 3,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.getlinkgroup.com/en/our-group/history/",
+          "checkedOn": "2026-10-20",
+          "note": "Two carry trains and one is for service."
         }
       },
       "family": "channeltunnel",
@@ -2429,6 +2548,16 @@
           "source": "https://en.wikipedia.org/wiki/Cutty_Sark",
           "checkedOn": "2026-10-15",
           "note": "She launched on 22 November 1869."
+        },
+        "count": {
+          "phrase": "the number of masts on the Cutty Sark",
+          "label": "Cutty Sark masts",
+          "value": 3,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.rmg.co.uk/cutty-sark/history",
+          "checkedOn": "2026-10-20"
         }
       },
       "family": "cuttysark",
@@ -2806,6 +2935,16 @@
           "source": "https://en.wikipedia.org/wiki/Apollo_Lunar_Module",
           "checkedOn": "2026-10-15",
           "note": "Its crew of two flew it from lunar orbit to the surface."
+        },
+        "count": {
+          "phrase": "the number of landing legs on the Apollo Lunar Module",
+          "label": "Lunar Module legs",
+          "value": 4,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nasa.gov/history/alsj/LM04_Lunar_Module_pp1-8.pdf",
+          "checkedOn": "2026-10-20"
         }
       },
       "family": "apollolm",
@@ -2895,6 +3034,7 @@
       "family": "snooker",
       "clue": "a scoring record in a cue sport",
       "hint": "a maximum break, potting every ball in order",
+      "object": "snooker",
       "fame": 3
     },
     {
@@ -2920,6 +3060,17 @@
           "status": "definitional",
           "source": "definition",
           "basis": "50 x 25 x 2 m is 2,500 cubic metres, and a cubic metre of water weighs about 1,000 kg"
+        },
+        "count": {
+          "phrase": "the number of lanes marked in an Olympic swimming pool, including the two unused outer lanes",
+          "label": "Olympic pool lanes",
+          "value": 10,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.worldaquatics.com/rules/facilities-rules",
+          "checkedOn": "2026-10-20",
+          "note": "Races use eight."
         }
       },
       "family": "olympicpool",
@@ -3062,6 +3213,7 @@
       "family": "tennis",
       "clue": "part of a racket-sport court",
       "hint": "the net across the middle of a tennis court",
+      "object": "tennis",
       "fame": 3
     },
     {
@@ -3115,6 +3267,7 @@
       "family": "towerbridge",
       "clue": "part of a London bridge",
       "hint": "the two towers joined by high walkways",
+      "object": "towerbridge",
       "fame": 3
     },
     {
@@ -3179,6 +3332,7 @@
       "family": "angel",
       "clue": "a huge sculpture in northern England",
       "hint": "the steel figure with outstretched wings",
+      "object": "angel",
       "fame": 3
     },
     {
@@ -3537,6 +3691,7 @@
       "family": "nelson",
       "clue": "part of a London monument",
       "hint": "the statue of Admiral Nelson at the top",
+      "object": "nelson",
       "fame": 2
     },
     {
@@ -3617,6 +3772,17 @@
           "source": "https://www.topendsports.com/resources/equipment/ball-weight.htm",
           "checkedOn": "2026-10-15",
           "note": "That is 16 pounds."
+        },
+        "count": {
+          "phrase": "the number of holes in a ten-pin bowling ball",
+          "label": "Bowling ball holes",
+          "value": 3,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://bowl.com/rules/usbc-playing-rules",
+          "checkedOn": "2026-10-20",
+          "note": "One for the thumb and two for the fingers."
         }
       },
       "family": "bowlingball",
@@ -3638,6 +3804,16 @@
           "source": "https://www.williamsf1.com/posts/253b1dc5-aee9-4d3b-b720-8e30f3a83093/how-fast-can-an-f1-car-go",
           "checkedOn": "2026-10-15",
           "note": "Valtteri Bottas hit it in a Williams at the 2016 Mexican Grand Prix."
+        },
+        "weight": {
+          "phrase": "the minimum weight of a 2026 Formula 1 car, with its driver but without fuel",
+          "label": "F1 car minimum weight",
+          "value": 768,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.fia.com/regulation/category/110",
+          "checkedOn": "2026-10-20"
         }
       },
       "family": "f1car",
@@ -3779,6 +3955,7 @@
       "family": "cricket",
       "clue": "a fast bowler",
       "hint": "the Rawalpindi Express bowling against England",
+      "object": "cricket",
       "fame": 2
     },
     {
@@ -3800,6 +3977,7 @@
       "family": "tennis",
       "clue": "a big server",
       "hint": "Sam Groth at a Challenger event in South Korea",
+      "object": "tennis",
       "fame": 1
     },
     {
@@ -3906,6 +4084,7 @@
       "family": "monopoly",
       "clue": "part of a famous board game",
       "hint": "the streets, stations and utilities you can buy",
+      "object": "monopoly",
       "fame": 2
     },
     {
@@ -3922,6 +4101,17 @@
           "source": "https://nrich.maths.org/content/id/7449/DiscussChoose.pdf",
           "checkedOn": "2026-10-15",
           "note": "That is about 10 pounds."
+        },
+        "speed": {
+          "phrase": "the top sprinting speed of a domestic cat",
+          "label": "Cat top speed",
+          "value": 48,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.zivalce.si/en/breeds/cats/egyptian-mau",
+          "checkedOn": "2026-10-20",
+          "note": "Only in short bursts."
         }
       },
       "family": "cat",
@@ -3986,6 +4176,7 @@
         }
       },
       "family": "statue",
+      "object": "statue",
       "fame": 3
     },
     {
@@ -4004,7 +4195,8 @@
         }
       },
       "family": "titanic",
-      "fame": 1,
+      "object": "titanic",
+      "fame": 3,
       "clue": "part of a famous ocean liner",
       "hint": "the widest point of the Titanic's hull"
     },
@@ -4024,7 +4216,8 @@
         }
       },
       "family": "titanic",
-      "fame": 1,
+      "object": "titanic",
+      "fame": 3,
       "clue": "part of a famous ocean liner",
       "hint": "from the keel to the top of the funnels"
     },
@@ -4044,6 +4237,7 @@
         }
       },
       "family": "concorde",
+      "object": "concorde",
       "fame": 1,
       "clue": "part of a supersonic airliner",
       "hint": "Concorde's delta wing, tip to tip"
@@ -4064,6 +4258,7 @@
         }
       },
       "family": "wright",
+      "object": "wright",
       "fame": 1,
       "clue": "the first powered aeroplane",
       "hint": "the aircraft that flew at Kitty Hawk in 1903"
@@ -4084,6 +4279,7 @@
         }
       },
       "family": "bigben",
+      "object": "bigben",
       "fame": 1,
       "clue": "part of London's most famous clock",
       "hint": "one of the four clock faces of Big Ben"
@@ -4104,6 +4300,7 @@
         }
       },
       "family": "bigben",
+      "object": "bigben",
       "fame": 1,
       "clue": "part of London's most famous clock",
       "hint": "the Great Bell, which is Big Ben itself"
@@ -4155,6 +4352,17 @@
           "status": "verified",
           "source": "https://www.som.com/?p=8345",
           "checkedOn": "2026-10-15"
+        },
+        "count": {
+          "phrase": "the number of glass panels on The Shard",
+          "label": "Shard glass panels",
+          "value": 11000,
+          "unit": "",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.the-shard.com/about/",
+          "checkedOn": "2026-10-20",
+          "note": "They cover about 56,000 square metres."
         }
       },
       "fame": 3
@@ -4274,6 +4482,16 @@
           "source": "https://ielc.libguides.com/sdzg/factsheets/african_elephant/characteristics",
           "checkedOn": "2026-10-16",
           "note": "Large males can stand over 3.5 metres at the shoulder."
+        },
+        "speed": {
+          "phrase": "the top speed of an African elephant",
+          "label": "Elephant top speed",
+          "value": 40,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/African-elephant",
+          "checkedOn": "2026-10-20"
         }
       },
       "fame": 3
@@ -4301,6 +4519,16 @@
           "status": "verified",
           "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
           "checkedOn": "2026-10-16"
+        },
+        "speed": {
+          "phrase": "the top speed of a humpback whale",
+          "label": "Humpback top speed",
+          "value": 27,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.fisheries.noaa.gov/species/humpback-whale",
+          "checkedOn": "2026-10-20"
         }
       },
       "fame": 2
@@ -4329,6 +4557,16 @@
           "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
           "checkedOn": "2026-10-16",
           "note": "Males are much longer than females and can reach about 20 metres."
+        },
+        "speed": {
+          "phrase": "the top burst speed of a sperm whale",
+          "label": "Sperm whale top speed",
+          "value": 37,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/sperm-whale",
+          "checkedOn": "2026-10-20"
         }
       },
       "fame": 2
@@ -4358,6 +4596,16 @@
           "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
           "checkedOn": "2026-10-16",
           "note": "The longest blue whales are about 30 metres."
+        },
+        "speed": {
+          "phrase": "the top burst speed of a blue whale",
+          "label": "Blue whale top speed",
+          "value": 50,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/blue-whale",
+          "checkedOn": "2026-10-20"
         }
       },
       "fame": 3
@@ -4379,6 +4627,7 @@
         }
       },
       "family": "statue",
+      "object": "statue",
       "fame": 1,
       "clue": "part of a famous statue",
       "hint": "the concrete block under the Statue of Liberty"
@@ -4519,6 +4768,16 @@
           "source": "https://www.xataka.com/energia/thrust-ssc-a-393-044-km-h-sonda-parker-vehiculos-rapidos-hechos-hombre-sus-record-velocidad",
           "checkedOn": "2026-10-15",
           "note": "It happened on 2 August 2019."
+        },
+        "weight": {
+          "phrase": "the weight of the Bugatti Chiron",
+          "label": "Chiron weight",
+          "value": 1995,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://newsroom.bugatti.com/press-releases/world-premiere-for-the-chiron-at-geneva-bugatti-unveils-the-ultimate-super-sports-car",
+          "checkedOn": "2026-10-20"
         }
       },
       "family": "bugatti",
@@ -4946,7 +5205,8 @@
         }
       },
       "family": "eiffel",
-      "fame": 1,
+      "object": "eiffel",
+      "fame": 3,
       "clue": "a famous Paris landmark",
       "hint": "the pieces of wrought iron that make up the Eiffel Tower"
     },
@@ -4967,7 +5227,8 @@
         }
       },
       "family": "titanic",
-      "fame": 1,
+      "object": "titanic",
+      "fame": 3,
       "clue": "a famous ocean liner",
       "hint": "the rivets that held the Titanic's hull together"
     },
@@ -5535,6 +5796,2124 @@
       "fame": 2
     },
     {
+      "id": "rome753",
+      "name": "The founding of Rome",
+      "facts": {
+        "date": {
+          "phrase": "the founding of Rome",
+          "label": "Founding of Rome",
+          "value": -753,
+          "unit": "year",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.historion.iovan.net/history-rome-earliest-times-down-476-ad/chronology",
+          "checkedOn": "2026-10-20",
+          "note": "The traditional date: 21 April 753 BC. Nobody knows for sure."
+        }
+      },
+      "family": "rome753",
+      "fame": 3
+    },
+    {
+      "id": "battlemarathon",
+      "name": "The Battle of Marathon",
+      "facts": {
+        "date": {
+          "phrase": "the Battle of Marathon",
+          "label": "Battle of Marathon",
+          "value": -490,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.worldhistory.org/timeline/Hellenic_World",
+          "checkedOn": "2026-10-20",
+          "note": "A Greek force beat the Persians. The marathon race is named after it."
+        }
+      },
+      "family": "battlemarathon",
+      "fame": 3
+    },
+    {
+      "id": "thermopylae",
+      "name": "The Battle of Thermopylae",
+      "facts": {
+        "date": {
+          "phrase": "the Battle of Thermopylae",
+          "label": "Battle of Thermopylae",
+          "value": -480,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.worldhistory.org/timeline/Hellenic_World",
+          "checkedOn": "2026-10-20",
+          "note": "Three hundred Spartans held the pass against the Persian army."
+        }
+      },
+      "family": "thermopylae",
+      "fame": 3
+    },
+    {
+      "id": "socrates",
+      "name": "The execution of Socrates",
+      "facts": {
+        "date": {
+          "phrase": "the execution of Socrates",
+          "label": "Socrates executed",
+          "value": -399,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.worldhistory.org/timeline/Hellenic_World",
+          "checkedOn": "2026-10-20",
+          "note": "The Athenian philosopher was tried and put to death."
+        }
+      },
+      "family": "socrates",
+      "clue": "an ancient Greek philosopher",
+      "hint": "the Athenian philosopher who was tried and put to death",
+      "fame": 2
+    },
+    {
+      "id": "cannae",
+      "name": "The Battle of Cannae",
+      "facts": {
+        "date": {
+          "phrase": "the Battle of Cannae",
+          "label": "Battle of Cannae",
+          "value": -216,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://westernciv.com/chronology/rome/",
+          "checkedOn": "2026-10-20",
+          "note": "Hannibal's most famous victory over Rome."
+        }
+      },
+      "family": "cannae",
+      "clue": "a battle between Rome and Carthage",
+      "hint": "Hannibal's famous victory over the Romans",
+      "fame": 2
+    },
+    {
+      "id": "actium",
+      "name": "The Battle of Actium",
+      "facts": {
+        "date": {
+          "phrase": "the Battle of Actium",
+          "label": "Battle of Actium",
+          "value": -31,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://westernciv.com/chronology/rome/",
+          "checkedOn": "2026-10-20",
+          "note": "Octavian beat Mark Antony and Cleopatra."
+        }
+      },
+      "family": "actium",
+      "clue": "a Roman naval battle",
+      "hint": "the sea battle that made Octavian master of Rome",
+      "fame": 2
+    },
+    {
+      "id": "augustusdeath",
+      "name": "The death of the Emperor Augustus",
+      "facts": {
+        "date": {
+          "phrase": "the death of the Emperor Augustus",
+          "label": "Augustus dies",
+          "value": 14,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://westernciv.com/chronology/rome/",
+          "checkedOn": "2026-10-20",
+          "note": "Rome's first emperor, after about 40 years in power."
+        }
+      },
+      "family": "augustusdeath",
+      "clue": "a Roman emperor",
+      "hint": "Rome's first emperor",
+      "fame": 2
+    },
+    {
+      "id": "vesuvius",
+      "name": "The eruption of Mount Vesuvius",
+      "facts": {
+        "date": {
+          "phrase": "the eruption of Mount Vesuvius",
+          "label": "Vesuvius erupts",
+          "value": 79,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://westernciv.com/chronology/rome/",
+          "checkedOn": "2026-10-20",
+          "note": "It buried Pompeii and Herculaneum."
+        }
+      },
+      "family": "vesuvius",
+      "fame": 3
+    },
+    {
+      "id": "sack410",
+      "name": "The sack of Rome by the Visigoths",
+      "facts": {
+        "date": {
+          "phrase": "the sack of Rome by the Visigoths",
+          "label": "Visigoths sack Rome",
+          "value": 410,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nga.gov/features/byzantine/byzantine-empire-chronology-.html",
+          "checkedOn": "2026-10-20",
+          "note": "Alaric, king of the Visigoths, took the city."
+        }
+      },
+      "family": "sack410",
+      "clue": "an attack on Rome",
+      "hint": "Alaric and the Visigoths taking the city of Rome",
+      "fame": 2
+    },
+    {
+      "id": "romefall",
+      "name": "The fall of the Western Roman Empire",
+      "facts": {
+        "date": {
+          "phrase": "the fall of the Western Roman Empire",
+          "label": "Western Rome falls",
+          "value": 476,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nga.gov/features/byzantine/byzantine-empire-chronology-.html",
+          "checkedOn": "2026-10-20",
+          "note": "Odoacer removed the last Western emperor, Romulus Augustulus."
+        }
+      },
+      "family": "romefall",
+      "clue": "the end of an empire",
+      "hint": "the end of the Roman Empire in the West",
+      "fame": 2
+    },
+    {
+      "id": "hagiasophia",
+      "name": "The Hagia Sophia",
+      "facts": {
+        "date": {
+          "phrase": "the completion of the Hagia Sophia",
+          "label": "Hagia Sophia completed",
+          "value": 537,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://human.libretexts.org/Courses/Harrisburg_Area_Community_College/History_101%3A_World_History_I_(Malick_and_Gurian)/08%3A_Western_Europe_and_Byzantium_circa_500-1000_CE/8.01%3A_Chronology",
+          "checkedOn": "2026-10-20",
+          "note": "It was built in under six years, from 532, for Emperor Justinian."
+        }
+      },
+      "family": "hagiasophia",
+      "clue": "a famous church in Constantinople",
+      "hint": "the great church built by Emperor Justinian in Constantinople",
+      "fame": 2
+    },
+    {
+      "id": "muhammad",
+      "name": "The death of the Prophet Muhammad",
+      "facts": {
+        "date": {
+          "phrase": "the death of the Prophet Muhammad",
+          "label": "Muhammad dies",
+          "value": 632,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://cnewa.org/timeline-of-the-events-of-the-crusadesand-contemporary-events/",
+          "checkedOn": "2026-10-20",
+          "note": "He founded Islam in Arabia."
+        }
+      },
+      "family": "muhammad",
+      "clue": "a religious leader",
+      "hint": "the founder of Islam",
+      "fame": 2
+    },
+    {
+      "id": "lindisfarne",
+      "name": "The Viking raid on Lindisfarne",
+      "facts": {
+        "date": {
+          "phrase": "the Viking raid on Lindisfarne",
+          "label": "Viking raid on Lindisfarne",
+          "value": 793,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.timetoast.com/timelines/timeline-of-the-middle-ages-8b80392f-e6bb-4a06-9a0a-774eb276498f",
+          "checkedOn": "2026-10-20",
+          "note": "Vikings destroyed the church on this island off the coast of England."
+        }
+      },
+      "family": "lindisfarne",
+      "clue": "a raid on an island church",
+      "hint": "the first famous Viking raid on England",
+      "fame": 2
+    },
+    {
+      "id": "charlemagne",
+      "name": "The coronation of Charlemagne",
+      "facts": {
+        "date": {
+          "phrase": "the coronation of Charlemagne as emperor",
+          "label": "Charlemagne crowned",
+          "value": 800,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nga.gov/features/byzantine/byzantine-empire-chronology-.html",
+          "checkedOn": "2026-10-20",
+          "note": "Pope Leo III crowned him in Rome on Christmas Day."
+        }
+      },
+      "family": "charlemagne",
+      "clue": "a crowning in Rome",
+      "hint": "the Frankish king crowned emperor by the Pope",
+      "fame": 2
+    },
+    {
+      "id": "jerusalem1099",
+      "name": "The capture of Jerusalem in the First Crusade",
+      "facts": {
+        "date": {
+          "phrase": "the capture of Jerusalem in the First Crusade",
+          "label": "Crusaders take Jerusalem",
+          "value": 1099,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://cnewa.org/timeline-of-the-events-of-the-crusadesand-contemporary-events/",
+          "checkedOn": "2026-10-20",
+          "note": "The crusaders captured the city on 15 July."
+        }
+      },
+      "family": "jerusalem1099",
+      "clue": "a medieval siege in the Holy Land",
+      "hint": "the crusaders taking Jerusalem in the First Crusade",
+      "fame": 2
+    },
+    {
+      "id": "genghis",
+      "name": "The death of Genghis Khan",
+      "facts": {
+        "date": {
+          "phrase": "the death of Genghis Khan",
+          "label": "Genghis Khan dies",
+          "value": 1227,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://cnewa.org/timeline-of-the-events-of-the-crusadesand-contemporary-events/",
+          "checkedOn": "2026-10-20",
+          "note": "He had united the Mongols and conquered large parts of China and Persia."
+        }
+      },
+      "family": "genghis",
+      "fame": 3
+    },
+    {
+      "id": "agincourt",
+      "name": "The Battle of Agincourt",
+      "facts": {
+        "date": {
+          "phrase": "the Battle of Agincourt",
+          "label": "Battle of Agincourt",
+          "value": 1415,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.timeshighereducation.com/node/95465",
+          "checkedOn": "2026-10-20",
+          "note": "Henry V's English army defeated the French."
+        }
+      },
+      "family": "agincourt",
+      "fame": 3
+    },
+    {
+      "id": "joan",
+      "name": "The execution of Joan of Arc",
+      "facts": {
+        "date": {
+          "phrase": "the execution of Joan of Arc",
+          "label": "Joan of Arc executed",
+          "value": 1431,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.timeshighereducation.com/node/95465",
+          "checkedOn": "2026-10-20",
+          "note": "She was burned at the stake."
+        }
+      },
+      "family": "joan",
+      "fame": 3
+    },
+    {
+      "id": "leonardo",
+      "name": "The birth of Leonardo da Vinci",
+      "facts": {
+        "date": {
+          "phrase": "the birth of Leonardo da Vinci",
+          "label": "Leonardo da Vinci born",
+          "value": 1452,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.timeshighereducation.com/node/95465",
+          "checkedOn": "2026-10-20",
+          "note": "Painter, inventor and scientist."
+        }
+      },
+      "family": "leonardo",
+      "fame": 3
+    },
+    {
+      "id": "constantinople1453",
+      "name": "The fall of Constantinople",
+      "facts": {
+        "date": {
+          "phrase": "the fall of Constantinople",
+          "label": "Constantinople falls",
+          "value": 1453,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.timeshighereducation.com/node/95465",
+          "checkedOn": "2026-10-20",
+          "note": "The Ottoman Turks captured the city, ending the Byzantine Empire."
+        }
+      },
+      "family": "constantinople1453",
+      "fame": 3
+    },
+    {
+      "id": "luther",
+      "name": "Martin Luther's Ninety-five Theses",
+      "facts": {
+        "date": {
+          "phrase": "the publication of Martin Luther's Ninety-five Theses",
+          "label": "Luther's Ninety-five Theses",
+          "value": 1517,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://christianhistoryinstitute.org/magazine/article/christian-history-timeline-ch-115",
+          "checkedOn": "2026-10-20",
+          "note": "They attacked the sale of indulgences. He sent them out on 31 October."
+        }
+      },
+      "family": "luther",
+      "fame": 3
+    },
+    {
+      "id": "circumnavigation",
+      "name": "The first voyage around the world",
+      "facts": {
+        "date": {
+          "phrase": "the completion of the first voyage around the world",
+          "label": "First voyage around the world",
+          "value": 1522,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://christianhistoryinstitute.org/magazine/article/christian-history-timeline-ch-115",
+          "checkedOn": "2026-10-20",
+          "note": "Magellan died on the way, but his expedition finished the voyage."
+        }
+      },
+      "family": "circumnavigation",
+      "clue": "an expedition that sailed around the world",
+      "hint": "the voyage that began under Magellan and sailed right round the world",
+      "fame": 2
+    },
+    {
+      "id": "armada",
+      "name": "The defeat of the Spanish Armada",
+      "facts": {
+        "date": {
+          "phrase": "the defeat of the Spanish Armada",
+          "label": "Spanish Armada defeated",
+          "value": 1588,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://web.stanford.edu/class/engl113/page6.htm",
+          "checkedOn": "2026-10-20",
+          "note": "England's fleet destroyed the Spanish invasion fleet."
+        }
+      },
+      "family": "armada",
+      "fame": 3
+    },
+    {
+      "id": "gunpowder",
+      "name": "The Gunpowder Plot",
+      "facts": {
+        "date": {
+          "phrase": "the discovery of the Gunpowder Plot",
+          "label": "Gunpowder Plot discovered",
+          "value": 1605,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://web.stanford.edu/class/engl113/page6.htm",
+          "checkedOn": "2026-10-20",
+          "note": "A plot to assassinate King James I was discovered, and Guy Fawkes was caught."
+        }
+      },
+      "family": "gunpowder",
+      "fame": 3
+    },
+    {
+      "id": "shakespeare",
+      "name": "The death of William Shakespeare",
+      "facts": {
+        "date": {
+          "phrase": "the death of William Shakespeare",
+          "label": "Shakespeare dies",
+          "value": 1616,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://web.stanford.edu/class/engl113/page6.htm",
+          "checkedOn": "2026-10-20",
+          "note": "He died on 23 April, in Stratford-upon-Avon."
+        }
+      },
+      "family": "shakespeare",
+      "fame": 3
+    },
+    {
+      "id": "mayflower",
+      "name": "The voyage of the Mayflower",
+      "facts": {
+        "date": {
+          "phrase": "the voyage of the Mayflower",
+          "label": "Mayflower sails",
+          "value": 1620,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://web.stanford.edu/class/engl113/page6.htm",
+          "checkedOn": "2026-10-20",
+          "note": "The Pilgrims left Plymouth, in England, for America."
+        }
+      },
+      "family": "mayflower",
+      "fame": 3
+    },
+    {
+      "id": "charles1",
+      "name": "The execution of King Charles I",
+      "facts": {
+        "date": {
+          "phrase": "the execution of King Charles I",
+          "label": "Charles I executed",
+          "value": 1649,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://web.stanford.edu/class/engl113/page6.htm",
+          "checkedOn": "2026-10-20",
+          "note": "He was found guilty of high treason and executed on 30 January."
+        }
+      },
+      "family": "charles1",
+      "clue": "a king put on trial by Parliament",
+      "hint": "the English king executed after the Civil War",
+      "fame": 2
+    },
+    {
+      "id": "pearlharbor",
+      "name": "The attack on Pearl Harbor",
+      "facts": {
+        "date": {
+          "phrase": "the attack on Pearl Harbor",
+          "label": "Attack on Pearl Harbor",
+          "value": 1941,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://digfir-published.macmillanusa.com/hewittlawson1e/hewittlawson1e_ch23_41.html",
+          "checkedOn": "2026-10-20",
+          "note": "Japan attacked the US naval base on 7 December."
+        }
+      },
+      "family": "pearlharbor",
+      "fame": 3
+    },
+    {
+      "id": "dday",
+      "name": "The D-Day landings",
+      "facts": {
+        "date": {
+          "phrase": "the D-Day landings",
+          "label": "D-Day landings",
+          "value": 1944,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://digfir-published.macmillanusa.com/hewittlawson1e/hewittlawson1e_ch23_41.html",
+          "checkedOn": "2026-10-20",
+          "note": "Allied forces landed in France on 6 June."
+        }
+      },
+      "family": "dday",
+      "fame": 3
+    },
+    {
+      "id": "pizzahut",
+      "name": "The first Pizza Hut",
+      "facts": {
+        "date": {
+          "phrase": "the opening of the first Pizza Hut",
+          "label": "First Pizza Hut opens",
+          "value": 1958,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Pizza_Hut",
+          "checkedOn": "2026-10-20",
+          "note": "Brothers Dan and Frank Carney opened it in Wichita, Kansas."
+        }
+      },
+      "family": "pizzahut",
+      "clue": "the first branch of a pizza chain",
+      "hint": "the first restaurant of a pizza chain, in Wichita, Kansas",
+      "fame": 2
+    },
+    {
+      "id": "gagarin",
+      "name": "The first human spaceflight",
+      "facts": {
+        "date": {
+          "phrase": "the first human spaceflight, by Yuri Gagarin",
+          "label": "First human in space",
+          "value": 1961,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://glynde.info/history/document.php?id=52",
+          "checkedOn": "2026-10-20",
+          "note": "Yuri Gagarin became the first person in space."
+        }
+      },
+      "family": "gagarin",
+      "fame": 3
+    },
+    {
+      "id": "kennedy",
+      "name": "The assassination of John F. Kennedy",
+      "facts": {
+        "date": {
+          "phrase": "the assassination of John F. Kennedy",
+          "label": "Kennedy assassinated",
+          "value": 1963,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://glynde.info/history/document.php?id=52",
+          "checkedOn": "2026-10-20",
+          "note": "The US president was assassinated."
+        }
+      },
+      "family": "kennedy",
+      "fame": 3
+    },
+    {
+      "id": "worldcup66",
+      "name": "England's World Cup win",
+      "facts": {
+        "date": {
+          "phrase": "England winning the men's World Cup",
+          "label": "England win the World Cup",
+          "value": 1966,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://glynde.info/history/document.php?id=52",
+          "checkedOn": "2026-10-20",
+          "note": "England's only men's World Cup win."
+        }
+      },
+      "family": "worldcup66",
+      "fame": 3
+    },
+    {
+      "id": "starwars",
+      "name": "Star Wars",
+      "facts": {
+        "date": {
+          "phrase": "the first release of Star Wars",
+          "label": "Star Wars released",
+          "value": 1977,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://simple.wikipedia.com/wiki/1977",
+          "checkedOn": "2026-10-20",
+          "note": "It opened in cinemas on 25 May."
+        }
+      },
+      "family": "starwars",
+      "fame": 3
+    },
+    {
+      "id": "liveaid",
+      "name": "The Live Aid concert",
+      "facts": {
+        "date": {
+          "phrase": "the Live Aid concert",
+          "label": "Live Aid",
+          "value": 1985,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.history.com/a-year-in-history/1991",
+          "checkedOn": "2026-10-20",
+          "note": "The concert was held on 13 July to raise money for famine relief in Ethiopia."
+        }
+      },
+      "family": "liveaid",
+      "clue": "a charity rock concert",
+      "hint": "the charity concert for famine relief in Ethiopia",
+      "fame": 2
+    },
+    {
+      "id": "ussr",
+      "name": "The dissolution of the Soviet Union",
+      "facts": {
+        "date": {
+          "phrase": "the dissolution of the Soviet Union",
+          "label": "Soviet Union dissolves",
+          "value": 1991,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.history.com/a-year-in-history/1991",
+          "checkedOn": "2026-10-20",
+          "note": "The Soviet Union broke up into 15 separate states."
+        }
+      },
+      "family": "ussr",
+      "fame": 3
+    },
+    {
+      "id": "diana",
+      "name": "The death of Diana, Princess of Wales",
+      "facts": {
+        "date": {
+          "phrase": "the death of Diana, Princess of Wales",
+          "label": "Princess Diana dies",
+          "value": 1997,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://timeanddate.com/on-this-day/august/31",
+          "checkedOn": "2026-10-20",
+          "note": "She died in a car crash in Paris."
+        }
+      },
+      "family": "diana",
+      "fame": 3
+    },
+    {
+      "id": "ttball",
+      "name": "A table tennis ball",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a table tennis ball",
+          "label": "Table tennis ball",
+          "value": 0.0027,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.topendsports.com/resources/equipment/ball-weight.htm",
+          "checkedOn": "2026-10-20",
+          "note": "It is 40 mm across and made of plastic."
+        }
+      },
+      "family": "ttball",
+      "fame": 3
+    },
+    {
+      "id": "shuttlecock",
+      "name": "A badminton shuttlecock",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of the heaviest badminton shuttlecock allowed",
+          "label": "Heaviest shuttlecock",
+          "value": 0.0055,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.edzy.ai/cbse-class-10-health-and-physical-education-individual-games-and-sports-ii-question-what-is-the-standard-weight-range-for-a-badminton-shuttlecock",
+          "checkedOn": "2026-10-20",
+          "note": "The rules allow 4.74 to 5.50 g."
+        }
+      },
+      "family": "shuttlecock",
+      "fame": 3
+    },
+    {
+      "id": "baseball",
+      "name": "A baseball",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a baseball",
+          "label": "A baseball",
+          "value": 0.145,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.topendsports.com/resources/equipment/ball-weight.htm",
+          "checkedOn": "2026-10-20",
+          "note": "The rules allow 142 to 149 g."
+        }
+      },
+      "family": "baseball",
+      "fame": 3
+    },
+    {
+      "id": "shotput",
+      "name": "A men's shot put",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a men's shot put",
+          "label": "Men's shot put",
+          "value": 7.26,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://worldathletics.org/news/news/implements",
+          "checkedOn": "2026-10-20",
+          "note": "The women's shot weighs 4 kg."
+        }
+      },
+      "family": "shotput",
+      "fame": 3
+    },
+    {
+      "id": "discus",
+      "name": "A men's discus",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a men's discus",
+          "label": "Men's discus",
+          "value": 2.0,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://worldathletics.org/news/news/implements",
+          "checkedOn": "2026-10-20",
+          "note": "The women's discus weighs 1 kg."
+        }
+      },
+      "family": "discus",
+      "fame": 3
+    },
+    {
+      "id": "javelin",
+      "name": "A men's javelin",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a men's javelin",
+          "label": "Men's javelin",
+          "value": 0.8,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://worldathletics.org/news/news/implements",
+          "checkedOn": "2026-10-20",
+          "note": "The women's javelin weighs 600 g."
+        }
+      },
+      "family": "javelin",
+      "fame": 3
+    },
+    {
+      "id": "puck",
+      "name": "An ice hockey puck",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of the heaviest ice hockey puck allowed",
+          "label": "Heaviest hockey puck",
+          "value": 0.17,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://rolci.desarrollo.edu.py/blog/hockey-puck-vs-baseball-weight-comparison-guide-1764797244",
+          "checkedOn": "2026-10-20",
+          "note": "Pucks may weigh from 156 g up to 170 g."
+        }
+      },
+      "family": "puck",
+      "fame": 3
+    },
+    {
+      "id": "basketball",
+      "name": "A basketball",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a regulation size 7 basketball",
+          "label": "A basketball",
+          "value": 0.62,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.topendsports.com/resources/equipment/ball-weight.htm",
+          "checkedOn": "2026-10-20",
+          "note": "Size 7 is the regulation ball."
+        }
+      },
+      "family": "basketball",
+      "fame": 3
+    },
+    {
+      "id": "heart",
+      "name": "A human heart",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an adult human heart",
+          "label": "A human heart",
+          "value": 0.3,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.sciencefocus.com/the-human-body/top-10-what-are-the-heaviest-organs-in-the-human-body/",
+          "checkedOn": "2026-10-20",
+          "note": "It is about the size of your fist."
+        }
+      },
+      "family": "heart",
+      "fame": 3
+    },
+    {
+      "id": "liver",
+      "name": "A human liver",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an adult human liver",
+          "label": "A human liver",
+          "value": 1.5,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.sciencefocus.com/the-human-body/top-10-what-are-the-heaviest-organs-in-the-human-body/",
+          "checkedOn": "2026-10-20",
+          "note": "It is the largest solid organ in the body."
+        }
+      },
+      "family": "liver",
+      "clue": "an organ of the human body",
+      "hint": "the largest solid organ in the body",
+      "fame": 2
+    },
+    {
+      "id": "brain",
+      "name": "A human brain",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an adult human brain",
+          "label": "A human brain",
+          "value": 1.4,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://theconversation.com/curious-kids-how-much-does-a-brain-weigh-112000",
+          "checkedOn": "2026-10-20",
+          "note": "Sources give 1.3 to 1.5 kg."
+        }
+      },
+      "family": "brain",
+      "fame": 3
+    },
+    {
+      "id": "panda",
+      "name": "A giant panda",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an adult giant panda",
+          "label": "A giant panda",
+          "value": 100,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.wwf.org.uk/sites/default/files/2019-08/Species_Fact_Sheets.pdf",
+          "checkedOn": "2026-10-20",
+          "note": "Adults weigh 85 to 125 kg."
+        }
+      },
+      "family": "panda",
+      "fame": 3
+    },
+    {
+      "id": "penguin",
+      "name": "An emperor penguin",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a large adult emperor penguin",
+          "label": "Emperor penguin",
+          "value": 40,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.wwf.org.uk/sites/default/files/2019-08/Species_Fact_Sheets.pdf",
+          "checkedOn": "2026-10-20",
+          "note": "WWF says adults weigh up to 40 kg."
+        }
+      },
+      "family": "penguin",
+      "fame": 3
+    },
+    {
+      "id": "easterngrey",
+      "name": "A male eastern grey kangaroo",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a big male eastern grey kangaroo",
+          "label": "Eastern grey kangaroo",
+          "value": 66,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://inaturalist.ala.org.au/guide_taxa/1125504",
+          "checkedOn": "2026-10-20",
+          "note": "A big male stands almost 2 m tall."
+        }
+      },
+      "family": "easterngrey",
+      "clue": "a large Australian marsupial",
+      "hint": "the big grey kangaroo of eastern Australia",
+      "fame": 2
+    },
+    {
+      "id": "redkangaroo",
+      "name": "A male red kangaroo",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a big male red kangaroo",
+          "label": "Red kangaroo",
+          "value": 85,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.jungledragon.com/specie/3275/map",
+          "checkedOn": "2026-10-20",
+          "note": "The red kangaroo is the largest kangaroo: big males reach up to 90 kg."
+        }
+      },
+      "family": "redkangaroo",
+      "fame": 3
+    },
+    {
+      "id": "orca",
+      "name": "A killer whale",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of a killer whale",
+          "label": "Killer whale top speed",
+          "value": 56,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.ifaw.org/journal/fastest-whales-dolphins-ocean",
+          "checkedOn": "2026-10-20",
+          "note": "A male orca was timed at about 56 km/h in 1958."
+        },
+        "weight": {
+          "phrase": "the weight of an adult male killer whale",
+          "label": "A killer whale",
+          "value": 4000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/killer-whale",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "orca",
+      "fame": 3
+    },
+    {
+      "id": "trex",
+      "name": "A Tyrannosaurus rex",
+      "facts": {
+        "weight": {
+          "phrase": "the estimated weight of an adult Tyrannosaurus rex",
+          "label": "A T. rex",
+          "value": 8000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://newatlas.com/t-rex-computer-modeling/20165/",
+          "checkedOn": "2026-10-20",
+          "note": "Estimates run from about 6 to 9 tonnes."
+        },
+        "speed": {
+          "phrase": "the estimated top running speed of an adult Tyrannosaurus rex",
+          "label": "T. rex top speed",
+          "value": 20,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.cbc.ca/news/science/tyrannasaurus-rex-built-for-distance-1.5569380",
+          "checkedOn": "2026-10-20",
+          "note": "Estimates vary from about 11 to 40 km/h."
+        }
+      },
+      "family": "trex",
+      "fame": 3
+    },
+    {
+      "id": "titanicbuilt",
+      "name": "The Titanic",
+      "facts": {
+        "date": {
+          "phrase": "the start of construction of the Titanic",
+          "label": "Titanic construction begins",
+          "value": 1909,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://thecanadianencyclopedia.ca/en/article/titanic",
+          "checkedOn": "2026-10-20",
+          "note": "About 3,000 workmen were involved, and eight were killed."
+        }
+      },
+      "object": "titanic",
+      "fame": 3
+    },
+    {
+      "id": "titaniclaunch",
+      "name": "The Titanic",
+      "facts": {
+        "date": {
+          "phrase": "the launch of the Titanic's hull",
+          "label": "Titanic launched",
+          "value": 1911,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://mollybrown.org/building-the-titanic/",
+          "checkedOn": "2026-10-20",
+          "note": "About 100,000 people watched. The ship was still an empty hull."
+        }
+      },
+      "object": "titanic",
+      "fame": 3
+    },
+    {
+      "id": "titaniccompart",
+      "name": "The Titanic",
+      "facts": {
+        "count": {
+          "phrase": "the number of watertight compartments in the Titanic's hull",
+          "label": "Titanic compartments",
+          "value": 16,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://thecanadianencyclopedia.ca/en/article/titanic",
+          "checkedOn": "2026-10-20",
+          "note": "Fifteen bulkheads divided the hull, but they did not reach the top of the deck above."
+        }
+      },
+      "object": "titanic",
+      "fame": 3
+    },
+    {
+      "id": "eiffelrivets",
+      "name": "The Eiffel Tower",
+      "facts": {
+        "count": {
+          "phrase": "the number of rivets in the Eiffel Tower",
+          "label": "Eiffel Tower rivets",
+          "value": 2500000,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://artsandculture.google.com/story/UgWBgIpO0RsA8A",
+          "checkedOn": "2026-10-20",
+          "note": "Only about a third of them were put in on site."
+        }
+      },
+      "object": "eiffel",
+      "fame": 3
+    },
+    {
+      "id": "eiffelstart",
+      "name": "The Eiffel Tower",
+      "facts": {
+        "date": {
+          "phrase": "the start of construction of the Eiffel Tower",
+          "label": "Eiffel Tower construction begins",
+          "value": 1887,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://structurae.net/structures/eiffel-tower",
+          "checkedOn": "2026-10-20",
+          "note": "Work began with the foundations."
+        }
+      },
+      "object": "eiffel",
+      "fame": 3
+    },
+    {
+      "id": "snail",
+      "name": "A garden snail",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of a garden snail",
+          "label": "Garden snail top speed",
+          "value": 0.048,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://interestingengineering.com/lists/10-slowest-animals-on-land",
+          "checkedOn": "2026-10-20",
+          "note": "That is about 1.3 cm per second."
+        },
+        "count": {
+          "phrase": "the number of tentacles on a garden snail's head",
+          "label": "Snail tentacles",
+          "value": 4,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/snail",
+          "checkedOn": "2026-10-20",
+          "note": "Two have eyes and two sense smell."
+        }
+      },
+      "family": "snail",
+      "fame": 3
+    },
+    {
+      "id": "sloth",
+      "name": "A three-toed sloth",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of a three-toed sloth",
+          "label": "Sloth top speed",
+          "value": 0.27,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://interestingengineering.com/lists/10-slowest-animals-on-land",
+          "checkedOn": "2026-10-20",
+          "note": "That is about 4.6 m per minute."
+        },
+        "count": {
+          "phrase": "the number of claws on each foot of a three-toed sloth",
+          "label": "Sloth claws",
+          "value": 3,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/sloth",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "sloth",
+      "fame": 3
+    },
+    {
+      "id": "segway",
+      "name": "A Segway i2",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of a Segway i2",
+          "label": "Segway top speed",
+          "value": 20,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://segway.ch/en/produkte/i2",
+          "checkedOn": "2026-10-20",
+          "note": "It balances itself and is steered by leaning."
+        },
+        "weight": {
+          "phrase": "the weight of a Segway i2",
+          "label": "Segway weight",
+          "value": 47.7,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://segway.ch/en/produkte/i2",
+          "checkedOn": "2026-10-20",
+          "note": "It can carry up to 118 kg, rider included."
+        }
+      },
+      "family": "segway",
+      "fame": 3
+    },
+    {
+      "id": "crawler",
+      "name": "NASA's crawler-transporter",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of NASA's crawler-transporter when it carries a rocket",
+          "label": "Crawler-transporter speed (loaded)",
+          "value": 1.6,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nasa.gov/wp-content/uploads/2021/04/combined_crawler-transporters_fact_sheet_final.pdf",
+          "checkedOn": "2026-10-20",
+          "note": "Empty, it can reach 3.2 km/h."
+        },
+        "weight": {
+          "phrase": "the weight of NASA's crawler-transporter",
+          "label": "Crawler-transporter weight",
+          "value": 2721000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.guinnessworldrecords.com/world-records/62680-largest-land-transport-vehicle",
+          "checkedOn": "2026-10-20",
+          "note": "NASA gives about 2,860 tonnes for the original and about 3,000 tonnes for the upgraded one."
+        }
+      },
+      "family": "crawler",
+      "clue": "a giant tracked vehicle at Kennedy Space Center",
+      "hint": "the giant tracked machine that carries rockets to the launch pad",
+      "fame": 2
+    },
+    {
+      "id": "eurofighter",
+      "name": "A Eurofighter Typhoon",
+      "facts": {
+        "weight": {
+          "phrase": "the empty weight of a Eurofighter Typhoon",
+          "label": "Eurofighter empty weight",
+          "value": 11000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://aerocorner.com/aircraft/eurofighter-typhoon/",
+          "checkedOn": "2026-10-20",
+          "note": "It was built by the UK, Germany, Spain and Italy."
+        },
+        "speed": {
+          "phrase": "the top speed of a Eurofighter Typhoon",
+          "label": "Eurofighter top speed",
+          "value": 2495,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://aerocorner.com/aircraft/eurofighter-typhoon/",
+          "checkedOn": "2026-10-20",
+          "note": "That is Mach 2 class, at high altitude."
+        }
+      },
+      "family": "eurofighter",
+      "clue": "a modern European fighter jet",
+      "hint": "the twin-engine fighter jet built by four European countries",
+      "fame": 2
+    },
+    {
+      "id": "operatiles",
+      "name": "The Sydney Opera House",
+      "facts": {
+        "count": {
+          "phrase": "the number of tiles on the roof of the Sydney Opera House",
+          "label": "Opera House roof tiles",
+          "value": 1056006,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Sydney_Opera_House",
+          "checkedOn": "2026-10-20",
+          "note": "They were made in Sweden, in glossy white and matte cream."
+        }
+      },
+      "object": "sydneyoperahouse",
+      "fame": 3
+    },
+    {
+      "id": "egg",
+      "name": "A chicken egg",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a medium chicken egg",
+          "label": "A chicken egg",
+          "value": 0.06,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/egg-food",
+          "checkedOn": "2026-10-20",
+          "note": "Large eggs weigh more, and small ones less."
+        }
+      },
+      "family": "egg",
+      "fame": 3
+    },
+    {
+      "id": "bicycle",
+      "name": "A bicycle",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a typical adult commuter bicycle",
+          "label": "A commuter bicycle",
+          "value": 14,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.cyclinguk.org/article/what-bicycle-weight",
+          "checkedOn": "2026-10-20",
+          "note": "Racing bikes can weigh less than 7 kg."
+        }
+      },
+      "family": "bicycle",
+      "fame": 3
+    },
+    {
+      "id": "goldbar",
+      "name": "A gold bar",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a standard Good Delivery gold bar",
+          "label": "A gold bar",
+          "value": 12.4,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.lbma.org.uk/good-delivery/gold-standard",
+          "checkedOn": "2026-10-20",
+          "note": "It is the large bar that banks and central banks trade."
+        }
+      },
+      "family": "goldbar",
+      "fame": 3
+    },
+    {
+      "id": "wctrophy",
+      "name": "The FIFA World Cup trophy",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of the FIFA World Cup trophy",
+          "label": "World Cup trophy weight",
+          "value": 6.175,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.fifa.com/en/tournaments/mens/worldcup/qatar2022/news/the-story-of-the-fifa-world-cup-trophy",
+          "checkedOn": "2026-10-20",
+          "note": "It is made of 18-carat gold."
+        },
+        "count": {
+          "phrase": "the number of rings of green malachite around the base of the FIFA World Cup trophy",
+          "label": "Trophy malachite rings",
+          "value": 2,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.fifa.com/en/tournaments/mens/worldcup/qatar2022/news/the-story-of-the-fifa-world-cup-trophy",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "wctrophy",
+      "fame": 3
+    },
+    {
+      "id": "oscar",
+      "name": "An Oscar statuette",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an Oscar statuette",
+          "label": "An Oscar",
+          "value": 3.85,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.oscars.org/oscars/statuette",
+          "checkedOn": "2026-10-20"
+        },
+        "count": {
+          "phrase": "the number of spokes on the film reel under the Oscar statuette",
+          "label": "Oscar film reel spokes",
+          "value": 5,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.oscars.org/oscars/statuette",
+          "checkedOn": "2026-10-20",
+          "note": "They stand for the Academy's five original branches."
+        }
+      },
+      "family": "oscar",
+      "fame": 3
+    },
+    {
+      "id": "newborn",
+      "name": "A newborn baby",
+      "facts": {
+        "weight": {
+          "phrase": "the average weight of a newborn baby",
+          "label": "A newborn baby",
+          "value": 3.5,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nhs.uk/conditions/baby/babys-development/height-weight-and-head-circumference/baby-weight-and-height/",
+          "checkedOn": "2026-10-20"
+        },
+        "count": {
+          "phrase": "the number of bones in a newborn baby's body",
+          "label": "Bones in a newborn",
+          "value": 300,
+          "unit": "",
+          "approx": true,
+          "status": "verified",
+          "source": "https://kidshealth.org/en/parents/bones-muscles-joints.html",
+          "checkedOn": "2026-10-20",
+          "note": "Many fuse together, leaving 206 in an adult."
+        }
+      },
+      "family": "newborn",
+      "fame": 3
+    },
+    {
+      "id": "blackcab",
+      "name": "A London black cab",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an empty electric London black cab",
+          "label": "Black cab weight",
+          "value": 2230,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://levc.com/tx/",
+          "checkedOn": "2026-10-20"
+        },
+        "count": {
+          "phrase": "the number of passenger seats in an electric London black cab",
+          "label": "Black cab seats",
+          "value": 6,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://levc.com/tx/",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "blackcab",
+      "fame": 3
+    },
+    {
+      "id": "rubik",
+      "name": "A Rubik's Cube",
+      "facts": {
+        "count": {
+          "phrase": "the number of coloured stickers on a 3x3 Rubik's Cube",
+          "label": "Rubik's Cube stickers",
+          "value": 54,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.rubiks.com/en-us/about",
+          "checkedOn": "2026-10-20",
+          "note": "Nine on each of six faces."
+        }
+      },
+      "family": "rubik",
+      "fame": 3
+    },
+    {
+      "id": "dartboard",
+      "name": "A dartboard",
+      "facts": {
+        "count": {
+          "phrase": "the number of numbered segments on a dartboard",
+          "label": "Dartboard segments",
+          "value": 20,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.pdc.tv/rules-darts",
+          "checkedOn": "2026-10-20",
+          "note": "They are numbered 1 to 20."
+        }
+      },
+      "family": "dartboard",
+      "fame": 3
+    },
+    {
+      "id": "sugar",
+      "name": "A bag of sugar",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a standard bag of granulated sugar",
+          "label": "A bag of sugar",
+          "value": 1.0,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.sainsburys.co.uk/gol-ui/product/silver-spoon-granulated-sugar-1kg",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "sugar",
+      "fame": 3
+    },
+    {
+      "id": "bowlingpin",
+      "name": "A ten-pin bowling pin",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a ten-pin bowling pin",
+          "label": "A bowling pin",
+          "value": 1.587,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://images.bowl.com/bowl/media/assets/youth/yrc/bowlers%20ed/completebowlersedcurriculum.pdf",
+          "checkedOn": "2026-10-20",
+          "note": "The rules allow about 1.53 to 1.64 kg."
+        }
+      },
+      "family": "bowlingpin",
+      "fame": 3
+    },
+    {
+      "id": "brick",
+      "name": "A brick",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a standard clay brick",
+          "label": "A brick",
+          "value": 2.3,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/technology/brick-building-material",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "brick",
+      "fame": 3
+    },
+    {
+      "id": "barbell",
+      "name": "An Olympic barbell",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a men's Olympic weightlifting bar",
+          "label": "Men's barbell",
+          "value": 20,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://iwf.sport/wp-content/uploads/downloads/2020/01/IWF_TCRR_2020.pdf",
+          "checkedOn": "2026-10-20",
+          "note": "The women's bar weighs 15 kg."
+        }
+      },
+      "family": "barbell",
+      "fame": 3
+    },
+    {
+      "id": "cement",
+      "name": "A bag of cement",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a standard bag of cement",
+          "label": "A bag of cement",
+          "value": 25,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.tarmac.com/products/cement/packed-cement/",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "cement",
+      "fame": 3
+    },
+    {
+      "id": "wolf",
+      "name": "A gray wolf",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an adult gray wolf",
+          "label": "A gray wolf",
+          "value": 40,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/gray-wolf",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "wolf",
+      "fame": 3
+    },
+    {
+      "id": "human",
+      "name": "An average adult human",
+      "facts": {
+        "weight": {
+          "phrase": "the average weight of an adult human, worldwide",
+          "label": "Average adult weight",
+          "value": 62,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3408332/",
+          "checkedOn": "2026-10-20",
+          "note": "A 2012 study put the world's adults at 62 kg on average."
+        }
+      },
+      "family": "human",
+      "fame": 3
+    },
+    {
+      "id": "lion",
+      "name": "A male African lion",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an adult male African lion",
+          "label": "A male lion",
+          "value": 190,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/lion",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "lion",
+      "fame": 3
+    },
+    {
+      "id": "lrv",
+      "name": "The Apollo Lunar Roving Vehicle",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of the Apollo Lunar Roving Vehicle without a payload",
+          "label": "Lunar Rover weight",
+          "value": 210,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_lrv.html",
+          "checkedOn": "2026-10-20",
+          "note": "It could carry 440 kg of astronauts, equipment and samples."
+        }
+      },
+      "family": "lrv",
+      "clue": "a vehicle used on the Moon",
+      "hint": "the electric buggy driven on the Moon",
+      "fame": 2
+    },
+    {
+      "id": "zebra",
+      "name": "A plains zebra",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an adult plains zebra",
+          "label": "A plains zebra",
+          "value": 300,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/zebra",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "zebra",
+      "fame": 3
+    },
+    {
+      "id": "polarbear",
+      "name": "A male polar bear",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an adult male polar bear",
+          "label": "A male polar bear",
+          "value": 450,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/bear",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "polarbear",
+      "fame": 3
+    },
+    {
+      "id": "modelt",
+      "name": "A 1909 Ford Model T",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a 1909 Ford Model T",
+          "label": "Ford Model T weight",
+          "value": 544,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.thehenryford.org/collections/explore/artifact/140288",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "modelt",
+      "fame": 3
+    },
+    {
+      "id": "libertybell",
+      "name": "The Liberty Bell",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of the Liberty Bell",
+          "label": "Liberty Bell weight",
+          "value": 943,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nps.gov/articles/000/bell-and-clock-facts.htm",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "libertybell",
+      "clue": "a famous American bell",
+      "hint": "the cracked bell of Philadelphia",
+      "fame": 2
+    },
+    {
+      "id": "perseverance",
+      "name": "NASA's Perseverance rover",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of NASA's Perseverance rover",
+          "label": "Perseverance weight",
+          "value": 1025,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.jpl.nasa.gov/news/press_kits/mars_2020/landing/quick_facts/",
+          "checkedOn": "2026-10-20",
+          "note": "It landed on Mars in 2021."
+        }
+      },
+      "family": "perseverance",
+      "clue": "a rover on Mars",
+      "hint": "the NASA rover that landed on Mars in 2021",
+      "fame": 2
+    },
+    {
+      "id": "container",
+      "name": "A standard 6 m shipping container",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an empty standard 6-metre shipping container",
+          "label": "Shipping container weight",
+          "value": 2200,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://multica.co.uk/blog/dimensions-of-a-20-foot-container/",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "container",
+      "fame": 3
+    },
+    {
+      "id": "colosseumarches",
+      "name": "The Colosseum",
+      "facts": {
+        "count": {
+          "phrase": "the number of ground-level arches in the outer wall of the Colosseum",
+          "label": "Colosseum arches",
+          "value": 80,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.britannica.com/place/Rome/The-Colosseum-and-the-Arch-of-Constantine",
+          "checkedOn": "2026-10-20",
+          "note": "76 of them were numbered entrances for the public."
+        }
+      },
+      "object": "colosseum",
+      "fame": 3
+    },
+    {
+      "id": "empirefloors",
+      "name": "The Empire State Building",
+      "facts": {
+        "count": {
+          "phrase": "the number of floors in the Empire State Building",
+          "label": "Empire State floors",
+          "value": 102,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.esbnyc.com/about/facts-figures",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "object": "empire",
+      "fame": 3
+    },
+    {
+      "id": "snookerpockets",
+      "name": "A full-size snooker table",
+      "facts": {
+        "count": {
+          "phrase": "the number of pockets on a snooker table",
+          "label": "Snooker table pockets",
+          "value": 6,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://wpbsa.com/rules/",
+          "checkedOn": "2026-10-20",
+          "note": "Four in the corners and two in the middle of the long sides."
+        }
+      },
+      "object": "snooker",
+      "fame": 3
+    },
+    {
+      "id": "tubelines",
+      "name": "The London Underground",
+      "facts": {
+        "count": {
+          "phrase": "the number of lines on the London Underground",
+          "label": "Tube lines",
+          "value": 11,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://tfl.gov.uk/corporate/about-tfl/what-we-do/london-underground/facts-and-figures",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "object": "tube",
+      "fame": 3
+    },
+    {
+      "id": "eyecapsules",
+      "name": "The London Eye",
+      "facts": {
+        "count": {
+          "phrase": "the number of passenger capsules on the London Eye",
+          "label": "London Eye capsules",
+          "value": 32,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.londoneye.com/tickets-and-prices/vip-experiences/private-capsules/",
+          "checkedOn": "2026-10-20",
+          "note": "They are numbered 1 to 33, with no number 13."
+        }
+      },
+      "object": "londoneye",
+      "fame": 3
+    },
+    {
+      "id": "statuerays",
+      "name": "The Statue of Liberty",
+      "facts": {
+        "count": {
+          "phrase": "the number of rays on the Statue of Liberty's crown",
+          "label": "Statue of Liberty rays",
+          "value": 7,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nps.gov/stli/learn/historyculture/statue-statistics.htm",
+          "checkedOn": "2026-10-20",
+          "note": "They stand for the seven seas and continents."
+        }
+      },
+      "object": "statue",
+      "fame": 3
+    },
+    {
+      "id": "chesspieces",
+      "name": "A chess board",
+      "facts": {
+        "count": {
+          "phrase": "the number of pieces on a chess board at the start of a game",
+          "label": "Chess pieces",
+          "value": 32,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://handbook.fide.com/chapter/E012023",
+          "checkedOn": "2026-10-20",
+          "note": "Sixteen for each player."
+        }
+      },
+      "object": "chess",
+      "fame": 3
+    },
+    {
+      "id": "cardsuits",
+      "name": "A deck of cards",
+      "facts": {
+        "count": {
+          "phrase": "the number of suits in a pack of cards",
+          "label": "Suits in a pack",
+          "value": 4,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/playing-card",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "object": "cards",
+      "fame": 3
+    },
+    {
+      "id": "plclubs",
+      "name": "The Premier League",
+      "facts": {
+        "count": {
+          "phrase": "the number of clubs in the Premier League",
+          "label": "Premier League clubs",
+          "value": 20,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.premierleague.com/premier-league-explained",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "object": "premier",
+      "fame": 3
+    },
+    {
+      "id": "unpermanent",
+      "name": "The United Nations",
+      "facts": {
+        "count": {
+          "phrase": "the number of permanent members of the UN Security Council",
+          "label": "Security Council permanent members",
+          "value": 5,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.un.org/securitycouncil/content/current-members",
+          "checkedOn": "2026-10-20",
+          "note": "China, France, Russia, the UK and the USA."
+        }
+      },
+      "object": "un",
+      "fame": 2
+    },
+    {
+      "id": "palacewindows",
+      "name": "Buckingham Palace",
+      "facts": {
+        "count": {
+          "phrase": "the number of windows in Buckingham Palace",
+          "label": "Buckingham Palace windows",
+          "value": 760,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.royal.uk/royal-residences-buckingham-palace",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "object": "buckingham",
+      "fame": 3
+    },
+    {
+      "id": "shuttleengines",
+      "name": "The Space Shuttle",
+      "facts": {
+        "count": {
+          "phrase": "the number of main engines on a Space Shuttle orbiter",
+          "label": "Shuttle main engines",
+          "value": 3,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nasa.gov/reference/space-shuttle-main-engine/",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "object": "shuttle",
+      "fame": 3
+    },
+    {
+      "id": "b747wheels",
+      "name": "The Boeing 747",
+      "facts": {
+        "count": {
+          "phrase": "the number of landing gear wheels on a Boeing 747-400",
+          "label": "747 wheels",
+          "value": 18,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.boeing.com/commercial/747",
+          "checkedOn": "2026-10-20",
+          "note": "Sixteen are on four main bogies and two are on the nose."
+        }
+      },
+      "object": "b747",
+      "fame": 3
+    },
+    {
+      "id": "a380wheels",
+      "name": "The Airbus A380",
+      "facts": {
+        "count": {
+          "phrase": "the number of landing gear wheels on an Airbus A380",
+          "label": "A380 wheels",
+          "value": 22,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.airbus.com/en/products-services/commercial-aircraft/a380",
+          "checkedOn": "2026-10-20",
+          "note": "Twenty are on the main gear and two are on the nose."
+        }
+      },
+      "object": "a380",
+      "fame": 2
+    },
+    {
+      "id": "rubikpieces",
+      "name": "A Rubik's Cube",
+      "facts": {
+        "count": {
+          "phrase": "the number of movable pieces in a 3x3 Rubik's Cube",
+          "label": "Rubik's Cube pieces",
+          "value": 26,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.rubiks.com/en-us/about",
+          "checkedOn": "2026-10-20",
+          "note": "Eight corners, twelve edges and six centres."
+        }
+      },
+      "object": "rubik",
+      "fame": 3
+    },
+    {
       "id": "golfball",
       "name": "A golf ball",
       "facts": {
@@ -5612,6 +7991,17 @@
           "checkedOn": "2026-10-15",
           "note": "The laws allow 410 to 450 grams.",
           "warmup": true
+        },
+        "count": {
+          "phrase": "the number of panels on a classic football",
+          "label": "Football panels",
+          "value": 32,
+          "unit": "",
+          "approx": false,
+          "status": "verified",
+          "source": "https://americanhistory.si.edu/ar/collections/object/nmah_682185",
+          "checkedOn": "2026-10-20",
+          "note": "Twelve black pentagons and twenty white hexagons."
         }
       },
       "family": "football",

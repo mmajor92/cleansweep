@@ -101,3 +101,22 @@ test("every date in the pool gets a tidy line under its figure: capitalised, no 
   }
 });
 
+
+test("small weights are shown in grams and slow speeds keep their digits, so nothing rounds to zero", () => {
+  assert.deepEqual(valueParts("weight", { value: 0.0027 }), { num: "2.7", unit: "g" });
+  assert.deepEqual(valueParts("weight", { value: 0.0055 }), { num: "5.5", unit: "g" });
+  assert.deepEqual(valueParts("weight", { value: 0.06 }), { num: "60", unit: "g" });
+  assert.deepEqual(valueParts("weight", { value: 0.145 }), { num: "145", unit: "g" });
+  assert.deepEqual(valueParts("weight", { value: 0.17 }), { num: "170", unit: "g" });
+  assert.deepEqual(valueParts("weight", { value: 0.62, approx: true }), { num: "about 620", unit: "g" });
+  assert.deepEqual(valueParts("weight", { value: 1.587 }), { num: "1.59", unit: "kg" });
+  assert.deepEqual(valueParts("weight", { value: 6.175 }), { num: "6.18", unit: "kg" });
+  assert.deepEqual(valueParts("weight", { value: 7.26 }), { num: "7.26", unit: "kg" });
+  assert.deepEqual(valueParts("weight", { value: 47.7 }), { num: "47.7", unit: "kg" });
+  assert.deepEqual(valueParts("weight", { value: 274 }), { num: "274", unit: "kg" }, "ordinary weights are unchanged");
+  assert.deepEqual(valueParts("speed", { value: 0.048, approx: true }), { num: "about 0.048", unit: "km/h" });
+  assert.deepEqual(valueParts("speed", { value: 0.24 }), { num: "0.24", unit: "km/h" });
+  assert.deepEqual(valueParts("speed", { value: 1.6 }), { num: "1.6", unit: "km/h" });
+  assert.deepEqual(valueParts("speed", { value: 44 }), { num: "44", unit: "km/h" }, "ordinary speeds are unchanged");
+  for (const v of [0.0027, 0.048, 0.06, 0.145]) assert.ok(!/^0(\.0)? /.test(`${valueParts("weight", { value: v }).num} `), "never a figure of zero");
+});

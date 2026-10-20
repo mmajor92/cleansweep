@@ -5,6 +5,9 @@ const NF = new Intl.NumberFormat("en-GB", { maximumFractionDigits: 1 });
 export function formatNumber(n) {
   return NF.format(n);
 }
+// Three significant digits, for values where one decimal place would round the figure away (2.7 g, 0.048 km/h).
+const NFS = new Intl.NumberFormat("en-GB", { maximumSignificantDigits: 3 });
+const formatSmall = (n) => NFS.format(n);
 
 /** The era for a year: BC before the year 1, AD for the first thousand years (so "80 AD", not a bare "80"), and nothing after that. */
 export function yearEra(year) {
@@ -24,12 +27,14 @@ export function valueParts(category, item) {
     case "length":
       return { num: pre + formatNumber(v), unit: "m" };
     case "speed":
-      return { num: pre + formatNumber(v), unit: "km/h" };
+      return { num: pre + (v < 1 ? formatSmall(v) : formatNumber(v)), unit: "km/h" }; // a snail is 0.048 km/h, not "0 km/h"
     case "count":
       return { num: pre + formatNumber(v), unit: "" };
     case "date":
       return { num: (item.approx ? "c. " : "") + Math.abs(v), unit: yearEra(v) };
     case "weight": {
+      if (v < 1) return { num: pre + formatSmall(v * 1000), unit: "g" }; // a table tennis ball is 2.7 g, not "0 kg"
+      if (v < 10) return { num: pre + formatSmall(v), unit: "kg" }; // 1.59 kg, 6.18 kg
       if (v < 1000) return { num: pre + formatNumber(v), unit: "kg" };
       const t = v / 1000;
       if (t >= 1e6) return { num: pre + formatNumber(t / 1e6), unit: "million tonnes" };

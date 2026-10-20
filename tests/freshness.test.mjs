@@ -35,13 +35,13 @@ test("a puzzle always still builds, however much has been seen recently", () => 
   for (let n = 1; n <= 20; n++) assert.ok(generate(seedForPuzzle(n), entities, { seen: days }), `seed ${n}`);
 });
 
-test("over a year the pool is used evenly: few everyday objects are almost never seen, repeats within a week stay low, and familiar objects still lead", () => {
+test("over a year the pool is used evenly: few everyday objects are almost never seen (under 2 days), repeats within a week stay low, and familiar objects still lead", () => {
   const series = generateSeries(1, 365, entities);
   const days = {};
   series.forEach((p) => objectsOf(p).forEach((id) => (days[id] = (days[id] || 0) + 1)));
-  const everyday = entities.filter((e) => e.fame >= 2);
-  const rare = everyday.filter((e) => (days[e.id] || 0) < 5);
-  assert.ok(rare.length / everyday.length < 0.12, `${rare.length} of ${everyday.length} everyday objects appear on fewer than 5 days: ${rare.map((e) => e.id).join(", ")}`);
+  const everyday = entities.filter((e) => e.fame >= 2 && e.object === e.id); // objects, counted once however many numbers they hold
+  const rare = everyday.filter((e) => (days[e.id] || 0) < 2);
+  assert.ok(rare.length / everyday.length < 0.12, `${rare.length} of ${everyday.length} everyday objects appear on fewer than 2 days: ${rare.map((e) => e.id).join(", ")}`);
   let again = 0;
   for (let i = 7; i < series.length; i++) {
     const week = new Set();

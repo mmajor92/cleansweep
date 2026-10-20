@@ -68,7 +68,9 @@ To run it on your own machine instead:
 2. For each fact, find a second source and confirm the number. Wikidata often mixes variants (a 747-100 against a 747-400).
 3. Rewrite the suggested phrase so the definition is clear.
 4. Copy it into `facts.json` with the real source URL and a `checkedOn` date.
-5. Entries with `needsReview` (BC dates) need the year offset checked by hand.
+5. Entries with `needsReview` need a look by hand: BC dates (the year offset), and dates where Wikidata lists more than one value (the message names them: pick the one the sources agree on, or leave the event out).
+6. Dates of events and famous people (`kind` event, start, end, discovery, publication, birth, death) arrive on their own, with one category. They are the source of the dated events in the game. Check the year against two sources, and use the year the event is usually given (for a battle, the year it was fought, not the year of the treaty). Leave out any event whose date historians dispute.
+7. Anything that is only one more number about an object that is already in the game (the Eiffel Tower's rivets as well as its steps) is an **extra**: give it `"object": "<id of the object>"` and exactly one fact.
 
 ## Candidates
 

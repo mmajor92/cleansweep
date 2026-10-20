@@ -80,13 +80,6 @@
       "needs": "source for an average, ranges vary widely"
     },
     {
-      "id": "orca",
-      "category": "weight",
-      "label": "Orca (male)",
-      "value": 5600,
-      "needs": "source"
-    },
-    {
       "id": "thrustssc",
       "category": "speed",
       "label": "ThrustSSC land speed record",
@@ -119,20 +112,6 @@
       "category": "date",
       "label": "End of the Second World War",
       "value": 1945,
-      "needs": "source"
-    },
-    {
-      "id": "vesuvius",
-      "category": "date",
-      "label": "Vesuvius erupts",
-      "value": 79,
-      "needs": "source"
-    },
-    {
-      "id": "shakespeare",
-      "category": "date",
-      "label": "Shakespeare dies",
-      "value": 1616,
       "needs": "source"
     },
     {
