@@ -3,7 +3,7 @@
 import { readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { CATEGORIES, CATEGORY_KEYS, PRACTICE, RULES, buildEntities, generateSeries, normalizePuzzle, objectsOf, questionsOf, validatePuzzle } from "../src/engine.js";
+import { CATEGORIES, CATEGORY_KEYS, PRACTICE, RULES, buildEntities, generateSeries, normalizePuzzle, objectsOf, pairsOf, questionsOf, validatePuzzle } from "../src/engine.js";
 
 const root = join(fileURLToPath(import.meta.url), "..", "..");
 const args = process.argv.slice(2);
@@ -158,9 +158,38 @@ for (const p of generated) for (const id of objectsOf(p)) appearDays[id] = (appe
 const everyday = entities.filter((e) => e.fame >= 2 && e.object === e.id); // objects, counted once however many numbers they hold
 const rarelySeen = everyday.filter((e) => (appearDays[e.id] || 0) < 5);
 const almostNever = everyday.filter((e) => (appearDays[e.id] || 0) < 2); // about once a year or less: the research is wasted
-if (almostNever.length / everyday.length > 0.12) {
-  warn(`${almostNever.length} of ${everyday.length} everyday objects appear on fewer than 2 days a year (${almostNever.map((e) => e.id).slice(0, 12).join(", ")}${almostNever.length > 12 ? ", ..." : ""}): their facts may not fit next to any other, so add facts or objects with similar values`);
+// One simulated year is noisy (changing a single value can move a few objects across the line), so the check runs three years in a row
+// as ONE series, which also lets the memory of questions already asked carry over from year to year, and averages them.
+const longSeries = generateSeries(1, DAYS * 3, entities).filter(Boolean);
+const rareByYear = [0, 1, 2].map((y) => {
+  const seenDays = {};
+  for (const p of longSeries.slice(y * DAYS, (y + 1) * DAYS)) for (const id of objectsOf(p)) seenDays[id] = (seenDays[id] || 0) + 1;
+  return everyday.filter((e) => (seenDays[e.id] || 0) < 2);
+});
+const rareShare = rareByYear.reduce((a, r) => a + r.length, 0) / (3 * everyday.length);
+if (rareShare > 0.12) {
+  const worst = rareByYear[0];
+  warn(`on average ${Math.round(rareShare * 100)}% of everyday objects appear on fewer than 2 days a year over three simulated years (year 1: ${worst.map((e) => e.id).slice(0, 12).join(", ")}${worst.length > 12 ? ", ..." : ""}): their facts may not fit next to any other, so add facts or objects with similar values`);
 }
+// How long before a question (two objects compared in one category, either way round) is asked again?
+const askedBefore = new Set();
+const repeatShare = [0, 0, 0];
+const asked = [0, 0, 0];
+let firstRepeat = null;
+longSeries.forEach((p, i) => {
+  const y = Math.min(2, Math.floor(i / DAYS));
+  for (const k of pairsOf(p)) {
+    asked[y]++;
+    if (askedBefore.has(k)) {
+      repeatShare[y]++;
+      firstRepeat ??= i + 1;
+    }
+  }
+  for (const k of pairsOf(p)) askedBefore.add(k);
+});
+const repeatPct = repeatShare.map((r, y) => Math.round((100 * r) / asked[y]));
+if (firstRepeat !== null && firstRepeat < 180) warn(`a question is asked again as early as day ${firstRepeat}: the "do not repeat a question" rule is not working`);
+if (repeatPct[0] > 5) warn(`${repeatPct[0]}% of questions in the first simulated year repeat one asked before (limit 5%): the "do not repeat a question" rule is not working`);
 const allPairs = CATEGORY_KEYS.flatMap((a) => CATEGORY_KEYS.filter((b) => b !== a).map((b) => `${a}>${b}`));
 for (const k of allPairs) if (!pairs[k]) err(`the switch ${k} never appears in ${DAYS} days`);
 for (const [id, n] of Object.entries(hinges)) {
@@ -168,8 +197,15 @@ for (const [id, n] of Object.entries(hinges)) {
 }
 if (repeats / DAYS > 0.1) warn(`a bridge repeats within ${MAX_REPEAT_WINDOW} days on ${Math.round((100 * repeats) / DAYS)}% of days: add more bridge objects`);
 const fameOf = Object.fromEntries(entities.map((e) => [e.id, e.fame]));
-const neverHinge = hingeIds.filter((id) => !hinges[id] && fameOf[id] >= 2); // enthusiast objects may rarely or never be a bridge
-if (neverHinge.length / hingeIds.length > 0.06) warn(`${neverHinge.length} of ${hingeIds.length} bridge objects never used in a year (a few missing by chance is normal in a big pool): ${neverHinge.join(", ")}`);
+// Bridges never used: counted over three simulated years in a row and averaged, because one year is noisy (a few missing by chance is normal in a big pool).
+const neverByYear = [0, 1, 2].map((y) => {
+  const used = new Set();
+  for (const p of longSeries.slice(y * DAYS, (y + 1) * DAYS)) for (const b of p.bridges) used.add(b);
+  return hingeIds.filter((id) => !used.has(id) && fameOf[id] >= 2); // enthusiast objects may rarely or never be a bridge
+});
+const neverShare = neverByYear.reduce((a, r) => a + r.length, 0) / (3 * hingeIds.length);
+// Not repeating a question has a price: a bridge object with few possible partners uses up its few questions and is then used less (about 5% of bridge objects were unused before the rule, about 8% after), so the limit is 10%.
+if (neverShare > 0.1) warn(`on average ${Math.round(neverShare * 100)}% of bridge objects are never used as a bridge in a year, over three simulated years (year 1: ${neverByYear[0].join(", ")}): add facts with values near theirs, so they have more partners`);
 
 // Familiarity mix: how well do ordinary players know the objects in the questions?
 const mix = { 3: 0, 2: 0, 1: 0 };
@@ -265,7 +301,9 @@ line(`  entities: ${entities.length} usable, ${hingeIds.length} bridge objects`)
 line(`  facts per category: ${CATEGORY_KEYS.map((c) => `${c} ${perCat[c]}`).join(", ")}`);
 line(`  days generated: ${generated.length}/${DAYS}, category switches covered: ${Object.keys(pairs).length}/20`);
 line(`  switches per day: ${Object.keys(switchesPerDay).sort().map((k) => `${k}: ${Math.round((100 * switchesPerDay[k]) / DAYS)}%`).join(", ")}`);
-line(`  everyday objects seen on fewer than 2 days a year: ${almostNever.length} of ${everyday.length} (fewer than 5 days: ${rarelySeen.length})`);
+line(`  everyday objects seen on fewer than 2 days a year: ${almostNever.length} of ${everyday.length} in year 1, ${Math.round(rareShare * 100)}% on average over three years (fewer than 5 days in year 1: ${rarelySeen.length})`);
+line(`  bridge objects never used as a bridge in a year: ${neverByYear.map((r) => r.length).join(", ")} of ${hingeIds.length} over three simulated years (${Math.round(neverShare * 100)}% on average)`);
+line(`  questions asked again: the first repeat comes on day ${firstRepeat ?? "never"}; the share of questions seen before is ${repeatPct[0]}% in year 1, ${repeatPct[1]}% in year 2 and ${repeatPct[2]}% in year 3`);
 {
   // Is a category oversupplied? If a fact is asked about only a few times a year, that category has more facts than it needs.
   const asked = {}, facts = {};

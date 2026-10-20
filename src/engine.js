@@ -21,6 +21,11 @@ export const RULES = {
   noRepeatDays: 1, // an object that appeared in a puzzle may not appear in the next this-many days' puzzles
   noRepeatFrom: 5, // the check on saved puzzle files starts here: puzzles 1 to 4 were published before the rule existed
   avoidAttempts: 300, // the first tries honour that rule strictly; after that it is lifted as a last resort, so a puzzle always builds
+  pairTiers: [Infinity, 365], // the first tries refuse any question (two objects compared in one category) asked within this many days: first "ever", then a year
+  pairTierAttempts: 6, // each of those is tried for this many attempts; after that the refusal is lifted (long before the rule above is), so a puzzle always builds
+  pairBudget: 2500, // search steps a strict try may use before giving up (an ordinary try may use searchBudget), so a refused try fails fast
+  pairOldAges: [365, 180, 60], // from then on questions are only PREFERRED: never asked first, then asked over 365 days ago, then over 180, then over 60, then the rest
+  pairMemoryDays: 1100, // how far back the saved puzzles are read to learn which questions have been asked
   busyDay: 3, // a day with this many switches or more is "busy": the next day is capped at one fewer, so two wild days never come back to back
   maxPerCategory: 5, // no category may take more than this many of the 7 questions
   minUps: 2, // across the whole chain: at least this many "higher" answers ...
@@ -53,6 +58,17 @@ export const RULES = {
   nowYear: 2026, // dates are compared by "years ago", so this is frozen on purpose
   launchDate: "2026-10-16", // puzzle #1 (first public day, in UTC). Never change this after launch.
 };
+
+/**
+ * A question is two objects compared in one category. Its key does not depend on which one comes first, so "A against B" and
+ * "B against A" are the same question. A fact is identified by its object, category and value, which is what a saved puzzle stores.
+ */
+export const factKey = (it) => `${it.ent}|${it.cat}|${it.value}`;
+export const pairKey = (a, b) => [factKey(a), factKey(b)].sort().join("~");
+/** The key of every question in a puzzle (old two-half puzzles are normalised first). */
+export function pairsOf(puzzle) {
+  return questionsOf(puzzle).map((q) => pairKey(q.prev, q.item));
+}
 
 /** Years before RULES.nowYear. There is no year zero. */
 export function yearsAgo(year) {
@@ -258,6 +274,33 @@ export function generate(seed, entities, options = {}) {
     for (const id of ids) lastSeen.set(id, seenDays.length - i);
   });
   const pickWeight = (e) => weightOf(e) * freshness(lastSeen.get(e.object || e.id));
+  // Questions asked before (`options.pairs`: one list of keys per day, most recent last). Keys are turned into small numbers so that
+  // looking one up is cheap. Early tries refuse a question asked within the limit; every try PREFERS questions never asked, then
+  // the ones asked longest ago, so a category that runs dry reuses its oldest questions first, and a puzzle always builds.
+  const factId = new Map(); // fact key -> small number
+  const idOf = (k) => {
+    let v = factId.get(k);
+    if (v === undefined) factId.set(k, (v = factId.size + 1));
+    return v;
+  };
+  const pairNum = (a, b) => (a < b ? a * 2097152 + b : b * 2097152 + a);
+  const pairAge = new Map(); // question -> days since it was last asked (1 = yesterday)
+  (options.pairs || []).forEach((keys, i, all) => {
+    for (const k of keys) {
+      const [a, b] = k.split("~");
+      pairAge.set(pairNum(idOf(a), idOf(b)), all.length - i);
+    }
+  });
+  const pairsOn = pairAge.size > 0;
+  const entFactIds = new Map(); // entity -> the ids of its facts by category
+  const idOfFact = (e, c) => {
+    let m = entFactIds.get(e);
+    if (!m) entFactIds.set(e, (m = {}));
+    return (m[c] ??= idOf(`${e.object || e.id}|${c}|${e.facts[c].value}`));
+  };
+  const pairLimitFor = (attempt) => (pairsOn ? RULES.pairTiers[Math.floor(attempt / RULES.pairTierAttempts)] ?? 0 : 0);
+  const [oldA, oldB, oldC] = RULES.pairOldAges;
+  const pairRank = (age) => (age === undefined ? 0 : age > oldA ? 1 : age > oldB ? 2 : age > oldC ? 3 : 4);
 
   /** Plan the shape of the chain: where it switches, and into which categories. */
   function makePlan() {
@@ -298,12 +341,12 @@ export function generate(seed, entities, options = {}) {
   }
 
   /** Search for objects that fill the plan. Returns { anchor, seq, ents } or null. */
-  function tryBuild(plan, slack, spiceAt, warmAnchor, allowWaiting, avoidNow) {
+  function tryBuild(plan, slack, spiceAt, warmAnchor, allowWaiting, avoidNow, pairLimit = 0) {
     const { isB, cat, posInLeg, legLen } = plan;
     const N = RULES.chainLength;
     const warmFirst = !!warmAnchor;
     const anchors = warmAnchor ? [warmAnchor] : wshuffle(poolBy[cat[0]].filter((e) => e.fame !== 1 && !avoidNow.has(e.object || e.id))).map((e) => toItem(e, cat[0]));
-    let budget = RULES.searchBudget; // a search gives up quickly rather than exploring every combination
+    let budget = pairLimit > 0 ? RULES.pairBudget : RULES.searchBudget; // a search gives up quickly rather than exploring every combination
     for (const anchor of anchors) {
       const seq = [];
       const ents = [];
@@ -317,9 +360,14 @@ export function generate(seed, entities, options = {}) {
         const spiceHere = q === spiceAt;
         // Enthusiast-only objects (fame 1) are kept out of ordinary slots: at most one deep cut per puzzle, only in its chosen slot.
         const base = (spiceHere ? poolBy[c].filter((e) => e.fame === 1 && spiceSince(e) > RULES.spiceCooldown) : poolBy[c].filter((e) => e.fame !== 1)).filter((e) => !avoidNow.has(e.object || e.id));
+        const prevId = pairsOn ? idOf(factKey(prev)) : 0;
+        const ageOf = (e) => pairAge.get(pairNum(prevId, idOfFact(e, c)));
+        // the same list, with questions never asked first and then the ones asked longest ago (the order is otherwise kept)
+        const rankOrder = (list) => (pairsOn ? list.map((e, i) => [pairRank(ageOf(e)), i, e]).sort((x, y) => x[0] - y[0] || x[1] - y[1]).map((x) => x[2]) : list);
         const stepOk = (e) =>
           warmFirst && q === 0 ? warmGapOk(c, prev.value, e.facts[c].value) : gapOk(c, prev.value, e.facts[c].value, gapSlot(posInLeg[q], b), slack, b);
         let workable = base.filter((e) => !families.has(e.family) && stepOk(e));
+        if (pairLimit > 0) workable = workable.filter((e) => { const age = ageOf(e); return age === undefined || age > pairLimit; }); // asked too recently: not in the first tries
         if (b) workable = workable.filter((e) => e.fame !== 1 && e.facts[cat[q + 1]] && !e.facts[cat[q + 1]].warmup);
         let ordered;
         if (b) {
@@ -331,14 +379,14 @@ export function generate(seed, entities, options = {}) {
             .map((x) => ({ ...x, k: Math.pow(rng(), 1 / (pickWeight(x.e) * Math.min(x.s, RULES.hingeSinceCap))) }))
             .sort((x, y) => y.k - x.k);
           const waiting = rated.filter((x) => x.s <= RULES.hingeCooldown).sort((x, y) => y.s - x.s);
-          ordered = (allowWaiting ? [...ready, ...waiting] : ready).map((x) => x.e);
+          ordered = allowWaiting ? [...rankOrder(ready.map((x) => x.e)), ...rankOrder(waiting.map((x) => x.e))] : rankOrder(ready.map((x) => x.e));
         } else if (warmFirst && q === 0) {
           // A warm-up should be easy, not silly: prefer the closest partners (at least warmMinGap away), mixed up a little.
           const byGap = workable.slice().sort((x, y) => gapRatio(c, prev.value, x.facts[c].value) - gapRatio(c, prev.value, y.facts[c].value));
           ordered = [...shuffle(byGap.slice(0, 8)), ...byGap.slice(8)];
         } else if (spiceHere) {
           ordered = shuffle(workable).sort((x, y) => spiceSince(y) - spiceSince(x));
-        } else ordered = wshuffle(workable);
+        } else ordered = rankOrder(wshuffle(workable));
         for (const e of ordered) {
           const item = toItem(e, c);
           const up = item.value > prev.value;
@@ -383,7 +431,7 @@ export function generate(seed, entities, options = {}) {
       const ready = warmBy[plan.cat[0]].filter((e) => warmSince(e) > RULES.warmCooldown && !(attempt < avoidTries && avoid.has(e.object || e.id)));
       if (ready.length) warmAnchor = toItem(shuffle(ready)[0], plan.cat[0]);
     }
-    const built = tryBuild(plan, slack, spice ? target : -1, warmAnchor, attempt >= RULES.hardAttempts, attempt < avoidTries ? avoid : nothing);
+    const built = tryBuild(plan, slack, spice ? target : -1, warmAnchor, attempt >= RULES.hardAttempts, attempt < avoidTries ? avoid : nothing, pairLimitFor(attempt));
     if (!built) continue;
     const legs = [];
     let cur = { cat: plan.cat[0], anchor: built.anchor, items: [] };
@@ -531,11 +579,12 @@ export function avoidAfter(daysOfObjects) {
   return daysOfObjects.slice(-RULES.noRepeatDays).flatMap((s) => [...s]);
 }
 
-export function generateSeries(startNum, days, entities, warmup = Math.max(30, RULES.freshDays)) {
+export function generateSeries(startNum, days, entities, warmup = Math.max(30, RULES.freshDays), { pairMemory = true } = {}) {
   const recent = []; // one array of bridge ids per day
   const recentSpice = [];
   const recentWarm = [];
   const recentObjects = []; // one set of object ids per day
+  const recentPairs = []; // one list of question keys per day
   const out = [];
   for (let n = Math.max(1, startNum - warmup); n < startNum + days; n++) {
     const p = generate(seedForPuzzle(n), entities, {
@@ -546,9 +595,11 @@ export function generateSeries(startNum, days, entities, warmup = Math.max(30, R
       seen: recentObjects,
       spiceHistory: recentSpice,
       warmHistory: recentWarm,
+      pairs: pairMemory ? recentPairs.slice(-RULES.pairMemoryDays) : [],
     });
     if (p) p.num = n;
     recentObjects.push(p ? objectsOf(p) : new Set());
+    recentPairs.push(p ? pairsOf(p) : []);
     recent.push(p ? p.bridges : []);
     const deepItem = p ? p.legs.flatMap((l) => l.items).find((it) => it.fame === 1) : null;
     recentSpice.push(deepItem ? deepItem.ent : null);

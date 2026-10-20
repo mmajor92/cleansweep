@@ -3,7 +3,7 @@
 import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { RULES, avoidAfter, buildEntities, generate, maxBridgesAfter, normalizePuzzle, objectsOf, seedForPuzzle, startCategoryFor, validatePuzzle, puzzleNumber } from "../src/engine.js";
+import { RULES, avoidAfter, buildEntities, generate, maxBridgesAfter, normalizePuzzle, objectsOf, pairsOf, seedForPuzzle, startCategoryFor, validatePuzzle, puzzleNumber } from "../src/engine.js";
 
 const root = join(fileURLToPath(import.meta.url), "..", "..");
 const args = process.argv.slice(2);
@@ -32,6 +32,7 @@ const deepEnt = (p) => {
   return it ? it.ent : null;
 };
 const warmEnt = (p) => (p.warmUp ? p.legs[0].anchor.ent : null);
+const recentPairs = []; // one list of question keys per day (all the published puzzles within RULES.pairMemoryDays), so a question is not asked again until the others have been used
 const readPublished = async (n) => normalizePuzzle(JSON.parse(await readFile(join(dir, `${n}.json`), "utf8")));
 for (let n = Math.max(1, from - Math.max(30, RULES.freshDays)); n < from; n++) {
   if (!existing.has(n)) {
@@ -45,6 +46,8 @@ for (let n = Math.max(1, from - Math.max(30, RULES.freshDays)); n < from; n++) {
   recentObjects.push(objectsOf(p));
 }
 
+for (let n = Math.max(1, from - RULES.pairMemoryDays); n < from; n++) recentPairs.push(existing.has(n) ? pairsOf(await readPublished(n)) : []);
+
 let written = 0;
 for (let n = from; n < from + days; n++) {
   if (existing.has(n) && !force) {
@@ -53,6 +56,7 @@ for (let n = from; n < from + days; n++) {
     recentSpice.push(deepEnt(p));
     recentWarm.push(warmEnt(p));
     recentObjects.push(objectsOf(p));
+    recentPairs.push(pairsOf(p));
     continue;
   }
   const p = generate(seedForPuzzle(n), entities, {
@@ -63,6 +67,7 @@ for (let n = from; n < from + days; n++) {
     seen: recentObjects,
     spiceHistory: recentSpice,
     warmHistory: recentWarm,
+    pairs: recentPairs,
   });
   if (!p) throw new Error(`puzzle ${n}: no valid chain found`);
   const problems = validatePuzzle(p);
@@ -72,6 +77,7 @@ for (let n = from; n < from + days; n++) {
   recentSpice.push(deepEnt(p));
   recentWarm.push(warmEnt(p));
   recentObjects.push(objectsOf(p));
+  recentPairs.push(pairsOf(p));
   await writeFile(join(dir, `${n}.json`), JSON.stringify(p, null, 2) + "\n");
   written++;
 }
