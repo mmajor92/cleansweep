@@ -56,7 +56,8 @@ body {
 
 /* header */
 .top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex-wrap: nowrap; }
-h1 { font-family: var(--display); font-weight: 800; font-size: 40px; letter-spacing: -0.02em; line-height: 1; margin: 0; }
+h1 { font-family: var(--display); font-weight: 800; font-size: 40px; letter-spacing: -0.02em; line-height: 1; margin: 0; display: flex; align-items: center; gap: 0.28em; }
+.logo { width: 0.95em; height: 0.95em; flex: none; } /* the broom beside the title: the same drawing as src/icons/icon.svg */
 .proto { font-size: 15px; color: var(--muted); font-style: italic; }
 .tabs { display: flex; gap: 6px; margin: 16px 0 0; }
 .tab {

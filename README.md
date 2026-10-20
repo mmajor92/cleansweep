@@ -45,6 +45,8 @@ Set `GOATCOUNTER_CODE` in `src/site.js` to switch on GoatCounter. It counts visi
 
 The fonts are Bricolage Grotesque (headings and labels) and Newsreader (text). They are hosted in `src/fonts`, not loaded from Google, so every visitor sees the same fonts and their address is not shared with Google. They are free to reuse under the SIL Open Font License (see `src/fonts/OFL.txt`). To change them, download the new fonts from fonts.google.com and run `python3 scripts/make-fonts.py` (instructions inside the script).
 
+The logo is a broom on the game's yellow. It is drawn by `python3 scripts/make-icons.py` (needs Pillow and fontTools), which writes the browser-tab icons, the home-screen icons and the picture shown when the link is shared into `src/icons/`, and also pastes the drawing into `index.html` beside the title (a test fails if the two drift apart). The images are in `src` because that folder is already published. Very small sizes get a simpler solid silhouette (`icon-small.svg`) so the tab icon stays clear. To change the logo, edit the shapes in the script and run it.
+
 ## Licence
 
 All rights reserved, Michael Major (see `LICENSE`). The fonts are licensed separately, as above.
