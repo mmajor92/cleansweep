@@ -16,12 +16,16 @@ on:
       min_categories:
         description: "Keep things with facts in at least this many categories (2 finds possible bridges)"
         default: "2"
+      only:
+        description: "Only these kinds of fact, as Wikidata property ids separated by commas (leave empty for the usual set). For example P2067 for weights, or P2048,P2043 for heights and lengths. Use it to try again with just the kinds that were skipped."
+        default: ""
 permissions:
   contents: read
 env:
   MIN_LINKS: ${{ inputs.min_links }}
   LIMIT: ${{ inputs.limit }}
   MIN_CATEGORIES: ${{ inputs.min_categories }}
+  ONLY: ${{ inputs.only }}
 jobs:
   harvest:
     runs-on: ubuntu-latest
@@ -37,11 +41,19 @@ jobs:
               ''|*[!0-9]*) echo "Not a whole number: '$v'"; exit 1 ;;
             esac
           done
+      - name: Check the kinds of fact are property ids
+        run: |
+          case "$ONLY" in
+            *[!A-Za-z0-9,]*) echo "Use property ids separated by commas, for example P2067,P2048. Got: '$ONLY'"; exit 1 ;;
+          esac
       - name: Ask Wikidata
         env:
           # Wikidata asks scripts to say who is calling. The repository address does that, so no email is needed.
           HARVEST_CONTACT: https://github.com/${{ github.repository }}
-        run: node scripts/harvest.mjs --min-links "$MIN_LINKS" --limit "$LIMIT" --min-categories "$MIN_CATEGORIES" --out "$RUNNER_TEMP/harvest.json"
+        run: |
+          args=(--min-links "$MIN_LINKS" --limit "$LIMIT" --min-categories "$MIN_CATEGORIES" --out "$RUNNER_TEMP/harvest.json")
+          if [ -n "$ONLY" ]; then args+=(--only "$ONLY"); fi
+          node scripts/harvest.mjs "${args[@]}"
       - name: Write a summary on the run page
         run: node scripts/harvest-summary.mjs "$RUNNER_TEMP/harvest.json" >> "$GITHUB_STEP_SUMMARY"
       - name: Save the list as a download
