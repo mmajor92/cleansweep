@@ -21,7 +21,7 @@ const MIN_HINGES = 12; // objects with facts in two or more categories: the only
 const MAX_HINGE_SHARE = 0.2; // one bridge object may be a bridge on at most 20% of days
 const MAX_REPEAT_WINDOW = 7; // warn when a bridge repeats inside this many days
 const ISO = /^\d{4}-\d{2}-\d{2}$/;
-const STATUSES = ["verified", "definitional"];
+const STATUSES = ["verified", "definitional", "wikidata"];
 
 const read = async (p) => JSON.parse(await readFile(join(root, p), "utf8"));
 
@@ -80,6 +80,10 @@ for (const e of raw.entities || []) {
     if (f.status === "verified") {
       if (!/^https?:\/\//.test(f.source || "")) err(`${at}: verified facts need an http(s) source`);
       if (!ISO.test(f.checkedOn || "")) err(`${at}: verified facts need checkedOn as YYYY-MM-DD`);
+    }
+    if (f.status === "wikidata") {
+      if (!/^https:\/\/www\.wikidata\.org\/wiki\/Q\d+$/.test(f.source || "")) err(`${at}: a wikidata fact needs a source like https://www.wikidata.org/wiki/Q123`);
+      if (!ISO.test(f.checkedOn || "")) err(`${at}: wikidata facts need checkedOn as YYYY-MM-DD`);
     }
     if (f.status === "definitional") {
       if (f.source !== "definition") err(`${at}: definitional facts must use source "definition"`);

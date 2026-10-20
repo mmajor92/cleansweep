@@ -4,7 +4,7 @@
 
 1. Find a reliable source. Prefer the owner or operator (NPS, the Eiffel Tower site, NASA), then an encyclopedia, then a reputable news outlet. Avoid content farms and forums.
 2. Confirm the number in at least one source. For anything people argue about (animal weights, capacities, heights with and without antenna), pick one clear definition and put it in the phrase.
-3. Convert to the base unit: metres, kilograms, kilometres per hour, whole years (BC is negative), plain counts.
+3. Convert to the base unit: metres, kilograms, kilometres per hour, whole years (BC is negative), plain counts. Lengths are stored in metres but shown in centimetres under 1 m, metres up to 999 m and kilometres from 1,000 m, so write the Trans-Siberian Railway as `9288000`, not `9288`.
 4. Add the fact to `data/facts.json` under an entity.
 5. Run `npm run lint:data` and `npm test`.
 
@@ -68,7 +68,7 @@ To run it on your own machine instead:
 2. For each fact, find a second source and confirm the number. Wikidata often mixes variants (a 747-100 against a 747-400).
 3. Rewrite the suggested phrase so the definition is clear.
 4. Copy it into `facts.json` with the real source URL and a `checkedOn` date.
-5. Entries with `needsReview` need a look by hand: BC dates (the year offset), and dates where Wikidata lists more than one value (the message names them: pick the one the sources agree on, or leave the event out).
+5. If the run page says some kinds of fact were skipped (Wikidata timed out), press **Run workflow** again and type the ids it lists into the box called **only**: a smaller run is more likely to get through. Entries with `needsReview` need a look by hand: BC dates (the year offset), and dates where Wikidata lists more than one value (the message names them: pick the one the sources agree on, or leave the event out).
 6. Dates of events and famous people (`kind` event, start, end, discovery, publication, birth, death) arrive on their own, with one category. They are the source of the dated events in the game. Check the year against two sources, and use the year the event is usually given (for a battle, the year it was fought, not the year of the treaty). Leave out any event whose date historians dispute.
 7. Anything that is only one more number about an object that is already in the game (the Eiffel Tower's rivets as well as its steps) is an **extra**: give it `"object": "<id of the object>"` and exactly one fact.
 

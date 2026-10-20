@@ -16,14 +16,31 @@ export const PROPERTIES = [
   // Dates of EVENTS and famous people. These items have a date and nothing else, so they are `standalone`: they are kept even
   // though they are in only one category (the others need two, so that they can bridge).
   { cat: "date", pid: "P585", kind: "event", type: "time", standalone: true }, // a battle, an eruption, a disaster, a treaty
-  { cat: "date", pid: "P580", kind: "start", type: "time", standalone: true }, // the start of a war, a reign, a project
-  { cat: "date", pid: "P582", kind: "end", type: "time", standalone: true },
-  { cat: "date", pid: "P575", kind: "discovery", type: "time", standalone: true }, // a discovery or an invention
+  // start, end and discovery are OFF by default (`off: true`): the first live run showed them to be mostly noise (bare years treated as things,
+  // geological ages, disputed discoveries), and dates are the category with the most facts already. They can still be asked for with `only`.
+  { cat: "date", pid: "P580", kind: "start", type: "time", standalone: true, off: true }, // the start of a war, a reign, a project
+  { cat: "date", pid: "P582", kind: "end", type: "time", standalone: true, off: true },
+  { cat: "date", pid: "P575", kind: "discovery", type: "time", standalone: true, off: true }, // a discovery or an invention
   { cat: "date", pid: "P577", kind: "publication", type: "time", standalone: true }, // a book, a film, an album
   // Humans are excluded from every other query. These two ask for humans ONLY, and set the fame bar higher so that only the most famous come back.
   { cat: "date", pid: "P569", kind: "birth", type: "time", subject: "person", standalone: true },
   { cat: "date", pid: "P570", kind: "death", type: "time", subject: "person", standalone: true },
 ];
+
+/** The kinds asked for unless `only` names some: everything except the ones marked off. */
+export const DEFAULT_PROPERTIES = PROPERTIES.filter((p) => !p.off);
+
+/**
+ * Choose the kinds of fact to ask for. With no `only`, the usual set. With `only` ("P2067" or "P2067,P2048", any case), exactly those,
+ * including ones that are off by default. Wikidata gives up on a slow query, so asking for fewer kinds at a time gets more of them through.
+ */
+export function selectProperties(only) {
+  const wanted = String(only || "").split(",").map((s) => s.trim().toUpperCase()).filter(Boolean);
+  if (!wanted.length) return DEFAULT_PROPERTIES;
+  const unknown = wanted.filter((id) => !PROPERTIES.some((p) => p.pid === id));
+  if (unknown.length) throw new Error(`Unknown property id${unknown.length > 1 ? "s" : ""}: ${unknown.join(", ")}. The ones you can use are: ${PROPERTIES.map((p) => p.pid).join(", ")}`);
+  return PROPERTIES.filter((p) => wanted.includes(p.pid));
+}
 
 /** People need many more language editions than objects before we ask about them: this keeps the list to the very famous. */
 export const PERSON_MIN_LINKS = 120;

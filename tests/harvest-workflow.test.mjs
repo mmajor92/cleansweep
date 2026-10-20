@@ -32,6 +32,15 @@ test("the three settings reach the script through variables, not pasted into the
   assert.match(yml, /case "\$v" in/, "and they are checked to be whole numbers first");
 });
 
+test("a box lets you ask for only some kinds of fact: it is checked for safe characters, reaches the script through a variable, and is only added when filled in", () => {
+  assert.match(yml, /\n      only:\n        description: /);
+  assert.match(yml, /ONLY: \$\{\{ inputs\.only \}\}/);
+  assert.match(yml, /case "\$ONLY" in\s+\*\[!A-Za-z0-9,\]\*\)/, "only letters, digits and commas are allowed");
+  assert.match(yml, /if \[ -n "\$ONLY" \]; then args\+=\(--only "\$ONLY"\); fi/);
+  const runs = yml.split("\n").filter((l) => /^\s+run:/.test(l) || (/^\s{10,}\S/.test(l) && !/^\s+[A-Za-z_]+: /.test(l))).join("\n");
+  assert.ok(!/\$\{\{ inputs\./.test(runs), "an input is never pasted into a command: it only reaches the script through the env block");
+});
+
 test("the list is saved outside the repository and offered as a download that expires", () => {
   assert.match(yml, /--out "\$RUNNER_TEMP\/harvest\.json"/);
   assert.match(yml, /uses: actions\/upload-artifact@v4/);
@@ -85,6 +94,15 @@ test("the summary shows what came back and says plainly which kinds of fact were
   assert.match(md, /\| speed: top speed \(P2052\) \| 0 \| skipped \|/);
   assert.match(md, /Why some were skipped/);
   assert.match(md, /HTTP 504 \| lighter query: HTTP 504/);
+});
+
+test("when kinds were skipped the summary says how to try just those again", () => {
+  const md = summarise({
+    ...fixture,
+    queries: [{ cat: "weight", pid: "P2067", kind: "mass", via: null, rows: 0 }, { cat: "length", pid: "P2048", kind: "height", via: null, rows: 0 }],
+    skipped: [{ cat: "weight", pid: "P2067", kind: "mass", reason: "HTTP 504" }, { cat: "length", pid: "P2048", kind: "height", reason: "HTTP 504" }],
+  });
+  assert.match(md, /type `P2067,P2048` in the box called \*\*only\*\*/);
 });
 
 test("with nothing skipped there is no skipped warning", () => {

@@ -54,7 +54,7 @@ export const RULES = {
   hingeMaxGap: 3.1, // a bridge (the last question of a stretch) may sit a little further from its neighbour
   minGap: { default: 1.15, date: 1.12 },
   minYearsApart: 5,
-  allowedStatuses: ["verified", "definitional"],
+  allowedStatuses: ["verified", "definitional", "wikidata"], // "wikidata": taken from Wikidata and not checked against a second source: roughly right, which is enough for this game
   nowYear: 2026, // dates are compared by "years ago", so this is frozen on purpose
   launchDate: "2026-10-16", // puzzle #1 (first public day, in UTC). Never change this after launch.
 };

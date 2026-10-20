@@ -67,11 +67,12 @@ test("200 puzzles all satisfy every rule", () => {
   }
 });
 
-test("a puzzle never uses an unverified fact", () => {
+test("a puzzle only uses facts with an allowed status, and the allowed statuses are exactly the three we have agreed", () => {
+  assert.deepEqual(RULES.allowedStatuses, ["verified", "definitional", "wikidata"], "adding a status is a deliberate decision");
   for (let n = 1; n <= 100; n++) {
     const p = generate(seedForPuzzle(n), entities);
     for (const it of p.legs.flatMap((l) => [l.anchor, ...l.items])) {
-      assert.ok(["verified", "definitional"].includes(it.status));
+      assert.ok(RULES.allowedStatuses.includes(it.status), `${it.label} has the status "${it.status}"`);
     }
   }
 });

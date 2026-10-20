@@ -45,7 +45,7 @@ export function summarise(result, gameNames = [], top = 25) {
   if (skipped.length) {
     lines.push("### Why some were skipped", "");
     for (const s of skipped) lines.push(`- **${s.cat}: ${s.kind} (${s.pid})**: ${s.reason}`);
-    lines.push("");
+    lines.push("", `To try only the skipped kinds again, press **Run workflow** once more and type \`${skipped.map((s) => s.pid).join(",")}\` in the box called **only**. A smaller run is more likely to get through.`, "");
   }
   lines.push("### How many categories each candidate has", "", "| Categories | Candidates |", "|---|---|");
   const byCount = {};

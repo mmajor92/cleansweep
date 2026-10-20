@@ -5,7 +5,7 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { PROPERTIES, buildQuery } from "../scripts/lib/wikidata.mjs";
+import { DEFAULT_PROPERTIES, PROPERTIES, buildQuery } from "../scripts/lib/wikidata.mjs";
 import { harvestAll, runQuery } from "../scripts/lib/harvest-run.mjs";
 
 const root = join(fileURLToPath(import.meta.url), "..", "..");
@@ -130,8 +130,24 @@ test("it says who is calling, and sends the contact in the user agent", async ()
 
 test("the command line still works offline: --dry-run shows both queries for every kind of fact", () => {
   const out = execFileSync("node", ["scripts/harvest.mjs", "--dry-run"], { cwd: root, env: { ...process.env, HARVEST_CONTACT: "test" }, encoding: "utf8" });
-  assert.equal((out.match(/full query/g) || []).length, PROPERTIES.length);
-  assert.equal((out.match(/lighter query/g) || []).length, PROPERTIES.length);
+  assert.equal((out.match(/full query/g) || []).length, DEFAULT_PROPERTIES.length);
+  assert.equal((out.match(/lighter query/g) || []).length, DEFAULT_PROPERTIES.length);
+});
+
+test("--only asks for just the kinds named, in any case, including ones that are off by default; an unknown id is refused and the valid ones are listed", () => {
+  const dry = (...extra) => execFileSync("node", ["scripts/harvest.mjs", "--dry-run", ...extra], { cwd: root, env: { ...process.env, HARVEST_CONTACT: "test" }, encoding: "utf8" });
+  const two = dry("--only", "p2067,P2048");
+  assert.equal((two.match(/full query/g) || []).length, 2);
+  assert.ok(/P2067/.test(two) && /P2048/.test(two) && !/P2052/.test(two), "only the two named kinds");
+  assert.match(dry("--only", "P580"), /P580 \(start\)/, "a kind that is off by default can still be asked for");
+  let err = "";
+  try {
+    dry("--only", "P1");
+  } catch (e) {
+    err = String(e.stderr);
+  }
+  assert.match(err, /Unknown property id: P1/);
+  assert.match(err, /P2067/, "and it lists the ones you can use");
 });
 
 test("capacity asks for the value as entered, because plain counts have no normalised value", () => {

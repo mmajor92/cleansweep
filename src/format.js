@@ -24,8 +24,13 @@ export function valueParts(category, item) {
   const v = item.value;
   const pre = item.approx ? "about " : "";
   switch (category) {
-    case "length":
-      return { num: pre + formatNumber(v), unit: "m" };
+    case "length": {
+      // Stored in metres, shown the way people say it: centimetres under 1 m, metres up to 999 m, then kilometres (1.1 km, 193 km, 9,288 km).
+      if (v < 1) return { num: pre + formatSmall(v * 100), unit: "cm" };
+      if (v < 1000) return { num: pre + formatNumber(v), unit: "m" };
+      const km = v / 1000;
+      return { num: pre + (km < 1000 ? formatSmall(km) : formatNumber(km)), unit: "km" };
+    }
     case "speed":
       return { num: pre + (v < 1 ? formatSmall(v) : formatNumber(v)), unit: "km/h" }; // a snail is 0.048 km/h, not "0 km/h"
     case "count":

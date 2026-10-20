@@ -7914,6 +7914,603 @@
       "fame": 3
     },
     {
+      "id": "butter",
+      "name": "A block of butter",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a standard UK block of butter",
+          "label": "A block of butter",
+          "value": 0.25,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.legislation.gov.uk/uksi/1988/2040/schedules/made/data.xht?wrap=true",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "butter",
+      "fame": 3
+    },
+    {
+      "id": "curlingstone",
+      "name": "A curling stone",
+      "facts": {
+        "weight": {
+          "phrase": "the heaviest weight a curling stone is allowed to have",
+          "label": "Curling stone (heaviest allowed)",
+          "value": 19.96,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://worldcurling.org/wp-content/uploads/2023/07/2023-The-Rules-of-Curling.pdf",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "curlingstone",
+      "clue": "a stone used in a winter sport",
+      "hint": "the granite stone slid down the ice in curling",
+      "fame": 2
+    },
+    {
+      "id": "redfox",
+      "name": "An adult male red fox",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an adult male red fox",
+          "label": "A male red fox",
+          "value": 6.5,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://mammal.org.uk/british-mammals/red-fox",
+          "checkedOn": "2026-10-20",
+          "note": "Males weigh 6 to 7 kg in Britain."
+        }
+      },
+      "family": "redfox",
+      "fame": 3
+    },
+    {
+      "id": "chimp",
+      "name": "An adult chimpanzee",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an adult chimpanzee",
+          "label": "A chimpanzee",
+          "value": 50,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://animaldiversity.org/accounts/Pan_troglodytes/",
+          "checkedOn": "2026-10-20",
+          "note": "Wild adults weigh 32 to 70 kg."
+        }
+      },
+      "family": "chimp",
+      "fame": 3
+    },
+    {
+      "id": "bison",
+      "name": "An adult male American bison",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an adult male American bison",
+          "label": "A male bison",
+          "value": 900,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nps.gov/subjects/bison/about.htm",
+          "checkedOn": "2026-10-20",
+          "note": "Big bulls reach 998 kg."
+        }
+      },
+      "family": "bison",
+      "fame": 3
+    },
+    {
+      "id": "b737",
+      "name": "A Boeing 737-800",
+      "facts": {
+        "weight": {
+          "phrase": "the empty weight of a Boeing 737-800",
+          "label": "Boeing 737-800 empty weight",
+          "value": 41300,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.boeing.com/content/dam/boeing/v2/airports/acaps/737CL_REV_E.pdf",
+          "checkedOn": "2026-10-20",
+          "note": "Boeing gives 41.1 to 41.4 tonnes, depending on how empty weight is defined."
+        }
+      },
+      "family": "b737",
+      "clue": "a Boeing airliner",
+      "hint": "the short-haul Boeing jet flown by airlines all over the world",
+      "fame": 2
+    },
+    {
+      "id": "blackrhino",
+      "name": "A black rhinoceros",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an adult black rhinoceros",
+          "label": "A black rhinoceros",
+          "value": 1100,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://rhinos.org/blog/how-long-can-a-rhinos-horn-grow/",
+          "checkedOn": "2026-10-20",
+          "note": "Sources give 700 to 1,600 kg."
+        }
+      },
+      "family": "blackrhino",
+      "fame": 3
+    },
+    {
+      "id": "forestelephant",
+      "name": "An African forest elephant",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an adult African forest elephant",
+          "label": "A forest elephant",
+          "value": 3000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/African-forest-elephant",
+          "checkedOn": "2026-10-20",
+          "note": "Sources give 1,800 to 5,400 kg."
+        }
+      },
+      "family": "forestelephant",
+      "clue": "a kind of elephant",
+      "hint": "the smaller elephant of the African rainforest",
+      "fame": 2
+    },
+    {
+      "id": "ostrich",
+      "name": "An ostrich",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an adult ostrich",
+          "label": "An ostrich",
+          "value": 115,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nationalzoo.si.edu/animals/ostrich",
+          "checkedOn": "2026-10-20",
+          "note": "The biggest males exceed 150 kg."
+        }
+      },
+      "family": "ostrich",
+      "fame": 3
+    },
+    {
+      "id": "seaotter",
+      "name": "An adult male northern sea otter",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an adult male northern sea otter",
+          "label": "A northern sea otter",
+          "value": 40,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.adfg.alaska.gov/index.cfm?adfg=viewing.marinemammals&species=seaotter",
+          "checkedOn": "2026-10-20",
+          "note": "Southern sea otters are smaller: males average about 29 kg."
+        }
+      },
+      "family": "seaotter",
+      "fame": 3
+    },
+    {
+      "id": "suezcanal",
+      "name": "The Suez Canal",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Suez Canal",
+          "label": "Suez Canal length",
+          "value": 193300,
+          "unit": "m",
+          "approx": true,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q899",
+          "checkedOn": "2026-10-20"
+        },
+        "date": {
+          "phrase": "the opening of the Suez Canal",
+          "label": "Suez Canal opens",
+          "value": 1869,
+          "unit": "year",
+          "approx": false,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q899",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "suezcanal",
+      "fame": 3
+    },
+    {
+      "id": "transsib",
+      "name": "The Trans-Siberian Railway",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Trans-Siberian Railway",
+          "label": "Trans-Siberian Railway length",
+          "value": 9288000,
+          "unit": "m",
+          "approx": true,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q58767",
+          "checkedOn": "2026-10-20"
+        },
+        "date": {
+          "phrase": "the opening of the Trans-Siberian Railway",
+          "label": "Trans-Siberian Railway opens",
+          "value": 1903,
+          "unit": "year",
+          "approx": true,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q58767",
+          "note": "The whole line was finished in 1916.",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "transsib",
+      "fame": 3
+    },
+    {
+      "id": "threegorges",
+      "name": "The Three Gorges Dam",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Three Gorges Dam",
+          "label": "Three Gorges Dam length",
+          "value": 2335,
+          "unit": "m",
+          "approx": false,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q12514",
+          "checkedOn": "2026-10-20"
+        },
+        "date": {
+          "phrase": "the opening of the Three Gorges Dam",
+          "label": "Three Gorges Dam opens",
+          "value": 2003,
+          "unit": "year",
+          "approx": true,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q12514",
+          "note": "The whole project was finished in 2012.",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "threegorges",
+      "fame": 2
+    },
+    {
+      "id": "millau",
+      "name": "The Millau Viaduct",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Millau Viaduct",
+          "label": "Millau Viaduct length",
+          "value": 2460,
+          "unit": "m",
+          "approx": false,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q99236",
+          "checkedOn": "2026-10-20"
+        },
+        "date": {
+          "phrase": "the opening of the Millau Viaduct",
+          "label": "Millau Viaduct opens",
+          "value": 2004,
+          "unit": "year",
+          "approx": false,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q99236",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "millau",
+      "fame": 2
+    },
+    {
+      "id": "oresund",
+      "name": "The Oresund Bridge",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Oresund Bridge",
+          "label": "Oresund Bridge length",
+          "value": 7845,
+          "unit": "m",
+          "approx": true,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q297871",
+          "note": "The bridge links Denmark and Sweden.",
+          "checkedOn": "2026-10-20"
+        },
+        "date": {
+          "phrase": "the opening of the Oresund Bridge",
+          "label": "Oresund Bridge opens",
+          "value": 2000,
+          "unit": "year",
+          "approx": false,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q297871",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "oresund",
+      "fame": 2
+    },
+    {
+      "id": "parismetro",
+      "name": "The Paris Metro",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Paris Metro network",
+          "label": "Paris Metro length",
+          "value": 219900,
+          "unit": "m",
+          "approx": true,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q50716",
+          "checkedOn": "2026-10-20"
+        },
+        "date": {
+          "phrase": "the opening of the Paris Metro",
+          "label": "Paris Metro opens",
+          "value": 1900,
+          "unit": "year",
+          "approx": false,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q50716",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "parismetro",
+      "fame": 3
+    },
+    {
+      "id": "cologne",
+      "name": "Cologne Cathedral",
+      "facts": {
+        "length": {
+          "phrase": "the length of Cologne Cathedral",
+          "label": "Cologne Cathedral length",
+          "value": 144.5,
+          "unit": "m",
+          "approx": false,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q4176",
+          "checkedOn": "2026-10-20"
+        },
+        "date": {
+          "phrase": "the completion of Cologne Cathedral",
+          "label": "Cologne Cathedral finished",
+          "value": 1880,
+          "unit": "year",
+          "approx": false,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q4176",
+          "note": "Building began in 1248.",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "cologne",
+      "fame": 2
+    },
+    {
+      "id": "whitehouse",
+      "name": "The White House",
+      "facts": {
+        "length": {
+          "phrase": "the length of the White House",
+          "label": "White House length",
+          "value": 51.2,
+          "unit": "m",
+          "approx": true,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q35525",
+          "checkedOn": "2026-10-20"
+        },
+        "date": {
+          "phrase": "when the White House was first lived in",
+          "label": "White House first used",
+          "value": 1800,
+          "unit": "year",
+          "approx": false,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q35525",
+          "note": "Building began in 1792.",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "whitehouse",
+      "fame": 3
+    },
+    {
+      "id": "voyager2",
+      "name": "Voyager 2",
+      "facts": {
+        "speed": {
+          "phrase": "the speed of Voyager 2 relative to the Sun",
+          "label": "Voyager 2 speed",
+          "value": 55350,
+          "unit": "km/h",
+          "approx": true,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q48475",
+          "note": "It is the only spacecraft to have visited Uranus and Neptune.",
+          "checkedOn": "2026-10-20"
+        },
+        "date": {
+          "phrase": "the launch of Voyager 2",
+          "label": "Voyager 2 launched",
+          "value": 1977,
+          "unit": "year",
+          "approx": false,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q48475",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "voyager2",
+      "fame": 2
+    },
+    {
+      "id": "neptune",
+      "name": "Neptune",
+      "facts": {
+        "speed": {
+          "phrase": "the average orbital speed of Neptune",
+          "label": "Neptune orbital speed",
+          "value": 19550,
+          "unit": "km/h",
+          "approx": true,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q332",
+          "note": "That is about 5.4 km per second.",
+          "checkedOn": "2026-10-20"
+        },
+        "date": {
+          "phrase": "the discovery of Neptune",
+          "label": "Neptune discovered",
+          "value": 1846,
+          "unit": "year",
+          "approx": false,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q332",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "neptune",
+      "fame": 3
+    },
+    {
+      "id": "f14",
+      "name": "The F-14 Tomcat",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of the F-14 Tomcat",
+          "label": "F-14 top speed",
+          "value": 2485,
+          "unit": "km/h",
+          "approx": true,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q34945",
+          "note": "That is about Mach 2.3.",
+          "checkedOn": "2026-10-20"
+        },
+        "date": {
+          "phrase": "the first flight of the F-14 Tomcat",
+          "label": "F-14 first flies",
+          "value": 1970,
+          "unit": "year",
+          "approx": false,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q34945",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "f14",
+      "fame": 2
+    },
+    {
+      "id": "spitfire",
+      "name": "The Spitfire",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of a Spitfire",
+          "label": "Spitfire top speed",
+          "value": 595.5,
+          "unit": "km/h",
+          "approx": true,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q29190",
+          "note": "Speeds varied by version.",
+          "checkedOn": "2026-10-20"
+        },
+        "date": {
+          "phrase": "the first flight of the Spitfire",
+          "label": "Spitfire first flies",
+          "value": 1936,
+          "unit": "year",
+          "approx": false,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q29190",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "spitfire",
+      "fame": 3
+    },
+    {
+      "id": "hindenburg",
+      "name": "The Hindenburg",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of the airship Hindenburg",
+          "label": "Hindenburg top speed",
+          "value": 135,
+          "unit": "km/h",
+          "approx": true,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q217964",
+          "note": "Sources give 122 to 135 km/h.",
+          "checkedOn": "2026-10-20"
+        },
+        "date": {
+          "phrase": "the first flight of the Hindenburg",
+          "label": "Hindenburg first flies",
+          "value": 1936,
+          "unit": "year",
+          "approx": false,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q217964",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "hindenburg",
+      "fame": 3
+    },
+    {
+      "id": "thylacine",
+      "name": "A thylacine",
+      "facts": {
+        "length": {
+          "phrase": "the length of a thylacine, nose to tail",
+          "label": "Thylacine length",
+          "value": 1.6,
+          "unit": "m",
+          "approx": true,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q123102",
+          "note": "It was also called the Tasmanian tiger.",
+          "checkedOn": "2026-10-20"
+        },
+        "date": {
+          "phrase": "the death of the last thylacine",
+          "label": "Last thylacine dies",
+          "value": 1936,
+          "unit": "year",
+          "approx": false,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q123102",
+          "checkedOn": "2026-10-20"
+        }
+      },
+      "family": "thylacine",
+      "fame": 2
+    },
+    {
       "id": "golfball",
       "name": "A golf ball",
       "facts": {

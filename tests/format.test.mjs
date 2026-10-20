@@ -72,8 +72,8 @@ test("no year in the pool is ever shown as a bare number below 1000", () => {
 });
 
 test("figureText is the figure and its unit, without 'about' or 'c.', because the big answer already says that", () => {
-  assert.equal(valueText("length", { value: 117500, approx: true }), "about 117,500 m");
-  assert.equal(figureText("length", { value: 117500, approx: true }), "117,500 m");
+  assert.equal(valueText("length", { value: 117500, approx: true }), "about 118 km");
+  assert.equal(figureText("length", { value: 117500, approx: true }), "118 km");
   assert.equal(figureText("weight", { value: 6000, approx: true }), "6 tonnes");
   assert.equal(figureText("date", { value: -2560, approx: true }), "2560 BC");
   assert.equal(figureText("date", { value: 80 }), "80 AD");
@@ -119,4 +119,23 @@ test("small weights are shown in grams and slow speeds keep their digits, so not
   assert.deepEqual(valueParts("speed", { value: 1.6 }), { num: "1.6", unit: "km/h" });
   assert.deepEqual(valueParts("speed", { value: 44 }), { num: "44", unit: "km/h" }, "ordinary speeds are unchanged");
   for (const v of [0.0027, 0.048, 0.06, 0.145]) assert.ok(!/^0(\.0)? /.test(`${valueParts("weight", { value: v }).num} `), "never a figure of zero");
+});
+
+test("lengths are shown in centimetres under 1 m, metres up to 999 m, and kilometres from 1,000 m", () => {
+  const show = (v, approx = false) => { const p = valueParts("length", { value: v, approx }); return `${p.num} ${p.unit}`; };
+  assert.equal(show(0.0856), "8.56 cm");
+  assert.equal(show(0.914), "91.4 cm");
+  assert.equal(show(1), "1 m");
+  assert.equal(show(269.1), "269.1 m");
+  assert.equal(show(999), "999 m");
+  assert.equal(show(1000), "1 km");
+  assert.equal(show(1100), "1.1 km");
+  assert.equal(show(2460), "2.46 km");
+  assert.equal(show(7845), "7.85 km");
+  assert.equal(show(50450), "50.5 km");
+  assert.equal(show(193300), "193 km");
+  assert.equal(show(219900), "220 km");
+  assert.equal(show(9288000), "9,288 km");
+  assert.equal(show(9288000, true), "about 9,288 km");
+  for (const v of [0.0856, 12, 999, 1000, 193300, 9288000]) assert.ok(!/\d{6,}/.test(valueText("length", { value: v }).replace(/,/g, "")), `${v} should not be a long run of digits`);
 });

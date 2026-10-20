@@ -52,13 +52,6 @@
       "needs": "source (Steinway D is about 449 kg)"
     },
     {
-      "id": "b737",
-      "category": "weight",
-      "label": "737-800 empty weight",
-      "value": 41400,
-      "needs": "source"
-    },
-    {
       "id": "ford",
       "category": "weight",
       "label": "USS Gerald R. Ford",
@@ -220,11 +213,110 @@
       "needs": "sources conflict: about 69 t for the three modules, about 100 t counting visiting craft"
     },
     {
-      "id": "hindenburg",
+      "id": "hindenburglength",
       "category": "length",
       "label": "Hindenburg length",
       "value": 245,
       "needs": "source"
+    },
+    {
+      "id": "tencent",
+      "category": "weight",
+      "label": "10 euro cent coin (checked: https://economy-finance.ec.europa.eu/euro/euro-coins-and-notes/euro-coins/common-sides-euro-coins_en)",
+      "value": 0.0041,
+      "needs": "a second number (a diameter or a date) so that it can bridge: as a weight alone it is never asked"
+    },
+    {
+      "id": "twoeuro",
+      "category": "weight",
+      "label": "2 euro coin (checked: https://www.ecb.europa.eu/pub/pdf/other/euroleafleten.pdf)",
+      "value": 0.0085,
+      "needs": "a second number (a diameter or a date) so that it can bridge: as a weight alone it is never asked"
+    },
+    {
+      "id": "twopound",
+      "category": "weight",
+      "label": "£2 coin (checked: https://www.royalmint.com/collect/collector-resources/designs-and-specifications/two-pound-coin-designs/)",
+      "value": 0.012,
+      "needs": "a second number (a diameter or a date) so that it can bridge: as a weight alone it is never asked"
+    },
+    {
+      "id": "aabattery",
+      "category": "weight",
+      "label": "An AA battery (checked: http://data.energizer.com/pdfs/lr6ba_ru.pdf)",
+      "value": 0.023,
+      "needs": "a second number (a diameter or a date) so that it can bridge: as a weight alone it is never asked"
+    },
+    {
+      "id": "cdisc",
+      "category": "weight",
+      "label": "A CD or DVD (checked: https://www.newworldencyclopedia.org/entry/Compact_Disc)",
+      "value": 0.0155,
+      "needs": "a second number (a diameter or a date) so that it can bridge: as a weight alone it is never asked"
+    },
+    {
+      "id": "wdmoscowmetro",
+      "category": "length",
+      "label": "Moscow Metro (length)",
+      "value": 360000,
+      "needs": "two sources: a Wikidata figure from the 20 October 2026 harvest. Left out: out of date or unclear",
+      "fame": 2
+    },
+    {
+      "id": "wdmoscowmetroopen",
+      "category": "date",
+      "label": "Moscow Metro (date)",
+      "value": 1935,
+      "needs": "two sources: a Wikidata figure from the 20 October 2026 harvest. Left out: out of date or unclear",
+      "fame": 2
+    },
+    {
+      "id": "wdsagrada",
+      "category": "length",
+      "label": "Sagrada Familia (length)",
+      "value": 90,
+      "needs": "two sources: a Wikidata figure from the 20 October 2026 harvest. Left out: out of date or unclear",
+      "fame": 3
+    },
+    {
+      "id": "wdsagradacap",
+      "category": "count",
+      "label": "Sagrada Familia (count)",
+      "value": 9000,
+      "needs": "two sources: a Wikidata figure from the 20 October 2026 harvest. Left out: out of date or unclear",
+      "fame": 3
+    },
+    {
+      "id": "wdbluemosque",
+      "category": "length",
+      "label": "Sultan Ahmed (Blue) Mosque (length)",
+      "value": 82,
+      "needs": "two sources: a Wikidata figure from the 20 October 2026 harvest. Left out: out of date or unclear",
+      "fame": 2
+    },
+    {
+      "id": "wdbluemosquecap",
+      "category": "count",
+      "label": "Sultan Ahmed (Blue) Mosque (count)",
+      "value": 10000,
+      "needs": "two sources: a Wikidata figure from the 20 October 2026 harvest. Left out: out of date or unclear",
+      "fame": 2
+    },
+    {
+      "id": "wdbluemosqueopen",
+      "category": "date",
+      "label": "Sultan Ahmed (Blue) Mosque (date)",
+      "value": 1616,
+      "needs": "two sources: a Wikidata figure from the 20 October 2026 harvest. Left out: out of date or unclear",
+      "fame": 2
+    },
+    {
+      "id": "wddodoend",
+      "category": "date",
+      "label": "Dodo (date)",
+      "value": 1662,
+      "needs": "two sources: a Wikidata figure from the 20 October 2026 harvest. Left out: out of date or unclear",
+      "fame": 3
     }
   ]
 }

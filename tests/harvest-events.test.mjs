@@ -1,7 +1,7 @@
 // The harvester also collects dates of EVENTS and famous people, not only when a thing was made.
 import test from "node:test";
 import assert from "node:assert/strict";
-import { PERSON_MIN_LINKS, PROPERTIES, buildQuery, mergeRows, parseBindings } from "../scripts/lib/wikidata.mjs";
+import { DEFAULT_PROPERTIES, PERSON_MIN_LINKS, PROPERTIES, buildQuery, mergeRows, parseBindings, selectProperties } from "../scripts/lib/wikidata.mjs";
 
 const prop = (pid) => PROPERTIES.find((p) => p.pid === pid);
 const bind = (qid, label, links, v) => ({ item: { value: `http://www.wikidata.org/entity/${qid}` }, itemLabel: { value: label }, links: { value: String(links) }, v: { value: String(v) } });
@@ -72,4 +72,20 @@ test("the suggested phrase says what kind of date it is", () => {
   assert.equal(phrase("P569", "Mozart"), "the birth of Mozart");
   assert.equal(phrase("P570", "Mozart"), "the death of Mozart");
   assert.equal(phrase("P619", "Apollo 11"), "the launch of Apollo 11", "older kinds are unchanged");
+});
+
+test("start, end and discovery dates are off unless asked for (the first live run showed them to be mostly noise); the useful kinds stay on", () => {
+  const off = PROPERTIES.filter((p) => p.off).map((p) => p.pid).sort();
+  assert.deepEqual(off, ["P575", "P580", "P582"]);
+  assert.equal(DEFAULT_PROPERTIES.length, PROPERTIES.length - 3);
+  for (const pid of ["P585", "P577", "P569", "P570", "P2067", "P2048", "P2043", "P2052", "P1083", "P1619", "P606", "P619", "P571"]) assert.ok(DEFAULT_PROPERTIES.some((p) => p.pid === pid), `${pid} should be on by default`);
+});
+
+test("selectProperties: nothing named gives the usual set; names are trimmed, any case, and in the file's order; a typo is an error that lists the valid ids", () => {
+  assert.deepEqual(selectProperties(""), DEFAULT_PROPERTIES);
+  assert.deepEqual(selectProperties(undefined), DEFAULT_PROPERTIES);
+  assert.deepEqual(selectProperties(" p2067 , P2048 ").map((p) => p.pid), ["P2048", "P2067"]);
+  assert.deepEqual(selectProperties("P575").map((p) => p.pid), ["P575"], "an off kind can be asked for");
+  assert.throws(() => selectProperties("P2067,P99999"), /Unknown property id: P99999.*P2067/);
+  assert.throws(() => selectProperties("P1,P2"), /Unknown property ids: P1, P2/);
 });

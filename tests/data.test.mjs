@@ -72,3 +72,16 @@ test("clues contain no numbers except a year or decade", () => {
     if (e.clue) assert.ok(!/\d/.test(e.clue.replace(/\b(18|19|20)\d\d?s?\b/g, "")), `${e.id}.clue`);
   }
 });
+
+test("a fact from Wikidata says so, points at its Wikidata page, and has a check date", () => {
+  let n = 0;
+  for (const e of rawFacts.entities) {
+    for (const [cat, f] of Object.entries(e.facts)) {
+      if (f.status !== "wikidata") continue;
+      n++;
+      assert.match(f.source, /^https:\/\/www\.wikidata\.org\/wiki\/Q\d+$/, `${e.id}/${cat}`);
+      assert.match(f.checkedOn, /^\d{4}-\d{2}-\d{2}$/, `${e.id}/${cat}`);
+    }
+  }
+  assert.ok(n >= 28, `${n} facts are from Wikidata`);
+});
