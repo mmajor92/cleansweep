@@ -3,7 +3,7 @@
   "slack": 1,
   "bridges": [
     "giraffe",
-    "concorde"
+    "shinkansen0"
   ],
   "legs": [
     {
@@ -117,77 +117,77 @@
           "fame": 1
         },
         {
-          "ent": "concorde",
-          "family": "concorde",
-          "name": "Concorde",
-          "hint": "",
-          "clue": "",
+          "ent": "shinkansen0",
+          "family": "shinkansen0",
+          "name": "The 0 Series Shinkansen",
+          "hint": "Japan's first bullet train",
+          "clue": "a Japanese high-speed train",
           "cat": "count",
-          "phrase": "the number of Concorde aircraft that entered service",
-          "label": "Concordes in service",
-          "value": 14,
+          "phrase": "the number of cars in a full-length 0 Series Shinkansen train",
+          "label": "0 Series cars per train",
+          "value": 16,
           "approx": false,
           "status": "verified",
-          "source": "https://kids.britannica.com/students/article/Concorde/476918",
-          "note": "British Airways and Air France retired them in 2003.",
+          "source": "https://en.wikipedia.org/wiki/0_Series_Shinkansen",
+          "note": "The first trains had only 12 cars.",
           "warmup": false,
-          "fame": 3
+          "fame": 2
         }
       ]
     },
     {
       "cat": "speed",
       "anchor": {
-        "ent": "concorde",
-        "family": "concorde",
-        "name": "Concorde",
-        "hint": "",
-        "clue": "",
+        "ent": "shinkansen0",
+        "family": "shinkansen0",
+        "name": "The 0 Series Shinkansen",
+        "hint": "Japan's first bullet train",
+        "clue": "a Japanese high-speed train",
         "cat": "speed",
-        "phrase": "the top cruising speed of Concorde",
-        "label": "Concorde cruise speed",
-        "value": 2179,
+        "phrase": "the original top speed of the 0 Series Shinkansen",
+        "label": "0 Series top speed",
+        "value": 210,
         "approx": false,
         "status": "verified",
-        "source": "https://www.britannica.com/technology/How-Fast-Was-the-Concorde-Jet",
-        "note": "At Mach 2 the heat stretched the airframe by 15 to 25 cm.",
+        "source": "https://en.wikipedia.org/wiki/0_Series_Shinkansen",
+        "note": "That was raised to 220 km/h in 1986.",
         "warmup": false,
-        "fame": 3
+        "fame": 2
       },
       "items": [
         {
-          "ent": "sound",
-          "family": "sound",
-          "name": "Sound",
+          "ent": "falcon",
+          "family": "falcon",
+          "name": "A peregrine falcon",
           "hint": "",
           "clue": "",
           "cat": "speed",
-          "phrase": "the speed of sound in air at 20 degrees C",
-          "label": "Speed of sound",
-          "value": 1235,
-          "approx": true,
+          "phrase": "the diving speed of a peregrine falcon",
+          "label": "Peregrine falcon dive",
+          "value": 389,
+          "approx": false,
           "status": "verified",
-          "source": "https://www.xataka.com/energia/thrust-ssc-a-393-044-km-h-sonda-parker-vehiculos-rapidos-hechos-hombre-sus-record-velocidad",
-          "note": "",
+          "source": "https://en.wikipedia.org/wiki/Fastest_animals",
+          "note": "It is the fastest animal on Earth.",
           "warmup": false,
-          "fame": 3
+          "fame": 2
         },
         {
-          "ent": "b747",
-          "family": "b747",
-          "name": "The Boeing 747",
-          "hint": "",
-          "clue": "",
+          "ent": "an225",
+          "family": "an225",
+          "name": "The Antonov An-225 Mriya",
+          "hint": "the heaviest aircraft ever built",
+          "clue": "a Ukrainian six-engine cargo plane",
           "cat": "speed",
-          "phrase": "the cruising speed of the Boeing 747-400",
-          "label": "747-400 cruise speed",
-          "value": 913,
+          "phrase": "the maximum speed of the Antonov An-225 Mriya",
+          "label": "An-225 maximum speed",
+          "value": 850,
           "approx": true,
           "status": "verified",
-          "source": "https://www.aircraft.com/aircraft/201008611/boeing-747-400",
-          "note": "That is Mach 0.85.",
+          "source": "https://aerospaceweb.org/aircraft/transport-m/an225/",
+          "note": "Its cruising speed was about 800 km/h.",
           "warmup": false,
-          "fame": 3
+          "fame": 2
         }
       ]
     }

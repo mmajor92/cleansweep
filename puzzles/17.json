@@ -2,122 +2,10 @@
   "seed": 134636,
   "slack": 1,
   "bridges": [
-    "concorde",
-    "iss"
+    "shuttle",
+    "taipei101"
   ],
   "legs": [
-    {
-      "cat": "speed",
-      "anchor": {
-        "ent": "earthspin",
-        "family": "earth",
-        "name": "The spinning Earth",
-        "hint": "how fast you move at the equator without going anywhere",
-        "clue": "a spinning planet",
-        "cat": "speed",
-        "phrase": "the speed of the Earth's surface at the equator as it spins",
-        "label": "Earth's spin at the equator",
-        "value": 1670,
-        "approx": true,
-        "status": "verified",
-        "source": "https://space.com/33527-how-fast-is-earth-moving.html",
-        "note": "At the poles the spin speed is close to zero.",
-        "warmup": false,
-        "fame": 2
-      },
-      "items": [
-        {
-          "ent": "concorde",
-          "family": "concorde",
-          "name": "Concorde",
-          "hint": "",
-          "clue": "",
-          "cat": "speed",
-          "phrase": "the top cruising speed of Concorde",
-          "label": "Concorde cruise speed",
-          "value": 2179,
-          "approx": false,
-          "status": "verified",
-          "source": "https://www.britannica.com/technology/How-Fast-Was-the-Concorde-Jet",
-          "note": "At Mach 2 the heat stretched the airframe by 15 to 25 cm.",
-          "warmup": false,
-          "fame": 3
-        }
-      ]
-    },
-    {
-      "cat": "weight",
-      "anchor": {
-        "ent": "concorde",
-        "family": "concorde",
-        "name": "Concorde",
-        "hint": "",
-        "clue": "",
-        "cat": "weight",
-        "phrase": "the empty weight of Concorde",
-        "label": "Concorde, empty",
-        "value": 78700,
-        "approx": false,
-        "status": "verified",
-        "source": "https://cgtrader.com/3d-models/aircraft/jet/aerospatiale-bac-concorde-962f9f33-7bb7-4596-9db9-12817cf0a289",
-        "note": "",
-        "warmup": false,
-        "fame": 3
-      },
-      "items": [
-        {
-          "ent": "angel",
-          "family": "angel",
-          "name": "The Angel of the North",
-          "hint": "the giant steel angel beside the A1 at Gateshead",
-          "clue": "a huge sculpture in northern England",
-          "cat": "weight",
-          "phrase": "the weight of the Angel of the North",
-          "label": "Angel of the North weight",
-          "value": 200000,
-          "approx": true,
-          "status": "verified",
-          "source": "https://itv.com/news/tyne-tees/2023-02-15/angel-of-the-north-celebrates-25th-birthday",
-          "note": "Some sources say 208 tonnes.",
-          "warmup": false,
-          "fame": 3
-        },
-        {
-          "ent": "a380",
-          "family": "a380",
-          "name": "The Airbus A380",
-          "hint": "",
-          "clue": "",
-          "cat": "weight",
-          "phrase": "the maximum takeoff weight of the Airbus A380",
-          "label": "A380 max takeoff weight",
-          "value": 575000,
-          "approx": true,
-          "status": "verified",
-          "source": "https://planefyi.com/es/aircraft/airbus-a380-800/",
-          "note": "Sources give 560 to 575 tonnes depending on the version.",
-          "warmup": false,
-          "fame": 2
-        },
-        {
-          "ent": "iss",
-          "family": "iss",
-          "name": "The International Space Station",
-          "hint": "",
-          "clue": "",
-          "cat": "weight",
-          "phrase": "the mass of the International Space Station",
-          "label": "International Space Station",
-          "value": 419725,
-          "approx": true,
-          "status": "verified",
-          "source": "https://simple.wikipedia.com/wiki/ISS",
-          "note": "Its mass changes as modules are added.",
-          "warmup": false,
-          "fame": 3
-        }
-      ]
-    },
     {
       "cat": "speed",
       "anchor": {
@@ -156,21 +44,21 @@
           "fame": 2
         },
         {
-          "ent": "shuttle",
-          "family": "shuttle",
-          "name": "The Space Shuttle",
-          "hint": "",
-          "clue": "",
+          "ent": "earthorbit",
+          "family": "earth",
+          "name": "The Earth in orbit",
+          "hint": "how fast the Earth moves along its orbit",
+          "clue": "a planet",
           "cat": "speed",
-          "phrase": "the speed of the Space Shuttle in orbit",
-          "label": "Space Shuttle orbital speed",
-          "value": 28000,
+          "phrase": "the speed of the Earth as it travels around the Sun",
+          "label": "Earth's orbital speed",
+          "value": 107200,
           "approx": true,
           "status": "verified",
-          "source": "https://www3.nasa.gov/centers/kennedy/pdf/566306main_shuttle-era-facts.pdf",
-          "note": "That is about 17,500 miles per hour.",
+          "source": "https://www.worldatlas.com/space/how-fast-is-the-earth-moving.html",
+          "note": "That is about 29.8 kilometres every second.",
           "warmup": false,
-          "fame": 3
+          "fame": 2
         },
         {
           "ent": "voyager1",
@@ -188,6 +76,118 @@
           "note": "That is about 17 km per second.",
           "warmup": false,
           "fame": 2
+        },
+        {
+          "ent": "shuttle",
+          "family": "shuttle",
+          "name": "The Space Shuttle",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the speed of the Space Shuttle in orbit",
+          "label": "Space Shuttle orbital speed",
+          "value": 28000,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www3.nasa.gov/centers/kennedy/pdf/566306main_shuttle-era-facts.pdf",
+          "note": "That is about 17,500 miles per hour.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "count",
+      "anchor": {
+        "ent": "shuttle",
+        "family": "shuttle",
+        "name": "The Space Shuttle",
+        "hint": "",
+        "clue": "",
+        "cat": "count",
+        "phrase": "the number of Space Shuttle missions flown",
+        "label": "Space Shuttle missions",
+        "value": 135,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.thisdayinaviation.com/tag/kennedy-space-center/page/2/",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "taipei101",
+          "family": "taipei101",
+          "name": "Taipei 101",
+          "hint": "",
+          "clue": "",
+          "cat": "count",
+          "phrase": "the number of floors in Taipei 101",
+          "label": "Taipei 101 floors",
+          "value": 101,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Taipei_101",
+          "note": "The name comes from the floor count.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "length",
+      "anchor": {
+        "ent": "taipei101",
+        "family": "taipei101",
+        "name": "Taipei 101",
+        "hint": "",
+        "clue": "",
+        "cat": "length",
+        "phrase": "the height of Taipei 101",
+        "label": "Taipei 101 height",
+        "value": 508,
+        "approx": false,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/Taipei_101",
+        "note": "",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "pyramid",
+          "family": "pyramid",
+          "name": "The Great Pyramid",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the original height of the Great Pyramid",
+          "label": "Great Pyramid, original",
+          "value": 146.6,
+          "approx": false,
+          "status": "verified",
+          "source": "https://wikipedia.com/wiki/Great_Pyramid",
+          "note": "It has lost about 8 m of height since it was built.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "towerbridge",
+          "family": "towerbridge",
+          "name": "Tower Bridge",
+          "hint": "the bascule bridge people often mistake for London Bridge",
+          "clue": "a bridge over a river in London",
+          "cat": "length",
+          "phrase": "the total length of Tower Bridge",
+          "label": "Tower Bridge length",
+          "value": 244,
+          "approx": false,
+          "status": "verified",
+          "source": "https://indarch.mtu.edu/node/127",
+          "note": "That is 800 feet.",
+          "warmup": false,
+          "fame": 3
         }
       ]
     }

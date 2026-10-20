@@ -3,7 +3,7 @@
 import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { buildEntities, generate, maxBridgesAfter, normalizePuzzle, seedForPuzzle, startCategoryFor, validatePuzzle, puzzleNumber } from "../src/engine.js";
+import { RULES, avoidAfter, buildEntities, generate, maxBridgesAfter, normalizePuzzle, objectsOf, seedForPuzzle, startCategoryFor, validatePuzzle, puzzleNumber } from "../src/engine.js";
 
 const root = join(fileURLToPath(import.meta.url), "..", "..");
 const args = process.argv.slice(2);
@@ -26,18 +26,23 @@ const existing = new Set((await readdir(dir)).filter((f) => /^\d+\.json$/.test(f
 const recent = []; // one array of bridge ids per day
 const recentSpice = [];
 const recentWarm = [];
+const recentObjects = []; // one set of object ids per day, so no object appears two days running
 const deepEnt = (p) => {
   const it = p.legs.flatMap((l) => l.items).find((x) => x.fame === 1);
   return it ? it.ent : null;
 };
 const warmEnt = (p) => (p.warmUp ? p.legs[0].anchor.ent : null);
 const readPublished = async (n) => normalizePuzzle(JSON.parse(await readFile(join(dir, `${n}.json`), "utf8")));
-for (let n = Math.max(1, from - 30); n < from; n++) {
-  if (!existing.has(n)) continue;
+for (let n = Math.max(1, from - Math.max(30, RULES.freshDays)); n < from; n++) {
+  if (!existing.has(n)) {
+    recentObjects.push(new Set());
+    continue;
+  }
   const p = await readPublished(n);
   recent.push(p.bridges);
   recentSpice.push(deepEnt(p));
   recentWarm.push(warmEnt(p));
+  recentObjects.push(objectsOf(p));
 }
 
 let written = 0;
@@ -47,12 +52,15 @@ for (let n = from; n < from + days; n++) {
     recent.push(p.bridges);
     recentSpice.push(deepEnt(p));
     recentWarm.push(warmEnt(p));
+    recentObjects.push(objectsOf(p));
     continue;
   }
   const p = generate(seedForPuzzle(n), entities, {
     history: recent,
     startCat: startCategoryFor(n),
     maxBridges: maxBridgesAfter(recent[recent.length - 1]),
+    avoid: avoidAfter(recentObjects),
+    seen: recentObjects,
     spiceHistory: recentSpice,
     warmHistory: recentWarm,
   });
@@ -63,6 +71,7 @@ for (let n = from; n < from + days; n++) {
   recent.push(p.bridges);
   recentSpice.push(deepEnt(p));
   recentWarm.push(warmEnt(p));
+  recentObjects.push(objectsOf(p));
   await writeFile(join(dir, `${n}.json`), JSON.stringify(p, null, 2) + "\n");
   written++;
 }

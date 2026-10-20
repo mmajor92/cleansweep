@@ -16,6 +16,11 @@ export const RULES = {
   // A puzzle is a chain of 7 questions that can switch category at any point. Each switch happens through a "bridge":
   // one object that has facts in both categories, shown as the last question of one stretch and the starting point of the next.
   bridgeChances: [[1, 0.4], [2, 0.35], [3, 0.2], [4, 0.05]], // how many switches a puzzle has, and how often
+  freshDays: 45, // an object that has not appeared for this many days is "fresh": it is picked as readily as its familiarity allows
+  freshFloor: 0.15, // one that appeared yesterday is picked this fraction as often, rising back to normal over freshDays, so the whole pool gets used
+  noRepeatDays: 1, // an object that appeared in a puzzle may not appear in the next this-many days' puzzles
+  noRepeatFrom: 5, // the check on saved puzzle files starts here: puzzles 1 to 4 were published before the rule existed
+  avoidAttempts: 300, // the first tries honour that rule strictly; after that it is lifted as a last resort, so a puzzle always builds
   busyDay: 3, // a day with this many switches or more is "busy": the next day is capped at one fewer, so two wild days never come back to back
   maxPerCategory: 5, // no category may take more than this many of the 7 questions
   minUps: 2, // across the whole chain: at least this many "higher" answers ...
@@ -160,6 +165,22 @@ export function questionsOf(puzzle) {
   return out;
 }
 
+/**
+ * How much recent appearances cut an object's chance of being picked: 1 if it has not appeared for freshDays (or ever),
+ * down to freshFloor if it appeared yesterday. This spreads the questions across the whole pool instead of the same
+ * well-known objects coming round again and again while others are almost never seen.
+ */
+export function freshness(daysSince) {
+  if (!daysSince) return 1;
+  return RULES.freshFloor + (1 - RULES.freshFloor) * Math.min(1, daysSince / RULES.freshDays);
+}
+
+/** Every object a puzzle uses, as a set of ids (the starting object, every question, and each bridge). Works for older two-half puzzles too. */
+export function objectsOf(puzzle) {
+  const p = normalizePuzzle(puzzle);
+  return new Set(p.legs.flatMap((l) => [l.anchor.ent, ...l.items.map((it) => it.ent)]));
+}
+
 /** Which category a day starts in: every block of 5 days uses each category once, in a seeded order. */
 export function startCategoryFor(num) {
   const rng = mulberry32(Math.floor((num - 1) / CATEGORY_KEYS.length) * 131 + 7);
@@ -175,7 +196,8 @@ export function startCategoryFor(num) {
  * Build one puzzle: a chain of 7 questions that can switch category at any point, through bridges.
  * Returns null if no valid chain exists for this seed and pool.
  * options: history (one array of bridge ids per recent day, most recent last), startCat, warm, spice, bridges (force how many switches),
- * maxBridges (cap how many), spiceHistory, warmHistory.
+ * maxBridges (cap how many), avoid (object ids that may not appear today), seen (one set of object ids per recent day, most recent last,
+ * which makes objects not seen for a while more likely), spiceHistory, warmHistory.
  */
 export function generate(seed, entities, options = {}) {
   const history = options.history || [];
@@ -189,7 +211,7 @@ export function generate(seed, entities, options = {}) {
     return a;
   };
   // Weighted shuffle: well-known objects tend to come first, obscure ones rarely do.
-  const wshuffle = (arr) => arr.map((e) => ({ e, k: Math.pow(rng(), 1 / weightOf(e)) })).sort((a, b) => b.k - a.k).map((x) => x.e);
+  const wshuffle = (arr) => arr.map((e) => ({ e, k: Math.pow(rng(), 1 / pickWeight(e)) })).sort((a, b) => b.k - a.k).map((x) => x.e);
   // Reserved warm-up facts (facts with no neighbours within the gap rules) never appear in ordinary slots.
   const poolBy = {};
   const warmBy = {};
@@ -222,6 +244,15 @@ export function generate(seed, entities, options = {}) {
     return i < 0 ? 1e6 : spiceHistory.length - i;
   };
   const startCat = options.startCat || CATEGORY_KEYS[Math.floor(rng() * CATEGORY_KEYS.length)];
+  const avoid = new Set(options.avoid || []); // objects from the last day or days: not repeated, so the same question never comes two days running
+  const avoidTries = options.avoidTries ?? RULES.avoidAttempts;
+  const nothing = new Set();
+  const lastSeen = new Map(); // object id -> days since it last appeared (1 = yesterday)
+  const seenDays = (options.seen || []).slice(-RULES.freshDays);
+  seenDays.forEach((ids, i) => {
+    for (const id of ids) lastSeen.set(id, seenDays.length - i);
+  });
+  const pickWeight = (e) => weightOf(e) * freshness(lastSeen.get(e.id));
 
   /** Plan the shape of the chain: where it switches, and into which categories. */
   function makePlan() {
@@ -262,11 +293,11 @@ export function generate(seed, entities, options = {}) {
   }
 
   /** Search for objects that fill the plan. Returns { anchor, seq, ents } or null. */
-  function tryBuild(plan, slack, spiceAt, warmAnchor, allowWaiting) {
+  function tryBuild(plan, slack, spiceAt, warmAnchor, allowWaiting, avoidNow) {
     const { isB, cat, posInLeg, legLen } = plan;
     const N = RULES.chainLength;
     const warmFirst = !!warmAnchor;
-    const anchors = warmAnchor ? [warmAnchor] : wshuffle(poolBy[cat[0]].filter((e) => e.fame !== 1)).map((e) => toItem(e, cat[0]));
+    const anchors = warmAnchor ? [warmAnchor] : wshuffle(poolBy[cat[0]].filter((e) => e.fame !== 1 && !avoidNow.has(e.id))).map((e) => toItem(e, cat[0]));
     let budget = RULES.searchBudget; // a search gives up quickly rather than exploring every combination
     for (const anchor of anchors) {
       const seq = [];
@@ -280,7 +311,7 @@ export function generate(seed, entities, options = {}) {
         const b = isB[q];
         const spiceHere = q === spiceAt;
         // Enthusiast-only objects (fame 1) are kept out of ordinary slots: at most one deep cut per puzzle, only in its chosen slot.
-        const base = spiceHere ? poolBy[c].filter((e) => e.fame === 1 && spiceSince(e) > RULES.spiceCooldown) : poolBy[c].filter((e) => e.fame !== 1);
+        const base = (spiceHere ? poolBy[c].filter((e) => e.fame === 1 && spiceSince(e) > RULES.spiceCooldown) : poolBy[c].filter((e) => e.fame !== 1)).filter((e) => !avoidNow.has(e.id));
         const stepOk = (e) =>
           warmFirst && q === 0 ? warmGapOk(c, prev.value, e.facts[c].value) : gapOk(c, prev.value, e.facts[c].value, gapSlot(posInLeg[q], b), slack, b);
         let workable = base.filter((e) => !families.has(e.family) && stepOk(e));
@@ -292,7 +323,7 @@ export function generate(seed, entities, options = {}) {
           const rated = workable.map((e) => ({ e, s: sinceUsed(e.id) }));
           const ready = rated
             .filter((x) => x.s > RULES.hingeCooldown)
-            .map((x) => ({ ...x, k: Math.pow(rng(), 1 / (weightOf(x.e) * Math.min(x.s, RULES.hingeSinceCap))) }))
+            .map((x) => ({ ...x, k: Math.pow(rng(), 1 / (pickWeight(x.e) * Math.min(x.s, RULES.hingeSinceCap))) }))
             .sort((x, y) => y.k - x.k);
           const waiting = rated.filter((x) => x.s <= RULES.hingeCooldown).sort((x, y) => y.s - x.s);
           ordered = (allowWaiting ? [...ready, ...waiting] : ready).map((x) => x.e);
@@ -344,10 +375,10 @@ export function generate(seed, entities, options = {}) {
     // A warm-up: the puzzle starts from a reserved easy fact, and the first question is a big-gap gimme.
     let warmAnchor = null;
     if (wantWarm && attempt < RULES.warmAttempts) {
-      const ready = warmBy[plan.cat[0]].filter((e) => warmSince(e) > RULES.warmCooldown);
+      const ready = warmBy[plan.cat[0]].filter((e) => warmSince(e) > RULES.warmCooldown && !(attempt < avoidTries && avoid.has(e.id)));
       if (ready.length) warmAnchor = toItem(shuffle(ready)[0], plan.cat[0]);
     }
-    const built = tryBuild(plan, slack, spice ? target : -1, warmAnchor, attempt >= RULES.hardAttempts);
+    const built = tryBuild(plan, slack, spice ? target : -1, warmAnchor, attempt >= RULES.hardAttempts, attempt < avoidTries ? avoid : nothing);
     if (!built) continue;
     const legs = [];
     let cur = { cat: plan.cat[0], anchor: built.anchor, items: [] };
@@ -490,20 +521,29 @@ export function maxBridgesAfter(yesterdaysBridges) {
   return yesterdaysBridges && yesterdaysBridges.length >= RULES.busyDay ? RULES.busyDay - 1 : undefined;
 }
 
-export function generateSeries(startNum, days, entities, warmup = 30) {
+/** The objects the next puzzle must not use: everything from the last RULES.noRepeatDays days (a list of sets, one per day, most recent last). */
+export function avoidAfter(daysOfObjects) {
+  return daysOfObjects.slice(-RULES.noRepeatDays).flatMap((s) => [...s]);
+}
+
+export function generateSeries(startNum, days, entities, warmup = Math.max(30, RULES.freshDays)) {
   const recent = []; // one array of bridge ids per day
   const recentSpice = [];
   const recentWarm = [];
+  const recentObjects = []; // one set of object ids per day
   const out = [];
   for (let n = Math.max(1, startNum - warmup); n < startNum + days; n++) {
     const p = generate(seedForPuzzle(n), entities, {
       history: recent,
       startCat: startCategoryFor(n),
       maxBridges: maxBridgesAfter(recent[recent.length - 1]),
+      avoid: avoidAfter(recentObjects),
+      seen: recentObjects,
       spiceHistory: recentSpice,
       warmHistory: recentWarm,
     });
     if (p) p.num = n;
+    recentObjects.push(p ? objectsOf(p) : new Set());
     recent.push(p ? p.bridges : []);
     const deepItem = p ? p.legs.flatMap((l) => l.items).find((it) => it.fame === 1) : null;
     recentSpice.push(deepItem ? deepItem.ent : null);

@@ -3,7 +3,7 @@
 import { readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { CATEGORIES, CATEGORY_KEYS, PRACTICE, RULES, buildEntities, generateSeries, normalizePuzzle, questionsOf, validatePuzzle } from "../src/engine.js";
+import { CATEGORIES, CATEGORY_KEYS, PRACTICE, RULES, buildEntities, generateSeries, normalizePuzzle, objectsOf, questionsOf, validatePuzzle } from "../src/engine.js";
 
 const root = join(fileURLToPath(import.meta.url), "..", "..");
 const args = process.argv.slice(2);
@@ -113,9 +113,16 @@ const factUse = {};
 const lastHinge = []; // one array of bridge ids per day
 const switchesPerDay = {};
 let repeats = 0;
+let yesterdaysObjects = null;
 series.forEach((p, i) => {
   const day = i + 1;
   if (!p) return err(`day ${day}: no puzzle could be generated`);
+  const todays = objectsOf(p);
+  if (yesterdaysObjects) {
+    const again = [...todays].filter((id) => yesterdaysObjects.has(id));
+    if (again.length) err(`day ${day}: ${again.join(", ")} also appeared the day before`);
+  }
+  yesterdaysObjects = todays;
   for (const problem of validatePuzzle(p)) err(`day ${day}: ${problem}`);
   if (p.slack > 1) warn(`day ${day}: needed relaxed gap rules (slack ${p.slack})`);
   p.legs.slice(1).forEach((leg, k) => {
@@ -132,6 +139,14 @@ series.forEach((p, i) => {
   lastHinge.push(p.bridges);
 });
 const generated = series.filter(Boolean);
+// How evenly is the pool used? An everyday object (rated 2 or 3) that almost never appears is wasted research.
+const appearDays = {};
+for (const p of generated) for (const id of objectsOf(p)) appearDays[id] = (appearDays[id] || 0) + 1;
+const everyday = entities.filter((e) => e.fame >= 2);
+const rarelySeen = everyday.filter((e) => (appearDays[e.id] || 0) < 5);
+if (rarelySeen.length / everyday.length > 0.12) {
+  warn(`${rarelySeen.length} of ${everyday.length} everyday objects appear on fewer than 5 days a year (${rarelySeen.map((e) => e.id).slice(0, 12).join(", ")}${rarelySeen.length > 12 ? ", ..." : ""}): their facts may not fit next to any other, so add facts or objects with similar values`);
+}
 const allPairs = CATEGORY_KEYS.flatMap((a) => CATEGORY_KEYS.filter((b) => b !== a).map((b) => `${a}>${b}`));
 for (const k of allPairs) if (!pairs[k]) err(`the switch ${k} never appears in ${DAYS} days`);
 for (const [id, n] of Object.entries(hinges)) {
@@ -140,7 +155,7 @@ for (const [id, n] of Object.entries(hinges)) {
 if (repeats / DAYS > 0.1) warn(`a bridge repeats within ${MAX_REPEAT_WINDOW} days on ${Math.round((100 * repeats) / DAYS)}% of days: add more bridge objects`);
 const fameOf = Object.fromEntries(entities.map((e) => [e.id, e.fame]));
 const neverHinge = hingeIds.filter((id) => !hinges[id] && fameOf[id] >= 2); // enthusiast objects may rarely or never be a bridge
-if (neverHinge.length > 4) warn(`${neverHinge.length} bridge objects never used in a year (a few missing by chance is normal in a big pool): ${neverHinge.join(", ")}`);
+if (neverHinge.length / hingeIds.length > 0.06) warn(`${neverHinge.length} of ${hingeIds.length} bridge objects never used in a year (a few missing by chance is normal in a big pool): ${neverHinge.join(", ")}`);
 
 // Familiarity mix: how well do ordinary players know the objects in the questions?
 const mix = { 3: 0, 2: 0, 1: 0 };
@@ -204,6 +219,13 @@ try {
   const lastSeen = { bridge: {}, deep: {}, warm: {} };
   for (const { f, p } of ordered) {
     const n = parseInt(f);
+    // No object two days running. Puzzles before noRepeatFrom were published before the rule existed.
+    const before = ordered.find((x) => parseInt(x.f) === n - 1);
+    if (before && n >= RULES.noRepeatFrom) {
+      const earlier = objectsOf(before.p);
+      const again = [...objectsOf(p)].filter((id) => earlier.has(id));
+      if (again.length) err(`puzzles/${f}: ${again.join(", ")} also appeared in puzzle ${n - 1}`);
+    }
     const deep = p.legs.flatMap((l) => l.items).find((x) => x.fame === 1);
     const checks = [
       ...p.bridges.map((id) => ["bridge", id, RULES.hingeCooldown]),
@@ -229,6 +251,7 @@ line(`  entities: ${entities.length} usable, ${hingeIds.length} bridge objects`)
 line(`  facts per category: ${CATEGORY_KEYS.map((c) => `${c} ${perCat[c]}`).join(", ")}`);
 line(`  days generated: ${generated.length}/${DAYS}, category switches covered: ${Object.keys(pairs).length}/20`);
 line(`  switches per day: ${Object.keys(switchesPerDay).sort().map((k) => `${k}: ${Math.round((100 * switchesPerDay[k]) / DAYS)}%`).join(", ")}`);
+line(`  everyday objects seen on fewer than 5 days a year: ${rarelySeen.length} of ${everyday.length}`);
 line(`  published puzzle files checked: ${published} (${publishedOld} still in the older two-half format)`);
 const topHinges = Object.entries(hinges).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([k, v]) => `${k} ${v}`).join(", ");
 line(`  busiest bridges: ${topHinges}`);

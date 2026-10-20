@@ -3,8 +3,8 @@
   "slack": 1,
   "bridges": [
     "bigben",
-    "empire",
-    "gherkin"
+    "b747",
+    "londoneye"
   ],
   "legs": [
     {
@@ -67,19 +67,19 @@
       },
       "items": [
         {
-          "ent": "empire",
-          "family": "empire",
-          "name": "The Empire State Building",
+          "ent": "b747",
+          "family": "b747",
+          "name": "The Boeing 747",
           "hint": "",
           "clue": "",
           "cat": "date",
-          "phrase": "the opening of the Empire State Building",
-          "label": "Empire State Building opens",
-          "value": 1931,
+          "phrase": "the first flight of the Boeing 747",
+          "label": "747 first flight",
+          "value": 1969,
           "approx": false,
           "status": "verified",
-          "source": "https://edition.cnn.com/us/empire-state-building-fast-facts",
-          "note": "President Hoover switched on its lights from Washington on 1 May 1931.",
+          "source": "https://www.museumofflight.org/Exhibits-and-Events/Aircraft/boeing-747-121",
+          "note": "It entered service with Pan Am on 22 January 1970.",
           "warmup": false,
           "fame": 3
         }
@@ -88,60 +88,60 @@
     {
       "cat": "count",
       "anchor": {
-        "ent": "empire",
-        "family": "empire",
-        "name": "The Empire State Building",
+        "ent": "b747",
+        "family": "b747",
+        "name": "The Boeing 747",
         "hint": "",
         "clue": "",
         "cat": "count",
-        "phrase": "the number of steps to the 86th floor of the Empire State Building",
-        "label": "Empire State steps",
-        "value": 1576,
+        "phrase": "the typical number of seats in a three-class Boeing 747-400",
+        "label": "747-400 seats (typical)",
+        "value": 416,
         "approx": false,
         "status": "verified",
-        "source": "https://edition.cnn.com/us/empire-state-building-fast-facts",
-        "note": "An annual race called the Run-Up climbs them.",
+        "source": "https://www.aircraft.com/aircraft/201008611/boeing-747-400",
+        "note": "In a two-class layout it seats 524.",
         "warmup": false,
         "fame": 3
       },
       "items": [
         {
-          "ent": "gherkin",
-          "family": "gherkin",
-          "name": "The Gherkin",
-          "hint": "30 St Mary Axe, the skyscraper shaped like a pickle",
-          "clue": "a skyscraper in the City of London",
+          "ent": "londoneye",
+          "family": "londoneye",
+          "name": "The London Eye",
+          "hint": "",
+          "clue": "",
           "cat": "count",
-          "phrase": "the number of steps in each stairwell of the Gherkin",
-          "label": "Gherkin steps",
-          "value": 1037,
+          "phrase": "the number of passengers the London Eye can carry per rotation",
+          "label": "London Eye capacity",
+          "value": 800,
           "approx": false,
           "status": "verified",
-          "source": "https://www.visitlondon.com/things-to-do/place/951036-gherkin",
-          "note": "It has 41 floors.",
+          "source": "https://dev.bookbrowse.com/mag/btb/index.cfm/book_number/2090/the-london-eye-mystery",
+          "note": "That is 32 capsules of 25 people.",
           "warmup": false,
-          "fame": 2
+          "fame": 3
         }
       ]
     },
     {
       "cat": "weight",
       "anchor": {
-        "ent": "gherkin",
-        "family": "gherkin",
-        "name": "The Gherkin",
-        "hint": "30 St Mary Axe, the skyscraper shaped like a pickle",
-        "clue": "a skyscraper in the City of London",
+        "ent": "londoneye",
+        "family": "londoneye",
+        "name": "The London Eye",
+        "hint": "",
+        "clue": "",
         "cat": "weight",
-        "phrase": "the weight of the steel in the Gherkin",
-        "label": "Gherkin steel",
-        "value": 10000000,
-        "approx": true,
+        "phrase": "the weight of the London Eye wheel and capsules",
+        "label": "London Eye, total",
+        "value": 2100000,
+        "approx": false,
         "status": "verified",
-        "source": "https://www.visitlondon.com/things-to-do/place/951036-gherkin",
-        "note": "",
+        "source": "https://dev.bookbrowse.com/mag/btb/index.cfm/book_number/2090/the-london-eye-mystery",
+        "note": "Each of the 32 capsules weighs 10 tonnes.",
         "warmup": false,
-        "fame": 2
+        "fame": 3
       },
       "items": [
         {
@@ -162,19 +162,19 @@
           "fame": 3
         },
         {
-          "ent": "londoneye",
-          "family": "londoneye",
-          "name": "The London Eye",
+          "ent": "shuttle",
+          "family": "shuttle",
+          "name": "The Space Shuttle",
           "hint": "",
           "clue": "",
           "cat": "weight",
-          "phrase": "the weight of the London Eye wheel and capsules",
-          "label": "London Eye, total",
-          "value": 2100000,
-          "approx": false,
+          "phrase": "the weight of the Space Shuttle at liftoff",
+          "label": "Space Shuttle at liftoff",
+          "value": 2030000,
+          "approx": true,
           "status": "verified",
-          "source": "https://dev.bookbrowse.com/mag/btb/index.cfm/book_number/2090/the-london-eye-mystery",
-          "note": "Each of the 32 capsules weighs 10 tonnes.",
+          "source": "https://www.slideshare.net/sanketzade/satellite-launching-vehicles-72055476",
+          "note": "",
           "warmup": false,
           "fame": 3
         },
@@ -196,21 +196,21 @@
           "fame": 2
         },
         {
-          "ent": "shuttle",
-          "family": "shuttle",
-          "name": "The Space Shuttle",
-          "hint": "",
-          "clue": "",
+          "ent": "cuttysark",
+          "family": "cuttysark",
+          "name": "The Cutty Sark",
+          "hint": "the tea clipper now preserved in Greenwich",
+          "clue": "a sailing ship from the 1800s",
           "cat": "weight",
-          "phrase": "the weight of the Space Shuttle at liftoff",
-          "label": "Space Shuttle at liftoff",
-          "value": 2030000,
+          "phrase": "the displacement of the Cutty Sark",
+          "label": "Cutty Sark displacement",
+          "value": 2133700,
           "approx": true,
           "status": "verified",
-          "source": "https://www.slideshare.net/sanketzade/satellite-launching-vehicles-72055476",
-          "note": "",
+          "source": "https://en.wikipedia.org/wiki/Cutty_Sark",
+          "note": "About 2,100 tons.",
           "warmup": false,
-          "fame": 3
+          "fame": 2
         }
       ]
     }

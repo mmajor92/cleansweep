@@ -1,0 +1,222 @@
+{
+  "seed": 190069,
+  "slack": 1,
+  "bridges": [
+    "spirit",
+    "hippo",
+    "costaconcordia"
+  ],
+  "legs": [
+    {
+      "cat": "count",
+      "anchor": {
+        "ent": "bones",
+        "family": "bones",
+        "name": "Human bones",
+        "hint": "",
+        "clue": "",
+        "cat": "count",
+        "phrase": "the number of bones in an adult human body",
+        "label": "Adult human bones",
+        "value": 206,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.themeasureofthings.com/CountOfThings/results.php?amt=127",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "routemaster",
+          "family": "routemaster",
+          "name": "A Routemaster double-decker bus",
+          "hint": "the open-platform red bus that served London until 2005",
+          "clue": "London's classic red double-decker bus",
+          "cat": "count",
+          "phrase": "the number of seats on a Routemaster double-decker bus",
+          "label": "Routemaster seats",
+          "value": 64,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/AEC_Routemaster",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "spirit",
+          "family": "spirit",
+          "name": "The Spirit of St. Louis",
+          "hint": "Lindbergh's plane for the first solo nonstop Atlantic crossing",
+          "clue": "Charles Lindbergh's 1927 monoplane",
+          "cat": "count",
+          "phrase": "the number of flights the Spirit of St. Louis made",
+          "label": "Spirit of St. Louis flights",
+          "value": 174,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.thisdayinaviation.com/?p=47306",
+          "note": "Together they added up to about 489 hours in the air.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "spirit",
+        "family": "spirit",
+        "name": "The Spirit of St. Louis",
+        "hint": "Lindbergh's plane for the first solo nonstop Atlantic crossing",
+        "clue": "Charles Lindbergh's 1927 monoplane",
+        "cat": "weight",
+        "phrase": "the empty weight of the Spirit of St. Louis",
+        "label": "Spirit of St. Louis, empty",
+        "value": 975,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.pbs.org/wgbh/americanexperience/features/lindbergh-spirit-st-louis",
+        "note": "That is 2,150 pounds.",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "hippo",
+          "family": "hippo",
+          "name": "A hippo",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the average weight of an adult hippopotamus",
+          "label": "Hippo (average)",
+          "value": 1800,
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
+          "note": "",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "speed",
+      "anchor": {
+        "ent": "hippo",
+        "family": "hippo",
+        "name": "A hippo",
+        "hint": "",
+        "clue": "",
+        "cat": "speed",
+        "phrase": "the top running speed of a hippopotamus on land",
+        "label": "Hippo top speed",
+        "value": 30,
+        "approx": true,
+        "status": "verified",
+        "source": "https://parquedecabarceno.com/english/animals/common-hippopotamus",
+        "note": "It can only keep that up for a short burst.",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "motorwaylimit",
+          "family": "motorwaylimit",
+          "name": "The UK motorway speed limit",
+          "hint": "the 70 mph limit",
+          "clue": "a road rule in Britain",
+          "cat": "speed",
+          "phrase": "the national speed limit for cars on UK motorways",
+          "label": "UK motorway limit",
+          "value": 112.65,
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "note": "",
+          "warmup": false,
+          "fame": 2
+        },
+        {
+          "ent": "costaconcordia",
+          "family": "costaconcordia",
+          "name": "The Costa Concordia",
+          "hint": "the Italian cruise ship that ran aground off Tuscany in 2012",
+          "clue": "an Italian cruise ship",
+          "cat": "speed",
+          "phrase": "the top speed of the Costa Concordia",
+          "label": "Costa Concordia top speed",
+          "value": 43,
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Costa_Concordia",
+          "note": "She reached 23 knots on sea trials. Her normal service speed was lower.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "count",
+      "anchor": {
+        "ent": "costaconcordia",
+        "family": "costaconcordia",
+        "name": "The Costa Concordia",
+        "hint": "the Italian cruise ship that ran aground off Tuscany in 2012",
+        "clue": "an Italian cruise ship",
+        "cat": "count",
+        "phrase": "the number of passengers the Costa Concordia could carry",
+        "label": "Costa Concordia passengers",
+        "value": 3780,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.cbsnews.com/news/fact-sheet-the-costa-concordia-cruise-liner",
+        "note": "",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "empire",
+          "family": "empire",
+          "name": "The Empire State Building",
+          "hint": "",
+          "clue": "",
+          "cat": "count",
+          "phrase": "the number of steps to the 86th floor of the Empire State Building",
+          "label": "Empire State steps",
+          "value": 1576,
+          "approx": false,
+          "status": "verified",
+          "source": "https://edition.cnn.com/us/empire-state-building-fast-facts",
+          "note": "An annual race called the Run-Up climbs them.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "qm2",
+          "family": "qm2",
+          "name": "Queen Mary 2",
+          "hint": "",
+          "clue": "",
+          "cat": "count",
+          "phrase": "the number of passengers Queen Mary 2 can carry",
+          "label": "Queen Mary 2 passengers",
+          "value": 2695,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Queen_Mary_2",
+          "note": "Its original capacity was 2,620.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": false,
+  "deepCutAt": -1,
+  "num": 24
+}
