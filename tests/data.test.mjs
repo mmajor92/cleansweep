@@ -85,3 +85,16 @@ test("a fact from Wikidata says so, points at its Wikidata page, and has a check
   }
   assert.ok(n >= 28, `${n} facts are from Wikidata`);
 });
+
+test("an unchecked fact says in a few words where it comes from, which is not a link, and has a check date", () => {
+  let n = 0;
+  for (const e of rawFacts.entities) {
+    for (const [cat, f] of Object.entries(e.facts)) {
+      if (f.status !== "unchecked") continue;
+      n++;
+      assert.ok(f.source && !/^https?:/.test(f.source) && f.source.length <= 40, `${e.id}/${cat}: source "${f.source}"`);
+      assert.match(f.checkedOn, /^\d{4}-\d{2}-\d{2}$/, `${e.id}/${cat}`);
+    }
+  }
+  assert.ok(n >= 60, `${n} facts are unchecked`);
+});

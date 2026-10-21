@@ -7,7 +7,18 @@ import {
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { entities } from "./helpers.mjs";
+import { entities, warmEntities } from "./helpers.mjs";
+
+// Warm-ups are off in the game, so the tests of the warm-up machinery switch them on for the length of the test, on a pool that has reserved facts.
+const withWarmUps = (fn) => {
+  const keep = RULES.warmChance;
+  RULES.warmChance = 0.5;
+  try {
+    return fn();
+  } finally {
+    RULES.warmChance = keep;
+  }
+};
 
 const root = join(fileURLToPath(import.meta.url), "..", "..");
 const allItems = (p) => [p.legs[0].anchor, ...questionsOf(p).map((x) => x.item)];
@@ -67,8 +78,8 @@ test("200 puzzles all satisfy every rule", () => {
   }
 });
 
-test("a puzzle only uses facts with an allowed status, and the allowed statuses are exactly the three we have agreed", () => {
-  assert.deepEqual(RULES.allowedStatuses, ["verified", "definitional", "wikidata"], "adding a status is a deliberate decision");
+test("a puzzle only uses facts with an allowed status, and the allowed statuses are exactly the four we have agreed", () => {
+  assert.deepEqual(RULES.allowedStatuses, ["verified", "definitional", "wikidata", "unchecked"], "adding a status is a deliberate decision");
   for (let n = 1; n <= 100; n++) {
     const p = generate(seedForPuzzle(n), entities);
     for (const it of p.legs.flatMap((l) => [l.anchor, ...l.items])) {
@@ -319,10 +330,28 @@ test("a bridge carries its hint into both of its stretches", () => {
   assert.ok(checked > 10, "most bridges should have a hint");
 });
 
-test("a bridge may be up to 3.1x from its neighbour, other slots may not", () => {
-  assert.equal(gapOk("length", 100, 305, 1, 1, true), true); // 3.05x as a bridge
-  assert.equal(gapOk("length", 100, 305, 1, 1, false), false); // 3.05x in an ordinary slot
-  assert.equal(gapOk("length", 100, 320, 1, 1, true), false); // over 3.1x is still too far
+test("a new puzzle: no step more than 3x, a bridge up to 3x, later steps tighter; a published puzzle is judged by the loosest limits ever used", () => {
+  assert.equal(gapOk("length", 100, 300, 1, 1, true), true); // 3x as a bridge
+  assert.equal(gapOk("length", 100, 305, 1, 1, true), false); // over 3x is too far for a new puzzle
+  assert.equal(gapOk("length", 100, 300, 1, 1, false), false); // 3x in the second slot of a stretch (limit 2.5x)
+  assert.equal(gapOk("length", 100, 290, 0, 1, false), true); // the first step may be nearly 3x
+  assert.equal(gapOk("length", 100, 390, 0, 1, false), false); // but not 3.9x any more
+  // puzzles that were published under the old limits must stay valid
+  assert.equal(gapOk("length", 100, 305, 1, 1, true, true), true); // a bridge up to 3.1x
+  assert.equal(gapOk("length", 100, 390, 0, 1, false, true), true); // a first step up to 4x
+  assert.equal(gapOk("length", 100, 450, 0, 1, false, true), false); // and no further
+});
+
+test("warm-ups are off: no fact is reserved, no new puzzle opens with one, and no question is more than 3 times apart", () => {
+  assert.equal(RULES.warmChance, 0);
+  assert.deepEqual(entities.filter((e) => Object.values(e.facts).some((f) => f.warmup)).map((e) => e.id), [], "a fact is still reserved");
+  for (const p of generateSeries(1, 150, entities)) {
+    assert.equal(p.warmUp, false, `puzzle ${p.num} opens with a warm-up`);
+    for (const q of questionsOf(p)) {
+      const r = gapRatio(q.cat, q.prev.value, q.item.value);
+      assert.ok(r <= 3 * (p.slack || 1) + 1e-9, `puzzle ${p.num}: ${q.prev.label} to ${q.item.label} is ${r.toFixed(2)}x apart`);
+    }
+  }
 });
 
 test("familiarity: well-known objects are picked more often than moderately known ones", () => {
@@ -393,7 +422,7 @@ test("validatePuzzle rejects a misplaced or doubled deep cut", () => {
 
 test("a warm-up starts from a reserved fact, with an easy first question", () => {
   let warm = 0;
-  const series = generateSeries(1, 200, entities);
+  const series = withWarmUps(() => generateSeries(1, 200, warmEntities));
   for (const p of series) {
     assert.deepEqual(validatePuzzle(p), []);
     assert.equal(p.legs[0].anchor.warmup, p.warmUp);
@@ -411,7 +440,7 @@ test("a warm-up starts from a reserved fact, with an easy first question", () =>
 
 test("a warm-up fact is never reused inside its cooldown", () => {
   const seen = [];
-  for (const p of generateSeries(1, 250, entities)) {
+  for (const p of withWarmUps(() => generateSeries(1, 250, warmEntities))) {
     const id = p.warmUp ? p.legs[0].anchor.ent : null;
     if (id) assert.ok(!seen.slice(-RULES.warmCooldown).includes(id), `warm-up ${id} repeated too soon`);
     seen.push(id);
@@ -419,7 +448,7 @@ test("a warm-up fact is never reused inside its cooldown", () => {
 });
 
 test("validatePuzzle checks the warm-up rules", () => {
-  const base = generateSeries(1, 60, entities).find((p) => p.warmUp);
+  const base = withWarmUps(() => generateSeries(1, 60, warmEntities)).find((p) => p.warmUp);
   assert.ok(base, "need a warm-up puzzle to test");
   const noFlag = JSON.parse(JSON.stringify(base));
   noFlag.warmUp = false;

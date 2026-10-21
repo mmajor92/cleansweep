@@ -21,7 +21,7 @@ const MIN_HINGES = 12; // objects with facts in two or more categories: the only
 const MAX_HINGE_SHARE = 0.2; // one bridge object may be a bridge on at most 20% of days
 const MAX_REPEAT_WINDOW = 7; // warn when a bridge repeats inside this many days
 const ISO = /^\d{4}-\d{2}-\d{2}$/;
-const STATUSES = ["verified", "definitional", "wikidata"];
+const STATUSES = ["verified", "definitional", "wikidata", "unchecked"];
 
 const read = async (p) => JSON.parse(await readFile(join(root, p), "utf8"));
 
@@ -80,6 +80,11 @@ for (const e of raw.entities || []) {
     if (f.status === "verified") {
       if (!/^https?:\/\//.test(f.source || "")) err(`${at}: verified facts need an http(s) source`);
       if (!ISO.test(f.checkedOn || "")) err(`${at}: verified facts need checkedOn as YYYY-MM-DD`);
+    }
+    if (f.status === "unchecked") {
+      // a standard or typical figure, not checked against a page: it says where it comes from in a few words, which the result screen shows as plain text
+      if (!f.source || /^https?:/.test(f.source) || f.source.length > 40) err(`${at}: an unchecked fact needs a short source in words (not a link), for example "ITTF rules" or "typical figure"`);
+      if (!ISO.test(f.checkedOn || "")) err(`${at}: unchecked facts need checkedOn as YYYY-MM-DD`);
     }
     if (f.status === "wikidata") {
       if (!/^https:\/\/www\.wikidata\.org\/wiki\/Q\d+$/.test(f.source || "")) err(`${at}: a wikidata fact needs a source like https://www.wikidata.org/wiki/Q123`);
@@ -208,8 +213,11 @@ const neverByYear = [0, 1, 2].map((y) => {
   return hingeIds.filter((id) => !used.has(id) && fameOf[id] >= 2); // enthusiast objects may rarely or never be a bridge
 });
 const neverShare = neverByYear.reduce((a, r) => a + r.length, 0) / (3 * hingeIds.length);
-// Not repeating a question has a price: a bridge object with few possible partners uses up its few questions and is then used less (about 5% of bridge objects were unused before the rule, about 8% after), so the limit is 10%.
-if (neverShare > 0.1) warn(`on average ${Math.round(neverShare * 100)}% of bridge objects are never used as a bridge in a year, over three simulated years (year 1: ${neverByYear[0].join(", ")}): add facts with values near theirs, so they have more partners`);
+// With more bridge objects each one is used less often, so some go unused in any one year just by chance. What matters is an object that is NEVER used as a bridge in
+// any of the three years: its numbers have too few neighbours, so it is wasted. The limit is 8% of bridge objects.
+const deadBridges = neverByYear[0].filter((id) => neverByYear[1].includes(id) && neverByYear[2].includes(id));
+const deadShare = deadBridges.length / hingeIds.length;
+if (deadShare > 0.08) warn(`${deadBridges.length} bridge objects were never used as a bridge in any of three simulated years (${deadBridges.slice(0, 12).join(", ")}${deadBridges.length > 12 ? ", ..." : ""}): add facts with values near theirs, so they have more partners`);
 
 // Familiarity mix: how well do ordinary players know the objects in the questions?
 const mix = { 3: 0, 2: 0, 1: 0 };
@@ -227,13 +235,14 @@ if (deepDays / DAYS > 0.7) warn(`deep cuts appear on ${deepPct}% of days (limit 
 for (const e of entities) if (e.fame === 1 && !e.clue) warn(`"${e.id}" is rated 1 (a deep cut) but has no clue, so players have nothing to go on`);
 
 // Warm-ups: puzzles that open from a reserved, unreachable fact with an easy first question.
+const warmOn = RULES.warmChance > 0;
 const warmDays = series.filter((p) => p && p.warmUp).length;
 const warmPct = Math.round((100 * warmDays) / DAYS);
 const warmUsed = new Set(series.filter((p) => p && p.warmUp).map((p) => p.legs[0].anchor.ent));
 const warmFacts = entities.filter((e) => Object.values(e.facts).some((f) => f.warmup));
-for (const e of warmFacts) if (!warmUsed.has(e.id)) warn(`reserved warm-up fact "${e.id}" was never used in ${DAYS} days`);
-if (warmDays / DAYS < 0.15) warn(`warm-ups appear on only ${warmPct}% of days (aim for 15% or more): flag more unreachable facts as warm-ups`);
-if (warmDays / DAYS > 0.6) warn(`warm-ups appear on ${warmPct}% of days (limit 60%)`);
+if (warmOn) for (const e of warmFacts) if (!warmUsed.has(e.id)) warn(`reserved warm-up fact "${e.id}" was never used in ${DAYS} days`);
+if (warmOn && warmDays / DAYS < 0.15) warn(`warm-ups appear on only ${warmPct}% of days (aim for 15% or more): flag more unreachable facts as warm-ups`);
+if (warmOn && warmDays / DAYS > 0.6) warn(`warm-ups appear on ${warmPct}% of days (limit 60%)`);
 
 // ---------- 5. Published puzzles ----------
 // Puzzles published before v3 have two halves; normalizePuzzle turns them into the same shape as new ones, so every check below applies to both.
@@ -306,7 +315,7 @@ line(`  facts per category: ${CATEGORY_KEYS.map((c) => `${c} ${perCat[c]}`).join
 line(`  days generated: ${generated.length}/${DAYS}, category switches covered: ${Object.keys(pairs).length}/20`);
 line(`  switches per day: ${Object.keys(switchesPerDay).sort().map((k) => `${k}: ${Math.round((100 * switchesPerDay[k]) / DAYS)}%`).join(", ")}`);
 line(`  everyday objects seen on fewer than 2 days a year: ${almostNever.length} of ${everyday.length} in year 1, ${Math.round(rareShare * 100)}% on average over three years (fewer than 5 days in year 1: ${rarelySeen.length})`);
-line(`  bridge objects never used as a bridge in a year: ${neverByYear.map((r) => r.length).join(", ")} of ${hingeIds.length} over three simulated years (${Math.round(neverShare * 100)}% on average)`);
+line(`  bridge objects not used as a bridge in a year: ${neverByYear.map((r) => r.length).join(", ")} of ${hingeIds.length} (${Math.round(neverShare * 100)}% on average); never used in any of the three years: ${deadBridges.length} (${Math.round(deadShare * 100)}%, limit 8%)`);
 line(`  questions asked again: the first repeat comes on day ${firstRepeat ?? "never"}; the share of questions seen before is ${repeatPct[0]}% in year 1, ${repeatPct[1]}% in year 2 and ${repeatPct[2]}% in year 3`);
 {
   // Is a category oversupplied? If a fact is asked about only a few times a year, that category has more facts than it needs.
@@ -318,7 +327,8 @@ line(`  questions asked again: the first repeat comes on day ${firstRepeat ?? "n
 line(`  published puzzle files checked: ${published} (${publishedOld} still in the older two-half format)`);
 const topHinges = Object.entries(hinges).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([k, v]) => `${k} ${v}`).join(", ");
 line(`  busiest bridges: ${topHinges}`);
-line(`  warm-up days: ${warmPct}% (easy opening question from a reserved fact), ${warmFacts.length} reserved facts`);
+line(warmOn ? `  warm-up days: ${warmPct}% (easy opening question from a reserved fact), ${warmFacts.length} reserved facts` : `  warm-ups: off (every question is a close call; widest step ${RULES.maxGap[0]} times)`);
+if (!warmOn && (warmDays > 0 || warmFacts.length > 0)) warn(`warm-ups are off but ${warmDays} puzzles have one and ${warmFacts.length} facts are still reserved`);
 line(`  deep-cut days: ${deepPct}% (one later question about an enthusiast-only object)`);
 line(`  question mix by familiarity: everyone knows ${mixPct(3)}%, most people ${mixPct(2)}%, enthusiasts ${mixPct(1)}%`);
 for (const w of warnings.slice(0, 40)) line(`  warning: ${w}`);

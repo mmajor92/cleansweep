@@ -474,8 +474,7 @@
           "approx": false,
           "status": "verified",
           "source": "https://en.wikipedia.org/wiki/Wembley_Stadium",
-          "checkedOn": "2026-10-15",
-          "warmup": true
+          "checkedOn": "2026-10-15"
         }
       },
       "family": "wembley",
@@ -515,8 +514,7 @@
           "status": "verified",
           "source": "https://www.worldhistory.org/Colosseum/.md",
           "checkedOn": "2026-10-15",
-          "note": "Estimates run from 50,000 to 75,000.",
-          "warmup": true
+          "note": "Estimates run from 50,000 to 75,000."
         }
       },
       "family": "colosseum",
@@ -1276,8 +1274,7 @@
           "status": "verified",
           "source": "https://en.wikipedia.com/wiki/London_Eye",
           "checkedOn": "2026-10-15",
-          "note": "It moves at 26 cm per second, so people step on while it turns.",
-          "warmup": true
+          "note": "It moves at 26 cm per second, so people step on while it turns."
         }
       },
       "family": "londoneye",
@@ -1748,8 +1745,7 @@
           "status": "verified",
           "source": "https://guinnessworldrecords.com/news/2012/8/nasa-curiosity-rover-lands-our-top-ten-mars-related-records-44096",
           "checkedOn": "2026-10-15",
-          "note": "That is 90 metres an hour.",
-          "warmup": true
+          "note": "That is 90 metres an hour."
         }
       },
       "family": "curiosity",
@@ -2481,8 +2477,7 @@
           "approx": false,
           "status": "verified",
           "source": "https://en.wikipedia.org/wiki/Ever_Given",
-          "checkedOn": "2026-10-15",
-          "warmup": true
+          "checkedOn": "2026-10-15"
         },
         "date": {
           "phrase": "the completion of the Ever Given",
@@ -3570,8 +3565,7 @@
           "approx": true,
           "status": "verified",
           "source": "https://www.lanemotormuseum.org/?p=237",
-          "checkedOn": "2026-10-15",
-          "warmup": true
+          "checkedOn": "2026-10-15"
         },
         "date": {
           "phrase": "the launch of the original Mini",
@@ -3867,6 +3861,26 @@
           "source": "https://www.worldatlas.com/space/how-fast-is-the-earth-moving.html",
           "checkedOn": "2026-10-15",
           "note": "That is about 29.8 kilometres every second."
+        },
+        "length": {
+          "phrase": "the diameter of the Earth",
+          "label": "Earth diameter",
+          "value": 12700000,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
+          "checkedOn": "2026-10-21"
+        },
+        "weight": {
+          "phrase": "the mass of the Earth",
+          "label": "Earth mass",
+          "value": 5.97e+24,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
+          "checkedOn": "2026-10-21"
         }
       },
       "family": "earth",
@@ -4977,8 +4991,7 @@
           "approx": false,
           "status": "verified",
           "source": "https://www.history.com/this-day-in-history/august-10/cleopatra-commits-suicide",
-          "checkedOn": "2026-10-15",
-          "warmup": true
+          "checkedOn": "2026-10-15"
         }
       },
       "fame": 2
@@ -5504,8 +5517,7 @@
           "approx": false,
           "status": "definitional",
           "source": "definition",
-          "basis": "Arithmetic: 24 x 3600",
-          "warmup": true
+          "basis": "Arithmetic: 24 x 3600"
         }
       },
       "fame": 3
@@ -5522,8 +5534,7 @@
           "approx": false,
           "status": "definitional",
           "source": "definition",
-          "basis": "Arithmetic: 365 x 1440",
-          "warmup": true
+          "basis": "Arithmetic: 365 x 1440"
         }
       },
       "fame": 3
@@ -6542,6 +6553,16 @@
           "source": "https://www.topendsports.com/resources/equipment/ball-weight.htm",
           "checkedOn": "2026-10-20",
           "note": "It is 40 mm across and made of plastic."
+        },
+        "length": {
+          "phrase": "the diameter of a table tennis ball",
+          "label": "Table tennis ball diameter",
+          "value": 0.04,
+          "unit": "m",
+          "approx": false,
+          "status": "unchecked",
+          "source": "ITTF rules",
+          "checkedOn": "2026-10-21"
         }
       },
       "family": "ttball",
@@ -6561,6 +6582,16 @@
           "source": "https://www.edzy.ai/cbse-class-10-health-and-physical-education-individual-games-and-sports-ii-question-what-is-the-standard-weight-range-for-a-badminton-shuttlecock",
           "checkedOn": "2026-10-20",
           "note": "The rules allow 4.74 to 5.50 g."
+        },
+        "length": {
+          "phrase": "the length of a badminton shuttlecock",
+          "label": "Shuttlecock length",
+          "value": 0.088,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
         }
       },
       "family": "shuttlecock",
@@ -6580,6 +6611,16 @@
           "source": "https://www.topendsports.com/resources/equipment/ball-weight.htm",
           "checkedOn": "2026-10-20",
           "note": "The rules allow 142 to 149 g."
+        },
+        "length": {
+          "phrase": "the diameter of a baseball",
+          "label": "Baseball diameter",
+          "value": 0.074,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "MLB rules",
+          "checkedOn": "2026-10-21"
         }
       },
       "family": "baseball",
@@ -6675,6 +6716,16 @@
           "source": "https://www.topendsports.com/resources/equipment/ball-weight.htm",
           "checkedOn": "2026-10-20",
           "note": "Size 7 is the regulation ball."
+        },
+        "length": {
+          "phrase": "the diameter of a basketball",
+          "label": "Basketball diameter",
+          "value": 0.24,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "FIBA rules",
+          "checkedOn": "2026-10-21"
         }
       },
       "family": "basketball",
@@ -7157,6 +7208,16 @@
           "source": "https://www.britannica.com/topic/egg-food",
           "checkedOn": "2026-10-20",
           "note": "Large eggs weigh more, and small ones less."
+        },
+        "length": {
+          "phrase": "the length of a chicken egg",
+          "label": "Egg length",
+          "value": 0.057,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
         }
       },
       "family": "egg",
@@ -7329,6 +7390,26 @@
           "source": "https://www.rubiks.com/en-us/about",
           "checkedOn": "2026-10-20",
           "note": "Nine on each of six faces."
+        },
+        "length": {
+          "phrase": "the length of one edge of a Rubik's Cube",
+          "label": "Rubik's Cube edge",
+          "value": 0.057,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        },
+        "weight": {
+          "phrase": "the weight of a Rubik's Cube",
+          "label": "Rubik's Cube weight",
+          "value": 0.1,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
         }
       },
       "family": "rubik",
@@ -7385,6 +7466,16 @@
           "source": "https://images.bowl.com/bowl/media/assets/youth/yrc/bowlers%20ed/completebowlersedcurriculum.pdf",
           "checkedOn": "2026-10-20",
           "note": "The rules allow about 1.53 to 1.64 kg."
+        },
+        "length": {
+          "phrase": "the height of a ten-pin bowling pin",
+          "label": "Bowling pin height",
+          "value": 0.381,
+          "unit": "m",
+          "approx": false,
+          "status": "unchecked",
+          "source": "USBC rules",
+          "checkedOn": "2026-10-21"
         }
       },
       "family": "bowlingpin",
@@ -7477,6 +7568,26 @@
           "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3408332/",
           "checkedOn": "2026-10-20",
           "note": "A 2012 study put the world's adults at 62 kg on average."
+        },
+        "speed": {
+          "phrase": "the walking speed of an average adult human",
+          "label": "Walking speed",
+          "value": 5,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        },
+        "length": {
+          "phrase": "the height of an average adult human",
+          "label": "Average adult height",
+          "value": 1.65,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
         }
       },
       "family": "human",
@@ -7911,6 +8022,150 @@
         }
       },
       "object": "rubik",
+      "fame": 3
+    },
+    {
+      "id": "tencent",
+      "name": "A 10 euro cent coin",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a 10 euro cent coin",
+          "label": "10 euro cent coin",
+          "value": 0.0041,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://economy-finance.ec.europa.eu/euro/euro-coins-and-notes/euro-coins/common-sides-euro-coins_en",
+          "checkedOn": "2026-10-20"
+        },
+        "length": {
+          "phrase": "the diameter of a 10 euro cent coin",
+          "label": "10 euro cent diameter",
+          "value": 0.01975,
+          "unit": "m",
+          "approx": false,
+          "status": "unchecked",
+          "source": "ECB specification",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "tencent",
+      "clue": "a euro coin",
+      "hint": "a euro coin worth ten cents",
+      "fame": 2
+    },
+    {
+      "id": "twoeuro",
+      "name": "A 2 euro coin",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a 2 euro coin",
+          "label": "2 euro coin",
+          "value": 0.0085,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.ecb.europa.eu/pub/pdf/other/euroleafleten.pdf",
+          "checkedOn": "2026-10-20"
+        },
+        "length": {
+          "phrase": "the diameter of a 2 euro coin",
+          "label": "2 euro diameter",
+          "value": 0.02575,
+          "unit": "m",
+          "approx": false,
+          "status": "unchecked",
+          "source": "ECB specification",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "twoeuro",
+      "fame": 3
+    },
+    {
+      "id": "twopound",
+      "name": "A British £2 coin",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a British £2 coin",
+          "label": "£2 coin",
+          "value": 0.012,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.royalmint.com/collect/collector-resources/designs-and-specifications/two-pound-coin-designs/",
+          "checkedOn": "2026-10-20"
+        },
+        "length": {
+          "phrase": "the diameter of a British £2 coin",
+          "label": "£2 coin diameter",
+          "value": 0.0284,
+          "unit": "m",
+          "approx": false,
+          "status": "unchecked",
+          "source": "Royal Mint specification",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "twopound",
+      "fame": 3
+    },
+    {
+      "id": "aabattery",
+      "name": "An AA battery",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of an AA battery",
+          "label": "An AA battery",
+          "value": 0.023,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "http://data.energizer.com/pdfs/lr6ba_ru.pdf",
+          "checkedOn": "2026-10-20",
+          "note": "Makers give 23 g as the typical weight."
+        },
+        "length": {
+          "phrase": "the length of an AA battery",
+          "label": "AA battery length",
+          "value": 0.0505,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "IEC standard",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "aabattery",
+      "fame": 3
+    },
+    {
+      "id": "cdisc",
+      "name": "A CD or DVD",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a standard CD or DVD",
+          "label": "A CD or DVD",
+          "value": 0.0155,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.newworldencyclopedia.org/entry/Compact_Disc",
+          "checkedOn": "2026-10-20",
+          "note": "Sources give 15 to 16 g."
+        },
+        "length": {
+          "phrase": "the diameter of a CD or DVD",
+          "label": "CD diameter",
+          "value": 0.12,
+          "unit": "m",
+          "approx": false,
+          "status": "unchecked",
+          "source": "CD standard",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "cdisc",
       "fame": 3
     },
     {
@@ -8389,6 +8644,26 @@
           "status": "wikidata",
           "source": "https://www.wikidata.org/wiki/Q332",
           "checkedOn": "2026-10-20"
+        },
+        "length": {
+          "phrase": "the diameter of Neptune",
+          "label": "Neptune diameter",
+          "value": 49500000,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/neptunefact.html",
+          "checkedOn": "2026-10-21"
+        },
+        "weight": {
+          "phrase": "the mass of Neptune",
+          "label": "Neptune mass",
+          "value": 1.02e+26,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/neptunefact.html",
+          "checkedOn": "2026-10-21"
         }
       },
       "family": "neptune",
@@ -8523,8 +8798,18 @@
           "status": "verified",
           "source": "https://www.topendsports.com/resources/equipment/ball-weight.htm",
           "checkedOn": "2026-10-15",
-          "note": "That is 1.62 ounces.",
-          "warmup": true
+          "note": "That is 1.62 ounces."
+        },
+        "length": {
+          "phrase": "the diameter of a golf ball",
+          "label": "Golf ball diameter",
+          "value": 0.0427,
+          "unit": "m",
+          "approx": false,
+          "status": "unchecked",
+          "source": "R&A rules",
+          "note": "That is the smallest the rules allow.",
+          "checkedOn": "2026-10-21"
         }
       },
       "family": "golfball",
@@ -8544,8 +8829,18 @@
           "status": "verified",
           "source": "https://www.topendsports.com/resources/equipment/ball-weight.htm",
           "checkedOn": "2026-10-15",
-          "note": "The rules allow 56.0 to 59.4 grams.",
-          "warmup": true
+          "note": "The rules allow 56.0 to 59.4 grams."
+        },
+        "length": {
+          "phrase": "the diameter of a tennis ball",
+          "label": "Tennis ball diameter",
+          "value": 0.067,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "ITF rules",
+          "note": "The rules allow 6.5 to 6.9 cm.",
+          "checkedOn": "2026-10-21"
         }
       },
       "family": "tennis",
@@ -8565,8 +8860,17 @@
           "status": "verified",
           "source": "https://lords.org/mcc/laws/the-ball",
           "checkedOn": "2026-10-15",
-          "note": "The laws allow 155.9 to 163 grams.",
-          "warmup": true
+          "note": "The laws allow 155.9 to 163 grams."
+        },
+        "length": {
+          "phrase": "the diameter of a cricket ball",
+          "label": "Cricket ball diameter",
+          "value": 0.072,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "MCC laws",
+          "checkedOn": "2026-10-21"
         }
       },
       "family": "cricket",
@@ -8586,8 +8890,7 @@
           "status": "verified",
           "source": "https://www.theifab.com/laws/chapter/22/section/32",
           "checkedOn": "2026-10-15",
-          "note": "The laws allow 410 to 450 grams.",
-          "warmup": true
+          "note": "The laws allow 410 to 450 grams."
         },
         "count": {
           "phrase": "the number of panels on a classic football",
@@ -8618,13 +8921,992 @@
           "status": "verified",
           "source": "https://www.guinnessworldrecords.com/world-records/77951-fastest-tortoise",
           "checkedOn": "2026-10-15",
-          "note": "Bertie, a leopard tortoise, covered 5.48 metres in 19.59 seconds in 2014.",
-          "warmup": true
+          "note": "Bertie, a leopard tortoise, covered 5.48 metres in 19.59 seconds in 2014."
         }
       },
       "family": "tortoise",
       "clue": "a slow reptile",
       "hint": "Bertie, a leopard tortoise from Durham"
+    },
+    {
+      "id": "planetmercury",
+      "name": "Mercury",
+      "facts": {
+        "length": {
+          "phrase": "the diameter of Mercury",
+          "label": "Mercury diameter",
+          "value": 4880000,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/mercuryfact.html",
+          "checkedOn": "2026-10-21",
+          "note": "It is the smallest planet."
+        },
+        "weight": {
+          "phrase": "the mass of Mercury",
+          "label": "Mercury mass",
+          "value": 3.3e+23,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/mercuryfact.html",
+          "checkedOn": "2026-10-21"
+        },
+        "speed": {
+          "phrase": "the average orbital speed of Mercury",
+          "label": "Mercury orbital speed",
+          "value": 171000,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/mercuryfact.html",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "planetmercury",
+      "fame": 3
+    },
+    {
+      "id": "planetvenus",
+      "name": "Venus",
+      "facts": {
+        "length": {
+          "phrase": "the diameter of Venus",
+          "label": "Venus diameter",
+          "value": 12100000,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/venusfact.html",
+          "checkedOn": "2026-10-21"
+        },
+        "weight": {
+          "phrase": "the mass of Venus",
+          "label": "Venus mass",
+          "value": 4.87e+24,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/venusfact.html",
+          "checkedOn": "2026-10-21"
+        },
+        "speed": {
+          "phrase": "the average orbital speed of Venus",
+          "label": "Venus orbital speed",
+          "value": 126000,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/venusfact.html",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "planetvenus",
+      "fame": 3
+    },
+    {
+      "id": "planetmars",
+      "name": "Mars",
+      "facts": {
+        "length": {
+          "phrase": "the diameter of Mars",
+          "label": "Mars diameter",
+          "value": 6790000,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html",
+          "checkedOn": "2026-10-21"
+        },
+        "weight": {
+          "phrase": "the mass of Mars",
+          "label": "Mars mass",
+          "value": 6.42e+23,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html",
+          "checkedOn": "2026-10-21"
+        },
+        "speed": {
+          "phrase": "the average orbital speed of Mars",
+          "label": "Mars orbital speed",
+          "value": 86800,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "planetmars",
+      "fame": 3
+    },
+    {
+      "id": "planetjupiter",
+      "name": "Jupiter",
+      "facts": {
+        "length": {
+          "phrase": "the diameter of Jupiter",
+          "label": "Jupiter diameter",
+          "value": 143000000,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/jupiterfact.html",
+          "checkedOn": "2026-10-21",
+          "note": "It is the largest planet."
+        },
+        "weight": {
+          "phrase": "the mass of Jupiter",
+          "label": "Jupiter mass",
+          "value": 1.9e+27,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/jupiterfact.html",
+          "checkedOn": "2026-10-21"
+        },
+        "speed": {
+          "phrase": "the average orbital speed of Jupiter",
+          "label": "Jupiter orbital speed",
+          "value": 47200,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/jupiterfact.html",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "planetjupiter",
+      "fame": 3
+    },
+    {
+      "id": "planetsaturn",
+      "name": "Saturn",
+      "facts": {
+        "length": {
+          "phrase": "the diameter of Saturn",
+          "label": "Saturn diameter",
+          "value": 121000000,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/saturnfact.html",
+          "checkedOn": "2026-10-21"
+        },
+        "weight": {
+          "phrase": "the mass of Saturn",
+          "label": "Saturn mass",
+          "value": 5.68e+26,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/saturnfact.html",
+          "checkedOn": "2026-10-21"
+        },
+        "speed": {
+          "phrase": "the average orbital speed of Saturn",
+          "label": "Saturn orbital speed",
+          "value": 34900,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/saturnfact.html",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "planetsaturn",
+      "fame": 3
+    },
+    {
+      "id": "planeturanus",
+      "name": "Uranus",
+      "facts": {
+        "length": {
+          "phrase": "the diameter of Uranus",
+          "label": "Uranus diameter",
+          "value": 51100000,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/uranusfact.html",
+          "checkedOn": "2026-10-21"
+        },
+        "weight": {
+          "phrase": "the mass of Uranus",
+          "label": "Uranus mass",
+          "value": 8.68e+25,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/uranusfact.html",
+          "checkedOn": "2026-10-21"
+        },
+        "speed": {
+          "phrase": "the average orbital speed of Uranus",
+          "label": "Uranus orbital speed",
+          "value": 24500,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/uranusfact.html",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "planeturanus",
+      "fame": 2
+    },
+    {
+      "id": "themoon",
+      "name": "The Moon",
+      "facts": {
+        "length": {
+          "phrase": "the diameter of the Moon",
+          "label": "Moon diameter",
+          "value": 3480000,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html",
+          "checkedOn": "2026-10-21"
+        },
+        "weight": {
+          "phrase": "the mass of the Moon",
+          "label": "Moon mass",
+          "value": 7.3e+22,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html",
+          "checkedOn": "2026-10-21"
+        },
+        "speed": {
+          "phrase": "the average speed of the Moon around the Earth",
+          "label": "Moon orbital speed",
+          "value": 3600,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "themoon",
+      "fame": 3
+    },
+    {
+      "id": "onep",
+      "name": "A 1p coin",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a 1p coin",
+          "label": "1p coin weight",
+          "value": 0.00356,
+          "unit": "kg",
+          "approx": false,
+          "status": "unchecked",
+          "source": "Royal Mint specification",
+          "checkedOn": "2026-10-21"
+        },
+        "length": {
+          "phrase": "the diameter of a 1p coin",
+          "label": "1p coin diameter",
+          "value": 0.0203,
+          "unit": "m",
+          "approx": false,
+          "status": "unchecked",
+          "source": "Royal Mint specification",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "onep",
+      "fame": 3
+    },
+    {
+      "id": "twop",
+      "name": "A 2p coin",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a 2p coin",
+          "label": "2p coin weight",
+          "value": 0.00712,
+          "unit": "kg",
+          "approx": false,
+          "status": "unchecked",
+          "source": "Royal Mint specification",
+          "checkedOn": "2026-10-21"
+        },
+        "length": {
+          "phrase": "the diameter of a 2p coin",
+          "label": "2p coin diameter",
+          "value": 0.0259,
+          "unit": "m",
+          "approx": false,
+          "status": "unchecked",
+          "source": "Royal Mint specification",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "twop",
+      "fame": 3
+    },
+    {
+      "id": "fiftyp",
+      "name": "A 50p coin",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a 50p coin",
+          "label": "50p coin weight",
+          "value": 0.008,
+          "unit": "kg",
+          "approx": false,
+          "status": "unchecked",
+          "source": "Royal Mint specification",
+          "checkedOn": "2026-10-21"
+        },
+        "length": {
+          "phrase": "the diameter of a 50p coin",
+          "label": "50p coin diameter",
+          "value": 0.0273,
+          "unit": "m",
+          "approx": false,
+          "status": "unchecked",
+          "source": "Royal Mint specification",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "fiftyp",
+      "fame": 3
+    },
+    {
+      "id": "onepound",
+      "name": "A £1 coin",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a £1 coin",
+          "label": "£1 coin weight",
+          "value": 0.00875,
+          "unit": "kg",
+          "approx": false,
+          "status": "unchecked",
+          "source": "Royal Mint specification",
+          "checkedOn": "2026-10-21"
+        },
+        "length": {
+          "phrase": "the diameter of a £1 coin",
+          "label": "£1 coin diameter",
+          "value": 0.02343,
+          "unit": "m",
+          "approx": false,
+          "status": "unchecked",
+          "source": "Royal Mint specification",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "onepound",
+      "fame": 3
+    },
+    {
+      "id": "creditcard",
+      "name": "A credit card",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a credit card",
+          "label": "credit card weight",
+          "value": 0.005,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        },
+        "length": {
+          "phrase": "the length of a credit card",
+          "label": "credit card length",
+          "value": 0.0856,
+          "unit": "m",
+          "approx": false,
+          "status": "unchecked",
+          "source": "ISO 7810",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "creditcard",
+      "fame": 3
+    },
+    {
+      "id": "paperclip",
+      "name": "A paperclip",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a paperclip",
+          "label": "paperclip weight",
+          "value": 0.001,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        },
+        "length": {
+          "phrase": "the length of a paperclip",
+          "label": "paperclip length",
+          "value": 0.033,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "paperclip",
+      "fame": 3
+    },
+    {
+      "id": "pencil",
+      "name": "A pencil",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a pencil",
+          "label": "pencil weight",
+          "value": 0.006,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        },
+        "length": {
+          "phrase": "the length of a pencil",
+          "label": "pencil length",
+          "value": 0.19,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "pencil",
+      "fame": 3
+    },
+    {
+      "id": "a4sheet",
+      "name": "A sheet of A4 paper",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a sheet of A4 paper",
+          "label": "sheet of A4 paper weight",
+          "value": 0.005,
+          "unit": "kg",
+          "approx": false,
+          "status": "unchecked",
+          "source": "ISO 216, 80 gsm paper",
+          "checkedOn": "2026-10-21"
+        },
+        "length": {
+          "phrase": "the length of a sheet of A4 paper",
+          "label": "sheet of A4 paper length",
+          "value": 0.297,
+          "unit": "m",
+          "approx": false,
+          "status": "unchecked",
+          "source": "ISO 216",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "a4sheet",
+      "fame": 3
+    },
+    {
+      "id": "horse",
+      "name": "A horse",
+      "facts": {
+        "speed": {
+          "phrase": "the top galloping speed of a horse",
+          "label": "Horse top speed",
+          "value": 70,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        },
+        "weight": {
+          "phrase": "the weight of a typical horse",
+          "label": "A horse",
+          "value": 500,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        },
+        "length": {
+          "phrase": "the height of a horse at the shoulder",
+          "label": "Horse height at the shoulder",
+          "value": 1.6,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "horse",
+      "fame": 3
+    },
+    {
+      "id": "galapagos",
+      "name": "A Galapagos giant tortoise",
+      "facts": {
+        "speed": {
+          "phrase": "the walking speed of a Galapagos giant tortoise",
+          "label": "Galapagos tortoise speed",
+          "value": 0.3,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        },
+        "weight": {
+          "phrase": "the weight of an adult Galapagos giant tortoise",
+          "label": "A Galapagos tortoise",
+          "value": 200,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        },
+        "length": {
+          "phrase": "the shell length of a Galapagos giant tortoise",
+          "label": "Galapagos tortoise shell",
+          "value": 1.2,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "galapagos",
+      "fame": 2
+    },
+    {
+      "id": "narrowboat",
+      "name": "A canal narrowboat",
+      "facts": {
+        "speed": {
+          "phrase": "the speed limit for a boat on a UK canal",
+          "label": "Canal speed limit",
+          "value": 6.4,
+          "unit": "km/h",
+          "approx": false,
+          "status": "unchecked",
+          "source": "UK canal speed limit",
+          "note": "That is 4 miles an hour.",
+          "checkedOn": "2026-10-21"
+        },
+        "length": {
+          "phrase": "the length of a typical canal narrowboat",
+          "label": "Narrowboat length",
+          "value": 17.5,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        },
+        "weight": {
+          "phrase": "the weight of a typical canal narrowboat",
+          "label": "A canal narrowboat",
+          "value": 15000,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "narrowboat",
+      "fame": 2
+    },
+    {
+      "id": "f16",
+      "name": "The F-16 Fighting Falcon",
+      "facts": {
+        "length": {
+          "phrase": "the length of the F-16 Fighting Falcon",
+          "label": "F-16 Fighting Falcon length",
+          "value": 15.06,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "manufacturer specification",
+          "checkedOn": "2026-10-21"
+        },
+        "speed": {
+          "phrase": "the top speed of the F-16 Fighting Falcon",
+          "label": "F-16 Fighting Falcon top speed",
+          "value": 2175,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "manufacturer specification",
+          "checkedOn": "2026-10-21"
+        },
+        "weight": {
+          "phrase": "the empty weight of the F-16 Fighting Falcon",
+          "label": "F-16 Fighting Falcon empty weight",
+          "value": 8570,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "manufacturer specification",
+          "checkedOn": "2026-10-21"
+        },
+        "date": {
+          "phrase": "the first flight of the F-16 Fighting Falcon",
+          "label": "F-16 Fighting Falcon first flies",
+          "value": 1974,
+          "unit": "year",
+          "approx": false,
+          "status": "unchecked",
+          "source": "well-known date",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "f16",
+      "fame": 3
+    },
+    {
+      "id": "f22",
+      "name": "The F-22 Raptor",
+      "facts": {
+        "length": {
+          "phrase": "the length of the F-22 Raptor",
+          "label": "F-22 Raptor length",
+          "value": 18.92,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "manufacturer specification",
+          "checkedOn": "2026-10-21"
+        },
+        "speed": {
+          "phrase": "the top speed of the F-22 Raptor",
+          "label": "F-22 Raptor top speed",
+          "value": 2410,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "manufacturer specification",
+          "checkedOn": "2026-10-21"
+        },
+        "weight": {
+          "phrase": "the empty weight of the F-22 Raptor",
+          "label": "F-22 Raptor empty weight",
+          "value": 19700,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "manufacturer specification",
+          "checkedOn": "2026-10-21"
+        },
+        "date": {
+          "phrase": "the first flight of the F-22 Raptor",
+          "label": "F-22 Raptor first flies",
+          "value": 1997,
+          "unit": "year",
+          "approx": false,
+          "status": "unchecked",
+          "source": "well-known date",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "f22",
+      "fame": 3
+    },
+    {
+      "id": "f35",
+      "name": "The F-35 Lightning II",
+      "facts": {
+        "length": {
+          "phrase": "the length of the F-35 Lightning II",
+          "label": "F-35 Lightning II length",
+          "value": 15.67,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "manufacturer specification",
+          "checkedOn": "2026-10-21"
+        },
+        "speed": {
+          "phrase": "the top speed of the F-35 Lightning II",
+          "label": "F-35 Lightning II top speed",
+          "value": 1960,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "manufacturer specification",
+          "checkedOn": "2026-10-21"
+        },
+        "weight": {
+          "phrase": "the empty weight of the F-35 Lightning II",
+          "label": "F-35 Lightning II empty weight",
+          "value": 13290,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "manufacturer specification",
+          "checkedOn": "2026-10-21"
+        },
+        "date": {
+          "phrase": "the first flight of the F-35 Lightning II",
+          "label": "F-35 Lightning II first flies",
+          "value": 2006,
+          "unit": "year",
+          "approx": false,
+          "status": "unchecked",
+          "source": "well-known date",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "f35",
+      "fame": 3
+    },
+    {
+      "id": "newhorizons",
+      "name": "New Horizons",
+      "facts": {
+        "speed": {
+          "phrase": "the speed at which New Horizons left the Earth",
+          "label": "New Horizons launch speed",
+          "value": 58500,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "NASA figure",
+          "note": "It was the fastest launch of any spacecraft.",
+          "checkedOn": "2026-10-21"
+        },
+        "weight": {
+          "phrase": "the launch weight of New Horizons",
+          "label": "New Horizons weight",
+          "value": 478,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "NASA figure",
+          "checkedOn": "2026-10-21"
+        },
+        "date": {
+          "phrase": "the launch of New Horizons",
+          "label": "New Horizons launched",
+          "value": 2006,
+          "unit": "year",
+          "approx": false,
+          "status": "unchecked",
+          "source": "well-known date",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "newhorizons",
+      "fame": 3
+    },
+    {
+      "id": "juno",
+      "name": "Juno",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of the Juno spacecraft",
+          "label": "Juno top speed",
+          "value": 266000,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "NASA figure",
+          "checkedOn": "2026-10-21"
+        },
+        "weight": {
+          "phrase": "the launch weight of Juno",
+          "label": "Juno weight",
+          "value": 3625,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "NASA figure",
+          "checkedOn": "2026-10-21"
+        },
+        "date": {
+          "phrase": "the launch of Juno",
+          "label": "Juno launched",
+          "value": 2011,
+          "unit": "year",
+          "approx": false,
+          "status": "unchecked",
+          "source": "well-known date",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "juno",
+      "fame": 3
+    },
+    {
+      "id": "bullet",
+      "name": "A rifle bullet",
+      "facts": {
+        "speed": {
+          "phrase": "the speed of a rifle bullet",
+          "label": "Rifle bullet speed",
+          "value": 3380,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "note": "That is a standard 5.56 mm military round.",
+          "checkedOn": "2026-10-21"
+        },
+        "weight": {
+          "phrase": "the weight of a rifle bullet",
+          "label": "Rifle bullet weight",
+          "value": 0.004,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "bullet",
+      "fame": 3
+    },
+    {
+      "id": "halley",
+      "name": "Halley's Comet",
+      "facts": {
+        "speed": {
+          "phrase": "the speed of Halley's Comet at its closest approach to the Sun",
+          "label": "Halley's Comet speed",
+          "value": 196000,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        },
+        "length": {
+          "phrase": "the length of the nucleus of Halley's Comet",
+          "label": "Halley's Comet nucleus",
+          "value": 15000,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        },
+        "date": {
+          "phrase": "the last visit of Halley's Comet",
+          "label": "Halley's Comet last seen",
+          "value": 1986,
+          "unit": "year",
+          "approx": false,
+          "status": "unchecked",
+          "source": "well-known date",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "halley",
+      "fame": 3
+    },
+    {
+      "id": "greatwall",
+      "name": "The Great Wall of China",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Great Wall of China",
+          "label": "Great Wall length",
+          "value": 21196000,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "Chinese survey",
+          "note": "Counting every section ever built.",
+          "checkedOn": "2026-10-21"
+        },
+        "date": {
+          "phrase": "the start of building the Great Wall of China",
+          "label": "Great Wall begun",
+          "value": -220,
+          "unit": "year",
+          "approx": true,
+          "status": "unchecked",
+          "source": "traditional date",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "greatwall",
+      "fame": 3
+    },
+    {
+      "id": "barrierreef",
+      "name": "The Great Barrier Reef",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Great Barrier Reef",
+          "label": "Great Barrier Reef length",
+          "value": 2300000,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        },
+        "date": {
+          "phrase": "the year the Great Barrier Reef became a World Heritage site",
+          "label": "Barrier Reef protected",
+          "value": 1981,
+          "unit": "year",
+          "approx": false,
+          "status": "unchecked",
+          "source": "well-known date",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "barrierreef",
+      "fame": 3
+    },
+    {
+      "id": "marianatrench",
+      "name": "The Mariana Trench",
+      "facts": {
+        "length": {
+          "phrase": "the greatest depth of the Mariana Trench",
+          "label": "Mariana Trench depth",
+          "value": 10994,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-21"
+        },
+        "date": {
+          "phrase": "the first descent into the Mariana Trench",
+          "label": "Mariana Trench first descent",
+          "value": 1960,
+          "unit": "year",
+          "approx": false,
+          "status": "unchecked",
+          "source": "well-known date",
+          "checkedOn": "2026-10-21"
+        }
+      },
+      "family": "marianatrench",
+      "fame": 3
     }
   ]
 }

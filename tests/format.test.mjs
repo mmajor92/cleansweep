@@ -139,3 +139,14 @@ test("lengths are shown in centimetres under 1 m, metres up to 999 m, and kilome
   assert.equal(show(9288000, true), "about 9,288 km");
   for (const v of [0.0856, 12, 999, 1000, 193300, 9288000]) assert.ok(!/\d{6,}/.test(valueText("length", { value: v }).replace(/,/g, "")), `${v} should not be a long run of digits`);
 });
+
+test("a planet's mass reads as 3.3 x 10^23 kg, not as a string of digits or a million of millions of tonnes", () => {
+  const show = (v, approx = false) => { const p = valueParts("weight", { value: v, approx }); return `${p.num} ${p.unit}`; };
+  assert.equal(show(3.3e23), "3.3 x 10^23 kg");
+  assert.equal(show(5.97e24), "5.97 x 10^24 kg");
+  assert.equal(show(1.9e27, true), "about 1.9 x 10^27 kg");
+  assert.equal(show(1e12), "1 x 10^12 kg");
+  assert.equal(show(9.999e12), "1 x 10^13 kg", "it rounds up to the next power of ten, never to 10 x 10^12");
+  assert.equal(show(6e9), "6 million tonnes", "ordinary heavy things are unchanged");
+  assert.equal(show(396890), "396.9 tonnes", "ordinary heavy things are unchanged");
+});

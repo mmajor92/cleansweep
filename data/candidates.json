@@ -220,41 +220,6 @@
       "needs": "source"
     },
     {
-      "id": "tencent",
-      "category": "weight",
-      "label": "10 euro cent coin (checked: https://economy-finance.ec.europa.eu/euro/euro-coins-and-notes/euro-coins/common-sides-euro-coins_en)",
-      "value": 0.0041,
-      "needs": "a second number (a diameter or a date) so that it can bridge: as a weight alone it is never asked"
-    },
-    {
-      "id": "twoeuro",
-      "category": "weight",
-      "label": "2 euro coin (checked: https://www.ecb.europa.eu/pub/pdf/other/euroleafleten.pdf)",
-      "value": 0.0085,
-      "needs": "a second number (a diameter or a date) so that it can bridge: as a weight alone it is never asked"
-    },
-    {
-      "id": "twopound",
-      "category": "weight",
-      "label": "£2 coin (checked: https://www.royalmint.com/collect/collector-resources/designs-and-specifications/two-pound-coin-designs/)",
-      "value": 0.012,
-      "needs": "a second number (a diameter or a date) so that it can bridge: as a weight alone it is never asked"
-    },
-    {
-      "id": "aabattery",
-      "category": "weight",
-      "label": "An AA battery (checked: http://data.energizer.com/pdfs/lr6ba_ru.pdf)",
-      "value": 0.023,
-      "needs": "a second number (a diameter or a date) so that it can bridge: as a weight alone it is never asked"
-    },
-    {
-      "id": "cdisc",
-      "category": "weight",
-      "label": "A CD or DVD (checked: https://www.newworldencyclopedia.org/entry/Compact_Disc)",
-      "value": 0.0155,
-      "needs": "a second number (a diameter or a date) so that it can bridge: as a weight alone it is never asked"
-    },
-    {
       "id": "wdmoscowmetro",
       "category": "length",
       "label": "Moscow Metro (length)",

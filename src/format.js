@@ -41,6 +41,10 @@ export function valueParts(category, item) {
       if (v < 1) return { num: pre + formatSmall(v * 1000), unit: "g" }; // a table tennis ball is 2.7 g, not "0 kg"
       if (v < 10) return { num: pre + formatSmall(v), unit: "kg" }; // 1.59 kg, 6.18 kg
       if (v < 1000) return { num: pre + formatNumber(v), unit: "kg" };
+      if (v >= 1e12) { // a planet: 3.3 x 10^23 kg, not a string of digits
+        const [m, e] = v.toExponential(2).split("e");
+        return { num: `${pre}${Number(m)} x 10^${Number(e)}`, unit: "kg" };
+      }
       const t = v / 1000;
       if (t >= 1e6) return { num: pre + formatNumber(t / 1e6), unit: "million tonnes" };
       return { num: pre + formatNumber(t), unit: t === 1 ? "tonne" : "tonnes" };

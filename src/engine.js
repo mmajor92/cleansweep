@@ -36,11 +36,12 @@ export const RULES = {
   hardAttempts: 100, // the first tries accept only bridges that are outside the cooldown; after that a recent one is a last resort
   attempts: 600, // tries before giving up on a seed
   searchBudget: 8000, // search steps per try
-  maxGap: [4, 3, 2.5, 2], // widest allowed gap by question position within a half
+  maxGap: [3, 2.5, 2, 1.7], // widest gap a NEW puzzle may have, by question position within a stretch: no question is more than 3 times apart
+  maxGapPublished: [4, 3, 2.5, 2], // the loosest limits ever used. A puzzle that is already published is validated against THESE, so tightening maxGap never makes an old puzzle invalid
   fameWeight: { 3: 10, 2: 3, 1: 0.5 }, // how much more often well-known objects are picked than obscure ones
   hingeCooldown: 7, // a bridge is not reused within this many days
   hingeSinceCap: 365, // days since last use stops counting after this
-  warmChance: 0.5, // chance a puzzle tries to open with a "warm-up" (an easy first question)
+  warmChance: 0, // chance a puzzle tries to open with a "warm-up" (an easy first question). Off from puzzle 7: every question is a close call. Raise it to bring warm-ups back (they need facts flagged `warmup`)
   warmMinGap: 5, // a warm-up question compares values at least this many times apart ...
   warmMaxGap: 100000, // ... and at most this many (only the very large counts need the room)
   warmCooldown: 14, // a warm-up fact is not reused within this many days
@@ -51,10 +52,11 @@ export const RULES = {
   spiceBudget: 600, // search steps a deep-cut attempt may use before giving up
   spiceHingeTries: 4, // hinges a deep-cut attempt tries before moving on
   spiceAttempts: 2, // attempts that look for a deep cut before the puzzle goes without one
-  hingeMaxGap: 3.1, // a bridge (the last question of a stretch) may sit a little further from its neighbour
+  hingeMaxGap: 3, // a bridge (the last question of a stretch) may sit as far from its neighbour as a first step
+  hingeMaxGapPublished: 3.1, // the loosest limit ever used for a bridge (see maxGapPublished)
   minGap: { default: 1.15, date: 1.12 },
   minYearsApart: 5,
-  allowedStatuses: ["verified", "definitional", "wikidata"], // "wikidata": taken from Wikidata and not checked against a second source: roughly right, which is enough for this game
+  allowedStatuses: ["verified", "definitional", "wikidata", "unchecked"], // "wikidata": taken from Wikidata and not checked against a second source: roughly right, which is enough for this game
   nowYear: 2026, // dates are compared by "years ago", so this is frozen on purpose
   launchDate: "2026-10-16", // puzzle #1 (first public day, in UTC). Never change this after launch.
 };
@@ -87,11 +89,12 @@ export function gapSlot(k, isHinge) {
   return isHinge ? Math.min(k, 1) : k;
 }
 
-export function gapOk(category, a, b, position, slack = 1, isHinge = false) {
+export function gapOk(category, a, b, position, slack = 1, isHinge = false, published = false) {
   if (category === "date" && Math.abs(a - b) < RULES.minYearsApart) return false;
   const r = gapRatio(category, a, b);
   const min = category === "date" ? RULES.minGap.date : RULES.minGap.default;
-  const max = (isHinge ? RULES.hingeMaxGap : RULES.maxGap[Math.min(position, RULES.maxGap.length - 1)]) * slack;
+  const table = published ? RULES.maxGapPublished : RULES.maxGap;
+  const max = (isHinge ? (published ? RULES.hingeMaxGapPublished : RULES.hingeMaxGap) : table[Math.min(position, table.length - 1)]) * slack;
   return r >= min && r <= max;
 }
 
@@ -485,7 +488,7 @@ export function validatePuzzle(puzzle) {
       const warmStep = p.warmUp && q === 0;
       if (warmStep) {
         if (!warmGapOk(leg.cat, prev.value, it.value)) problems.push(`warm-up gap out of range: ${prev.label} to ${it.label}`);
-      } else if (!gapOk(leg.cat, prev.value, it.value, gapSlot(k, isBridge), p.slack || 1, isBridge)) {
+      } else if (!gapOk(leg.cat, prev.value, it.value, gapSlot(k, isBridge), p.slack || 1, isBridge, true)) {
         problems.push(`gap out of range: ${prev.label} to ${it.label}`);
       }
       if (prev.value === it.value) problems.push(`tie: ${prev.label} and ${it.label}`);
