@@ -17,3 +17,16 @@ export function slideAt(category, from, to) {
   return 50 + (to >= from ? 1 : -1) * MAX_MOVE * Math.pow(d, CURVE);
 }
 
+
+const CLOSER_REACH = 38; // the farther option sits this far from the middle (a percent of the tape) in a "closer in time" question
+
+/**
+ * Where the two options of a "closer in time" question land. Each goes out from the middle on its own side (the earlier one to the left),
+ * by how many YEARS it is from the card. The game's usual ruler uses a ratio of values, which would get "closer in time" wrong.
+ */
+export function closerPositions(item) {
+  const { dItem, dRival, itemOn } = item.closer;
+  const far = Math.max(dItem, dRival);
+  const pos = (d, onLeft) => 50 + (onLeft ? -1 : 1) * CLOSER_REACH * (d / far);
+  return { item: pos(dItem, itemOn === "down"), rival: pos(dRival, itemOn !== "down") };
+}

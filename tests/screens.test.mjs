@@ -89,7 +89,8 @@ test("the big answer, the hint line and the ruler are in the same order on the r
 test("the ruler labels show only the figure: the name is in the big answer at the top", () => {
   for (const html of everyScreen()) {
     for (const m of html.matchAll(/class="tag (?:rider|above)[^"]*">(.*?)<\/span>/g)) {
-      assert.match(m[1], /^(<b>[^<]+<\/b>|<b class="fig-old">[^<]+<\/b><b class="fig-new">[^<]+<\/b>)$/, `a ruler label has more than the figure: ${m[1]}`);
+      // a "closer in time" reveal also says how many years each option is from the card
+      assert.match(m[1], /^(<b>[^<]+<\/b>|<b>[^<]+<\/b>[\d,]+ years|<b class="fig-old">[^<]+<\/b><b class="fig-new">[^<]+<\/b>)$/, `a ruler label has more than the figure: ${m[1]}`);
     }
   }
 });
@@ -144,8 +145,10 @@ test("the result card lists every object in 'Facts in this puzzle', with the sam
   for (const g of games) {
     const list = /Facts in this puzzle<\/summary><ul>([\s\S]*?)<\/ul>/.exec(g.final)[1];
     const entries = list.split("</li>").filter((x) => x.includes("<li>"));
-    const expected = g.P.legs.flatMap((l) => [l.anchor, ...l.items]);
-    assert.equal(entries.length, 7 + 1 + g.switches, `${g.switches} switches: the first start, 7 questions and one new start per switch`);
+    // the other option of a "closer in time" question was on screen too, so it is listed right after its question
+    const expected = g.P.legs.flatMap((l) => [l.anchor, ...l.items.flatMap((it) => (it.closer ? [it, { ...it.closer.rival, cat: "date" }] : [it]))]);
+    const extra = g.qs.filter((x) => x.item.closer).length;
+    assert.equal(entries.length, 7 + 1 + g.switches + extra, `${g.switches} switches: the first start, 7 questions, one new start per switch and one more for each closer-in-time question`);
     expected.forEach((f, i) => assert.ok(entries[i].includes(`${displayName(f.cat, f)}: ${valueText(f.cat, f)}`), `entry ${i + 1} should be "${f.label}" in ${f.cat}`));
   }
 });

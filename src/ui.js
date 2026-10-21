@@ -1,8 +1,8 @@
 // Rendering and game flow. The only module that touches the DOM.
 import { CATEGORIES, RULES, correctPick, countdownText, gapRatio, normalizePuzzle, puzzleNumber, questionsOf, streaks, shareText } from "./engine.js";
-import { slideAt } from "./ruler.js";
+import { closerPositions, slideAt } from "./ruler.js";
 import { captureScreen, playTransition } from "./transition.js";
-import { valueParts, valueText, figureText, displayName, differenceText, questionText } from "./format.js";
+import { valueParts, valueText, figureText, displayName, differenceText, questionText, closerSides, closerQuestion, closerDifferenceText, formatNumber, yearLabel } from "./format.js";
 import { questionDeep, questionRatios, scoreRun, tierFor, SCORING } from "./score.js";
 import { loadState, saveState, recordPick, completeDay, currentStreak, dayRecord, prune } from "./store.js";
 
@@ -121,7 +121,7 @@ export function mountGame(env) {
     S.picks.push(pick);
     S.results.push(ok);
     S.last = { ok };
-    S.lastAt = slideAt(itemAt(S.q).cat, S.prev.value, item.value);
+    S.lastAt = item.closer ? closerPositions(item).item : slideAt(itemAt(S.q).cat, S.prev.value, item.value);
     S.phase = "reveal";
     if (S.mode === "daily") {
       recordPick(store, todayNum, pick);
@@ -192,7 +192,19 @@ export function mountGame(env) {
     }
     let landed = "";
     let caps = "";
-    if (newItem) {
+    const cur = newItem || itemAt(S.q).item;
+    if (cur && cur.closer) {
+      if (newItem) {
+        // Both options slide out from the card: the earlier one to the left, the later one to the right, each by how many years it is away. The nearer one is the answer.
+        const at = closerPositions(newItem);
+        const dot = (cls, to, o, d) =>
+          `<div class="mark-pt new slide ${cls}" style="left:50%" data-to="${to}"><span class="dot"></span><span class="tag rider${side(to)}"><b>${yearLabel(o.value)}</b>${formatNumber(d)} years</span></div>`;
+        landed = dot(wrong ? "wrong" : "near", at.item, newItem, newItem.closer.dItem) + dot("far", at.rival, newItem.closer.rival, newItem.closer.dRival);
+      } else {
+        const s = closerSides(cur);
+        caps = `<span class="endcap l">&larr; ${s.left.label}</span><span class="endcap r">${s.right.label} &rarr;</span>`;
+      }
+    } else if (newItem) {
       const to = slideAt(cat, S.prev.value, newItem.value);
       landed =
         `<div class="mark-pt new slide${wrong ? " wrong" : ""}" style="left:50%" data-to="${to}"><span class="dot"></span>` +
@@ -206,11 +218,12 @@ export function mountGame(env) {
 
   // After the reveal screen is drawn, slide the new dot from your starting point to where the answer is.
   function startSlide() {
-    const el = root.card.querySelector(".mark-pt.slide");
-    if (!el || !el.getAttribute) return;
-    const to = el.getAttribute("data-to");
+    const els = Array.from(root.card.querySelectorAll(".mark-pt.slide"));
+    if (!els.length || !els[0].getAttribute) return;
     const go = () => {
-      el.style.left = `${to}%`;
+      els.forEach((el) => {
+        el.style.left = `${el.getAttribute("data-to")}%`;
+      });
     };
     const calm = typeof globalThis.matchMedia === "function" && globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (calm || typeof requestAnimationFrame !== "function") return go();
@@ -249,11 +262,11 @@ export function mountGame(env) {
       `<div class="topslot">${tierBadge(S.q)}</div>` +
       bigBlockHTML(cat, S.prev, hint, !first && hint ? " ghost" : "") +
       rulerHTML(cat, null, false) +
-      `<p class="ask">${questionText(cat, c.words, item, S.prev)}</p>` +
+      `<p class="ask">${item.closer ? closerQuestion(item, S.prev) : questionText(cat, c.words, item, S.prev)}</p>` +
       (item.clue ? `<p class="clue">(${item.clue})</p>` : "") +
       `<div class="choices">` +
-      `<button class="choice" data-pick="down">${c.buttons[0]}</button>` +
-      `<button class="choice" data-pick="up">${c.buttons[1]}</button>` +
+      `<button class="choice" data-pick="down">${item.closer ? closerSides(item).left.label : c.buttons[0]}</button>` +
+      `<button class="choice" data-pick="up">${item.closer ? closerSides(item).right.label : c.buttons[1]}</button>` +
       `</div>`
     );
   }
@@ -280,7 +293,7 @@ export function mountGame(env) {
       bigBlockHTML(cat, item, hintText(item)) +
       rulerHTML(cat, item, !S.last.ok) +
       v.note +
-      `<p class="diff">${differenceText(cat, c.words, item, S.prev)}</p>` +
+      `<p class="diff">${item.closer ? closerDifferenceText(item, S.prev) : differenceText(cat, c.words, item, S.prev)}</p>` +
       (item.note ? `<p class="fact">${item.note}</p>` : "") +
       `<div class="row"><button class="btn" id="next">${label}</button></div>`
     );
@@ -309,7 +322,8 @@ export function mountGame(env) {
     const st = streaks(S.results);
     const sc = scoreRun(S.ratios, S.results, S.deep);
     const msg = st.longest === RULES.chainLength ? "A Clean Sweep! \u2728" : sc.pct >= 80 ? "Great sweep." : sc.pct >= 60 ? "Solid sweep." : sc.pct >= 40 ? "Not bad." : "Tomorrow, sweep again.";
-    const facts = P.legs.flatMap((leg) => [leg.anchor, ...leg.items]);
+    // the other option in a "closer in time" question was on screen too, so its date and source are listed as well
+    const facts = P.legs.flatMap((leg) => [leg.anchor, ...leg.items.flatMap((it) => (it.closer ? [it, { ...it.closer.rival, cat: "date" }] : [it]))]);
     const list = facts
       .map((f) => {
         const src = /^https?:/.test(f.source) ? `<a href="${f.source}" target="_blank" rel="noopener noreferrer">source</a>` : f.source;

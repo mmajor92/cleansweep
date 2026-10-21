@@ -41,7 +41,7 @@ export const RULES = {
   fameWeight: { 3: 10, 2: 3, 1: 0.5 }, // how much more often well-known objects are picked than obscure ones
   hingeCooldown: 7, // a bridge is not reused within this many days
   hingeSinceCap: 365, // days since last use stops counting after this
-  warmChance: 0, // chance a puzzle tries to open with a "warm-up" (an easy first question). Off from puzzle 7: every question is a close call. Raise it to bring warm-ups back (they need facts flagged `warmup`)
+  warmChance: 0, // chance a puzzle tries to open with a "warm-up" (an easy first question). Off from puzzle 7: there is no easy opening question. Raise it to bring warm-ups back (they need facts flagged `warmup`)
   warmMinGap: 5, // a warm-up question compares values at least this many times apart ...
   warmMaxGap: 100000, // ... and at most this many (only the very large counts need the room)
   warmCooldown: 14, // a warm-up fact is not reused within this many days
@@ -58,6 +58,15 @@ export const RULES = {
   minYearsApart: 5,
   allowedStatuses: ["verified", "definitional", "wikidata", "unchecked"], // "wikidata": taken from Wikidata and not checked against a second source: roughly right, which is enough for this game
   nowYear: 2026, // dates are compared by "years ago", so this is frozen on purpose
+  // "Closer in time": a date question that shows the card and two other events, one earlier and one later, and asks which the card is closer to.
+  closerChance: 0.7, // the chance that each eligible date question is one of these instead of "before or after?". It works out at about 1 puzzle in 3 having at least one
+  closerMax: 2, // at most this many in one puzzle
+  closerMinRatio: 1.15, // the farther distance is at least this many times the nearer ...
+  closerMaxRatio: 1.5, // ... and at most this many, so nearly all are Close calls (only those at exactly 1.5 count as Medium)
+  closerMaxRatioPublished: 1.5, // the loosest ever used: a published puzzle is validated against this (raise it if closerMaxRatio is ever raised)
+  closerMinYears: 10, // both options are at least this many years from the card
+  closerMinDiffYears: 15, // and the two distances differ by at least this many years, so the answer is a feel for time and not a test of exact years (12 years against 18 is too fine)
+  closerAttempts: 300, // tries that may use one; after that the puzzle goes without, so a puzzle always builds
   launchDate: "2026-10-16", // puzzle #1 (first public day, in UTC). Never change this after launch.
 };
 
@@ -69,7 +78,24 @@ export const factKey = (it) => `${it.ent}|${it.cat}|${it.value}`;
 export const pairKey = (a, b) => [factKey(a), factKey(b)].sort().join("~");
 /** The key of every question in a puzzle (old two-half puzzles are normalised first). */
 export function pairsOf(puzzle) {
-  return questionsOf(puzzle).map((q) => pairKey(q.prev, q.item));
+  return questionsOf(puzzle).map((q) => (q.item.closer ? closerKey(q.prev, q.item, q.item.closer.rival) : pairKey(q.prev, q.item)));
+}
+
+/** How many years apart two dates are (there is no year zero, so this goes through yearsAgo). */
+export function yearsBetween(a, b) {
+  return Math.abs(yearsAgo(a) - yearsAgo(b));
+}
+
+/** A closer-in-time question's difficulty: the farther distance over the nearer. It does the job the gap does for an ordinary question. */
+export function closerRatio(item) {
+  const { dItem, dRival } = item.closer;
+  return Math.max(dItem, dRival) / Math.min(dItem, dRival);
+}
+
+/** The key of a closer-in-time question: the card and the two options, whichever way round the options are. */
+export function closerKey(card, answer, rival) {
+  const key = (it) => factKey({ ent: it.ent, cat: "date", value: it.value });
+  return "closer:" + [key(card), ...[key(answer), key(rival)].sort()].join("~");
 }
 
 /** Years before RULES.nowYear. There is no year zero. */
@@ -202,7 +228,7 @@ export function freshness(daysSince) {
 /** Every object a puzzle uses, as a set of ids (the starting object, every question, and each bridge). Works for older two-half puzzles too. */
 export function objectsOf(puzzle) {
   const p = normalizePuzzle(puzzle);
-  return new Set(p.legs.flatMap((l) => [l.anchor.ent, ...l.items.map((it) => it.ent)]));
+  return new Set(p.legs.flatMap((l) => [l.anchor.ent, ...l.items.flatMap((it) => (it.closer ? [it.ent, it.closer.rival.ent] : [it.ent]))]));
 }
 
 /** Which category a day starts in: every block of 5 days uses each category once, in a seeded order. */
@@ -226,6 +252,7 @@ export function startCategoryFor(num) {
 export function generate(seed, entities, options = {}) {
   const history = options.history || [];
   const rng = mulberry32(seed);
+  const crng = mulberry32((Math.imul(seed, 2654435761) ^ 0x9e3779b9) >>> 0); // a separate stream for "closer in time" choices, so nothing else about a puzzle depends on them
   const shuffle = (arr) => {
     const a = arr.slice();
     for (let i = a.length - 1; i > 0; i--) {
@@ -288,8 +315,13 @@ export function generate(seed, entities, options = {}) {
   };
   const pairNum = (a, b) => (a < b ? a * 2097152 + b : b * 2097152 + a);
   const pairAge = new Map(); // question -> days since it was last asked (1 = yesterday)
+  const closerSeen = new Set(); // "closer in time" questions already asked: one is never repeated
   (options.pairs || []).forEach((keys, i, all) => {
     for (const k of keys) {
+      if (k.startsWith("closer:")) {
+        closerSeen.add(k);
+        continue;
+      }
       const [a, b] = k.split("~");
       pairAge.set(pairNum(idOf(a), idOf(b)), all.length - i);
     }
@@ -306,7 +338,7 @@ export function generate(seed, entities, options = {}) {
   const pairRank = (age) => (age === undefined ? 0 : age > oldA ? 1 : age > oldB ? 2 : age > oldC ? 3 : 4);
 
   /** Plan the shape of the chain: where it switches, and into which categories. */
-  function makePlan() {
+  function makePlan(attempt = 0) {
     let B = options.bridges;
     if (!B) {
       const choices = RULES.bridgeChances.filter(([n]) => !options.maxBridges || n <= options.maxBridges);
@@ -340,7 +372,59 @@ export function generate(seed, entities, options = {}) {
     // how long the stretch that question q belongs to is
     const legLen = Array(RULES.chainLength).fill(0);
     for (let q = RULES.chainLength - 1; q >= 0; q--) legLen[q] = isB[q] || q === RULES.chainLength - 1 ? posInLeg[q] + 1 : legLen[q + 1];
-    return { isB, cat, posInLeg, legLen };
+    // Which questions ask "closer in time": a date question that is not the first of the puzzle and not a bridge, at most closerMax of them.
+    const closer = Array(RULES.chainLength).fill(false);
+    const chance = attempt < RULES.closerAttempts ? options.closerChance ?? RULES.closerChance : 0;
+    let nCloser = 0;
+    for (let q = 0; q < RULES.chainLength; q++) {
+      if (cat[q] === "date" && !isB[q] && q >= 1 && nCloser < RULES.closerMax && crng() < chance) {
+        closer[q] = true;
+        nCloser++;
+      }
+    }
+    return { isB, cat, posInLeg, legLen, closer };
+  }
+
+  const cshuffle = (arr) => arr.map((e) => ({ e, k: Math.pow(crng(), 1 / pickWeight(e)) })).sort((a, b) => b.k - a.k).map((x) => x.e); // like wshuffle, on the closer stream
+  /**
+   * The ways to ask "closer in time" from this card: an answer (the nearer event) with a rival (the farther one) on the other side of the card,
+   * both fairly well known, with the two distances between closerMinRatio and closerMaxRatio apart.
+   */
+  function closerCandidates(prev, base, families) {
+    const cardAgo = yearsAgo(prev.value);
+    const dist = (e) => Math.abs(yearsAgo(e.facts.date.value) - cardAgo);
+    const opts = base.filter((e) => e.fame >= 2 && !e.facts.date.approx && !e.facts.date.warmup && e.family !== prev.family && !families.has(e.family) && dist(e) >= RULES.closerMinYears);
+    const earlier = opts.filter((e) => yearsAgo(e.facts.date.value) > cardAgo);
+    const later = opts.filter((e) => yearsAgo(e.facts.date.value) < cardAgo);
+    const asItem = (e) => ({ ent: e.object || e.id, value: e.facts.date.value });
+    const out = [];
+    for (const [nearSide, farSide] of [[earlier, later], [later, earlier]]) {
+      for (const a of cshuffle(nearSide).slice(0, 30)) {
+        const da = dist(a);
+        const rivals = farSide.filter((r) => r.family !== a.family && dist(r) >= da * RULES.closerMinRatio && dist(r) <= da * RULES.closerMaxRatio && dist(r) - da >= RULES.closerMinDiffYears);
+        for (const r of cshuffle(rivals).slice(0, 2)) {
+          if (closerSeen.has(closerKey(prev, asItem(a), asItem(r)))) continue;
+          const f = r.facts.date;
+          out.push({
+            e: a,
+            rival: {
+              family: r.family,
+              data: {
+                rival: { ent: r.object || r.id, family: r.family, name: r.name, label: f.label, phrase: f.phrase, value: f.value, fame: r.fame, status: f.status, source: f.source },
+                itemOn: a.facts.date.value > prev.value ? "up" : "down",
+                dItem: da,
+                dRival: dist(r),
+              },
+            },
+          });
+        }
+      }
+    }
+    for (let i = out.length - 1; i > 0; i--) {
+      const j = Math.floor(crng() * (i + 1));
+      [out[i], out[j]] = [out[j], out[i]];
+    }
+    return out.slice(0, 40);
   }
 
   /** Search for objects that fill the plan. Returns { anchor, seq, ents } or null. */
@@ -390,8 +474,11 @@ export function generate(seed, entities, options = {}) {
         } else if (spiceHere) {
           ordered = shuffle(workable).sort((x, y) => spiceSince(y) - spiceSince(x));
         } else ordered = rankOrder(wshuffle(workable));
-        for (const e of ordered) {
+        let choices = ordered.map((e) => ({ e, rival: null }));
+        if (plan.closer && plan.closer[q] && !b && !spiceHere && c === "date") choices = closerCandidates(prev, base, families);
+        for (const { e, rival } of choices) {
           const item = toItem(e, c);
+          if (rival) item.closer = rival.data;
           const up = item.value > prev.value;
           if (ups + (up ? 1 : 0) > RULES.maxUps) continue;
           if (ups + (up ? 1 : 0) + (N - 1 - q) < RULES.minUps) continue;
@@ -404,12 +491,14 @@ export function generate(seed, entities, options = {}) {
           seq.push(item);
           ents.push(e);
           families.add(e.family);
+          if (rival) families.add(rival.family);
           if (up) ups++;
           const next = b ? toItem(e, cat[q + 1]) : item; // after a bridge, the next question starts from the same object in its new category
           if (dfs(q + 1, next, up, nextRun, nUp, nDown)) return true;
           seq.pop();
           ents.pop();
           families.delete(e.family);
+          if (rival) families.delete(rival.family);
           if (up) ups--;
         }
         return false;
@@ -421,7 +510,7 @@ export function generate(seed, entities, options = {}) {
 
   for (let attempt = 0; attempt < RULES.attempts; attempt++) {
     const slack = attempt < 200 ? 1 : attempt < 400 ? 1.5 : 3;
-    const plan = makePlan();
+    const plan = makePlan(attempt);
     if (!plan) continue;
     // Where may the deep cut go? Any question from the 3rd on, chosen at random, but never a bridge.
     const targets = [];
@@ -486,7 +575,24 @@ export function validatePuzzle(puzzle) {
     leg.items.forEach((it, k) => {
       const isBridge = li < p.legs.length - 1 && k === leg.items.length - 1;
       const warmStep = p.warmUp && q === 0;
-      if (warmStep) {
+      if (it.closer) {
+        // "Closer in time": the answer is the nearer of two events on opposite sides of the card, so the usual gap rule does not apply to it
+        const { rival: r } = it.closer;
+        const dI = yearsBetween(prev.value, it.value);
+        const dR = yearsBetween(prev.value, r.value);
+        const ratio = Math.max(dI, dR) / Math.max(1, Math.min(dI, dR));
+        if (leg.cat !== "date") problems.push(`a "closer in time" question outside the date category: ${it.label}`);
+        if (isBridge) problems.push(`a "closer in time" question is a bridge: ${it.label}`);
+        if (it.value > prev.value === r.value > prev.value) problems.push(`both options are on the same side of the card: ${it.label} and ${r.label}`);
+        if (!(dI < dR)) problems.push(`the answer is not the nearer option: ${it.label} and ${r.label}`);
+        if (ratio < RULES.closerMinRatio || ratio > RULES.closerMaxRatioPublished) problems.push(`the two distances are ${ratio.toFixed(2)} times apart: ${it.label} and ${r.label}`);
+        if (dI < RULES.closerMinYears || dR < RULES.closerMinYears) problems.push(`an option is too close to the card: ${it.label} and ${r.label}`);
+        if (Math.abs(dR - dI) < RULES.closerMinDiffYears) problems.push(`the two distances differ by only ${Math.abs(dR - dI)} years: ${it.label} and ${r.label}`);
+        if (dI !== it.closer.dItem || dR !== it.closer.dRival) problems.push(`the stored distances do not match the dates: ${it.label}`);
+        if (it.closer.itemOn !== (it.value > prev.value ? "up" : "down")) problems.push(`the answer is on the wrong side: ${it.label}`);
+        if (it.fame < 2 || r.fame < 2) problems.push(`an obscure option in a "closer in time" question: ${it.label} or ${r.label}`);
+        if (!RULES.allowedStatuses.includes(r.status)) problems.push(`${r.label} has the status "${r.status}"`);
+      } else if (warmStep) {
         if (!warmGapOk(leg.cat, prev.value, it.value)) problems.push(`warm-up gap out of range: ${prev.label} to ${it.label}`);
       } else if (!gapOk(leg.cat, prev.value, it.value, gapSlot(k, isBridge), p.slack || 1, isBridge, true)) {
         problems.push(`gap out of range: ${prev.label} to ${it.label}`);
@@ -525,8 +631,9 @@ export function validatePuzzle(puzzle) {
   if (p.warmUp && !start.warmup) problems.push("a warm-up must start from a reserved warm-up fact");
   if (!p.warmUp && start.warmup) problems.push("a reserved warm-up fact is the start of a puzzle that is not a warm-up");
   if (start.fame === 1) problems.push(`obscure object as the starting point: ${start.name}`);
+  if (asked.filter((it) => it.closer).length > RULES.closerMax) problems.push(`more than ${RULES.closerMax} "closer in time" questions`);
   const seen = new Set();
-  for (const it of [start, ...asked]) {
+  for (const it of [start, ...asked, ...asked.filter((x) => x.closer).map((x) => x.closer.rival)]) {
     if (seen.has(it.family)) problems.push(`repeated object: ${it.name}`);
     seen.add(it.family);
   }
@@ -660,7 +767,7 @@ export const PRACTICE = [
 export function generatePractice(n, entities) {
   const c = PRACTICE[n - 1];
   if (!c) return null;
-  const p = generate(c.seed, entities, c.options);
+  const p = generate(c.seed, entities, { ...c.options, closerChance: 0 }); // the practice puzzles keep the ordinary questions only
   if (p) p.practice = n;
   return p;
 }

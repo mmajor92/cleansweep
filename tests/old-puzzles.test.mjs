@@ -38,7 +38,7 @@ function memoryStorage() {
 }
 
 function open(puzzle, storage, todayNum) {
-  const card = { innerHTML: "", querySelector: () => ({ focus() {}, style: {}, getAttribute: () => null }), appendChild() {} };
+  const card = { innerHTML: "", querySelector: () => ({ focus() {}, style: {}, getAttribute: () => null }), querySelectorAll: () => [], appendChild() {} };
   const el = () => ({ innerHTML: "", textContent: "", style: {}, setAttribute() {} });
   mountGame({ root: { tabs: el(), meta: el(), chain: el(), card }, storage, todayNum, dailyPuzzle: puzzle, practicePuzzles: [] });
   return {

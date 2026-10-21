@@ -110,3 +110,21 @@ export function questionText(category, words, item, prev) {
   if (category === "date") return `Did ${item.phrase} happen before or after ${prev.phrase}?`;
   return `Is ${item.phrase} ${words[1]} or ${words[0]} than ${prev.phrase}?`;
 }
+
+// ---- "Closer in time" questions: the card and two other events, one earlier and one later (see closerCandidates in engine.js) ----
+const capFirst = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+
+/** The two options in time order: the earlier one is the left button ("down"), the later one the right ("up"). The item is the nearer one. */
+export function closerSides(item) {
+  return item.closer.itemOn === "down" ? { left: item, right: item.closer.rival } : { left: item.closer.rival, right: item };
+}
+
+export function closerQuestion(item, prev) {
+  const s = closerSides(item);
+  return `Is ${prev.phrase} closer in time to ${s.left.phrase} or ${s.right.phrase}?`;
+}
+
+export function closerDifferenceText(item, prev) {
+  const { dItem, dRival, rival } = item.closer;
+  return `${capFirst(item.phrase)} is closer: ${formatNumber(dItem)} years from ${prev.phrase}, against ${formatNumber(dRival)} for ${rival.phrase}.`;
+}

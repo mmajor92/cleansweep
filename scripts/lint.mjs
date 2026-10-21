@@ -3,7 +3,7 @@
 import { readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { CATEGORIES, CATEGORY_KEYS, PRACTICE, RULES, buildEntities, generateSeries, normalizePuzzle, objectsOf, pairsOf, questionsOf, validatePuzzle } from "../src/engine.js";
+import { CATEGORIES, CATEGORY_KEYS, PRACTICE, RULES, buildEntities, closerRatio, generateSeries, normalizePuzzle, objectsOf, pairsOf, questionsOf, validatePuzzle } from "../src/engine.js";
 
 const root = join(fileURLToPath(import.meta.url), "..", "..");
 const args = process.argv.slice(2);
@@ -235,6 +235,13 @@ if (deepDays / DAYS > 0.7) warn(`deep cuts appear on ${deepPct}% of days (limit 
 for (const e of entities) if (e.fame === 1 && !e.clue) warn(`"${e.id}" is rated 1 (a deep cut) but has no clue, so players have nothing to go on`);
 
 // Warm-ups: puzzles that open from a reserved, unreachable fact with an easy first question.
+// "Closer in time" questions: how many days have one, and how they score.
+const closerQs = series.filter(Boolean).flatMap((p) => p.legs.flatMap((l) => l.items.filter((it) => it.closer)));
+const closerDays = series.filter((p) => p && p.legs.some((l) => l.items.some((it) => it.closer))).length;
+const closerTwo = series.filter((p) => p && p.legs.reduce((n, l) => n + l.items.filter((it) => it.closer).length, 0) > 1).length;
+const closerClose = closerQs.filter((it) => closerRatio(it) < 1.5).length;
+if (RULES.closerChance > 0 && closerDays / DAYS < 0.15) warn(`"closer in time" questions are in only ${Math.round((100 * closerDays) / DAYS)}% of puzzles (aim for about a third)`);
+if (closerDays / DAYS > 0.6) warn(`"closer in time" questions are in ${Math.round((100 * closerDays) / DAYS)}% of puzzles (limit 60%)`);
 const warmOn = RULES.warmChance > 0;
 const warmDays = series.filter((p) => p && p.warmUp).length;
 const warmPct = Math.round((100 * warmDays) / DAYS);
@@ -327,7 +334,8 @@ line(`  questions asked again: the first repeat comes on day ${firstRepeat ?? "n
 line(`  published puzzle files checked: ${published} (${publishedOld} still in the older two-half format)`);
 const topHinges = Object.entries(hinges).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([k, v]) => `${k} ${v}`).join(", ");
 line(`  busiest bridges: ${topHinges}`);
-line(warmOn ? `  warm-up days: ${warmPct}% (easy opening question from a reserved fact), ${warmFacts.length} reserved facts` : `  warm-ups: off (every question is a close call; widest step ${RULES.maxGap[0]} times)`);
+line(`  "closer in time" questions: in ${Math.round((100 * closerDays) / DAYS)}% of puzzles (${Math.round((100 * closerTwo) / DAYS)}% have two), ${closerQs.length ? Math.round((100 * closerClose) / closerQs.length) : 0}% of them Close calls`);
+line(warmOn ? `  warm-up days: ${warmPct}% (easy opening question from a reserved fact), ${warmFacts.length} reserved facts` : `  warm-ups: off (no easy opening question; widest ordinary step ${RULES.maxGap[0]} times)`);
 if (!warmOn && (warmDays > 0 || warmFacts.length > 0)) warn(`warm-ups are off but ${warmDays} puzzles have one and ${warmFacts.length} facts are still reserved`);
 line(`  deep-cut days: ${deepPct}% (one later question about an enthusiast-only object)`);
 line(`  question mix by familiarity: everyone knows ${mixPct(3)}%, most people ${mixPct(2)}%, enthusiasts ${mixPct(1)}%`);

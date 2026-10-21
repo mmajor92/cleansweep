@@ -264,7 +264,10 @@ details.facts p { margin: 8px 0 0; }
 /* captions at the ends of the ruler, before you answer */
 .endcap { position: absolute; top: calc(50% + 20px); font: 700 13px var(--display); color: var(--muted); }
 .endcap.l { left: 3%; }
-.endcap.r { right: 3%; }
+.endcap.r { right: 3%; text-align: right; }
+.endcap { max-width: 44%; line-height: 1.2; } /* the end captions can be event names in a "closer in time" question, so they may wrap */
+/* in a "closer in time" reveal, the option that is NOT closer is grey; the closer one is green, or red if you missed it, like any answer dot */
+.mark-pt.new.far .dot { background: var(--muted); }
 
 /* the glide ruler.
    The top slot (the verdict, then the tier), the big answer and the ruler sit in the same place on the reveal and on the

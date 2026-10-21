@@ -342,12 +342,13 @@ test("a new puzzle: no step more than 3x, a bridge up to 3x, later steps tighter
   assert.equal(gapOk("length", 100, 450, 0, 1, false, true), false); // and no further
 });
 
-test("warm-ups are off: no fact is reserved, no new puzzle opens with one, and no question is more than 3 times apart", () => {
+test("warm-ups are off: no fact is reserved, no new puzzle opens with one, and no ordinary question is more than 3 times apart", () => {
   assert.equal(RULES.warmChance, 0);
   assert.deepEqual(entities.filter((e) => Object.values(e.facts).some((f) => f.warmup)).map((e) => e.id), [], "a fact is still reserved");
   for (const p of generateSeries(1, 150, entities)) {
     assert.equal(p.warmUp, false, `puzzle ${p.num} opens with a warm-up`);
     for (const q of questionsOf(p)) {
+      if (q.item.closer) continue; // a "closer in time" question has two distances instead of a gap (tests/closer.test.mjs)
       const r = gapRatio(q.cat, q.prev.value, q.item.value);
       assert.ok(r <= 3 * (p.slack || 1) + 1e-9, `puzzle ${p.num}: ${q.prev.label} to ${q.item.label} is ${r.toFixed(2)}x apart`);
     }
