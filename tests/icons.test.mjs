@@ -40,11 +40,11 @@ test("the icons live under src, which the deploy already copies, so they really 
 test("the link-preview picture: a 1200 by 630 image with an absolute address, so messaging apps can show it", () => {
   assert.deepEqual(pngSize("src/icons/social-preview.png"), [1200, 630]);
   const image = tag("property", "og:image");
-  assert.match(image, /^https:\/\/mmajor92\.github\.io\/cleansweep\/src\/icons\/social-preview\.png$/);
-  assert.ok(existsSync(join(root, image.replace("https://mmajor92.github.io/cleansweep/", ""))), "the file behind the address exists");
+  assert.match(image, /^https:\/\/cleansweepdaily\.fyi\/src\/icons\/social-preview\.png$/);
+  assert.ok(existsSync(join(root, image.replace("https://cleansweepdaily.fyi/", ""))), "the file behind the address exists");
   assert.equal(tag("property", "og:title"), "Clean Sweep");
   assert.equal(tag("property", "og:description"), tag("name", "description"), "the share text matches the page description");
-  assert.equal(tag("property", "og:url"), "https://mmajor92.github.io/cleansweep/");
+  assert.equal(tag("property", "og:url"), "https://cleansweepdaily.fyi/");
   assert.equal(tag("name", "twitter:card"), "summary_large_image");
 });
 

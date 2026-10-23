@@ -172,4 +172,4 @@ See `LAUNCH.md` for the one-time checklist.
 
 ## Deploying
 
-`.github/workflows/pages.yml` publishes the site to GitHub Pages on every push to `main`. `.github/workflows/ci.yml` runs the tests and the data linter on every pull request. `.github/workflows/generate-puzzles.yml` runs every Monday.
+The game lives at **https://cleansweepdaily.fyi** (the share card's last line, and the link-preview tags in `index.html`, use it). `.github/workflows/pages.yml` publishes the site to GitHub Pages on every push to `main`. `.github/workflows/ci.yml` runs the tests and the data linter on every pull request. `.github/workflows/generate-puzzles.yml` runs every Monday.

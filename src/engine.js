@@ -12,7 +12,7 @@ export const CATEGORY_KEYS = Object.keys(CATEGORIES);
 
 export const RULES = {
   chainLength: 7,
-  shareUrl: "tinyurl.com/cleansweepdaily", // the last line of every share card. Set it to "" to leave it off.
+  shareUrl: "cleansweepdaily.fyi", // the last line of every share card. Set it to "" to leave it off.
   // A puzzle is a chain of 7 questions that can switch category at any point. Each switch happens through a "bridge":
   // one object that has facts in both categories, shown as the last question of one stretch and the starting point of the next.
   bridgeChances: [[1, 0.4], [2, 0.35], [3, 0.2], [4, 0.05]], // how many switches a puzzle has, and how often

@@ -2,6 +2,12 @@
 
 The version number is in `src/version.js` and shows at the bottom of the page. Change both together.
 
+## v3.9
+- **The game has its own address: cleansweepdaily.fyi.** The share card's last line is now `cleansweepdaily.fyi` (it was `tinyurl.com/cleansweepdaily`, which added a hop), and the link-preview tags (`og:url`, `og:image`) in `index.html` point to the new address. Nothing about the puzzles or the questions changed.
+- **Old links still work.** `mmajor92.github.io/cleansweep` redirects to the new address (GitHub does this once a custom domain is set), and so does the TinyURL, one hop further. Saved streaks and results are kept per web address, so players started afresh on the new one.
+- **How it is set up.** The domain is registered at Porkbun. Its DNS has four `A` records for the bare domain (185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153) and a `CNAME` for `www` pointing to `mmajor92.github.io`, with no wildcard record. The custom domain is entered in the repo's Settings, Pages (the site is published by a GitHub Actions workflow, so no `CNAME` file is needed), and Enforce HTTPS is on.
+- Tests: the two that spelled out the old address now expect the new one.
+
 ## v3.8
 - **A new kind of date question: "closer in time".** About one puzzle in three (35%) now has one. The card sits in the middle of the ruler with two other events as buttons, the earlier one on the left and the later one on the right, and you pick which the card is closer to ("Is the death of Cleopatra closer in time to the building of the Great Pyramid or the sinking of the Titanic?"). Both options then slide out from the card to their true distances, the nearer one is the answer, and it becomes the next card. This is the "Round B" style from the preview. It is only for dates, never question 1, never a bridge, at most 2 in a puzzle, and it needs no new facts.
 - **How fair it is.** The two options are on opposite sides of the card, at least 10 years away, the farther one 1.15 to 1.5 times as far as the nearer and at least 15 years farther (so 12 years against 18 is never asked), both well known and with exact dates. Nearly nine in ten are Close calls (double points), the rest are Medium. A question is never asked twice (the card and the two options, either way round). There are about 37,800 possible ones from 147 well-known events.
