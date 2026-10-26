@@ -1,0 +1,215 @@
+{
+  "seed": 245502,
+  "slack": 1,
+  "bridges": [
+    "tiger1",
+    "shinkansen0"
+  ],
+  "legs": [
+    {
+      "cat": "speed",
+      "anchor": {
+        "ent": "tube",
+        "family": "tube",
+        "name": "The London Underground",
+        "hint": "the Tube, the world's oldest underground railway",
+        "clue": "a capital city's underground railway",
+        "cat": "speed",
+        "phrase": "the average speed of a London Underground train",
+        "label": "Tube average speed",
+        "value": 33,
+        "approx": false,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/London_Underground",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "trex",
+          "family": "trex",
+          "name": "A Tyrannosaurus rex",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the estimated top running speed of an adult Tyrannosaurus rex",
+          "label": "T. rex top speed",
+          "value": 20,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.cbc.ca/news/science/tyrannasaurus-rex-built-for-distance-1.5569380",
+          "note": "Estimates vary from about 11 to 40 km/h.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "tiger1",
+          "family": "tiger1",
+          "name": "The Tiger I tank",
+          "hint": "a famous German heavy tank of World War II",
+          "clue": "a German heavy tank from World War II",
+          "cat": "speed",
+          "phrase": "the road speed of the Tiger I tank",
+          "label": "Tiger I road speed",
+          "value": 38,
+          "approx": true,
+          "status": "verified",
+          "source": "https://science.howstuffworks.com/panzerkampfwagen-vi-tiger-i.htm",
+          "note": "Some sources give up to 45 kilometres per hour on a road. It was slower across country.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "count",
+      "anchor": {
+        "ent": "tiger1",
+        "family": "tiger1",
+        "name": "The Tiger I tank",
+        "hint": "a famous German heavy tank of World War II",
+        "clue": "a German heavy tank from World War II",
+        "cat": "count",
+        "phrase": "the number of crew in a Tiger I tank",
+        "label": "Tiger I crew",
+        "value": 5,
+        "approx": false,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/Tiger_I",
+        "note": "A commander, gunner, loader, driver and radio operator.",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "cards",
+          "family": "cards",
+          "name": "A deck of cards",
+          "hint": "",
+          "clue": "",
+          "cat": "count",
+          "phrase": "the number of suits in a pack of cards",
+          "label": "Suits in a pack",
+          "value": 4,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/playing-card",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "bolt",
+          "family": "bolt",
+          "name": "Usain Bolt",
+          "hint": "",
+          "clue": "",
+          "cat": "count",
+          "phrase": "the number of Olympic gold medals Usain Bolt won",
+          "label": "Usain Bolt's Olympic golds",
+          "value": 8,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.cbssports.com/olympics/news/usain-bolt-loses-olympic-gold-medal-due-to-jamaica-teammates-doping-violation",
+          "note": "He won nine, but the 2008 relay gold was withdrawn in 2017.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "shinkansen0",
+          "family": "shinkansen0",
+          "name": "The 0 Series Shinkansen",
+          "hint": "Japan's first bullet train",
+          "clue": "a Japanese high-speed train",
+          "cat": "count",
+          "phrase": "the number of cars in a full-length 0 Series Shinkansen train",
+          "label": "0 Series cars per train",
+          "value": 16,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/0_Series_Shinkansen",
+          "note": "The first trains had only 12 cars.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "shinkansen0",
+        "family": "shinkansen0",
+        "name": "The 0 Series Shinkansen",
+        "hint": "Japan's first bullet train",
+        "clue": "a Japanese high-speed train",
+        "cat": "date",
+        "phrase": "the first service of the 0 Series Shinkansen",
+        "label": "0 Series Shinkansen starts",
+        "value": 1964,
+        "approx": false,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/0_Series_Shinkansen",
+        "note": "It began nine days before the 1964 Tokyo Olympics opened.",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "oresund",
+          "family": "oresund",
+          "name": "The Oresund Bridge",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the opening of the Oresund Bridge",
+          "label": "Oresund Bridge opens",
+          "value": 2000,
+          "approx": false,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q297871",
+          "note": "",
+          "warmup": false,
+          "fame": 2,
+          "closer": {
+            "rival": {
+              "ent": "denali",
+              "family": "denali",
+              "name": "Denali",
+              "label": "Denali first climbed",
+              "phrase": "the first ascent of Denali's south peak",
+              "value": 1913,
+              "fame": 2,
+              "status": "verified",
+              "source": "https://geographyworlds.com/blog/is-denali-taller-than-mount-kilimanjaro/"
+            },
+            "itemOn": "up",
+            "dItem": 36,
+            "dRival": 51
+          }
+        },
+        {
+          "ent": "seikan",
+          "family": "seikan",
+          "name": "The Seikan Tunnel",
+          "hint": "a Japanese undersea railway tunnel",
+          "clue": "a Japanese railway tunnel",
+          "cat": "date",
+          "phrase": "the opening of the Seikan Tunnel",
+          "label": "Seikan Tunnel opens",
+          "value": 1988,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.railtarget.eu/technologies-and-infrastructure/longest-train-tunnels-world-underground-marvels-10067.html",
+          "note": "",
+          "warmup": false,
+          "fame": 1
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": true,
+  "deepCutAt": 6,
+  "num": 31
+}

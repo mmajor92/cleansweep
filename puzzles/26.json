@@ -1,0 +1,231 @@
+{
+  "seed": 205907,
+  "slack": 1,
+  "bridges": [
+    "newhorizons",
+    "shuttle"
+  ],
+  "legs": [
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "ostrich",
+        "family": "ostrich",
+        "name": "An ostrich",
+        "hint": "",
+        "clue": "",
+        "cat": "weight",
+        "phrase": "the weight of an adult ostrich",
+        "label": "An ostrich",
+        "value": 115,
+        "approx": true,
+        "status": "verified",
+        "source": "https://nationalzoo.si.edu/animals/ostrich",
+        "note": "The biggest males exceed 150 kg.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "lrv",
+          "family": "lrv",
+          "name": "The Apollo Lunar Roving Vehicle",
+          "hint": "the electric buggy driven on the Moon",
+          "clue": "a vehicle used on the Moon",
+          "cat": "weight",
+          "phrase": "the weight of the Apollo Lunar Roving Vehicle without a payload",
+          "label": "Lunar Rover weight",
+          "value": 210,
+          "approx": false,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_lrv.html",
+          "note": "It could carry 440 kg of astronauts, equipment and samples.",
+          "warmup": false,
+          "fame": 2
+        },
+        {
+          "ent": "newhorizons",
+          "family": "newhorizons",
+          "name": "New Horizons",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the launch weight of New Horizons",
+          "label": "New Horizons weight",
+          "value": 478,
+          "approx": true,
+          "status": "unchecked",
+          "source": "NASA figure",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "speed",
+      "anchor": {
+        "ent": "newhorizons",
+        "family": "newhorizons",
+        "name": "New Horizons",
+        "hint": "",
+        "clue": "",
+        "cat": "speed",
+        "phrase": "the speed at which New Horizons left the Earth",
+        "label": "New Horizons launch speed",
+        "value": 58500,
+        "approx": true,
+        "status": "unchecked",
+        "source": "NASA figure",
+        "note": "It was the fastest launch of any spacecraft.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "shuttle",
+          "family": "shuttle",
+          "name": "The Space Shuttle",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the speed of the Space Shuttle in orbit",
+          "label": "Space Shuttle orbital speed",
+          "value": 28000,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www3.nasa.gov/centers/kennedy/pdf/566306main_shuttle-era-facts.pdf",
+          "note": "That is about 17,500 miles per hour.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "shuttle",
+        "family": "shuttle",
+        "name": "The Space Shuttle",
+        "hint": "",
+        "clue": "",
+        "cat": "date",
+        "phrase": "the first Space Shuttle launch",
+        "label": "First Shuttle launch",
+        "value": 1981,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.thisdayinaviation.com/tag/kennedy-space-center/page/2/",
+        "note": "Columbia flew STS-1 on 12 April 1981.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "kennedy",
+          "family": "kennedy",
+          "name": "The assassination of John F. Kennedy",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the assassination of John F. Kennedy",
+          "label": "Kennedy assassinated",
+          "value": 1963,
+          "approx": false,
+          "status": "verified",
+          "source": "https://glynde.info/history/document.php?id=52",
+          "note": "The US president was assassinated.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "empire",
+          "family": "empire",
+          "name": "The Empire State Building",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the opening of the Empire State Building",
+          "label": "Empire State Building opens",
+          "value": 1931,
+          "approx": false,
+          "status": "verified",
+          "source": "https://edition.cnn.com/us/empire-state-building-fast-facts",
+          "note": "President Hoover switched on its lights from Washington on 1 May 1931.",
+          "warmup": false,
+          "fame": 3,
+          "closer": {
+            "rival": {
+              "ent": "burj",
+              "family": "burj",
+              "name": "The Burj Khalifa",
+              "label": "Burj Khalifa opens",
+              "phrase": "the opening of the Burj Khalifa",
+              "value": 2010,
+              "fame": 3,
+              "status": "verified",
+              "source": "https://wandernundmehr.at/faq/wie-hoch-ist-der-monument"
+            },
+            "itemOn": "down",
+            "dItem": 32,
+            "dRival": 47
+          }
+        },
+        {
+          "ent": "cuttysark",
+          "family": "cuttysark",
+          "name": "The Cutty Sark",
+          "hint": "the tea clipper now preserved in Greenwich",
+          "clue": "a sailing ship from the 1800s",
+          "cat": "date",
+          "phrase": "the launch of the Cutty Sark",
+          "label": "Cutty Sark launched",
+          "value": 1869,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Cutty_Sark",
+          "note": "She launched on 22 November 1869.",
+          "warmup": false,
+          "fame": 2,
+          "closer": {
+            "rival": {
+              "ent": "lhc",
+              "family": "lhc",
+              "name": "The Large Hadron Collider",
+              "label": "LHC first beams",
+              "phrase": "the first beams circulating in the Large Hadron Collider",
+              "value": 2008,
+              "fame": 2,
+              "status": "verified",
+              "source": "https://lhc-machine-outreach.web.cern.ch"
+            },
+            "itemOn": "down",
+            "dItem": 62,
+            "dRival": 77
+          }
+        },
+        {
+          "ent": "transsib",
+          "family": "transsib",
+          "name": "The Trans-Siberian Railway",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the opening of the Trans-Siberian Railway",
+          "label": "Trans-Siberian Railway opens",
+          "value": 1903,
+          "approx": true,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q58767",
+          "note": "The whole line was finished in 1916.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": false,
+  "deepCutAt": -1,
+  "num": 26
+}
