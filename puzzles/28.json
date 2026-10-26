@@ -1,0 +1,199 @@
+{
+  "seed": 221745,
+  "slack": 1,
+  "bridges": [
+    "dc3",
+    "f35"
+  ],
+  "legs": [
+    {
+      "cat": "count",
+      "anchor": {
+        "ent": "states",
+        "family": "states",
+        "name": "The United States",
+        "hint": "",
+        "clue": "",
+        "cat": "count",
+        "phrase": "the number of US states",
+        "label": "US states",
+        "value": 50,
+        "approx": false,
+        "status": "definitional",
+        "source": "definition",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "dc3",
+          "family": "dc3",
+          "name": "The Douglas DC-3",
+          "hint": "the twin-engine airliner that made air travel pay in the 1930s",
+          "clue": "a twin-engine propeller airliner from the 1930s",
+          "cat": "count",
+          "phrase": "the typical number of passengers in a Douglas DC-3",
+          "label": "DC-3 passengers (typical)",
+          "value": 21,
+          "approx": false,
+          "status": "verified",
+          "source": "https://ingeniumcanada.org/artifact/douglas-dc-3",
+          "note": "It could carry up to 32.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "speed",
+      "anchor": {
+        "ent": "dc3",
+        "family": "dc3",
+        "name": "The Douglas DC-3",
+        "hint": "the twin-engine airliner that made air travel pay in the 1930s",
+        "clue": "a twin-engine propeller airliner from the 1930s",
+        "cat": "speed",
+        "phrase": "the top speed of the Douglas DC-3",
+        "label": "DC-3 top speed",
+        "value": 370,
+        "approx": true,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/Douglas_DC-3",
+        "note": "It cruised more slowly, at roughly 275 to 335 kilometres per hour.",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "spitfire",
+          "family": "spitfire",
+          "name": "The Spitfire",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the top speed of a Spitfire",
+          "label": "Spitfire top speed",
+          "value": 595.5,
+          "approx": true,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q29190",
+          "note": "Speeds varied by version.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "sound",
+          "family": "sound",
+          "name": "Sound",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the speed of sound in air at 20 degrees C",
+          "label": "Speed of sound",
+          "value": 1235,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.xataka.com/energia/thrust-ssc-a-393-044-km-h-sonda-parker-vehiculos-rapidos-hechos-hombre-sus-record-velocidad",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "f16",
+          "family": "f16",
+          "name": "The F-16 Fighting Falcon",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the top speed of the F-16 Fighting Falcon",
+          "label": "F-16 Fighting Falcon top speed",
+          "value": 2175,
+          "approx": true,
+          "status": "unchecked",
+          "source": "manufacturer specification",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "themoon",
+          "family": "themoon",
+          "name": "The Moon",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the average speed of the Moon around the Earth",
+          "label": "Moon orbital speed",
+          "value": 3600,
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "f35",
+          "family": "f35",
+          "name": "The F-35 Lightning II",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the top speed of the F-35 Lightning II",
+          "label": "F-35 Lightning II top speed",
+          "value": 1960,
+          "approx": true,
+          "status": "unchecked",
+          "source": "manufacturer specification",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "f35",
+        "family": "f35",
+        "name": "The F-35 Lightning II",
+        "hint": "",
+        "clue": "",
+        "cat": "weight",
+        "phrase": "the empty weight of the F-35 Lightning II",
+        "label": "F-35 Lightning II empty weight",
+        "value": 13290,
+        "approx": true,
+        "status": "unchecked",
+        "source": "manufacturer specification",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "elephant",
+          "family": "elephant",
+          "name": "An elephant",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the average weight of an adult African bush elephant",
+          "label": "African elephant (average)",
+          "value": 6000,
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
+          "note": "The record is over 10 tonnes.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": false,
+  "deepCutAt": -1,
+  "num": 28
+}

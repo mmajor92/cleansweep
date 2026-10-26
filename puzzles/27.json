@@ -1,0 +1,222 @@
+{
+  "seed": 213826,
+  "slack": 1,
+  "bridges": [
+    "qm2",
+    "bigben",
+    "eiffel"
+  ],
+  "legs": [
+    {
+      "cat": "speed",
+      "anchor": {
+        "ent": "motorwaylimit",
+        "family": "motorwaylimit",
+        "name": "The UK motorway speed limit",
+        "hint": "the 70 mph limit",
+        "clue": "a road rule in Britain",
+        "cat": "speed",
+        "phrase": "the national speed limit for cars on UK motorways",
+        "label": "UK motorway limit",
+        "value": 112.65,
+        "approx": false,
+        "status": "definitional",
+        "source": "definition",
+        "note": "",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "greyhound",
+          "family": "greyhound",
+          "name": "A greyhound",
+          "hint": "the fastest dog breed",
+          "clue": "a racing dog",
+          "cat": "speed",
+          "phrase": "the top speed of a greyhound",
+          "label": "Greyhound top speed",
+          "value": 72,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.dogster.com/lifestyle/how-fast-can-greyhounds-run",
+          "note": "That is about 45 mph, the fastest of any dog breed.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "cheetah",
+          "family": "cheetah",
+          "name": "A cheetah",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the top speed of a cheetah",
+          "label": "Cheetah top speed",
+          "value": 110,
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Fastest_animals",
+          "note": "Measured top speeds run from about 93 to 121 km/h.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "qm2",
+          "family": "qm2",
+          "name": "Queen Mary 2",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the top speed of Queen Mary 2",
+          "label": "Queen Mary 2 top speed",
+          "value": 56,
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Queen_Mary_2",
+          "note": "That is 30 knots.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "length",
+      "anchor": {
+        "ent": "qm2",
+        "family": "qm2",
+        "name": "Queen Mary 2",
+        "hint": "",
+        "clue": "",
+        "cat": "length",
+        "phrase": "the length of the ocean liner Queen Mary 2",
+        "label": "Queen Mary 2 length",
+        "value": 345.03,
+        "approx": false,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/Queen_Mary_2",
+        "note": "",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "colosseum",
+          "family": "colosseum",
+          "name": "The Colosseum",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the longest length of the Colosseum",
+          "label": "Colosseum length",
+          "value": 189,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.worldhistory.org/Colosseum/.md",
+          "note": "Some sources give 188 m.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "bigben",
+          "family": "bigben",
+          "name": "Big Ben's tower",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the height of the Elizabeth Tower (Big Ben)",
+          "label": "Elizabeth Tower height",
+          "value": 96,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Big_Ben",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "bigben",
+        "family": "bigben",
+        "name": "Big Ben's tower",
+        "hint": "",
+        "clue": "",
+        "cat": "date",
+        "phrase": "the completion of the Elizabeth Tower",
+        "label": "Elizabeth Tower completed",
+        "value": 1859,
+        "approx": false,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/Big_Ben",
+        "note": "The Great Clock started on 31 May 1859.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "eiffel",
+          "family": "eiffel",
+          "name": "The Eiffel Tower",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the completion of the Eiffel Tower",
+          "label": "Eiffel Tower inaugurated",
+          "value": 1889,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.manufacturing.net/iot/news/22118992/eiffel-tower-grows-even-higher",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "count",
+      "anchor": {
+        "ent": "eiffel",
+        "family": "eiffel",
+        "name": "The Eiffel Tower",
+        "hint": "",
+        "clue": "",
+        "cat": "count",
+        "phrase": "the number of steps to the top of the Eiffel Tower",
+        "label": "Eiffel Tower steps",
+        "value": 1665,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.wral.com/eiffel-tower-fast-facts/21522017/",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "sechour",
+          "family": "sechour",
+          "name": "An hour",
+          "hint": "",
+          "clue": "",
+          "cat": "count",
+          "phrase": "the number of seconds in an hour",
+          "label": "Seconds in an hour",
+          "value": 3600,
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": false,
+  "deepCutAt": -1,
+  "num": 27
+}

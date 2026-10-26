@@ -1,0 +1,222 @@
+{
+  "seed": 237583,
+  "slack": 1,
+  "bridges": [
+    "basketball",
+    "ingenuity",
+    "lusitania"
+  ],
+  "legs": [
+    {
+      "cat": "length",
+      "anchor": {
+        "ent": "cricketball",
+        "family": "cricket",
+        "name": "A cricket ball",
+        "hint": "the hard red leather ball",
+        "clue": "a sports ball",
+        "cat": "length",
+        "phrase": "the diameter of a cricket ball",
+        "label": "Cricket ball diameter",
+        "value": 0.072,
+        "approx": true,
+        "status": "unchecked",
+        "source": "MCC laws",
+        "note": "",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "pencil",
+          "family": "pencil",
+          "name": "A pencil",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the length of a pencil",
+          "label": "pencil length",
+          "value": 0.19,
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "basketball",
+          "family": "basketball",
+          "name": "A basketball",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the diameter of a basketball",
+          "label": "Basketball diameter",
+          "value": 0.24,
+          "approx": true,
+          "status": "unchecked",
+          "source": "FIBA rules",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "basketball",
+        "family": "basketball",
+        "name": "A basketball",
+        "hint": "",
+        "clue": "",
+        "cat": "weight",
+        "phrase": "the weight of a regulation size 7 basketball",
+        "label": "A basketball",
+        "value": 0.62,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.topendsports.com/resources/equipment/ball-weight.htm",
+        "note": "Size 7 is the regulation ball.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "ingenuity",
+          "family": "ingenuity",
+          "name": "The Ingenuity helicopter",
+          "hint": "the first helicopter to fly on Mars",
+          "clue": "a small robotic aircraft",
+          "cat": "weight",
+          "phrase": "the mass of the Ingenuity helicopter",
+          "label": "Ingenuity mass",
+          "value": 1.8,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Ingenuity_(helicopter)",
+          "note": "",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "speed",
+      "anchor": {
+        "ent": "ingenuity",
+        "family": "ingenuity",
+        "name": "The Ingenuity helicopter",
+        "hint": "the first helicopter to fly on Mars",
+        "clue": "a small robotic aircraft",
+        "cat": "speed",
+        "phrase": "the top speed of the Ingenuity helicopter",
+        "label": "Ingenuity top speed",
+        "value": 36,
+        "approx": false,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/Ingenuity_(helicopter)",
+        "note": "That is 10 metres per second.",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "exxonvaldez",
+          "family": "exxonvaldez",
+          "name": "The Exxon Valdez",
+          "hint": "the tanker behind the 1989 Alaska oil spill",
+          "clue": "an American oil tanker",
+          "cat": "speed",
+          "phrase": "the top speed of the Exxon Valdez",
+          "label": "Exxon Valdez top speed",
+          "value": 30.1,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Exxon_Valdez",
+          "note": "That is 16.25 knots.",
+          "warmup": false,
+          "fame": 1
+        },
+        {
+          "ent": "sperm",
+          "family": "sperm",
+          "name": "A sperm whale",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the top burst speed of a sperm whale",
+          "label": "Sperm whale top speed",
+          "value": 37,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/sperm-whale",
+          "note": "",
+          "warmup": false,
+          "fame": 2
+        },
+        {
+          "ent": "lusitania",
+          "family": "lusitania",
+          "name": "The Lusitania",
+          "hint": "the Cunard liner sunk by a German U-boat in 1915",
+          "clue": "a British ocean liner",
+          "cat": "speed",
+          "phrase": "the top speed of the Lusitania",
+          "label": "Lusitania top speed",
+          "value": 49.4,
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/RMS_Lusitania",
+          "note": "That was her best single day's run, 26.7 knots, in 1914.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "count",
+      "anchor": {
+        "ent": "lusitania",
+        "family": "lusitania",
+        "name": "The Lusitania",
+        "hint": "the Cunard liner sunk by a German U-boat in 1915",
+        "clue": "a British ocean liner",
+        "cat": "count",
+        "phrase": "the number of passengers the Lusitania could carry",
+        "label": "Lusitania passengers",
+        "value": 2198,
+        "approx": false,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/RMS_Lusitania",
+        "note": "",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "buckingham",
+          "family": "buckingham",
+          "name": "Buckingham Palace",
+          "hint": "the King's London home at the end of The Mall",
+          "clue": "a royal residence in London",
+          "cat": "count",
+          "phrase": "the number of rooms in Buckingham Palace",
+          "label": "Buckingham Palace rooms",
+          "value": 775,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.royal.uk/royal-residences-buckingham-palace",
+          "note": "That includes 78 bathrooms.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": true,
+  "deepCutAt": 3,
+  "num": 30
+}

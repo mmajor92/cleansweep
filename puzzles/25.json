@@ -1,0 +1,199 @@
+{
+  "seed": 197988,
+  "slack": 1,
+  "bridges": [
+    "twoeuro",
+    "bullet"
+  ],
+  "legs": [
+    {
+      "cat": "length",
+      "anchor": {
+        "ent": "twop",
+        "family": "twop",
+        "name": "A 2p coin",
+        "hint": "",
+        "clue": "",
+        "cat": "length",
+        "phrase": "the diameter of a 2p coin",
+        "label": "2p coin diameter",
+        "value": 0.0259,
+        "approx": false,
+        "status": "unchecked",
+        "source": "Royal Mint specification",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "baseball",
+          "family": "baseball",
+          "name": "A baseball",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the diameter of a baseball",
+          "label": "Baseball diameter",
+          "value": 0.074,
+          "approx": true,
+          "status": "unchecked",
+          "source": "MLB rules",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "twoeuro",
+          "family": "twoeuro",
+          "name": "A 2 euro coin",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the diameter of a 2 euro coin",
+          "label": "2 euro diameter",
+          "value": 0.02575,
+          "approx": false,
+          "status": "unchecked",
+          "source": "ECB specification",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "twoeuro",
+        "family": "twoeuro",
+        "name": "A 2 euro coin",
+        "hint": "",
+        "clue": "",
+        "cat": "weight",
+        "phrase": "the weight of a 2 euro coin",
+        "label": "2 euro coin",
+        "value": 0.0085,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.ecb.europa.eu/pub/pdf/other/euroleafleten.pdf",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "creditcard",
+          "family": "creditcard",
+          "name": "A credit card",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the weight of a credit card",
+          "label": "credit card weight",
+          "value": 0.005,
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "bullet",
+          "family": "bullet",
+          "name": "A rifle bullet",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the weight of a rifle bullet",
+          "label": "Rifle bullet weight",
+          "value": 0.004,
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "speed",
+      "anchor": {
+        "ent": "bullet",
+        "family": "bullet",
+        "name": "A rifle bullet",
+        "hint": "",
+        "clue": "",
+        "cat": "speed",
+        "phrase": "the speed of a rifle bullet",
+        "label": "Rifle bullet speed",
+        "value": 3380,
+        "approx": true,
+        "status": "unchecked",
+        "source": "typical figure",
+        "note": "That is a standard 5.56 mm military round.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "x15",
+          "family": "x15",
+          "name": "The North American X-15",
+          "hint": "a rocket plane that flew to the edge of space",
+          "clue": "an American rocket plane from the 1960s",
+          "cat": "speed",
+          "phrase": "the top speed of the North American X-15 (set by the X-15A-2 in 1967)",
+          "label": "X-15 top speed",
+          "value": 7274,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.thisdayinaviation.com/tag/william-j-knight/",
+          "note": "Pete Knight set the record on 3 October 1967. It still stands.",
+          "warmup": false,
+          "fame": 1
+        },
+        {
+          "ent": "sr71",
+          "family": "sr71",
+          "name": "The SR-71",
+          "hint": "a Cold War spy plane that flew at over three times the speed of sound",
+          "clue": "an American high-altitude spy plane",
+          "cat": "speed",
+          "phrase": "the speed record of the SR-71 Blackbird",
+          "label": "SR-71 record",
+          "value": 3530,
+          "approx": true,
+          "status": "verified",
+          "source": "https://tvovermind.com/fastest-things-humans-invented/",
+          "note": "",
+          "warmup": false,
+          "fame": 2
+        },
+        {
+          "ent": "f35",
+          "family": "f35",
+          "name": "The F-35 Lightning II",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the top speed of the F-35 Lightning II",
+          "label": "F-35 Lightning II top speed",
+          "value": 1960,
+          "approx": true,
+          "status": "unchecked",
+          "source": "manufacturer specification",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": true,
+  "deepCutAt": 4,
+  "num": 25
+}

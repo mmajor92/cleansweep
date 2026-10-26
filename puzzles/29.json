@@ -1,0 +1,231 @@
+{
+  "seed": 229664,
+  "slack": 1,
+  "bridges": [
+    "bismarck",
+    "sydney"
+  ],
+  "legs": [
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "fire",
+        "family": "fire",
+        "name": "The Great Fire of London",
+        "hint": "",
+        "clue": "",
+        "cat": "date",
+        "phrase": "the Great Fire of London",
+        "label": "Great Fire of London",
+        "value": 1666,
+        "approx": false,
+        "status": "verified",
+        "source": "https://vocapp.com/history-flashcards-3372796",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "hastings",
+          "family": "hastings",
+          "name": "The Battle of Hastings",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the Battle of Hastings",
+          "label": "Battle of Hastings",
+          "value": 1066,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.teachervision.com/world-history/resource/3851.html",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "shakespeare",
+          "family": "shakespeare",
+          "name": "The death of William Shakespeare",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the death of William Shakespeare",
+          "label": "Shakespeare dies",
+          "value": 1616,
+          "approx": false,
+          "status": "verified",
+          "source": "https://web.stanford.edu/class/engl113/page6.htm",
+          "note": "He died on 23 April, in Stratford-upon-Avon.",
+          "warmup": false,
+          "fame": 3,
+          "closer": {
+            "rival": {
+              "ent": "sack410",
+              "family": "sack410",
+              "name": "The sack of Rome by the Visigoths",
+              "label": "Visigoths sack Rome",
+              "phrase": "the sack of Rome by the Visigoths",
+              "value": 410,
+              "fame": 2,
+              "status": "verified",
+              "source": "https://www.nga.gov/features/byzantine/byzantine-empire-chronology-.html"
+            },
+            "itemOn": "up",
+            "dItem": 550,
+            "dRival": 656
+          }
+        },
+        {
+          "ent": "bastille",
+          "family": "bastille",
+          "name": "The French Revolution",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the start of the French Revolution",
+          "label": "French Revolution begins",
+          "value": 1789,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.teachervision.com/world-history/resource/3851.html",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "bismarck",
+          "family": "bismarck",
+          "name": "The battleship Bismarck",
+          "hint": "one of the largest battleships Germany ever built",
+          "clue": "a German battleship from World War II",
+          "cat": "date",
+          "phrase": "the commissioning of the battleship Bismarck",
+          "label": "Bismarck commissioned",
+          "value": 1940,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/German_battleship_Bismarck",
+          "note": "She sailed on only one offensive operation, in May 1941.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "bismarck",
+        "family": "bismarck",
+        "name": "The battleship Bismarck",
+        "hint": "one of the largest battleships Germany ever built",
+        "clue": "a German battleship from World War II",
+        "cat": "weight",
+        "phrase": "the full-load displacement of the battleship Bismarck",
+        "label": "Bismarck, full load",
+        "value": 50300000,
+        "approx": true,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/German_battleship_Bismarck",
+        "note": "That was well over the 35,000 tons the naval treaty allowed.",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "statue",
+          "family": "statue",
+          "name": "The Statue of Liberty's foundation",
+          "hint": "the concrete block under the Statue of Liberty",
+          "clue": "part of a famous statue",
+          "cat": "weight",
+          "phrase": "the weight of the Statue of Liberty's concrete foundation",
+          "label": "Statue's concrete foundation",
+          "value": 24494000,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nps.gov/stli/historyculture/statue-statistics.htm",
+          "note": "That is 54 million pounds.",
+          "warmup": false,
+          "fame": 1
+        },
+        {
+          "ent": "sydney",
+          "family": "sydney",
+          "name": "The Sydney Harbour Bridge",
+          "hint": "Sydney's steel arch bridge, nicknamed the Coathanger",
+          "clue": "a famous Australian steel arch bridge",
+          "cat": "weight",
+          "phrase": "the weight of the steelwork in the Sydney Harbour Bridge",
+          "label": "Sydney Harbour Bridge steel",
+          "value": 52800000,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Sydney_Harbour_Bridge",
+          "note": "The arch alone weighs 39,000 tonnes.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "sydney",
+        "family": "sydney",
+        "name": "The Sydney Harbour Bridge",
+        "hint": "Sydney's steel arch bridge, nicknamed the Coathanger",
+        "clue": "a famous Australian steel arch bridge",
+        "cat": "date",
+        "phrase": "the opening of the Sydney Harbour Bridge",
+        "label": "Sydney Harbour Bridge opens",
+        "value": 1932,
+        "approx": false,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/Sydney_Harbour_Bridge",
+        "note": "It opened on 19 March 1932.",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "eurostar",
+          "family": "eurostar",
+          "name": "A Eurostar train",
+          "hint": "the high-speed train through the Channel Tunnel",
+          "clue": "an international high-speed train",
+          "cat": "date",
+          "phrase": "the first Eurostar passenger service",
+          "label": "Eurostar starts",
+          "value": 1994,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/British_Rail_Class_373",
+          "note": "It began on 14 November 1994.",
+          "warmup": false,
+          "fame": 2,
+          "closer": {
+            "rival": {
+              "ent": "nelson",
+              "family": "nelson",
+              "name": "Nelson's Column",
+              "label": "Nelson's Column completed",
+              "phrase": "the completion of Nelson's Column",
+              "value": 1843,
+              "fame": 2,
+              "status": "verified",
+              "source": "https://en.wikipedia.org/wiki/Nelson%27s_Column"
+            },
+            "itemOn": "up",
+            "dItem": 62,
+            "dRival": 89
+          }
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": true,
+  "deepCutAt": 4,
+  "num": 29
+}
