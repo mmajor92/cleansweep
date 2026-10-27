@@ -27,7 +27,7 @@ jobs:
         run: |
           mkdir _site
           cp index.html styles.css _site/
-          cp -r src data _site/
+          cp -r src data mystery _site/
           if [ -d puzzles ]; then cp -r puzzles _site/; fi
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
