@@ -19,7 +19,7 @@ test("a note is read back on the day it was written, and not the next day", () =
 });
 
 test("the words on a card: not played, in progress, done with the result, and not solved", () => {
-  assert.deepEqual(statusLine(null), { text: "Not played yet", done: false });
+  assert.deepEqual(statusLine(null), { text: "Not played", done: false });
   assert.deepEqual(statusLine({ s: "play", t: "" }), { text: "In progress", done: false });
   assert.deepEqual(statusLine({ s: "done", t: "Done \u00b7 71%" }), { text: "\u2713 Done \u00b7 71%", done: true });
   assert.deepEqual(statusLine({ s: "lost", t: "" }), { text: "Not solved", done: false });
@@ -40,7 +40,7 @@ test("the New badge goes away by itself after its date", () => {
   const els = { newbadge: { hidden: false }, "gs-cs": { textContent: "", classList: { add() {}, remove() {} } }, "gs-mt": { textContent: "", classList: { add() {}, remove() {} } } };
   paintCards(mem(), { getElementById: (id) => els[id] }, Date.parse(MYSTERY_NEW_UNTIL + "T12:00:00Z") + 5 * 864e5);
   assert.equal(els.newbadge.hidden, true);
-  assert.equal(els["gs-cs"].textContent, "Not played yet");
+  assert.equal(els["gs-cs"].textContent, "Not played");
 });
 
 // ---- the real Clean Sweep screens ----
@@ -52,7 +52,7 @@ test("Clean Sweep marks today as in progress after the first answer, and done wi
   const page = await openPage({ dayOffset: DAYS_IN });
   const { picks } = answersFor(generateDaily(DAYS_IN + 1, entities));
   assert.equal(page.store["status:cs"], undefined, "nothing is written before anyone plays");
-  assert.equal(page.els["gs-cs"].textContent, "Not played yet");
+  assert.equal(page.els["gs-cs"].textContent, "Not played");
   page.click({ pick: picks[0] });
   assert.deepEqual(JSON.parse(page.store["status:cs"]), { d: today(), s: "play", t: "" });
   assert.equal(page.els["gs-cs"].textContent, "In progress");
@@ -77,7 +77,7 @@ test("Clean Sweep shows how Mystery Thing is going today, and ignores a note fro
     assert.equal(page.els["gs-mt"].textContent, want);
   }
   const old = await openPage({ store: { "status:mt": JSON.stringify({ d: yesterday(), s: "done", t: "Done \u00b7 600 pts" }) }, dayOffset: DAYS_IN });
-  assert.equal(old.els["gs-mt"].textContent, "Not played yet");
+  assert.equal(old.els["gs-mt"].textContent, "Not played");
 });
 
 test("practice puzzles leave no note, and playing one does not mark today as played", async () => {
@@ -85,7 +85,7 @@ test("practice puzzles leave no note, and playing one does not mark today as pla
   page.click({ mode: "practice", practice: "1" });
   page.click({ pick: "up" });
   assert.equal(page.store["status:cs"], undefined);
-  assert.equal(page.els["gs-cs"].textContent, "Not played yet");
+  assert.equal(page.els["gs-cs"].textContent, "Not played");
 });
 
 test("a finished day reloaded still shows as done, so the other game can see it", async () => {

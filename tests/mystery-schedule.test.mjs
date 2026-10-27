@@ -2,7 +2,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { RULES, mulberry32 as engineRng, yearsAgo as engineYearsAgo } from "../src/engine.js";
+import { RULES, countdownText as engineCountdown, mulberry32 as engineRng, yearsAgo as engineYearsAgo } from "../src/engine.js";
 import * as L from "../mystery/logic.js";
 import { buildData } from "../mystery/data.js";
 import { extendDays, mulberry32, pickDay } from "../mystery/schedule.js";
@@ -79,4 +79,14 @@ test("a day nobody has frozen yet is worked out the same for everyone, and a fro
   L.setDays([{ id: noSpeed.id, cs: ["length", "speed"] }]);
   assert.ok(L.dailyPuzzle(1).cs.every((c) => L.dailyPuzzle(1).secret.c[c]));
   L.setDays(extendDays([], secrets, 400));
+});
+
+test("the countdown to the next puzzle reads exactly like Clean Sweep's, at every time of day", () => {
+  for (const [h, m, sec] of [[0, 0, 0], [0, 0, 1], [6, 22, 30], [12, 0, 0], [18, 0, 0], [22, 59, 59], [23, 0, 0], [23, 30, 0], [23, 59, 0], [23, 59, 30]]) {
+    const t = new Date(Date.UTC(2026, 10, 3, h, m, sec));
+    assert.equal(L.countdownText(t), engineCountdown(t), `${h}:${m}:${sec}`);
+  }
+  assert.equal(L.countdownText(new Date(Date.UTC(2026, 10, 3, 17, 23, 0))), "6h 37m");
+  assert.equal(L.countdownText(new Date(Date.UTC(2026, 10, 3, 23, 8, 0))), "52m");
+  assert.equal(L.countdownText(new Date(Date.UTC(2026, 11, 31, 20, 0, 0))), "4h", "across a year end");
 });

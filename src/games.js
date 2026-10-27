@@ -45,7 +45,7 @@ export function readStatus(storage, game, now = Date.now()) {
 
 /** The words for a card. Done gets a tick and the result; a puzzle that ended unsolved just says so. */
 export function statusLine(v) {
-  if (!v) return { text: "Not played yet", done: false };
+  if (!v) return { text: "Not played", done: false };
   if (v.s === "done") return { text: "\u2713 " + v.t, done: true };
   if (v.s === "lost") return { text: "Not solved", done: false };
   return { text: "In progress", done: false };

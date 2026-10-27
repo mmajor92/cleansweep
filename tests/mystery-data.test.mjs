@@ -2,7 +2,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { DATA_CATS, MIN_POOL, NOT_AN_ANSWER, buildData } from "../mystery/data.js";
+import { DATA_CATS, MIN_POOL, NOT_AN_ANSWER, buildData, tidyLabel } from "../mystery/data.js";
 import { PRACTICE } from "../mystery/logic.js";
 
 const read = (p) => JSON.parse(readFileSync(new URL(p, import.meta.url), "utf8"));
@@ -49,4 +49,25 @@ test("data/mystery-days.json: a real launch date, days that make sense, and a fe
   });
   const n = Math.min(file.days.length, secrets.length);
   assert.equal(new Set(file.days.slice(0, n).map((d) => d.id)).size, n, "an answer repeats within a round");
+});
+
+test("no label on the result card is just the object's name: they all say what they measure", () => {
+  for (const o of objs) for (const [c, f] of Object.entries(o.c)) {
+    assert.ok(f.label.trim().length > 0, `${o.id} ${c}`);
+    assert.ok(!/^(a|an|the)\s/i.test(f.label), `${o.id} ${c}: "${f.label}" starts with an article`);
+    assert.notEqual(f.label.toLowerCase(), o.name.replace(/^(a|an|the)\s+/i, "").toLowerCase(), `${o.id} ${c}: "${f.label}" is just the name`);
+  }
+  assert.equal(byId.blackrhino.c.weight.label, "Black rhinoceros weight");
+  assert.equal(byId.blackrhino.c.length.label, "Black rhino height", "a label that already says what it measures is left alone");
+});
+
+test("tidyLabel: articles go, the first letter is capitalised, the measure is added, and good labels are untouched", () => {
+  assert.equal(tidyLabel("A baseball", "weight", "A baseball"), "Baseball weight");
+  assert.equal(tidyLabel("An AA battery", "weight", "An AA battery"), "AA battery weight");
+  assert.equal(tidyLabel("A T. rex", "weight", "A T. rex"), "T. rex weight");
+  assert.equal(tidyLabel("The Shard", "length", "The Shard"), "Shard size");
+  assert.equal(tidyLabel("Magna Carta", "date", "Magna Carta"), "Magna Carta year");
+  assert.equal(tidyLabel("a giant panda", "weight", "A giant panda"), "Giant panda weight");
+  for (const [l, c] of [["Fuji last erupts", "date"], ["Black rhino height", "length"], ["Sawe's marathon pace", "speed"], ["Palace front", "length"]]) assert.equal(tidyLabel(l, c, "Whatever"), l);
+  assert.equal(tidyLabel("", "weight", "A thing"), "", "an empty label is not turned into a made-up one");
 });

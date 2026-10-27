@@ -2,9 +2,19 @@
 
 The version number is in `src/version.js` and shows at the bottom of the page. Change both together.
 
+## v3.14
+- **Mystery Thing's result card says what each number is.** 36 facts had a label that was just the object's name ("A black rhinoceros" for its weight), which read oddly beside "Black rhino height" and "Black rhino top speed". The result card now shows "Black rhinoceros weight", "Baseball weight", "Giant panda weight" and so on. Labels that already say what they measure are left alone, and the facts file and Clean Sweep are untouched.
+- 2 new tests. All pass and the data check is clean.
+
+## v3.13
+- **Mystery Thing's result card now works like Clean Sweep's.** "Share result" (the phone's share sheet) with "Copy result", or just "Copy result" where sharing is not available. There is no "Play another" on a daily result, and it shows "Next puzzle in 6h 37m." counting down (after midnight it offers the new puzzle). The line above the Clean Sweep button is gone: it is one button, yellow to play it, quiet ("\u2713 Clean Sweep done") once it is finished, and "Finish today\u2019s Clean Sweep" if it was started.
+- **The explanation under Easy, Medium and Hard folds away.** It is open on a first visit, folds to one word ("Reminder") at the first guess ever, and then stays however the player last left it. The lock line ("Locked to Medium for today") always shows.
+- **"Not played yet" is now just "Not played"** on both games' cards.
+- 4 new tests (the countdown reads exactly like Clean Sweep's, the result card, the Reminder, the wording). All 322 pass and the data check is clean.
+
 ## v3.12
 - **Mystery Thing is on the real site**, at `cleansweepdaily.fyi/mystery/`. A second daily game: one hidden object a day, six guesses, and each guess says how its numbers (two of size, weight, speed and year) compare with the mystery thing's. Easy, Medium and Hard; one try a day (the setting locks at the first guess); two practice puzzles; a share card; brooms and sparkles for a clean sweep. It uses the same facts as Clean Sweep, so a fact added for one can feed the other. See "Mystery Thing" in the README.
-- **The two games now sit side by side.** Under the title, "Today's puzzles" shows a small card for each game with today's status: Not played yet, In progress, "Done" with the result, or Not solved. Each game leaves a short note on the player's own device and reads the other's. Nothing is sent anywhere. Mystery Thing's card has a "New" badge that goes away by itself on 15 December 2026. The light or dark choice is shared.
+- **The two games now sit side by side.** Under the title, "Today's puzzles" shows a small card for each game with today's status: Not played, In progress, "Done" with the result, or Not solved. Each game leaves a short note on the player's own device and reads the other's. Nothing is sent anywhere. Mystery Thing's card has a "New" badge that goes away by itself on 15 December 2026. The light or dark choice is shared.
 - **The days are frozen**, as the puzzle files are: `data/mystery-days.json` holds which answer is on which day (28 days ahead to start), and the weekly job (`npm run generate:ahead`) adds 21 more. Puzzle 1 is 27 October 2026 (`launchDate` in that file). Before the launch date the page shows puzzle 1.
 - **The deploy workflow changes by one word:** `.github/workflows/pages.yml` now also copies the `mystery` folder. `npm run lint:data` also checks Mystery Thing (the practice puzzles and the frozen days), and `npm run build` also writes `dist/mystery/index.html`.
 - **Wording:** Medium says "The list doesn’t shrink. Green means within double or half, red means further off." The lock note says just "Locked to Medium for today" with a lock. A game that ended unsolved says "Not solved".

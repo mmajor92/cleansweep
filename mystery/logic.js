@@ -78,6 +78,15 @@ export function filterThings(items, query) {
   hit.sort((a, b) => (b.n.startsWith(q) ? 1 : 0) - (a.n.startsWith(q) ? 1 : 0) || a.n.localeCompare(b.n));
   return hit.map((h) => h.o);
 }
+/** "6h 37m" or "52m": how long until the next puzzle (midnight UTC), worded exactly like Clean Sweep's countdown. A test checks they agree. */
+export function countdownText(now = new Date()) {
+  const next = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1);
+  const mins = Math.max(1, Math.ceil((next - now.getTime()) / 60000));
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  if (h === 0) return `${m}m`;
+  return m === 0 ? `${h}h` : `${h}h ${m}m`;
+}
 export function dayNumber(now = Date.now()) { return Math.max(1, Math.floor((now - LAUNCH) / 864e5) + 1); }
 /** A day is usable if its answer still exists, still has both clue numbers, and still gives a long enough list. */
 function dayUsable(e) { const o = e && byId[e.id]; return !!o && e.cs.every((c) => o.c[c]) && poolFor(e.cs).length >= MIN_POOL; }

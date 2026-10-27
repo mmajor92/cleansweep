@@ -8,6 +8,16 @@ export const MIN_POOL = 50; // a puzzle's clue pair must give a guess list of at
 export const NOT_AN_ANSWER = /rifle bullet|Juno|New Horizons|F-22|F-35|F-16|Segway/;
 
 const typo = (s) => (s || "").replace(/'/g, "\u2019");
+// Some labels are just the object's name ("A black rhinoceros" for its weight). Fine on Clean Sweep's ruler, but on the result card they sit
+// beside "Black rhino height" and "Black rhino top speed". Those become "Black rhinoceros weight". Labels that already say what they measure are left alone.
+const ARTICLE = /^(a|an|the)\s+/i;
+const CAT_WORD = { length: "size", weight: "weight", speed: "speed", date: "year" };
+export function tidyLabel(label, cat, name) {
+  const l = (label || "").trim();
+  const bare = l.replace(ARTICLE, "");
+  if (!ARTICLE.test(l) && bare.toLowerCase() !== (name || "").replace(ARTICLE, "").toLowerCase()) return l;
+  return bare.charAt(0).toUpperCase() + bare.slice(1) + " " + CAT_WORD[cat];
+}
 const subsets2 = (arr) => arr.flatMap((x, i) => arr.slice(i + 1).map((y) => [x, y]));
 
 /** entities is the "entities" list from data/facts.json. */
@@ -19,7 +29,7 @@ export function buildData(entities) {
       name: typo(e.name),
       fame: e.fame || 2,
       c: Object.fromEntries(
-        DATA_CATS.filter((k) => e.facts[k] && !e.facts[k].warmup).map((k) => [k, { v: e.facts[k].value, ap: !!e.facts[k].approx, label: typo(e.facts[k].label), note: typo(e.facts[k].note || "") }]),
+        DATA_CATS.filter((k) => e.facts[k] && !e.facts[k].warmup).map((k) => [k, { v: e.facts[k].value, ap: !!e.facts[k].approx, label: typo(tidyLabel(e.facts[k].label, k, e.name)), note: typo(e.facts[k].note || "") }]),
       ),
     }))
     .filter((o) => Object.keys(o.c).length >= 2);

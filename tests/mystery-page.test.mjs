@@ -69,3 +69,24 @@ test("the site is deployed with the mystery folder, and the weekly job freezes M
   assert.match(pkg.scripts["lint:data"], /lint-mystery\.mjs/);
   assert.match(read(".github/workflows/generate-puzzles.yml"), /npm run generate:ahead/);
 });
+
+test("the result card: Share and Copy like Clean Sweep, a countdown, one button to the other game, and no Play another on a daily result", () => {
+  assert.match(ui, /Share result/);
+  assert.match(ui, /Copy result/);
+  assert.match(ui, /navigator\.share/);
+  assert.match(ui, /Next puzzle in /);
+  assert.ok(!/Next: Clean Sweep/.test(ui) && !/Seven higher-or-lower/.test(ui), "the sentence above the Clean Sweep button should be gone");
+  for (const label of ["Play today\\u2019s Clean Sweep", "Finish today\\u2019s Clean Sweep", "\\u2713 Clean Sweep done"]) assert.ok(ui.includes(label), label);
+  const daily = ui.slice(ui.indexOf("puzzle.daily\n          ?"), ui.indexOf(": '<div class=\"btns\"><button class=\"btn primary\" id=\"copy\""));
+  assert.ok(daily.includes("shareButtons()") && !daily.includes("another"), "a daily result must not offer Play another");
+});
+
+test("the Reminder under the settings: a single word to open it, remembered between visits, folded away by the first guess", () => {
+  assert.match(html, /<button class="remind" id="remind"[^>]*>Reminder<\/button>/);
+  assert.match(ui, /"mt:help"/);
+  assert.match(ui, /if \(store\.get\("mt:help"\) === null\) store\.set\("mt:help", "closed"\)/);
+});
+
+test("the status words are short: Not played, with no 'yet', anywhere", () => {
+  for (const f of ["index.html", "mystery/index.html", "src/games.js", "README.md"]) assert.ok(!read(f).includes("Not played yet"), `${f} still says Not played yet`);
+});

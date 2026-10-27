@@ -39,8 +39,8 @@
   </header>
   <p class="gtitle">Today’s puzzles</p>
   <nav class="games" aria-label="Today’s puzzles">
-    <a class="gamecard" href="../"><span class="gname">Clean Sweep</span><span class="gstat" id="gs-cs">Not played yet</span></a>
-    <a class="gamecard" href="./" aria-current="page"><span class="gname">Mystery Thing <span class="newbadge" id="newbadge">New</span></span><span class="gstat" id="gs-mt">Not played yet</span></a>
+    <a class="gamecard" href="../"><span class="gname">Clean Sweep</span><span class="gstat" id="gs-cs">Not played</span></a>
+    <a class="gamecard" href="./" aria-current="page"><span class="gname">Mystery Thing <span class="newbadge" id="newbadge">New</span></span><span class="gstat" id="gs-mt">Not played</span></a>
   </nav>
   <div class="firsttime" id="firsttime" role="note" hidden>
     <span>First time? Tap the <b>?</b> for a practice round!</span>
@@ -69,6 +69,7 @@
     <button type="button" data-mode="normal" aria-pressed="true">Medium</button>
     <button type="button" data-mode="hard" aria-pressed="false">Hard</button>
   </div>
+  <button class="remind" id="remind" type="button" aria-expanded="true" aria-controls="modehelp">Reminder</button>
   <p class="modehelp" id="modehelp"></p>
   <p class="modelock" id="modelock"></p>
   <div class="tools" id="tools" aria-label="Testing controls" hidden>
