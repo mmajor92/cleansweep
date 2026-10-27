@@ -34,7 +34,7 @@ test("the icons live under src, which the deploy already copies, so they really 
   const hrefs = [...html.matchAll(/(?:<link rel="(?:icon|apple-touch-icon)" href|property="og:image" content)="([^"]+)"/g)].map((m) => m[1]);
   assert.ok(hrefs.length >= 4, "the three icon links and the share picture");
   for (const h of hrefs.filter((x) => !x.startsWith("https://"))) assert.ok(h.startsWith("src/icons/"), `${h} would not be deployed`);
-  assert.match(pages, /cp -r src data _site\//, "the deploy copies the src folder");
+  assert.match(pages, /cp -r src data[^\n]* _site\//, "the deploy copies the src folder");
 });
 
 test("the link-preview picture: a 1200 by 630 image with an absolute address, so messaging apps can show it", () => {

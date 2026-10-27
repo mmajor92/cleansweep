@@ -4,6 +4,8 @@ A daily sweep of seven higher-or-lower questions. The aim is a **Clean Sweep**: 
 
 Categories: length, weight, date, how many, speed.
 
+There is a second game on the same site, **Mystery Thing** (see below).
+
 ## How a puzzle works
 
 1. You see a starting value, for example the Eiffel Tower is 330 m.
@@ -39,7 +41,7 @@ There are exactly two practice puzzles. They are fixed (the same for everyone, n
 
 ## Counting players (optional)
 
-Set `GOATCOUNTER_CODE` in `src/site.js` to switch on GoatCounter. It counts visits, plus two events: `finished` (a daily puzzle was completed) and `clean-sweep` (a perfect 7 out of 7). It does not use cookies or track individuals. Only you can see the dashboard. Practice games and reloads of a finished day are not counted. Leave the code empty to switch it all off.
+Set `GOATCOUNTER_CODE` in `src/site.js` to switch on GoatCounter. It counts visits, plus two events: `finished` (a daily puzzle was completed) and `clean-sweep` (a perfect 7 out of 7). It does not use cookies or track individuals. Only you can see the dashboard. Practice games and reloads of a finished day are not counted. Leave the code empty to switch it all off. Mystery Thing adds two more: `mystery-finished` (today's puzzle was finished, solved or given up) and `mystery-clean-sweep` (solved with every guess green). Its visits show as the path `/mystery/`.
 
 ## Fonts
 
@@ -87,6 +89,19 @@ The headline score is the **percentage of the day's maximum**, with the points a
 
 Neighbouring values are kept close. For puzzles from number 7, no question is more than **3 times** apart: the first question in a stretch may be up to 3x, then 2.5x, 2x and 1.7x, and a bridge question up to 3x (`maxGap` and `hingeMaxGap` in `RULES`). Puzzles 1 to 6 were built under the older, looser limits (4x, tightening to 2x, and 3.1x for a bridge), so a published puzzle is always **validated against the loosest limits ever used** (`maxGapPublished`): tightening the rules for new puzzles can never make an old one invalid. Dates are compared by "years ago", so 1912 against 1889 is close, and Cleopatra against the pyramid is not.
 
+## Mystery Thing
+
+A second daily game on the same site, at `/mystery/`. One hidden object a day and six guesses. The player picks things from a list. Each guess shows how its numbers (two of size, weight, speed and year) compare with the mystery thing's: an arrow points the way, and on Easy and Medium a colour says whether the guess is within double or half (green) or further off (red).
+
+- **Settings.** Easy: the list shrinks as the clues rule things out. Medium (called `normal` in the code): the full list, with colours. Hard: the full list, arrows only, and scores x1.5. A player has **one try a day**: the setting locks at the first guess, and the saved game remembers it (one record per puzzle, `mt:<number>`). The two practice puzzles (the Eiffel Tower, then a giraffe) are fixed, unlimited and never locked.
+- **Where the facts come from.** The same `data/facts.json` as Clean Sweep. An object is in the game if it has **two or more** of length, weight, speed and date (counts are left out). Objects with `fame` 3 can be the answer, except those named in `NOT_AN_ANSWER` in `mystery/data.js`; anything can be guessed. A clue pair must give a guess list of at least 50 things. So a fact added for Clean Sweep can add an answer here, and a second number for an object that has only one is the quickest way to add answers.
+- **Which answer on which day.** Frozen in `data/mystery-days.json`, like the puzzle files. Day 1 is its `launchDate` (UTC; set it once, before launch). Days already in the file never change, and `npm run generate:ahead` (the weekly job) adds the next 21. A day nobody has frozen yet is worked out the same way for everyone. Every answer comes up once before any comes round again, and the same clue pair rarely comes two days running.
+- **The two games see each other.** Each leaves a short note on the player's own device (`status:cs` and `status:mt`, counted only on the day it was written), and the two cards under "Today's puzzles" say Not played yet, In progress, "Done" with the result, or Not solved. Nothing is sent anywhere (`src/games.js`). The "New" badge on Mystery Thing's card goes away by itself after `MYSTERY_NEW_UNTIL` in that file. The light or dark choice is shared by both pages.
+- **Files.** `mystery/logic.js` (rules, scoring, share card, no screen), `data.js` (turns the facts into the game's data), `schedule.js` (which answer when), `ui.js` (the screen), `main.js`, `index.html`, `styles.css`. Tests: `tests/mystery-*.test.mjs` and `tests/games.test.mjs`. `npm run lint:data` also checks the practice puzzles and the frozen days.
+- **Trying it by hand.** Open `/mystery/#debug` to show the testing controls (new puzzle, open puzzle N, clear saved games) and the hooks the browser tests use. Without `#debug` they are hidden.
+- **Sharing.** The result is copied as a short card (clue icons, one row per guess, points) ending with `cleansweepdaily.fyi/mystery`.
+- **Difficulty.** For a player who always guesses something still consistent with the clues, a game takes about 3.3 guesses on Easy, 3.9 on Medium and 4.6 on Hard, and 86% of Hard games are solved within 6 (all Easy games, 96% on Medium). Measured by a script that plays the game that way; real players will differ.
+
 ## Run it
 
 Needs Node 20 or newer. There are no dependencies.
@@ -95,7 +110,7 @@ Needs Node 20 or newer. There are no dependencies.
 npm run serve      # http://localhost:8080
 npm test           # unit tests
 npm run lint:data  # checks every fact and generates three years of puzzles (about 30 seconds)
-npm run build      # writes dist/index.html, one self-contained file
+npm run build      # writes dist/index.html and dist/mystery/index.html, each one self-contained file
 HARVEST_CONTACT="you@example.com" npm run harvest   # needs network: pulls candidate facts from Wikidata
 ```
 
@@ -103,15 +118,18 @@ HARVEST_CONTACT="you@example.com" npm run harvest   # needs network: pulls candi
 
 ```
 index.html, styles.css     the page
+mystery/                   the second game, Mystery Thing (see its section)
 src/engine.js              rules, puzzle generator, validation (pure, no DOM)
 src/format.js              number, date and question text
 src/store.js               saved progress, daily lock, streaks (storage is injected)
 src/ui.js                  rendering and game flow
 src/main.js                loads data and starts the game
+src/games.js               the two games showing each other's progress, the New badge, visitor counting
 data/facts.json            the production fact pool
 data/candidates.json       facts that are NOT verified, never used in puzzles
+data/mystery-days.json     Mystery Thing: which answer is on which day, frozen
 puzzles/N.json             published puzzles, frozen (created by npm run generate)
-scripts/                   lint, generate, build, serve
+scripts/                   lint, generate, build, serve (lint-mystery and mystery-days are for Mystery Thing)
 tests/                     node:test suites
 docs/adding-facts.md       how to add and verify facts
 ```
@@ -152,19 +170,19 @@ A **question** is two objects compared in one category, whichever way round: the
 
 A new puzzle is built in steps. Its first tries refuse any question that was ever asked, then any asked in the last 365 days. After that questions are only *preferred*: never asked first, then those asked longest ago (over 365 days, over 180, over 60). Nothing here can stop a puzzle from building: the refusals are lifted long before the tries run out, and the rule only changes the order in which questions are tried. The settings are `pairTiers`, `pairTierAttempts`, `pairBudget`, `pairOldAges` and `pairMemoryDays` in `RULES`.
 
-In a simulated run from puzzle #1 the first repeated question comes at about **day 444** (day 17 without the rule). None of the first year's questions repeat one asked before, then about 17% in year two and 66% in year three. Tightening the step limits in 3.7 cut the number of possible questions by about a fifth, and the new facts more than made up for it: there are about 7,200 different ordinary questions (and about 37,800 possible "closer in time" questions, see below), so how long the game stays fresh depends on the facts. Speed (about 600 questions, 1.1 years of supply), weight (about 680, 1.4 years), count (about 1,050, 2.2 years) and length (about 1,160, 2.3 years) run dry first; dates have about 3,700, which is 7 years. Facts added to the thin categories help most, and the number of questions grows faster than the number of facts. The data check simulates three years in a row (it takes about 30 seconds), prints these figures, and warns if the first repeat comes before day 180 or more than 5% of the first year's questions repeat.
+In a simulated run from puzzle #1 the first repeated question comes at about **day 605** (day 17 without the rule). None of the first year's questions repeat one asked before, then about 2% in year two and 47% in year three. Tightening the step limits in 3.7 cut the number of possible questions by about a fifth, and the new facts more than made up for it: there are about 9,300 different ordinary questions (and about 37,800 possible "closer in time" questions, see below), so how long the game stays fresh depends on the facts. Weight (about 760 questions, 1.5 years of supply), speed (about 950, 1.8 years), count (about 1,050, 2.1 years) and length (about 1,990, 4.1 years) run dry first; dates have about 4,530, which is 8.6 years. Facts added to the thin categories help most, and the number of questions grows faster than the number of facts. The data check simulates three years in a row (it takes about 30 seconds), prints these figures, and warns if the first repeat comes before day 180 or more than 5% of the first year's questions repeat.
 
 What the rule costs: about 8% of bridge objects are not used as a bridge in a year (about 5% without it), because an object with few possible partners uses up its few questions, and the share of questions on objects nearly everyone knows is about 4 points lower (58% against 62%). Questions are about as hard as before (weight questions are slightly easier).
 
 ## Known limits
 
-- The pool has 329 objects (161 date facts, 151 length, 111 count, 150 weight, 93 speed), 171 of them multi-category, 129 of which were used as a bridge in a simulated year. In that year no bridge repeats inside a week, all 20 possible switches between categories appear, and the busiest bridges are a bridge on 13 to 18 days. A bridge object comes back after a median of about 36 days, so adding more multi-category objects is the best way to keep the game fresh. About 63% of questions use objects nearly everyone knows, 33% objects most people know, and 5% enthusiast objects. 19 of the 275 everyday objects appear on fewer than 2 days in the first simulated year, and about 6% on average over three years (the data check warns above 12%). Only 4 bridge objects (2%) are never used as a bridge in any of three simulated years (the limit is 8%): with this many bridges, some go unused in any one year just by chance. The data check also prints how many times an average fact in each category is asked about in a year (speed 5.7, count 4.4, length 3.4, weight 3.3, date 3.2): the categories with the highest numbers are the ones that most need new facts, and a low number means a category has more facts than it needs. There are no warm-ups (see below), 35% of puzzles have a "closer in time" question, and 45% of days include a Deep cut. The linter checks all of this and warns when it slips.
+- The pool has 337 objects (174 date facts, 194 length, 111 count, 159 weight, 106 speed), 208 of them multi-category, 164 of which were used as a bridge in a simulated year. In that year no bridge repeats inside a week, all 20 possible switches between categories appear, and the busiest bridges are a bridge on 11 to 12 days. A bridge object comes back after a median of about 46 days, so adding more multi-category objects is the best way to keep the game fresh. About 67% of questions use objects nearly everyone knows, 28% objects most people know, and 5% enthusiast objects. 17 of the 283 everyday objects appear on fewer than 2 days in the first simulated year, and about 7% on average over three years (the data check warns above 12%). Only 6 bridge objects (3%) are never used as a bridge in any of three simulated years (the limit is 8%): with this many bridges, some go unused in any one year just by chance. The data check also prints how many times an average fact in each category is asked about in a year (speed 5.1, count 4.5, weight 3.1, date 3.0, length 2.5): the categories with the highest numbers are the ones that most need new facts, and a low number means a category has more facts than it needs. There are no warm-ups (see below), 35% of puzzles have a "closer in time" question, and 46% of days include a Deep cut. The linter checks all of this and warns when it slips.
 - **The ends of a scale can only be reached through a bridge.** A stretch of questions walks from one object to its neighbours, each within a few times the size of the last, and it cannot be more than 5 questions long. So a light or a tiny or a huge object is only asked if a bridge object (one with numbers in two categories) sits near it, or if a puzzle happens to start on it. Nothing lighter than 100 g is a bridge. In a three-year simulation five new facts at that end (three coins, a battery and a CD) were asked on 0 days, and the older ones there (the table tennis ball, the shuttlecock and the egg) on fewer than 2 days a year. Add facts at the ends of a scale as objects with two numbers (a coin's weight and its diameter, for example), never as a single number. Giving each of those a size (a coin's diameter, a ball's diameter) in 3.7 made them bridges, and all of them are now asked. Facts that were checked but cannot yet be asked wait in `data/candidates.json`.
 - **An object can hold more than one number in the same category.** The Eiffel Tower has its steps and its rivets, and the Titanic several lengths, dates and counts. Write each extra number as its own entry with `"object": "<the id of the main object>"` and exactly one fact. An extra shares its object's family (so the two never appear in the same puzzle), takes its fame, hint and clue unless it sets its own, and counts as the same object for the "no object two days running" and freshness rules. It never bridges (it holds one fact): the object bridges through its main numbers. The data check fails if the object does not exist, and warns if the extra repeats a number the object already has. Notes and wording should be metric (kg, m, km/h).
 - Puzzles published before v3 have two halves (`c1`, `c2`, `seg1`, `seg2` and a `hinge`). The game and the linter convert them when they load them (`normalizePuzzle` in `src/engine.js`), so those files never need touching.
 - Dates use a fixed "now" of 2026 (`RULES.nowYear`). Update it each year and re-run the linter. Frozen puzzles are unaffected.
 - The ruler for dates is linear, so a segment that spans millennia crowds its modern points.
-- Streaks and the daily lock live in the browser's `localStorage`. Clearing it resets them.
+- Streaks and the daily lock live in the browser's `localStorage`. Clearing it resets them. Mystery Thing's one try a day works the same way: a private window or cleared browser data gives another go.
 
 ## Launching
 

@@ -2409,6 +2409,17 @@
           "source": "https://www.mon-sejour-en-montagne.com/?p=14205",
           "checkedOn": "2026-10-15",
           "note": "It last erupted in 1707."
+        },
+        "date": {
+          "phrase": "the last eruption of Mount Fuji",
+          "label": "Fuji last erupts",
+          "value": 1707,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.britannica.com/place/Mount-Fuji",
+          "checkedOn": "2026-10-26",
+          "note": "The Hoei eruption began in December 1707."
         }
       },
       "family": "fuji",
@@ -2429,6 +2440,27 @@
           "status": "definitional",
           "source": "definition",
           "basis": "Official distance set by World Athletics: 42.195 km"
+        },
+        "date": {
+          "phrase": "the first Olympic marathon",
+          "label": "First Olympic marathon",
+          "value": 1896,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.historyextra.com/period/ancient-greece/history-marathons-london-greece-when-first-marathon-runners/",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the average speed of Sabastian Sawe's 1:59:30 marathon in London in 2026",
+          "label": "Sawe's marathon pace",
+          "value": 21.19,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://worldathletics.org/competitions/world-athletics-label-road-races/news/sawe-two-hour-assefa-world-record-london-marathon",
+          "checkedOn": "2026-10-26",
+          "note": "London, 26 April 2026: the first sub-two-hour marathon in an official race, 1:59:30."
         }
       },
       "family": "marathon",
@@ -3713,6 +3745,16 @@
           "source": "https://www.royal.uk/royal-residences-buckingham-palace",
           "checkedOn": "2026-10-15",
           "note": "She was the first sovereign to live there."
+        },
+        "length": {
+          "phrase": "the length of the front of Buckingham Palace",
+          "label": "Palace front",
+          "value": 108,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.royal.uk/royal-residences-buckingham-palace",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "buckingham",
@@ -3777,6 +3819,16 @@
           "source": "https://bowl.com/rules/usbc-playing-rules",
           "checkedOn": "2026-10-20",
           "note": "One for the thumb and two for the fingers."
+        },
+        "length": {
+          "phrase": "the diameter of a ten-pin bowling ball",
+          "label": "Bowling ball diameter",
+          "value": 0.218,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://bowl.com/getmedia/08ef148d-c0e4-4e00-9e0d-855ba4729ad5/equipment-specs-manual.pdf",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "bowlingball",
@@ -4147,6 +4199,16 @@
           "source": "https://www.hillsvet.com.mx/content/dam/cp-sites/hills/hills-vet/es_mx/general/pdf/breeding_ideal_weight_ranges_canine_feline-secured.pdf",
           "checkedOn": "2026-10-15",
           "note": "Corgis weigh 10 to 14 kilograms."
+        },
+        "length": {
+          "phrase": "the height of a Pembroke Welsh corgi at the shoulder",
+          "label": "Corgi height",
+          "value": 0.28,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.royalkennelclub.com/breed-standards/pastoral/welsh-corgi-pembroke/",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "corgi",
@@ -4377,6 +4439,17 @@
           "source": "https://www.the-shard.com/about/",
           "checkedOn": "2026-10-20",
           "note": "They cover about 56,000 square metres."
+        },
+        "date": {
+          "phrase": "the inauguration of the Shard",
+          "label": "Shard inaugurated",
+          "value": 2012,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.the-shard.com/news-events/news-events/2017/the-shard-five-years-on/",
+          "checkedOn": "2026-10-26",
+          "note": "Its viewing gallery opened in February 2013."
         }
       },
       "fame": 3
@@ -5343,6 +5416,26 @@
           "status": "definitional",
           "source": "definition",
           "basis": "Definition of a standard deck"
+        },
+        "length": {
+          "phrase": "the height of a playing card",
+          "label": "Playing card height",
+          "value": 0.089,
+          "unit": "m",
+          "approx": false,
+          "status": "unchecked",
+          "source": "poker card size",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a deck of cards",
+          "label": "Deck of cards weight",
+          "value": 0.095,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
         }
       },
       "fame": 3
@@ -6640,6 +6733,16 @@
           "source": "https://worldathletics.org/news/news/implements",
           "checkedOn": "2026-10-20",
           "note": "The women's shot weighs 4 kg."
+        },
+        "length": {
+          "phrase": "the diameter of a men's shot put",
+          "label": "Shot put diameter",
+          "value": 0.12,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/sports/athletics/The-shot-put",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "shotput",
@@ -6659,6 +6762,16 @@
           "source": "https://worldathletics.org/news/news/implements",
           "checkedOn": "2026-10-20",
           "note": "The women's discus weighs 1 kg."
+        },
+        "length": {
+          "phrase": "the diameter of a men's discus",
+          "label": "Discus diameter",
+          "value": 0.22,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://worldathletics.org/download/download?filename=acdec6c6-1261-4c7f-96d2-92f712707e99.pdf&urlslug=Competition+and+Technical+Rules+%E2%80%93+2026+Edition",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "discus",
@@ -6678,6 +6791,16 @@
           "source": "https://worldathletics.org/news/news/implements",
           "checkedOn": "2026-10-20",
           "note": "The women's javelin weighs 600 g."
+        },
+        "length": {
+          "phrase": "the length of a men's javelin",
+          "label": "Javelin length",
+          "value": 2.65,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "World Athletics rules",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "javelin",
@@ -6697,6 +6820,16 @@
           "source": "https://rolci.desarrollo.edu.py/blog/hockey-puck-vs-baseball-weight-comparison-guide-1764797244",
           "checkedOn": "2026-10-20",
           "note": "Pucks may weigh from 156 g up to 170 g."
+        },
+        "length": {
+          "phrase": "the diameter of an ice hockey puck",
+          "label": "Puck diameter",
+          "value": 0.0762,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.dimensions.com/element/ice-hockey-puck",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "puck",
@@ -6745,6 +6878,16 @@
           "source": "https://www.sciencefocus.com/the-human-body/top-10-what-are-the-heaviest-organs-in-the-human-body/",
           "checkedOn": "2026-10-20",
           "note": "It is about the size of your fist."
+        },
+        "length": {
+          "phrase": "the length of a human heart",
+          "label": "Heart length",
+          "value": 0.12,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "anatomy textbook figure",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "heart",
@@ -6785,6 +6928,16 @@
           "source": "https://theconversation.com/curious-kids-how-much-does-a-brain-weigh-112000",
           "checkedOn": "2026-10-20",
           "note": "Sources give 1.3 to 1.5 kg."
+        },
+        "length": {
+          "phrase": "the length of a human brain",
+          "label": "Brain length",
+          "value": 0.16,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "anatomy textbook figure",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "brain",
@@ -6804,6 +6957,16 @@
           "source": "https://www.wwf.org.uk/sites/default/files/2019-08/Species_Fact_Sheets.pdf",
           "checkedOn": "2026-10-20",
           "note": "Adults weigh 85 to 125 kg."
+        },
+        "length": {
+          "phrase": "the body length of a giant panda",
+          "label": "Panda length",
+          "value": 1.5,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nationalzoo.si.edu/animals/giant-panda",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "panda",
@@ -6823,6 +6986,16 @@
           "source": "https://www.wwf.org.uk/sites/default/files/2019-08/Species_Fact_Sheets.pdf",
           "checkedOn": "2026-10-20",
           "note": "WWF says adults weigh up to 40 kg."
+        },
+        "length": {
+          "phrase": "the standing height of an emperor penguin",
+          "label": "Penguin height",
+          "value": 1.15,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.pbs.org/wnet/nature/blog/penguin-fact-sheet/",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "penguin",
@@ -6863,6 +7036,26 @@
           "source": "https://www.jungledragon.com/specie/3275/map",
           "checkedOn": "2026-10-20",
           "note": "The red kangaroo is the largest kangaroo: big males reach up to 90 kg."
+        },
+        "length": {
+          "phrase": "the standing height of a male red kangaroo",
+          "label": "Kangaroo height",
+          "value": 1.5,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://sydneyzoo.com/animals/red-kangaroo",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top hopping speed of a red kangaroo",
+          "label": "Kangaroo top speed",
+          "value": 60,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://sydneyzoo.com/animals/red-kangaroo",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "redkangaroo",
@@ -7047,6 +7240,26 @@
           "source": "https://www.britannica.com/animal/snail",
           "checkedOn": "2026-10-20",
           "note": "Two have eyes and two sense smell."
+        },
+        "length": {
+          "phrase": "the width of a garden snail's shell",
+          "label": "Snail shell width",
+          "value": 0.03,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a garden snail",
+          "label": "Snail weight",
+          "value": 0.01,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.dimensions.com/element/garden-snail-cornu-aspersum",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "snail",
@@ -7076,6 +7289,26 @@
           "status": "verified",
           "source": "https://www.britannica.com/animal/sloth",
           "checkedOn": "2026-10-20"
+        },
+        "weight": {
+          "phrase": "the weight of a three-toed sloth",
+          "label": "Sloth weight",
+          "value": 4,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://kids.britannica.com/students/article/sloth/277093",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the body length of a three-toed sloth",
+          "label": "Sloth length",
+          "value": 0.6,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://kids.britannica.com/students/article/sloth/277093",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "sloth",
@@ -7237,6 +7470,16 @@
           "source": "https://www.cyclinguk.org/article/what-bicycle-weight",
           "checkedOn": "2026-10-20",
           "note": "Racing bikes can weigh less than 7 kg."
+        },
+        "length": {
+          "phrase": "the length of a bicycle",
+          "label": "Bicycle length",
+          "value": 1.75,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://bicycleinfrastructuremanuals.com/manuals3/Cycling%20Aspects%20of%20Ausroads%20Guides.pdf",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "bicycle",
@@ -7256,6 +7499,16 @@
           "source": "https://www.lbma.org.uk/good-delivery/gold-standard",
           "checkedOn": "2026-10-20",
           "note": "It is the large bar that banks and central banks trade."
+        },
+        "length": {
+          "phrase": "the length of a standard gold bar",
+          "label": "Gold bar length",
+          "value": 0.25,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "LBMA specification",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "goldbar",
@@ -7285,6 +7538,26 @@
           "status": "verified",
           "source": "https://www.fifa.com/en/tournaments/mens/worldcup/qatar2022/news/the-story-of-the-fifa-world-cup-trophy",
           "checkedOn": "2026-10-20"
+        },
+        "length": {
+          "phrase": "the height of the FIFA World Cup trophy",
+          "label": "World Cup trophy height",
+          "value": 0.368,
+          "unit": "m",
+          "approx": false,
+          "status": "unchecked",
+          "source": "FIFA",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the first year the current World Cup trophy was awarded",
+          "label": "World Cup trophy first awarded",
+          "value": 1974,
+          "unit": "year",
+          "approx": false,
+          "status": "unchecked",
+          "source": "FIFA",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "wctrophy",
@@ -7314,6 +7587,27 @@
           "source": "https://www.oscars.org/oscars/statuette",
           "checkedOn": "2026-10-20",
           "note": "They stand for the Academy's five original branches."
+        },
+        "length": {
+          "phrase": "the height of an Oscar statuette",
+          "label": "Oscar height",
+          "value": 0.34,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.britannica.com/art/Academy-Award",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the first Oscars ceremony",
+          "label": "First Oscars",
+          "value": 1929,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.oscars.org/sites/oscars/files/88aa_presentation_history.pdf",
+          "checkedOn": "2026-10-26",
+          "note": "The first ceremony was held on 16 May 1929."
         }
       },
       "family": "oscar",
@@ -7343,6 +7637,16 @@
           "source": "https://kidshealth.org/en/parents/bones-muscles-joints.html",
           "checkedOn": "2026-10-20",
           "note": "Many fuse together, leaving 206 in an adult."
+        },
+        "length": {
+          "phrase": "the length of a newborn baby",
+          "label": "Newborn length",
+          "value": 0.5,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "WHO growth standards",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "newborn",
@@ -7371,6 +7675,16 @@
           "status": "verified",
           "source": "https://levc.com/tx/",
           "checkedOn": "2026-10-20"
+        },
+        "length": {
+          "phrase": "the length of a London black cab",
+          "label": "Black cab length",
+          "value": 4.6,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/TX4",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "blackcab",
@@ -7429,6 +7743,16 @@
           "source": "https://www.pdc.tv/rules-darts",
           "checkedOn": "2026-10-20",
           "note": "They are numbered 1 to 20."
+        },
+        "length": {
+          "phrase": "the diameter of a dartboard",
+          "label": "Dartboard diameter",
+          "value": 0.451,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.dimensions.com/element/dartboard",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "dartboard",
@@ -7494,6 +7818,16 @@
           "status": "verified",
           "source": "https://www.britannica.com/technology/brick-building-material",
           "checkedOn": "2026-10-20"
+        },
+        "length": {
+          "phrase": "the length of a standard UK brick",
+          "label": "Brick length",
+          "value": 0.215,
+          "unit": "m",
+          "approx": false,
+          "status": "unchecked",
+          "source": "UK standard size",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "brick",
@@ -7513,6 +7847,16 @@
           "source": "https://iwf.sport/wp-content/uploads/downloads/2020/01/IWF_TCRR_2020.pdf",
           "checkedOn": "2026-10-20",
           "note": "The women's bar weighs 15 kg."
+        },
+        "length": {
+          "phrase": "the length of a men's Olympic barbell",
+          "label": "Barbell length",
+          "value": 2.2,
+          "unit": "m",
+          "approx": false,
+          "status": "unchecked",
+          "source": "IWF rules",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "barbell",
@@ -7549,6 +7893,26 @@
           "status": "verified",
           "source": "https://www.britannica.com/animal/gray-wolf",
           "checkedOn": "2026-10-20"
+        },
+        "speed": {
+          "phrase": "the top speed of a gray wolf",
+          "label": "Wolf top speed",
+          "value": 60,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the height of a gray wolf at the shoulder",
+          "label": "Wolf height",
+          "value": 0.8,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "wolf",
@@ -7606,6 +7970,26 @@
           "status": "verified",
           "source": "https://www.britannica.com/animal/lion",
           "checkedOn": "2026-10-20"
+        },
+        "speed": {
+          "phrase": "the top speed of a lion",
+          "label": "Lion top speed",
+          "value": 80,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the height of a male lion at the shoulder",
+          "label": "Lion height",
+          "value": 1.2,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "lion",
@@ -7645,6 +8029,26 @@
           "status": "verified",
           "source": "https://www.britannica.com/animal/zebra",
           "checkedOn": "2026-10-20"
+        },
+        "speed": {
+          "phrase": "the top speed of a plains zebra",
+          "label": "Zebra top speed",
+          "value": 65,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the height of a plains zebra at the shoulder",
+          "label": "Zebra height",
+          "value": 1.3,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Zebra",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "zebra",
@@ -7663,6 +8067,26 @@
           "status": "verified",
           "source": "https://www.britannica.com/animal/bear",
           "checkedOn": "2026-10-20"
+        },
+        "speed": {
+          "phrase": "the top speed of a polar bear",
+          "label": "Polar bear top speed",
+          "value": 40,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the body length of a male polar bear",
+          "label": "Polar bear length",
+          "value": 2.5,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/polar-bear",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "polarbear",
@@ -7681,6 +8105,36 @@
           "status": "verified",
           "source": "https://www.thehenryford.org/collections/explore/artifact/140288",
           "checkedOn": "2026-10-20"
+        },
+        "length": {
+          "phrase": "the length of a Ford Model T",
+          "label": "Model T length",
+          "value": 3.4,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Ford_Model_T",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top speed of a Ford Model T",
+          "label": "Model T top speed",
+          "value": 68,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the launch of the Ford Model T",
+          "label": "Model T launched",
+          "value": 1908,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://corporate.ford.com/articles/history/the-model-t",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "modelt",
@@ -8220,6 +8674,26 @@
           "source": "https://mammal.org.uk/british-mammals/red-fox",
           "checkedOn": "2026-10-20",
           "note": "Males weigh 6 to 7 kg in Britain."
+        },
+        "speed": {
+          "phrase": "the top speed of a red fox",
+          "label": "Fox top speed",
+          "value": 50,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://animaldiversity.org/accounts/Vulpes_vulpes/",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the body length of a red fox",
+          "label": "Fox length",
+          "value": 0.7,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://animaldiversity.org/accounts/Vulpes_vulpes/",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "redfox",
@@ -8239,6 +8713,26 @@
           "source": "https://animaldiversity.org/accounts/Pan_troglodytes/",
           "checkedOn": "2026-10-20",
           "note": "Wild adults weigh 32 to 70 kg."
+        },
+        "speed": {
+          "phrase": "the top speed of a chimpanzee",
+          "label": "Chimp top speed",
+          "value": 40,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the standing height of an adult chimpanzee",
+          "label": "Chimp height",
+          "value": 1.3,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://kids.britannica.com/students/article/chimpanzee/310674",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "chimp",
@@ -8258,6 +8752,26 @@
           "source": "https://www.nps.gov/subjects/bison/about.htm",
           "checkedOn": "2026-10-20",
           "note": "Big bulls reach 998 kg."
+        },
+        "speed": {
+          "phrase": "the top speed of an American bison",
+          "label": "Bison top speed",
+          "value": 60,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the height of a male bison at the shoulder",
+          "label": "Bison height",
+          "value": 1.8,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "bison",
@@ -8298,6 +8812,26 @@
           "source": "https://rhinos.org/blog/how-long-can-a-rhinos-horn-grow/",
           "checkedOn": "2026-10-20",
           "note": "Sources give 700 to 1,600 kg."
+        },
+        "speed": {
+          "phrase": "the top speed of a black rhinoceros",
+          "label": "Black rhino top speed",
+          "value": 55,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.savetherhino.org/rhino-info/rhino-species/black-rhinos/",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the height of a black rhinoceros at the shoulder",
+          "label": "Black rhino height",
+          "value": 1.6,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.savetherhino.org/rhino-info/rhino-species/black-rhinos/",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "blackrhino",
@@ -8338,6 +8872,26 @@
           "source": "https://nationalzoo.si.edu/animals/ostrich",
           "checkedOn": "2026-10-20",
           "note": "The biggest males exceed 150 kg."
+        },
+        "speed": {
+          "phrase": "the top speed of an ostrich",
+          "label": "Ostrich top speed",
+          "value": 70,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/ostrich",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the height of an ostrich",
+          "label": "Ostrich height",
+          "value": 2.5,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/ostrich",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "ostrich",
@@ -8357,6 +8911,16 @@
           "source": "https://www.adfg.alaska.gov/index.cfm?adfg=viewing.marinemammals&species=seaotter",
           "checkedOn": "2026-10-20",
           "note": "Southern sea otters are smaller: males average about 29 kg."
+        },
+        "length": {
+          "phrase": "the body length of a male northern sea otter",
+          "label": "Sea otter length",
+          "value": 1.3,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "seaotter",
@@ -9907,6 +10471,299 @@
       },
       "family": "marianatrench",
       "fame": 3
+    },
+    {
+      "id": "pisa",
+      "name": "The Leaning Tower of Pisa",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Leaning Tower of Pisa",
+          "label": "Pisa tower height",
+          "value": 56,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa",
+          "checkedOn": "2026-10-26",
+          "note": "It leans because the ground under it is soft."
+        },
+        "weight": {
+          "phrase": "the weight of the Leaning Tower of Pisa",
+          "label": "Pisa tower weight",
+          "value": 14500000.0,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the start of building the Leaning Tower of Pisa",
+          "label": "Pisa tower begun",
+          "value": 1173,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "pisa",
+      "fame": 3
+    },
+    {
+      "id": "cntower",
+      "name": "The CN Tower",
+      "facts": {
+        "length": {
+          "phrase": "the height of the CN Tower",
+          "label": "CN Tower height",
+          "value": 553.3,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.skyscrapercenter.com/building/wd/9386",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of the CN Tower",
+          "label": "CN Tower weight",
+          "value": 118000000.0,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.wikipedia.com/wiki/CN_Tower",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the opening of the CN Tower",
+          "label": "CN Tower opens",
+          "value": 1976,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://thecanadianencyclopedia.ca/en/article/cn-tower",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "cntower",
+      "fame": 3
+    },
+    {
+      "id": "brooklynbridge",
+      "name": "The Brooklyn Bridge",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Brooklyn Bridge",
+          "label": "Brooklyn Bridge length",
+          "value": 1825,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://structurae.net/en/structures/brooklyn-bridge",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the opening of the Brooklyn Bridge",
+          "label": "Brooklyn Bridge opens",
+          "value": 1883,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Brooklyn_Bridge",
+          "checkedOn": "2026-10-26",
+          "note": "When it opened it was the longest suspension bridge in the world."
+        }
+      },
+      "family": "brooklynbridge",
+      "fame": 3
+    },
+    {
+      "id": "iphone1",
+      "name": "The original iPhone",
+      "facts": {
+        "length": {
+          "phrase": "the height of the original iPhone",
+          "label": "iPhone height",
+          "value": 0.115,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://support.apple.com/kb/SP2",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of the original iPhone",
+          "label": "iPhone weight",
+          "value": 0.135,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://support.apple.com/kb/SP2",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the launch of the original iPhone",
+          "label": "iPhone launched",
+          "value": 2007,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://everymac.com/systems/apple/iphone/specs/apple-iphone-specs.html",
+          "checkedOn": "2026-10-26",
+          "note": "It was announced in January 2007 and went on sale in June."
+        }
+      },
+      "family": "iphone1",
+      "fame": 3
+    },
+    {
+      "id": "dynatac",
+      "name": "The Motorola DynaTAC phone",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Motorola DynaTAC phone",
+          "label": "DynaTAC length",
+          "value": 0.3,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.guinnessworldrecords.com/world-records/118343-first-commercially-available-mobile-phone",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of the Motorola DynaTAC phone",
+          "label": "DynaTAC weight",
+          "value": 0.79,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.guinnessworldrecords.com/world-records/118343-first-commercially-available-mobile-phone",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the Motorola DynaTAC going on sale",
+          "label": "DynaTAC on sale",
+          "value": 1983,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.guinnessworldrecords.com/world-records/118343-first-commercially-available-mobile-phone",
+          "checkedOn": "2026-10-26",
+          "note": "The first mobile phone you could buy cost $3,995 and gave 30 minutes of talk time."
+        }
+      },
+      "family": "dynatac",
+      "fame": 3
+    },
+    {
+      "id": "rugbyball",
+      "name": "A rugby ball",
+      "facts": {
+        "length": {
+          "phrase": "the length of a rugby ball",
+          "label": "Rugby ball length",
+          "value": 0.29,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://passport.world.rugby/media/i0ejgzmf/ball_pressure_en.pdf",
+          "checkedOn": "2026-10-26",
+          "note": "The laws of rugby allow 280 to 300 mm."
+        },
+        "weight": {
+          "phrase": "the weight of a rugby ball",
+          "label": "Rugby ball weight",
+          "value": 0.435,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://passport.world.rugby/media/i0ejgzmf/ball_pressure_en.pdf",
+          "checkedOn": "2026-10-26",
+          "note": "The laws of rugby allow 410 to 460 g."
+        }
+      },
+      "family": "rugbyball",
+      "fame": 3
+    },
+    {
+      "id": "hmsvictory",
+      "name": "HMS Victory",
+      "facts": {
+        "length": {
+          "phrase": "the length of HMS Victory",
+          "label": "HMS Victory length",
+          "value": 69.34,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/HMS_Victory",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of HMS Victory",
+          "label": "HMS Victory weight",
+          "value": 3560000.0,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/HMS_Victory",
+          "checkedOn": "2026-10-26",
+          "note": "That is her displacement, about 3,500 long tons."
+        },
+        "date": {
+          "phrase": "the launch of HMS Victory",
+          "label": "HMS Victory launched",
+          "value": 1765,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.rmg.co.uk/collections/objects/rmgc-object-66475",
+          "checkedOn": "2026-10-26",
+          "note": "She was Nelson's flagship at Trafalgar in 1805."
+        }
+      },
+      "family": "hmsvictory",
+      "fame": 2
+    },
+    {
+      "id": "a320",
+      "name": "The Airbus A320",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Airbus A320",
+          "label": "A320 length",
+          "value": 37.57,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.croatiaairlines.com/fleet/Airbus-A-320-200",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the cruising speed of the Airbus A320",
+          "label": "A320 cruising speed",
+          "value": 830,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure (sources say 828 to 834)",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the first flight of the Airbus A320",
+          "label": "A320 first flight",
+          "value": 1987,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.croatiaairlines.com/fleet/Airbus-A-320-200",
+          "checkedOn": "2026-10-26",
+          "note": "It was the first airliner to use fly-by-wire controls."
+        }
+      },
+      "family": "a320",
+      "fame": 2
     }
   ]
 }

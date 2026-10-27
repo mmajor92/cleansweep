@@ -31,13 +31,6 @@
       "needs": "sources conflict (4,805 to 4,810)"
     },
     {
-      "id": "pisa",
-      "category": "length",
-      "label": "Leaning Tower of Pisa height",
-      "value": 56,
-      "needs": "source"
-    },
-    {
       "id": "liberty",
       "category": "weight",
       "label": "Liberty Bell",

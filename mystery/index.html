@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mystery Thing</title>
+<meta name="description" content="Find the hidden object from how its numbers compare. A new puzzle every day.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="icon" href="../src/icons/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../src/icons/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Clean Sweep">
+<meta property="og:title" content="Mystery Thing">
+<meta property="og:description" content="Find the hidden object from how its numbers compare. A new puzzle every day.">
+<meta property="og:url" content="https://cleansweepdaily.fyi/mystery/">
+<meta property="og:image" content="https://cleansweepdaily.fyi/src/icons/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script>try{var t=localStorage.getItem("cleansweep:theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preload" href="../src/fonts/bricolage-grotesque.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="../src/fonts/newsreader.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="mark" aria-hidden="true">?</div>
+      <div>
+        <h1>Mystery Thing</h1>
+        <p class="sub" id="puzzleno">Puzzle</p>
+      </div>
+    </div>
+    <div class="topright">
+      <button class="helpbtn" id="helpbtn" type="button" aria-label="How to play" aria-expanded="false" aria-controls="help" title="How to play">?</button>
+      <button class="helpbtn" id="theme" type="button" aria-label="Switch theme"></button>
+    </div>
+  </header>
+  <p class="gtitle">Today’s puzzles</p>
+  <nav class="games" aria-label="Today’s puzzles">
+    <a class="gamecard" href="../"><span class="gname">Clean Sweep</span><span class="gstat" id="gs-cs">Not played yet</span></a>
+    <a class="gamecard" href="./" aria-current="page"><span class="gname">Mystery Thing <span class="newbadge" id="newbadge">New</span></span><span class="gstat" id="gs-mt">Not played yet</span></a>
+  </nav>
+  <div class="firsttime" id="firsttime" role="note" hidden>
+    <span>First time? Tap the <b>?</b> for a practice round!</span>
+    <button class="btn primary mini" id="firsttimeclose" type="button">Got it</button>
+  </div>
+  <div class="help" id="help" hidden>
+    <h2>How to play</h2>
+    <ol>
+      <li>A mystery thing is hidden in the list. Tap one to guess it, or type to find it (you can skip a, an and the).</li>
+      <li>Each guess shows how its numbers compare with the mystery thing’s. An arrow points the way: up means higher or later, down means lower or earlier. Easy and Medium add a colour for how close you are: green is within double or half, red is further off.</li>
+      <li>Use the clues to rule things out. You have six guesses. Closer guesses, and fewer of them, score more.</li>
+    </ol>
+    <p class="small"><b>Size</b> is the thing’s main measurement: a tower’s height, a ship’s length, a ball’s width. <b>Year</b> is when it was built, launched or happened.</p>
+    <p class="small"><b>Easy</b> shrinks the list for you as you guess. <b>Medium</b> doesn’t. <b>Hard</b> doesn’t either, and takes the colours away too. You get one try a day: your setting locks when you make your first guess. Practice puzzles are unlimited.</p>
+    <div class="practice" id="practicebox">
+      <p>Want to try one first? There are two practice puzzles. They are the same for everyone, you can play them as often as you like, and they do not count towards your score.</p>
+      <div class="pbtns">
+        <button class="btn" type="button" data-practice="1">Practice 1</button>
+        <button class="btn" type="button" data-practice="2">Practice 2</button>
+      </div>
+    </div>
+    <button class="btn primary" id="helpclose" type="button">Got it</button>
+  </div>
+  <div class="modes" id="modes" role="group" aria-label="How much help the clues give">
+    <button type="button" data-mode="easy" aria-pressed="false">Easy</button>
+    <button type="button" data-mode="normal" aria-pressed="true">Medium</button>
+    <button type="button" data-mode="hard" aria-pressed="false">Hard</button>
+  </div>
+  <p class="modehelp" id="modehelp"></p>
+  <p class="modelock" id="modelock"></p>
+  <div class="tools" id="tools" aria-label="Testing controls" hidden>
+    <span>For testing:</span>
+    <button type="button" class="link" id="newpz">New puzzle</button>
+    <label for="pzno">Open puzzle <input id="pzno" type="number" min="1" max="999" inputmode="numeric"></label>
+    <button type="button" class="link" id="pzgo">Go</button>
+    <button type="button" class="link" id="clear">Clear saved games</button>
+    <button type="button" class="link" id="partybtn">Preview clean sweep</button>
+  </div>
+  <p class="clue" id="clue"></p>
+  <p class="msg" id="msg" role="status" aria-live="polite"></p>
+  <p class="left" id="left"></p>
+  <p class="listhead" id="listhead" aria-live="polite"></p>
+  <input class="find" id="find" type="text" inputmode="text" enterkeyhint="go" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type to find it, or scroll the list" aria-label="Find a thing in the list">
+  <div id="listwrap"></div>
+  <div class="rows" id="rows"></div>
+  <div id="end"></div>
+  <p class="ver" id="ver"></p>
+</div>
+<script type="module" src="main.js"></script>
+</body>
+</html>

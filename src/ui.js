@@ -5,6 +5,7 @@ import { captureScreen, playTransition } from "./transition.js";
 import { valueParts, valueText, figureText, displayName, differenceText, questionText, closerSides, closerQuestion, closerDifferenceText, formatNumber, yearLabel } from "./format.js";
 import { questionDeep, questionRatios, scoreRun, tierFor, SCORING } from "./score.js";
 import { loadState, saveState, recordPick, completeDay, currentStreak, dayRecord, prune } from "./store.js";
+import { paintCards, writeStatus } from "./games.js";
 
 /**
  * env: {
@@ -115,6 +116,9 @@ export function mountGame(env) {
   }
 
   function answer(pick) {
+    // After a tap the old answer buttons stay on screen, fading, for about a third of a second, so a quick second tap (or a double-tap) lands on one of them.
+    // An answer counts only while a question is waiting for one.
+    if (S.phase !== "ask") return;
     if (env.onAnswer) env.onAnswer();
     const { item } = itemAt(S.q);
     const ok = pick === correctPick(item, S.prev);
@@ -356,6 +360,16 @@ export function mountGame(env) {
   }
 
   /* ---------- chrome ---------- */
+  // Clean Sweep and Mystery Thing show each other's progress for today, from a small note each leaves on this device.
+  // Only today's puzzle counts: a page left open past midnight must not mark the new day as played.
+  function publishStatus() {
+    if (storage && S.mode === "daily" && puzzleNumber(new Date()) === todayNum) {
+      if (S.phase === "done") writeStatus(storage, "cs", "done", "Done \u00b7 " + scoreRun(S.ratios, S.results, S.deep).pct + "%");
+      else if (S.results.length > 0) writeStatus(storage, "cs", "play");
+    }
+    paintCards(storage);
+  }
+
   function renderTop() {
     // The only button here is the way back from a practice puzzle. There is no Practice tab.
     root.tabs.innerHTML = S.mode === "daily" ? "" : `<button class="tab" data-mode="daily">Back to today's puzzle</button>`;
@@ -406,6 +420,7 @@ export function mountGame(env) {
 
   function render() {
     stopCountdown();
+    publishStatus();
     const movie = !calmMotion() ? captureScreen(root.card) : null;
     renderTop();
     renderChain();
@@ -496,6 +511,7 @@ export function mountGame(env) {
 
   if (typeof document.addEventListener === "function") {
     document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") paintCards(storage); // back from the other game: show how it went
       if (document.visibilityState === "visible" && countdownTimer !== null) updateCountdown();
     });
   }
