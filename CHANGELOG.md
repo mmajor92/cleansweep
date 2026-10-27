@@ -2,6 +2,15 @@
 
 The version number is in `src/version.js` and shows at the bottom of the page. Change both together.
 
+## v3.16
+- **A line above the streak row on Mystery Thing's result card**, the same line as the one under "Next puzzle in...", so the result of the puzzle and the streak information read as two parts.
+
+## v3.15
+- **Streaks for Mystery Thing.** Two of them: days tried (a day counts at the first guess) and days solved in a row. The result card shows day streak, solved in a row, best streak and best score. From a 2-day streak a flame (🔥 5) shows on the game's card under "Today's puzzles", and Clean Sweep's page shows Mystery Thing's flame and the other way round. At 7, 30 and 100 the result card gets a banner with the brooms and sparkles ("🔥 7 days in a row", or "🔎 7 solved in a row" for the solved streak; only the bigger one a day). The flame and the streaks are never in the text people share.
+- A day is counted once: reloading, or finishing, never adds a day twice. Practice puzzles and earlier days never count. Someone who finished today before this update gets today counted when the page opens.
+- Clean Sweep itself is unchanged apart from leaving its streak as a short note for the flame.
+- 5 new unit tests and 28 new browser checks. All pass and the data check is clean.
+
 ## v3.14
 - **Mystery Thing's result card says what each number is.** 36 facts had a label that was just the object's name ("A black rhinoceros" for its weight), which read oddly beside "Black rhino height" and "Black rhino top speed". The result card now shows "Black rhinoceros weight", "Baseball weight", "Giant panda weight" and so on. Labels that already say what they measure are left alone, and the facts file and Clean Sweep are untouched.
 - 2 new tests. All pass and the data check is clean.

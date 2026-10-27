@@ -90,3 +90,17 @@ test("the Reminder under the settings: a single word to open it, remembered betw
 test("the status words are short: Not played, with no 'yet', anywhere", () => {
   for (const f of ["index.html", "mystery/index.html", "src/games.js", "README.md"]) assert.ok(!read(f).includes("Not played yet"), `${f} still says Not played yet`);
 });
+
+test("streaks: a flame line on each card, a stats row on the result card, a banner at a milestone, and never in the text people share", () => {
+  const cs = read("index.html"), logic = read("mystery/logic.js");
+  for (const [name, page] of [["Clean Sweep", cs], ["Mystery Thing", html]]) for (const id of ["gf-cs", "gf-mt", "games"]) assert.ok(idsIn(page).has(id), `${name} page has no #${id}`);
+  for (const w of ["day streak", "solved in a row", "best streak", "best score"]) assert.ok(ui.includes(w), w);
+  assert.match(ui, /milestoneBanner\(\)/);
+  assert.match(ui, /syncStats\(\)/);
+  assert.ok(!/\uD83D\uDD25|\u{1F525}|streak/i.test(logic), "the share card is built in logic.js and must not mention streaks");
+});
+
+test("the streak row is set apart from the puzzle's result by a line above it", () => {
+  const css = read("mystery/styles.css");
+  assert.match(css, /\.stats \{[^}]*border-top: 2px solid var\(--line\)/);
+});

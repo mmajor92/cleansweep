@@ -332,5 +332,7 @@ details.facts p { margin: 8px 0 0; }
 .gname { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 4px; font: 800 clamp(12px, calc((100vw / 2 - 84px) / 7.4), 16px)/1.15 var(--display); }
 .gstat { margin-top: auto; padding-top: 3px; font: 600 13px/1.25 var(--display); color: var(--muted); }
 .gstat.done { color: var(--ok); }
+.gflame { display: none; font: 700 13px/1.25 var(--display); color: var(--ink); }
+.games.hasflame .gflame { display: block; min-height: 1.25em; }
 .newbadge { display: inline-block; margin: 0; padding: 1px 5px; border-radius: 999px; background: var(--tape); color: var(--on-tape); font: 800 9px var(--display); letter-spacing: 0.02em; }
 .newbadge[hidden] { display: none; }

@@ -1,6 +1,6 @@
 // Mystery Thing: the page. All the rules of the game are in logic.js; this file is the screen.
 import { byId, ROUNDS, countdownText, CATS, MODES, MODE_LABEL, PRACTICE, fmt, feedback, poolFor, remaining, norm, filterThings, dayNumber, dailyPuzzle, practicePuzzle, randomPuzzle, MULT, scoreGame, cleanSweep, shareText } from "./logic.js";
-import { clearStatus, countEvent, readStatus, showNewBadge, statusLine, writeStatus } from "../src/games.js";
+import { breakStreak, bumpStreak, clearStatus, countEvent, milestoneText, paintFlames, pickMilestone, readStatus, showNewBadge, statusLine, streakNow, utcDay, writeStatus, writeStreak } from "../src/games.js";
 
 /** env.storage is the device's localStorage, or null when the browser will not allow it (the game still works, it just cannot save). */
 export function mountMystery(env) {
@@ -17,14 +17,15 @@ export function mountMystery(env) {
   const okId = (id) => id === "GIVEUP" || !!byId[id];
   function readRecord(no) {
     let rec = null;
-    try { const t = JSON.parse(store.get("mt:" + no) || "null"); if (t && MODES[t.m] && Array.isArray(t.g)) rec = { m: t.m, g: t.g.filter(okId) }; } catch (e) { rec = null; }
+    try { const t = JSON.parse(store.get("mt:" + no) || "null"); if (t && MODES[t.m] && Array.isArray(t.g)) rec = { m: t.m, g: t.g.filter(okId), d: typeof t.d === "string" ? t.d : "" }; } catch (e) { rec = null; }
     if (!rec) for (const m of Object.keys(MODES)) { // games saved by the older version, one per setting: keep the fullest one
-      try { const t = JSON.parse(store.get("mt:" + no + ":" + m) || "[]"); if (Array.isArray(t) && t.length && (!rec || t.length > rec.g.length)) rec = { m, g: t.filter(okId) }; } catch (e) { /* ignore */ }
+      try { const t = JSON.parse(store.get("mt:" + no + ":" + m) || "[]"); if (Array.isArray(t) && t.length && (!rec || t.length > rec.g.length)) rec = { m, g: t.filter(okId), d: "" }; } catch (e) { /* ignore */ }
     }
     return rec && rec.g.length ? rec : null;
   }
-  const load = () => { guesses = []; if (!puzzle.daily) return; const rec = readRecord(puzzle.no); if (rec) { guesses = rec.g; mode = rec.m; } };
-  const save = () => { if (puzzle.daily) store.set("mt:" + puzzle.no, JSON.stringify({ m: mode, g: guesses })); };
+  let recDay = ""; // the day the saved game was started
+  const load = () => { guesses = []; recDay = ""; if (!puzzle.daily) return; const rec = readRecord(puzzle.no); if (rec) { guesses = rec.g; mode = rec.m; recDay = rec.d; } };
+  const save = () => { if (puzzle.daily) { if (!recDay) recDay = utcDay(); store.set("mt:" + puzzle.no, JSON.stringify({ m: mode, g: guesses, d: recDay })); } };
   const locked = () => puzzle.daily && guesses.length > 0;
   const won = () => guesses[guesses.length - 1] === puzzle.secret.id;
   const gaveUp = () => guesses.includes("GIVEUP");
@@ -65,6 +66,36 @@ export function mountMystery(env) {
     const ul = $("list");
     if (ul && !M.narrow && !q.trim()) ul.scrollTop = listScroll; // Normal and Hard keep your place in the list
   }
+  // ---- streaks and stats, kept on this device. "Tried" counts the days you made a guess, "solved" the days you found the answer.
+  // They are worked out from today's saved game, so counting twice is impossible: reloading, or finishing, never adds a day twice.
+  const readStats = () => {
+    const none = { t: null, s: null, played: 0, bestScore: 0, fin: "" };
+    try { const v = JSON.parse(store.get("mt:stats") || "null"); if (v && typeof v === "object") return { ...none, ...v }; } catch (e) { /* start again */ }
+    return none;
+  };
+  function syncStats() {
+    const p = dailyPuzzle(dayNumber());
+    const rec = readRecord(p.no);
+    const day = utcDay();
+    if (!rec || (rec.d && rec.d !== day)) return; // no game today (a game from an earlier day with the same puzzle, before launch, does not count again)
+    const st = readStats();
+    st.t = bumpStreak(st.t, day);
+    const g = rec.g;
+    const won = g[g.length - 1] === p.secret.id;
+    if (won || g.includes("GIVEUP") || g.length >= ROUNDS) {
+      st.s = won ? bumpStreak(st.s, day) : st.s && st.s.last === day ? st.s : breakStreak(st.s, day); // an unsolved day ends the solved streak
+      if (st.fin !== day) { st.fin = day; st.played += 1; st.bestScore = Math.max(st.bestScore, scoreGame(p, g, rec.m).score); }
+    }
+    store.set("mt:stats", JSON.stringify(st));
+    writeStreak(storage, "mt", st.t);
+  }
+  function statsHTML() {
+    const st = readStats();
+    const box = (n, what) => '<div class="stat"><b>' + n + "</b><span>" + what + "</span></div>";
+    return '<div class="stats">' + box(streakNow(st.t), "day streak") + box(streakNow(st.s), "solved in a row") + box(st.t ? st.t.best : 0, "best streak") + box(st.bestScore, "best score") + "</div>";
+  }
+  const milestoneToday = () => { const st = readStats(); return pickMilestone(st.t, st.s); };
+  const milestoneBanner = () => { const m = isToday() ? milestoneToday() : null; return m ? '<p class="sweep">' + milestoneText(m) + "</p>" : ""; };
   // ---- the Reminder under the settings. Open on a first visit, folded away at the first guess ever, and after that it stays however the player last left it.
   const helpOpen = () => store.get("mt:help") !== "closed";
   function setHelp(open) { store.set("mt:help", open ? "open" : "closed"); renderHelp(); }
@@ -93,6 +124,7 @@ export function mountMystery(env) {
     paint("gs-mt", statusLine(mine));
     paint("gs-cs", statusLine(readStatus(storage, "cs")));
     $("newbadge").hidden = !showNewBadge();
+    paintFlames(storage);
     const nx = $("nextcs");
     if (nx) { const n = nextGameState(); nx.textContent = n.label; nx.className = "btn" + (n.primary ? " primary" : ""); }
   }
@@ -156,11 +188,11 @@ export function mountMystery(env) {
     const calc = "<dt>Clues along the way</dt><dd>" + sg(sc.path) + "</dd>" + (sc.won ? "<dt>Solved it</dt><dd>" + sg(sc.solve) + "</dd><dt>" + gobjs().length + (gobjs().length === 1 ? " guess" : " guesses") + "</dt><dd>\u00D7" + sc.mult + "</dd>" : "<dt>Not solved</dt><dd>\u00D7" + sc.mult + "</dd>") + (sc.bonus !== 1 ? "<dt>Hard setting</dt><dd>\u00D7" + sc.bonus + "</dd>" : "");
     const detail = sc.per.map((x) => "<li>" + esc(x.g.name) + ": " + (x.solved ? "solved, " + sg(sc.solve) : puzzle.cs.map((c, k) => "<span>" + CATS[c].name.toLowerCase() + "</span> " + sg(x.pts[k])).join(", ")) + "</li>").join("");
     const scoreBlock = '<div class="score"><p class="big">' + sc.score + "<small>points</small></p><dl class=\"calc\">" + calc + "</dl><details><summary>How each guess scored</summary><ul>" + detail + "</ul></details></div>";
-    el.innerHTML = '<div class="end">' + (cleanSweep(puzzle, guesses) ? '<p class="sweep">\uD83E\uDDF9\u2728 Clean sweep! Every guess was green.</p>' : "") + scoreBlock + '<h2>' + (won() ? "Got it in " + guesses.length + "." : "It was " + esc(lc(s.name)) + ".") + '</h2><p class="res">' + (won() ? "The mystery thing was " + esc(lc(s.name)) + "." : gaveUp() ? "You gave up, so here it is." : "Not this time.") + "</p><dl>" + lines + "</dl>" + (notes ? '<p class="note">' + esc(notes) + "</p>" : "") +
+    el.innerHTML = '<div class="end">' + (cleanSweep(puzzle, guesses) ? '<p class="sweep">\uD83E\uDDF9\u2728 Clean sweep! Every guess was green.</p>' : "") + milestoneBanner() + scoreBlock + '<h2>' + (won() ? "Got it in " + guesses.length + "." : "It was " + esc(lc(s.name)) + ".") + '</h2><p class="res">' + (won() ? "The mystery thing was " + esc(lc(s.name)) + "." : gaveUp() ? "You gave up, so here it is." : "Not this time.") + "</p><dl>" + lines + "</dl>" + (notes ? '<p class="note">' + esc(notes) + "</p>" : "") +
       (puzzle.practice
         ? '<div class="btns"><button class="btn primary" type="button" data-practice="' + (puzzle.practice % PRACTICE.length + 1) + '">Practice puzzle ' + (puzzle.practice % PRACTICE.length + 1) + '</button><button class="btn" id="today" type="button">Back to today\u2019s puzzle</button></div><p class="note2">Practice puzzles do not count towards your score.</p>'
         : (puzzle.daily
-          ? '<div class="btns">' + shareButtons() + "</div>" + (isToday() ? '<p class="lockline" id="countdown">Next puzzle in ' + countdownText() + ".</p>" : "") + nextGameHTML()
+          ? (isToday() ? statsHTML() : "") + '<div class="btns">' + shareButtons() + "</div>" + (isToday() ? '<p class="lockline" id="countdown">Next puzzle in ' + countdownText() + ".</p>" : "") + nextGameHTML()
           : '<div class="btns"><button class="btn primary" id="copy" type="button">Copy result</button><button class="btn" id="another" type="button">Play another</button></div>') + (isToday() ? "" : '<button class="link" id="today" type="button">Back to today\u2019s puzzle</button>')) + "</div>";
     if (puzzle.daily && isToday() && $("countdown")) cdTimer = setInterval(tickCountdown, 30000);
   }
@@ -186,6 +218,7 @@ export function mountMystery(env) {
     if (!o || over() || guesses.includes(o.id)) return;
     guesses.push(o.id);
     save();
+    syncStats();
     if (store.get("mt:help") === null) store.set("mt:help", "closed"); // the first guess ever folds the Reminder away
     fresh = true;
     say("");
@@ -195,6 +228,7 @@ export function mountMystery(env) {
     render();
     if (over()) { const e = $("end"); if (e && e.scrollIntoView) e.scrollIntoView({ block: "nearest", behavior: "smooth" }); }
     if (cleanSweep(puzzle, guesses)) celebrate();
+    else if (over() && isToday() && milestoneToday()) celebrate(); // brooms and sparkles for a streak milestone too
     if (over() && isToday()) { countEvent("mystery-finished"); if (cleanSweep(puzzle, guesses)) countEvent("mystery-clean-sweep"); } // counted once, the moment it finishes (not when a finished day is reloaded)
   }
   function newPuzzle(p) { puzzle = p; load(); fresh = false; listScroll = 0; $("find").value = ""; say(""); render(); }
@@ -230,7 +264,7 @@ export function mountMystery(env) {
     const pr = e.target.closest("[data-practice]");
     if (pr) return newPuzzle(practicePuzzle(Number(pr.dataset.practice)));
     const id = e.target.id;
-    if (id === "giveup") { guesses.push("GIVEUP"); save(); render(); if (isToday()) countEvent("mystery-finished"); }
+    if (id === "giveup") { guesses.push("GIVEUP"); save(); syncStats(); render(); if (isToday()) { countEvent("mystery-finished"); if (milestoneToday()) celebrate(); } }
     else if (id === "another") newPuzzle(randomPuzzle(puzzle.secret.id));
     else if (id === "today") newPuzzle(dailyPuzzle(dayNumber()));
     else if (id === "copy") {
@@ -259,7 +293,7 @@ export function mountMystery(env) {
   $("partybtn").addEventListener("click", celebrate);
   $("remind").addEventListener("click", () => setHelp(!helpOpen()));
   $("clear").addEventListener("click", () => {
-    try { if (storage) for (const k of Object.keys(storage)) if (k.startsWith("mt:") && k !== "mt:mode") storage.removeItem(k); } catch (e) { /* nothing stored, or storage blocked */ }
+    try { if (storage) for (const k of Object.keys(storage)) if (k.startsWith("mt:") && k !== "mt:mode") storage.removeItem(k); storage.removeItem("streak:mt"); } catch (e) { /* nothing stored, or storage blocked */ }
     newPuzzle(dailyPuzzle(dayNumber()));
     showNote();
     say("Saved games cleared.");
@@ -267,6 +301,7 @@ export function mountMystery(env) {
   // Coming back to this tab (for example after playing Clean Sweep), show how that went.
   if (typeof document.addEventListener === "function") document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") updateTabs(); });
   load();
+  syncStats(); // a player who finished before streaks existed gets today counted straight away
   render();
   showNote();
   // The testing controls and a few hooks for the browser tests appear only when the address ends in #debug.

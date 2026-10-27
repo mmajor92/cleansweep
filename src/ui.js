@@ -5,7 +5,7 @@ import { captureScreen, playTransition } from "./transition.js";
 import { valueParts, valueText, figureText, displayName, differenceText, questionText, closerSides, closerQuestion, closerDifferenceText, formatNumber, yearLabel } from "./format.js";
 import { questionDeep, questionRatios, scoreRun, tierFor, SCORING } from "./score.js";
 import { loadState, saveState, recordPick, completeDay, currentStreak, dayRecord, prune } from "./store.js";
-import { paintCards, writeStatus } from "./games.js";
+import { paintCards, writeStatus, writeStreak } from "./games.js";
 
 /**
  * env: {
@@ -17,6 +17,12 @@ import { paintCards, writeStatus } from "./games.js";
  *   onAnswer: () => void                (called whenever a question is answered, real or practice)
  * }
  */
+/** The calendar day (YYYY-MM-DD, UTC) of a puzzle number. */
+function puzzleDate(num) {
+  const [y, m, d] = RULES.launchDate.split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, d + num - 1)).toISOString().slice(0, 10);
+}
+
 export function mountGame(env) {
   const { root, storage, todayNum } = env;
   let store = prune(loadState(storage), todayNum);
@@ -367,6 +373,8 @@ export function mountGame(env) {
       if (S.phase === "done") writeStatus(storage, "cs", "done", "Done \u00b7 " + scoreRun(S.ratios, S.results, S.deep).pct + "%");
       else if (S.results.length > 0) writeStatus(storage, "cs", "play");
     }
+    // Its streak, as a note the other game can show on its card: n days in a row, the latest on the date of the last puzzle finished.
+    if (storage && store.stats.lastDone > 0) writeStreak(storage, "cs", { n: store.stats.streak, last: puzzleDate(store.stats.lastDone), best: store.stats.bestStreak });
     paintCards(storage);
   }
 
