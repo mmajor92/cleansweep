@@ -104,3 +104,10 @@ test("the streak row is set apart from the puzzle's result by a line above it", 
   const css = read("mystery/styles.css");
   assert.match(css, /\.stats \{[^}]*border-top: 2px solid var\(--line\)/);
 });
+
+test("the five counts: started at the first guess, solved, gave up, finished, and clean sweep, each only for today's puzzle", () => {
+  for (const name of ["mystery-started", "mystery-solved", "mystery-gave-up", "mystery-finished", "mystery-clean-sweep"]) assert.ok(ui.includes(`countEvent("${name}")`), name);
+  assert.match(ui, /if \(guesses\.length === 1 && isToday\(\)\) countEvent\("mystery-started"\)/);
+  assert.match(ui, /if \(guesses\[guesses\.length - 1\] === puzzle\.secret\.id\) countEvent\("mystery-solved"\)/);
+  assert.match(ui, /if \(isToday\(\)\) \{ countEvent\("mystery-gave-up"\); countEvent\("mystery-finished"\)/);
+});

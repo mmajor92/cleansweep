@@ -2,6 +2,17 @@
 
 The version number is in `src/version.js` and shows at the bottom of the page. Change both together.
 
+## v3.18
+- **Mystery Thing counts three more things**, so the visitor counter can tell them apart: `mystery-started` (the first guess of the day), `mystery-solved` (found the answer at any point) and `mystery-gave-up` (tapped "Show the answer"). The two it already had, `mystery-finished` (solved, all six guesses used, or given up) and `mystery-clean-sweep`, are unchanged. Each is counted once for today's puzzle, never for practice or other days, and never again when a finished day is reloaded. From them: solve rate is solved / started, give-up rate is gave-up / started, and drop-off is started minus finished. They are counts only, nothing about the player.
+- 1 new unit test and 16 new browser checks. All pass and the data check is clean.
+
+## v3.17
+- **Round 2 of new facts: 157 numbers for 55 new things, plus extra numbers for 9 that were already in.** New things include the great white shark, tiger, Komodo dragon, bottlenose dolphin, camel, moose, housefly and honey bee; the Cessna 172, a Soyuz spacecraft and a Chinook helicopter; the Taj Mahal, Stonehenge, Mount Rushmore, the Great Sphinx, St Paul's Cathedral and the Forth Bridge; a volleyball, snooker ball, cricket bat, tennis racket and Fender Stratocaster; a banana, an apple, a watermelon, the Game Boy and the Walkman; Pluto, the Mona Lisa, the Rosetta Stone and Tutankhamun's gold mask. The extra numbers went to the Boeing 737-800, the Perseverance rover, the Apollo Lunar Roving Vehicle, a shipping container, a curling stone, the Liberty Bell, an eastern grey kangaroo, the African forest elephant and the Statue of Unity. Nothing that was already there changed.
+- **How they were checked.** Drafted from memory, then checked against the web by a second AI, and all 157 passed. We could not open its links ourselves, so a fact is marked `verified` only where its source was rated good and is an encyclopedia, a museum, a government or space agency, a rule book or a manufacturer: 142 numbers. The other 15 rest on weaker pages (a study site, a blog, a can maker) or are rounded to a typical figure, and are marked `unchecked`. Three values were brought into line with what their source says (great white speed 50 km/h, camel weight 450 kg, reindeer weight 140 kg), and the brown bear's length was moved to the middle of its range.
+- **Clean Sweep:** the first repeated question moves from day 605 to **day 855** (about 2.3 years), and in the three-year simulation none are repeated in year two. Weight supply goes from 1.5 to **2.8 years** and speed from 1.8 to **2.9**.
+- **Mystery Thing:** 264 objects (up from 200) and **161 possible answers** (up from 119, about 5.3 months before one repeats). Guess lists get longer, from about 102 things on a typical day to about 135, and the longest from 129 to 177. Difficulty barely moves: Easy 3.37 guesses (was 3.26), Medium 4.05 (3.95) and Hard 4.73 (4.58).
+- The data checks are clean and all 332 tests pass. No code changed.
+
 ## v3.16
 - **A line above the streak row on Mystery Thing's result card**, the same line as the one under "Next puzzle in...", so the result of the puzzle and the streak information read as two parts.
 

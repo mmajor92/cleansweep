@@ -219,6 +219,7 @@ export function mountMystery(env) {
     guesses.push(o.id);
     save();
     syncStats();
+    if (guesses.length === 1 && isToday()) countEvent("mystery-started"); // the first guess of today's puzzle, counted once (practice and other days never are)
     if (store.get("mt:help") === null) store.set("mt:help", "closed"); // the first guess ever folds the Reminder away
     fresh = true;
     say("");
@@ -229,7 +230,7 @@ export function mountMystery(env) {
     if (over()) { const e = $("end"); if (e && e.scrollIntoView) e.scrollIntoView({ block: "nearest", behavior: "smooth" }); }
     if (cleanSweep(puzzle, guesses)) celebrate();
     else if (over() && isToday() && milestoneToday()) celebrate(); // brooms and sparkles for a streak milestone too
-    if (over() && isToday()) { countEvent("mystery-finished"); if (cleanSweep(puzzle, guesses)) countEvent("mystery-clean-sweep"); } // counted once, the moment it finishes (not when a finished day is reloaded)
+    if (over() && isToday()) { if (guesses[guesses.length - 1] === puzzle.secret.id) countEvent("mystery-solved"); countEvent("mystery-finished"); if (cleanSweep(puzzle, guesses)) countEvent("mystery-clean-sweep"); } // counted once, the moment it finishes (not when a finished day is reloaded)
   }
   function newPuzzle(p) { puzzle = p; load(); fresh = false; listScroll = 0; $("find").value = ""; say(""); render(); }
 
@@ -264,7 +265,7 @@ export function mountMystery(env) {
     const pr = e.target.closest("[data-practice]");
     if (pr) return newPuzzle(practicePuzzle(Number(pr.dataset.practice)));
     const id = e.target.id;
-    if (id === "giveup") { guesses.push("GIVEUP"); save(); syncStats(); render(); if (isToday()) { countEvent("mystery-finished"); if (milestoneToday()) celebrate(); } }
+    if (id === "giveup") { guesses.push("GIVEUP"); save(); syncStats(); render(); if (isToday()) { countEvent("mystery-gave-up"); countEvent("mystery-finished"); if (milestoneToday()) celebrate(); } }
     else if (id === "another") newPuzzle(randomPuzzle(puzzle.secret.id));
     else if (id === "today") newPuzzle(dailyPuzzle(dayNumber()));
     else if (id === "copy") {

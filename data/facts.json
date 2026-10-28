@@ -4411,6 +4411,16 @@
           "status": "verified",
           "source": "https://www.wandernundmehr.at/faq/was-ist-das-hochste-nationaldenkmal",
           "checkedOn": "2026-10-15"
+        },
+        "date": {
+          "phrase": "the inauguration of the Statue of Unity",
+          "label": "Statue of Unity inaugurated",
+          "value": 2018,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://statueofunity.in/about-us",
+          "checkedOn": "2026-10-26"
         }
       },
       "fame": 2
@@ -7015,6 +7025,16 @@
           "source": "https://inaturalist.ala.org.au/guide_taxa/1125504",
           "checkedOn": "2026-10-20",
           "note": "A big male stands almost 2 m tall."
+        },
+        "speed": {
+          "phrase": "the top speed of a male eastern grey kangaroo",
+          "label": "Eastern grey top speed",
+          "value": 64,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.australian.museum/learn/animals/mammals/eastern-grey-kangaroo/",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "easterngrey",
@@ -8009,6 +8029,36 @@
           "source": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_lrv.html",
           "checkedOn": "2026-10-20",
           "note": "It could carry 440 kg of astronauts, equipment and samples."
+        },
+        "length": {
+          "phrase": "the length of the Apollo Lunar Roving Vehicle",
+          "label": "Lunar rover length",
+          "value": 3.1,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nasa.gov/history/alsj/lrv.html",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top speed of the Apollo Lunar Roving Vehicle",
+          "label": "Lunar rover top speed",
+          "value": 13,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nasa.gov/history/alsj/lrv.html",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the first use of the Apollo Lunar Roving Vehicle",
+          "label": "Lunar rover first used",
+          "value": 1971,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nasa.gov/history/alsj/lrv.html",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "lrv",
@@ -8153,6 +8203,26 @@
           "status": "verified",
           "source": "https://www.nps.gov/articles/000/bell-and-clock-facts.htm",
           "checkedOn": "2026-10-20"
+        },
+        "length": {
+          "phrase": "the height of the Liberty Bell",
+          "label": "Liberty Bell height",
+          "value": 0.91,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nps.gov/inde/learn/historyculture/stories-libertybell.htm",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the casting of the Liberty Bell",
+          "label": "Liberty Bell cast",
+          "value": 1752,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nps.gov/inde/learn/historyculture/stories-libertybell.htm",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "libertybell",
@@ -8174,6 +8244,36 @@
           "source": "https://www.jpl.nasa.gov/news/press_kits/mars_2020/landing/quick_facts/",
           "checkedOn": "2026-10-20",
           "note": "It landed on Mars in 2021."
+        },
+        "length": {
+          "phrase": "the length of NASA's Perseverance rover",
+          "label": "Perseverance length",
+          "value": 3.0,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Perseverance_(rover)",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top speed of NASA's Perseverance rover",
+          "label": "Perseverance top speed",
+          "value": 0.152,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://mars.nasa.gov/mars2020/spacecraft/rover/",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the landing of NASA's Perseverance rover on Mars",
+          "label": "Perseverance lands",
+          "value": 2021,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Perseverance_(rover)",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "perseverance",
@@ -8194,6 +8294,26 @@
           "status": "verified",
           "source": "https://multica.co.uk/blog/dimensions-of-a-20-foot-container/",
           "checkedOn": "2026-10-20"
+        },
+        "length": {
+          "phrase": "the length of a standard shipping container",
+          "label": "Shipping container length",
+          "value": 6.06,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.iso.org/standard/60867.html",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the first container ship voyage",
+          "label": "First container ship",
+          "value": 1956,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Ideal_X",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "container",
@@ -8653,6 +8773,16 @@
           "status": "verified",
           "source": "https://worldcurling.org/wp-content/uploads/2023/07/2023-The-Rules-of-Curling.pdf",
           "checkedOn": "2026-10-20"
+        },
+        "length": {
+          "phrase": "the width of a curling stone",
+          "label": "Curling stone width",
+          "value": 0.29,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://worldcurling.org/about/rules/",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "curlingstone",
@@ -8791,6 +8921,36 @@
           "source": "https://www.boeing.com/content/dam/boeing/v2/airports/acaps/737CL_REV_E.pdf",
           "checkedOn": "2026-10-20",
           "note": "Boeing gives 41.1 to 41.4 tonnes, depending on how empty weight is defined."
+        },
+        "length": {
+          "phrase": "the length of a Boeing 737-800",
+          "label": "737-800 length",
+          "value": 39.5,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.boeing.com/commercial/737ng",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the cruising speed of a Boeing 737-800",
+          "label": "737-800 cruising speed",
+          "value": 842,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.boeing.com/commercial/737ng",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the first flight of the Boeing 737-800",
+          "label": "737-800 first flight",
+          "value": 1997,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.boeing.com/commercial/737ng",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "b737",
@@ -8851,6 +9011,16 @@
           "source": "https://www.britannica.com/animal/African-forest-elephant",
           "checkedOn": "2026-10-20",
           "note": "Sources give 1,800 to 5,400 kg."
+        },
+        "length": {
+          "phrase": "the height of an African forest elephant",
+          "label": "Forest elephant height",
+          "value": 2.4,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/African-forest-elephant",
+          "checkedOn": "2026-10-26"
         }
       },
       "family": "forestelephant",
@@ -10763,6 +10933,1846 @@
         }
       },
       "family": "a320",
+      "fame": 2
+    },
+    {
+      "id": "greatwhite",
+      "name": "A great white shark",
+      "facts": {
+        "length": {
+          "phrase": "the length of a great white shark",
+          "label": "Great white length",
+          "value": 4.5,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.ifaw.org/au/animals/great-white-sharks",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a great white shark",
+          "label": "Great white weight",
+          "value": 1000,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top speed of a great white shark",
+          "label": "Great white top speed",
+          "value": 50,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.ifaw.org/au/animals/great-white-sharks",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "greatwhite",
+      "fame": 3
+    },
+    {
+      "id": "brownbear",
+      "name": "A brown bear",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a brown bear",
+          "label": "Brown bear weight",
+          "value": 270,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://kids.britannica.com/kids/article/brown-bear/638853",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the length of a brown bear",
+          "label": "Brown bear length",
+          "value": 1.8,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top speed of a brown bear",
+          "label": "Brown bear top speed",
+          "value": 56,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://kids.britannica.com/students/article/brown-bear/643630",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "brownbear",
+      "fame": 3
+    },
+    {
+      "id": "tiger",
+      "name": "A tiger",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a tiger",
+          "label": "Tiger weight",
+          "value": 220,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/tiger",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the length of a tiger",
+          "label": "Tiger length",
+          "value": 2.8,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/tiger",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top speed of a tiger",
+          "label": "Tiger top speed",
+          "value": 65,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "tiger",
+      "fame": 3
+    },
+    {
+      "id": "komodo",
+      "name": "A Komodo dragon",
+      "facts": {
+        "length": {
+          "phrase": "the length of a Komodo dragon",
+          "label": "Komodo dragon length",
+          "value": 2.6,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://globalconservation.org/endangered-species/komodo-dragon",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a Komodo dragon",
+          "label": "Komodo dragon weight",
+          "value": 70,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://globalconservation.org/endangered-species/komodo-dragon",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top speed of a Komodo dragon",
+          "label": "Komodo dragon top speed",
+          "value": 20,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://globalconservation.org/endangered-species/komodo-dragon",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "komodo",
+      "fame": 3
+    },
+    {
+      "id": "saltcroc",
+      "name": "A saltwater crocodile",
+      "facts": {
+        "length": {
+          "phrase": "the length of a saltwater crocodile",
+          "label": "Saltwater crocodile length",
+          "value": 4.5,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a saltwater crocodile",
+          "label": "Saltwater crocodile weight",
+          "value": 450,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "saltcroc",
+      "fame": 3
+    },
+    {
+      "id": "walrus",
+      "name": "A walrus",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a walrus",
+          "label": "Walrus weight",
+          "value": 1200,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://seaworld.org/animals/all-about/walrus/characteristics/",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the length of a walrus",
+          "label": "Walrus length",
+          "value": 3.2,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://seaworld.org/animals/all-about/walrus/characteristics/",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top speed of a walrus",
+          "label": "Walrus top speed",
+          "value": 35,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "walrus",
+      "fame": 3
+    },
+    {
+      "id": "dolphin",
+      "name": "A bottlenose dolphin",
+      "facts": {
+        "length": {
+          "phrase": "the length of a bottlenose dolphin",
+          "label": "Dolphin length",
+          "value": 3.0,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.mcsuk.org/ocean-learning/wildlife-a-z/bottlenose-dolphin/",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a bottlenose dolphin",
+          "label": "Dolphin weight",
+          "value": 250,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://seaworld.org/animals/all-about/bottlenose-dolphin/characteristics/",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top speed of a bottlenose dolphin",
+          "label": "Dolphin top speed",
+          "value": 35,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://seaworld.org/animals/all-about/bottlenose-dolphin/characteristics/",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "dolphin",
+      "fame": 3
+    },
+    {
+      "id": "camel",
+      "name": "A dromedary camel",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a dromedary camel",
+          "label": "Camel weight",
+          "value": 450,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Camel",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the height of a dromedary camel",
+          "label": "Camel height",
+          "value": 2.1,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Camel",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top speed of a dromedary camel",
+          "label": "Camel top speed",
+          "value": 65,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Camel",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "camel",
+      "fame": 3
+    },
+    {
+      "id": "moose",
+      "name": "A moose",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a moose",
+          "label": "Moose weight",
+          "value": 450,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/summary/moose-mammal",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the height of a moose",
+          "label": "Moose height",
+          "value": 1.9,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/summary/moose-mammal",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top speed of a moose",
+          "label": "Moose top speed",
+          "value": 56,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/summary/moose-mammal",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "moose",
+      "fame": 3
+    },
+    {
+      "id": "reindeer",
+      "name": "A reindeer",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a reindeer",
+          "label": "Reindeer weight",
+          "value": 140,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://simple.wikipedia.org/wiki/Reindeer",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top speed of a reindeer",
+          "label": "Reindeer top speed",
+          "value": 80,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://bds.org.uk/information-advice/about-deer/deer-species/reindeer/",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "reindeer",
+      "fame": 2
+    },
+    {
+      "id": "housefly",
+      "name": "A housefly",
+      "facts": {
+        "length": {
+          "phrase": "the length of a housefly",
+          "label": "Housefly length",
+          "value": 0.007,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/housefly",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a housefly",
+          "label": "Housefly weight",
+          "value": 2e-05,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/housefly",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top speed of a housefly",
+          "label": "Housefly top speed",
+          "value": 7,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.sciencefocus.com/nature/how-fast-can-a-housefly-fly",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "housefly",
+      "fame": 3
+    },
+    {
+      "id": "honeybee",
+      "name": "A honey bee",
+      "facts": {
+        "length": {
+          "phrase": "the length of a honey bee",
+          "label": "Honey bee length",
+          "value": 0.015,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.bbka.org.uk/fascinating-facts-about-honey-bees",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a honey bee",
+          "label": "Honey bee weight",
+          "value": 0.0001,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.bbka.org.uk/fascinating-facts-about-honey-bees",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top speed of a honey bee",
+          "label": "Honey bee top speed",
+          "value": 24,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.bbka.org.uk/fascinating-facts-about-honey-bees",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "honeybee",
+      "fame": 3
+    },
+    {
+      "id": "swift",
+      "name": "A common swift",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of a common swift",
+          "label": "Swift top speed",
+          "value": 111,
+          "unit": "km/h",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the length of a common swift",
+          "label": "Swift length",
+          "value": 0.17,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a common swift",
+          "label": "Swift weight",
+          "value": 0.04,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "swift",
+      "fame": 2
+    },
+    {
+      "id": "blackmamba",
+      "name": "A black mamba",
+      "facts": {
+        "length": {
+          "phrase": "the length of a black mamba",
+          "label": "Black mamba length",
+          "value": 2.5,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/black-mamba",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a black mamba",
+          "label": "Black mamba weight",
+          "value": 1.6,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Black_mamba",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top speed of a black mamba",
+          "label": "Black mamba top speed",
+          "value": 20,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/black-mamba",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "blackmamba",
+      "fame": 2
+    },
+    {
+      "id": "gorilla",
+      "name": "A silverback gorilla",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a silverback gorilla",
+          "label": "Gorilla weight",
+          "value": 160,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/gorilla",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the height of a silverback gorilla",
+          "label": "Gorilla height",
+          "value": 1.7,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/gorilla",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "gorilla",
+      "fame": 3
+    },
+    {
+      "id": "dairycow",
+      "name": "A dairy cow",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a dairy cow",
+          "label": "Dairy cow weight",
+          "value": 680,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.holsteinusa.com/holstein_breed/breedhistory.html",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the height of a dairy cow",
+          "label": "Dairy cow height",
+          "value": 1.45,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.holsteinusa.com/holstein_breed/breedhistory.html",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "dairycow",
+      "fame": 3
+    },
+    {
+      "id": "baldeagle",
+      "name": "A bald eagle",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of a bald eagle",
+          "label": "Bald eagle weight",
+          "value": 4.5,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nationaleaglecenter.org/eagle-traits/",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the length of a bald eagle",
+          "label": "Bald eagle length",
+          "value": 0.9,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/bald-eagle",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top speed of a bald eagle",
+          "label": "Bald eagle top speed",
+          "value": 56,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nationaleaglecenter.org/eagle-traits/",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "baldeagle",
+      "fame": 3
+    },
+    {
+      "id": "cessna172",
+      "name": "A Cessna 172",
+      "facts": {
+        "length": {
+          "phrase": "the length of a Cessna 172",
+          "label": "Cessna 172 length",
+          "value": 8.28,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://cessna.txtav.com/en/piston/cessna-skyhawk",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the cruising speed of a Cessna 172",
+          "label": "Cessna 172 cruising speed",
+          "value": 226,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://cessna.txtav.com/en/piston/cessna-skyhawk",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the first flight of the Cessna 172",
+          "label": "Cessna 172 first flight",
+          "value": 1955,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Cessna_172",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a Cessna 172",
+          "label": "Cessna 172 weight",
+          "value": 767,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://cessna.txtav.com/en/piston/cessna-skyhawk",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "cessna172",
+      "fame": 2
+    },
+    {
+      "id": "challenger2",
+      "name": "The Challenger 2 tank",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of the Challenger 2 tank",
+          "label": "Challenger 2 weight",
+          "value": 62500,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.army.mod.uk/equipment/combat-vehicles/",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top speed of the Challenger 2 tank",
+          "label": "Challenger 2 top speed",
+          "value": 59,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.army.mod.uk/equipment/combat-vehicles/",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "challenger2",
+      "fame": 2
+    },
+    {
+      "id": "soyuz",
+      "name": "A Soyuz spacecraft",
+      "facts": {
+        "length": {
+          "phrase": "the length of a Soyuz spacecraft",
+          "label": "Soyuz length",
+          "value": 7.5,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nasa.gov/mission_pages/station/structure/elements/soyuz.html",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a Soyuz spacecraft",
+          "label": "Soyuz weight",
+          "value": 7200,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/Soyuz_spacecraft",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the first crewed flight of Soyuz",
+          "label": "Soyuz first crewed flight",
+          "value": 1967,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nasa.gov/history/55-years-ago-soyuz-1/",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the orbital speed of a Soyuz spacecraft",
+          "label": "Soyuz orbital speed",
+          "value": 28000,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nasa.gov/audience/forstudents/5-8/features/nasa-knows/what-is-orbit-58.html",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "soyuz",
+      "fame": 2
+    },
+    {
+      "id": "chinook",
+      "name": "A Chinook helicopter",
+      "facts": {
+        "length": {
+          "phrase": "the length of a Chinook helicopter",
+          "label": "Chinook length",
+          "value": 30.1,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.boeing.com/defense/ch-47-chinook",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a Chinook helicopter",
+          "label": "Chinook weight",
+          "value": 10800,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.boeing.com/defense/ch-47-chinook",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the top speed of a Chinook helicopter",
+          "label": "Chinook top speed",
+          "value": 315,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.boeing.com/defense/ch-47-chinook",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the first flight of the Chinook",
+          "label": "Chinook first flight",
+          "value": 1961,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.boeing.com/history/products/ch-47-chinook.page",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "chinook",
+      "fame": 2
+    },
+    {
+      "id": "spaceneedle",
+      "name": "The Space Needle",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Space Needle",
+          "label": "Space Needle height",
+          "value": 184,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.spaceneedle.com/fun-facts",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the opening of the Space Needle",
+          "label": "Space Needle opens",
+          "value": 1962,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.spaceneedle.com/fun-facts",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "spaceneedle",
+      "fame": 2
+    },
+    {
+      "id": "christredeemer",
+      "name": "Christ the Redeemer",
+      "facts": {
+        "length": {
+          "phrase": "the height of Christ the Redeemer",
+          "label": "Christ the Redeemer height",
+          "value": 30,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/Christ-the-Redeemer",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of Christ the Redeemer",
+          "label": "Christ the Redeemer weight",
+          "value": 635000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/Christ-the-Redeemer",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the inauguration of Christ the Redeemer",
+          "label": "Christ the Redeemer inaugurated",
+          "value": 1931,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/Christ-the-Redeemer",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "christredeemer",
+      "fame": 3
+    },
+    {
+      "id": "rushmore",
+      "name": "Mount Rushmore",
+      "facts": {
+        "length": {
+          "phrase": "the height of a face on Mount Rushmore",
+          "label": "Rushmore face height",
+          "value": 18,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nps.gov/moru/learn/historyculture/carving-history.htm",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the completion of Mount Rushmore",
+          "label": "Rushmore completed",
+          "value": 1941,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nps.gov/moru/learn/historyculture/carving-history.htm",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "rushmore",
+      "fame": 3
+    },
+    {
+      "id": "tajmahal",
+      "name": "The Taj Mahal",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Taj Mahal",
+          "label": "Taj Mahal height",
+          "value": 73,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/Taj-Mahal",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the start of building the Taj Mahal",
+          "label": "Taj Mahal begun",
+          "value": 1632,
+          "unit": "year",
+          "approx": true,
+          "status": "verified",
+          "source": "https://whc.unesco.org/en/list/252",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "tajmahal",
+      "fame": 3
+    },
+    {
+      "id": "stonehenge",
+      "name": "Stonehenge",
+      "facts": {
+        "length": {
+          "phrase": "the height of Stonehenge's tallest stone",
+          "label": "Stonehenge tallest stone",
+          "value": 7,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.english-heritage.org.uk/visit/places/stonehenge/history-and-stories/building-stonehenge/",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a Stonehenge sarsen stone",
+          "label": "Stonehenge stone weight",
+          "value": 25000,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.english-heritage.org.uk/visit/places/stonehenge/history-and-stories/building-stonehenge/",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the start of Stonehenge",
+          "label": "Stonehenge begun",
+          "value": -3000,
+          "unit": "year",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.english-heritage.org.uk/visit/places/stonehenge/history-and-stories/history/",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "stonehenge",
+      "fame": 3
+    },
+    {
+      "id": "sphinx",
+      "name": "The Great Sphinx",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Great Sphinx",
+          "label": "Great Sphinx length",
+          "value": 73,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/Great-Sphinx",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the building of the Great Sphinx",
+          "label": "Great Sphinx built",
+          "value": -2500,
+          "unit": "year",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/Great-Sphinx",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "sphinx",
+      "fame": 3
+    },
+    {
+      "id": "arcdetriomphe",
+      "name": "The Arc de Triomphe",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Arc de Triomphe",
+          "label": "Arc de Triomphe height",
+          "value": 50,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.paris-arc-de-triomphe.fr/en/",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the completion of the Arc de Triomphe",
+          "label": "Arc de Triomphe completed",
+          "value": 1836,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/Arc-de-Triomphe-de-lEtoile",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "arcdetriomphe",
+      "fame": 3
+    },
+    {
+      "id": "brandenburg",
+      "name": "The Brandenburg Gate",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Brandenburg Gate",
+          "label": "Brandenburg Gate height",
+          "value": 26,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.visitberlin.de/en/brandenburg-gate",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the completion of the Brandenburg Gate",
+          "label": "Brandenburg Gate completed",
+          "value": 1791,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.visitberlin.de/en/brandenburg-gate",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "brandenburg",
+      "fame": 2
+    },
+    {
+      "id": "pantheon",
+      "name": "The Pantheon in Rome",
+      "facts": {
+        "length": {
+          "phrase": "the width of the Pantheon's dome",
+          "label": "Pantheon dome width",
+          "value": 43.3,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/Pantheon-building-Rome-Italy",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the building of the Pantheon",
+          "label": "Pantheon built",
+          "value": 126,
+          "unit": "year",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/Pantheon-building-Rome-Italy",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "pantheon",
+      "fame": 2
+    },
+    {
+      "id": "stpauls",
+      "name": "St Paul's Cathedral",
+      "facts": {
+        "length": {
+          "phrase": "the height of St Paul's Cathedral",
+          "label": "St Paul's height",
+          "value": 111,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.stpauls.co.uk/history-collections/history/building-st-pauls",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the completion of St Paul's Cathedral",
+          "label": "St Paul's completed",
+          "value": 1710,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.stpauls.co.uk/history-collections/history/building-st-pauls",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "stpauls",
+      "fame": 3
+    },
+    {
+      "id": "forthbridge",
+      "name": "The Forth Bridge",
+      "facts": {
+        "length": {
+          "phrase": "the length of the Forth Bridge",
+          "label": "Forth Bridge length",
+          "value": 2467,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.forth-bridges.co.uk/forth-bridge/facts-figures.html",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the opening of the Forth Bridge",
+          "label": "Forth Bridge opens",
+          "value": 1890,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.forth-bridges.co.uk/forth-bridge/facts-figures.html",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "forthbridge",
+      "fame": 2
+    },
+    {
+      "id": "blackpooltower",
+      "name": "Blackpool Tower",
+      "facts": {
+        "length": {
+          "phrase": "the height of Blackpool Tower",
+          "label": "Blackpool Tower height",
+          "value": 158,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.theblackpooltower.com/explore/about-us/tower-facts/",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the opening of Blackpool Tower",
+          "label": "Blackpool Tower opens",
+          "value": 1894,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.theblackpooltower.com/explore/about-us/tower-facts/",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "blackpooltower",
+      "fame": 2
+    },
+    {
+      "id": "volleyball",
+      "name": "A volleyball",
+      "facts": {
+        "length": {
+          "phrase": "the width of a volleyball",
+          "label": "Volleyball diameter",
+          "value": 0.21,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.fivb.com/en/volleyball/thegame_glossary/rules",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a volleyball",
+          "label": "Volleyball weight",
+          "value": 0.27,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.fivb.com/en/volleyball/thegame_glossary/rules",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "volleyball",
+      "fame": 3
+    },
+    {
+      "id": "snookerball",
+      "name": "A snooker ball",
+      "facts": {
+        "length": {
+          "phrase": "the width of a snooker ball",
+          "label": "Snooker ball diameter",
+          "value": 0.0525,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.wpbsa.com/rules/",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a snooker ball",
+          "label": "Snooker ball weight",
+          "value": 0.142,
+          "unit": "kg",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.wpbsa.com/rules/",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "snookerball",
+      "fame": 3
+    },
+    {
+      "id": "cricketbat",
+      "name": "A cricket bat",
+      "facts": {
+        "length": {
+          "phrase": "the length of a cricket bat",
+          "label": "Cricket bat length",
+          "value": 0.96,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.lords.org/mcc/the-laws-of-cricket/the-bat",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a cricket bat",
+          "label": "Cricket bat weight",
+          "value": 1.2,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.lords.org/mcc/the-laws-of-cricket/the-bat",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "cricketbat",
+      "fame": 3
+    },
+    {
+      "id": "tennisracket",
+      "name": "A tennis racket",
+      "facts": {
+        "length": {
+          "phrase": "the length of a tennis racket",
+          "label": "Tennis racket length",
+          "value": 0.685,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.itftennis.com/en/about-us/governance/rules-and-regulations/",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a tennis racket",
+          "label": "Tennis racket weight",
+          "value": 0.3,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.itftennis.com/en/about-us/governance/rules-and-regulations/",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "tennisracket",
+      "fame": 3
+    },
+    {
+      "id": "baseballbat",
+      "name": "A baseball bat",
+      "facts": {
+        "length": {
+          "phrase": "the length of a baseball bat",
+          "label": "Baseball bat length",
+          "value": 0.86,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.mlb.com/glossary/rules/baseball-bat",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a baseball bat",
+          "label": "Baseball bat weight",
+          "value": 0.9,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.mlb.com/glossary/rules/baseball-bat",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "baseballbat",
+      "fame": 3
+    },
+    {
+      "id": "stratocaster",
+      "name": "A Fender Stratocaster",
+      "facts": {
+        "length": {
+          "phrase": "the length of a Fender Stratocaster",
+          "label": "Stratocaster length",
+          "value": 0.99,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.fender.com/en-US/electric-guitars/stratocaster/",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a Fender Stratocaster",
+          "label": "Stratocaster weight",
+          "value": 3.6,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.fender.com/en-US/electric-guitars/stratocaster/",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the launch of the Fender Stratocaster",
+          "label": "Stratocaster launched",
+          "value": 1954,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.fender.com/en-US/about/history.html",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "stratocaster",
+      "fame": 3
+    },
+    {
+      "id": "violin",
+      "name": "A violin",
+      "facts": {
+        "length": {
+          "phrase": "the length of a violin",
+          "label": "Violin length",
+          "value": 0.59,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/art/violin",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a violin",
+          "label": "Violin weight",
+          "value": 0.45,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/art/violin",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "violin",
+      "fame": 3
+    },
+    {
+      "id": "stanleycup",
+      "name": "The Stanley Cup",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Stanley Cup",
+          "label": "Stanley Cup height",
+          "value": 0.9,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nhl.com/hall-of-fame/stanley-cup/facts",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of the Stanley Cup",
+          "label": "Stanley Cup weight",
+          "value": 15.5,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nhl.com/hall-of-fame/stanley-cup/facts",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the start of the Stanley Cup",
+          "label": "Stanley Cup begins",
+          "value": 1892,
+          "unit": "year",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nhl.com/hall-of-fame/stanley-cup/facts",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "stanleycup",
+      "fame": 2
+    },
+    {
+      "id": "banana",
+      "name": "A banana",
+      "facts": {
+        "length": {
+          "phrase": "the length of a banana",
+          "label": "Banana length",
+          "value": 0.18,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "USDA FoodData Central",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a banana",
+          "label": "Banana weight",
+          "value": 0.12,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "USDA FoodData Central",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "banana",
+      "fame": 3
+    },
+    {
+      "id": "apple",
+      "name": "An apple",
+      "facts": {
+        "length": {
+          "phrase": "the width of an apple",
+          "label": "Apple width",
+          "value": 0.08,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "USDA FoodData Central",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of an apple",
+          "label": "Apple weight",
+          "value": 0.18,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "USDA FoodData Central",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "apple",
+      "fame": 3
+    },
+    {
+      "id": "watermelon",
+      "name": "A watermelon",
+      "facts": {
+        "length": {
+          "phrase": "the length of a watermelon",
+          "label": "Watermelon length",
+          "value": 0.4,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/plant/watermelon",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a watermelon",
+          "label": "Watermelon weight",
+          "value": 9,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/plant/watermelon",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "watermelon",
+      "fame": 3
+    },
+    {
+      "id": "cokecan",
+      "name": "A 330 ml drinks can",
+      "facts": {
+        "length": {
+          "phrase": "the height of a 330 ml drinks can",
+          "label": "Drinks can height",
+          "value": 0.115,
+          "unit": "m",
+          "approx": true,
+          "status": "unchecked",
+          "source": "standard can size",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a full 330 ml drinks can",
+          "label": "Drinks can weight",
+          "value": 0.35,
+          "unit": "kg",
+          "approx": true,
+          "status": "unchecked",
+          "source": "standard can size",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "cokecan",
+      "fame": 3
+    },
+    {
+      "id": "gameboy",
+      "name": "The original Game Boy",
+      "facts": {
+        "length": {
+          "phrase": "the length of the original Game Boy",
+          "label": "Game Boy length",
+          "value": 0.148,
+          "unit": "m",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nintendo.co.jp/hardware/gamelines/gameboy.html",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of the original Game Boy",
+          "label": "Game Boy weight",
+          "value": 0.22,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nintendo.co.jp/hardware/gamelines/gameboy.html",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the release of the original Game Boy",
+          "label": "Game Boy released",
+          "value": 1989,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nintendo.co.jp/hardware/gamelines/gameboy.html",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "gameboy",
+      "fame": 3
+    },
+    {
+      "id": "walkman",
+      "name": "The Sony Walkman",
+      "facts": {
+        "length": {
+          "phrase": "the length of the first Sony Walkman",
+          "label": "Walkman length",
+          "value": 0.133,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.sony.com/en/SonyInfo/CorporateInfo/History/sonyhistory-c.html",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of the first Sony Walkman",
+          "label": "Walkman weight",
+          "value": 0.39,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.sony.com/en/SonyInfo/CorporateInfo/History/sonyhistory-c.html",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the launch of the Sony Walkman",
+          "label": "Walkman launched",
+          "value": 1979,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.sony.com/en/SonyInfo/CorporateInfo/History/sonyhistory-c.html",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "walkman",
+      "fame": 3
+    },
+    {
+      "id": "winebottle",
+      "name": "A bottle of wine",
+      "facts": {
+        "length": {
+          "phrase": "the height of a bottle of wine",
+          "label": "Wine bottle height",
+          "value": 0.3,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/wine-bottle",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a full bottle of wine",
+          "label": "Wine bottle weight",
+          "value": 1.25,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/wine-bottle",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "winebottle",
+      "fame": 3
+    },
+    {
+      "id": "eye",
+      "name": "A human eye",
+      "facts": {
+        "length": {
+          "phrase": "the width of a human eye",
+          "label": "Eye width",
+          "value": 0.024,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/science/human-eye",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of a human eye",
+          "label": "Eye weight",
+          "value": 0.0075,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/science/human-eye",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "eye",
+      "fame": 3
+    },
+    {
+      "id": "pluto",
+      "name": "Pluto",
+      "facts": {
+        "length": {
+          "phrase": "the width of Pluto",
+          "label": "Pluto diameter",
+          "value": 2377000,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/plutofact.html",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of Pluto",
+          "label": "Pluto weight",
+          "value": 1.303e+22,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/plutofact.html",
+          "checkedOn": "2026-10-26"
+        },
+        "speed": {
+          "phrase": "the orbital speed of Pluto",
+          "label": "Pluto orbital speed",
+          "value": 17000,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://solarsystem.nasa.gov/pluto-by-the-numbers/?intent=121",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the discovery of Pluto",
+          "label": "Pluto discovered",
+          "value": 1930,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://solarsystem.nasa.gov/pluto-by-the-numbers/?intent=121",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "pluto",
+      "fame": 3
+    },
+    {
+      "id": "monalisa",
+      "name": "The Mona Lisa",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Mona Lisa",
+          "label": "Mona Lisa height",
+          "value": 0.77,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.louvre.fr/en/explore/the-palace/mona-lisa",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the start of the Mona Lisa",
+          "label": "Mona Lisa begun",
+          "value": 1503,
+          "unit": "year",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.louvre.fr/en/explore/the-palace/mona-lisa",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "monalisa",
+      "fame": 3
+    },
+    {
+      "id": "starrynight",
+      "name": "The Starry Night",
+      "facts": {
+        "length": {
+          "phrase": "the height of The Starry Night",
+          "label": "Starry Night height",
+          "value": 0.737,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.moma.org/collection/works/79802",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the painting of The Starry Night",
+          "label": "Starry Night painted",
+          "value": 1889,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.moma.org/collection/works/79802",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "starrynight",
+      "fame": 3
+    },
+    {
+      "id": "rosetta",
+      "name": "The Rosetta Stone",
+      "facts": {
+        "length": {
+          "phrase": "the height of the Rosetta Stone",
+          "label": "Rosetta Stone height",
+          "value": 1.12,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Rosetta_Stone",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of the Rosetta Stone",
+          "label": "Rosetta Stone weight",
+          "value": 760,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britishmuseum.org/collection/object/Y_EA24",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the writing of the Rosetta Stone",
+          "label": "Rosetta Stone inscribed",
+          "value": -196,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Rosetta_Stone",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "rosetta",
+      "fame": 3
+    },
+    {
+      "id": "tutmask",
+      "name": "Tutankhamun's gold mask",
+      "facts": {
+        "length": {
+          "phrase": "the height of Tutankhamun's gold mask",
+          "label": "Tutankhamun's mask height",
+          "value": 0.54,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/Tutankhamun",
+          "checkedOn": "2026-10-26"
+        },
+        "weight": {
+          "phrase": "the weight of Tutankhamun's gold mask",
+          "label": "Tutankhamun's mask weight",
+          "value": 10.23,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/Tutankhamun",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the making of Tutankhamun's gold mask",
+          "label": "Tutankhamun's mask made",
+          "value": -1323,
+          "unit": "year",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/Tutankhamun",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "tutmask",
+      "fame": 3
+    },
+    {
+      "id": "bigbellbell",
+      "name": "The bell called Big Ben",
+      "facts": {
+        "weight": {
+          "phrase": "the weight of the bell called Big Ben",
+          "label": "Big Ben bell weight",
+          "value": 13760,
+          "unit": "kg",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.parliament.uk/about/living-heritage/building/palace/big-ben/facts-figures/",
+          "checkedOn": "2026-10-26"
+        },
+        "length": {
+          "phrase": "the width of the bell called Big Ben",
+          "label": "Big Ben bell width",
+          "value": 2.74,
+          "unit": "m",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.parliament.uk/about/living-heritage/building/palace/big-ben/facts-figures/",
+          "checkedOn": "2026-10-26"
+        },
+        "date": {
+          "phrase": "the casting of the bell called Big Ben",
+          "label": "Big Ben bell cast",
+          "value": 1858,
+          "unit": "year",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.parliament.uk/about/living-heritage/building/palace/big-ben/facts-figures/",
+          "checkedOn": "2026-10-26"
+        }
+      },
+      "family": "bigbellbell",
       "fame": 2
     }
   ]
