@@ -37,10 +37,10 @@
       <button class="helpbtn" id="theme" type="button" aria-label="Switch theme"></button>
     </div>
   </header>
-  <p class="gtitle">Today’s puzzles</p>
-  <nav class="games" id="games" aria-label="Today’s puzzles">
-    <a class="gamecard" href="../"><span class="gname">Clean Sweep</span><span class="gstat" id="gs-cs">Not played</span><span class="gflame" id="gf-cs"></span></a>
-    <a class="gamecard" href="./" aria-current="page"><span class="gname">Mystery Thing <span class="newbadge" id="newbadge">New</span></span><span class="gstat" id="gs-mt">Not played</span><span class="gflame" id="gf-mt"></span></a>
+  <nav class="sw" id="games" aria-label="Switch game">
+    <a class="swb" data-g="cs" href="../"><span class="swn"><span class="full">Clean Sweep</span><span class="short">Sweep</span></span><i class="st none" id="gs-cs" aria-hidden="true"></i></a>
+    <a class="swb cur" data-g="mt" href="./" aria-current="page"><span class="swnew" id="newbadge">New</span><span class="swn"><span class="full">Mystery Thing</span><span class="short">Mystery</span></span><i class="st none" id="gs-mt" aria-hidden="true"></i></a>
+    <a class="swb" data-g="lu" href="../lineup/"><span class="swnew" id="newbadge-lu">New</span><span class="swn"><span class="full">Line Up</span><span class="short">Line Up</span></span><i class="st none" id="gs-lu" aria-hidden="true"></i></a>
   </nav>
   <div class="firsttime" id="firsttime" role="note" hidden>
     <span>First time? Tap the <b>?</b> for a practice round!</span>
@@ -48,15 +48,17 @@
   </div>
   <div class="help" id="help" hidden>
     <h2>How to play</h2>
+    <p class="intro">A mystery thing is hidden in the list. Tap one to guess it, or type to find it.</p>
     <ol>
-      <li>A mystery thing is hidden in the list. Tap one to guess it, or type to find it (you can skip a, an and the).</li>
-      <li>Each guess shows how its numbers compare with the mystery thing’s. An arrow points the way: up means higher or later, down means lower or earlier. Easy and Medium add a colour for how close you are: green is within double or half, red is further off.</li>
+      <li>Each guess shows how its numbers compare with the mystery thing’s. An arrow points the way: up means higher or later, down means lower or earlier.</li>
+      <li>Green means your guess is within double or half. Red is further off.</li>
+      <li><b>Easy</b> shrinks the list for you as you guess, removing anything it can’t be.</li>
+      <li><b>Medium</b> doesn’t shrink the list, but does show the colours.</li>
+      <li><b>Hard</b> does neither.</li>
       <li>Use the clues to rule things out. You have six guesses. Closer guesses, and fewer of them, score more.</li>
     </ol>
-    <p class="small"><b>Size</b> is the thing’s main measurement: a tower’s height, a ship’s length, a ball’s width. <b>Year</b> is when it was built, launched or happened.</p>
-    <p class="small"><b>Easy</b> shrinks the list for you as you guess. <b>Medium</b> doesn’t. <b>Hard</b> doesn’t either, and takes the colours away too. You get one try a day: your setting locks when you make your first guess. Practice puzzles are unlimited.</p>
+    <p class="intro">You get one try a day: your difficulty locks when you make your first guess.</p>
     <div class="practice" id="practicebox">
-      <p>Want to try one first? There are two practice puzzles. They are the same for everyone, you can play them as often as you like, and they do not count towards your score.</p>
       <div class="pbtns">
         <button class="btn" type="button" data-practice="1">Practice 1</button>
         <button class="btn" type="button" data-practice="2">Practice 2</button>

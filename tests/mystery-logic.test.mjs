@@ -90,26 +90,26 @@ ok("the share card on Normal: headline, the clues centred over their columns, on
   assert.equal(lines[1], p.cs.map((c) => PADL + ICONS[c] + HALF).join(" "), "each icon is padded to sit in the middle of its column");
   assert.ok(CELL.test(lines[2]), lines[2]); assert.ok(CELL.test(lines[3]), lines[3]);
   assert.equal(lines[4], PADL + "\u2705" + HALF + " " + PADL + "\u2705" + HALF, "the solved row is a centred tick in each column");
-  assert.equal(lines[5], "\u2B50 " + L.scoreGame(p, ids, "normal").score + " points"); assert.equal(lines[6], "cleansweepdaily.fyi/mystery"); assert.ok(!lines.some((l) => l.startsWith("\uD83E\uDDF9 ")), "Normal has no sweep line");
+  assert.equal(lines[5], "\u2B50 " + L.scoreGame(p, ids, "normal").score + " points"); assert.equal(lines[6], "\uD83E\uDDF9 cleansweepdaily.fyi/mystery"); assert.ok(!lines.slice(0, -1).some((l) => l.startsWith("\uD83E\uDDF9 ")), "Normal has no sweep line (the broom before the address is the last line)");
 });
 ok("the share card on Easy has the sweep line: how many things were still possible after each wrong guess, never growing", () => {
   const p = L.dailyPuzzle(3), [w1, w2] = redExample(p), ids = [w1.id, w2.id, p.secret.id];
   const lines = L.shareText(p, ids, "easy").split("\n"); assert.equal(lines.length, 8);
   assert.ok(lines[5].startsWith("\uD83E\uDDF9 " + L.poolFor(p.cs).length + " \u2192 "), lines[5]);
   const nums = lines[5].replace("\uD83E\uDDF9 ", "").split(" \u2192 ").map(Number); assert.equal(nums.length, 3, "the pool, then the count after each wrong guess"); assert.ok(nums.every((x, i) => i === 0 || x <= nums[i - 1]), String(nums)); assert.ok(nums[2] >= 1);
-  assert.equal(lines[6], "\u2B50 " + L.scoreGame(p, ids, "easy").score + " points"); assert.equal(lines[7], "cleansweepdaily.fyi/mystery");
+  assert.equal(lines[6], "\u2B50 " + L.scoreGame(p, ids, "easy").score + " points"); assert.equal(lines[7], "\uD83E\uDDF9 cleansweepdaily.fyi/mystery");
   assert.deepEqual(lines.filter((l, i) => i !== 5).slice(1), L.shareText(p, ids, "normal").split("\n").slice(1), "apart from the sweep line, Easy and Normal share the same card");
 });
 ok("a lost game says X/6 and has no tick row; a first-guess win says so", () => {
   const p = L.dailyPuzzle(3), w = L.poolFor(p.cs).filter((o) => o !== p.secret).slice(0, 6).map((o) => o.id);
-  const lost = L.shareText(p, w, "normal").split("\n"); assert.ok(lost[0].startsWith("\uD83D\uDD0E Mystery Thing #3 (Medium) X/6")); assert.ok(!lost.some((l) => l.includes("\u2705"))); assert.equal(lost.length, 2 + 6 + 2); assert.equal(lost[lost.length - 1], "cleansweepdaily.fyi/mystery"); assert.ok(/^\u2B50 \d+ points$/.test(lost[lost.length - 2]));
+  const lost = L.shareText(p, w, "normal").split("\n"); assert.ok(lost[0].startsWith("\uD83D\uDD0E Mystery Thing #3 (Medium) X/6")); assert.ok(!lost.some((l) => l.includes("\u2705"))); assert.equal(lost.length, 2 + 6 + 2); assert.equal(lost[lost.length - 1], "\uD83E\uDDF9 cleansweepdaily.fyi/mystery"); assert.ok(/^\u2B50 \d+ points$/.test(lost[lost.length - 2]));
   const first = L.shareText(p, [p.secret.id], "normal").split("\n"); assert.ok(first[0].startsWith("\uD83D\uDD0E Mystery Thing #3 (Medium) 1/6")); assert.equal(first[2], PADL + "\u2705" + HALF + " " + PADL + "\u2705" + HALF); assert.equal(first[3], "\u2B50 600 points");
   assert.equal(L.shareText(p, [p.secret.id], "easy").split("\n")[3], "\uD83E\uDDF9 " + L.poolFor(p.cs).length + " \u2192 1");
 });
 ok("the Hard share: arrows only, one-emoji columns so nothing is padded, no sweep line", () => {
   const p = L.dailyPuzzle(3), [w1, w2] = redExample(p), ids = [w1.id, w2.id, p.secret.id], lines = L.shareText(p, ids, "hard").split("\n");
   assert.equal(lines[1], p.cs.map((c) => ICONS[c]).join(" "), "icons use the same one-space gap as the rows"); assert.ok(!lines.join("").includes(HALF) && !lines.join("").includes(THIN), "no padding on Hard");
-  assert.ok(/^(\u2B06\uFE0F|\u2B07\uFE0F|\u2705) (\u2B06\uFE0F|\u2B07\uFE0F|\u2705)$/.test(lines[2]), lines[2]); assert.ok(!/\uD83D\uDFE9|\uD83D\uDFE5/.test(lines.join("")), "no coloured squares"); assert.equal(lines[4], "\u2705 \u2705"); assert.ok(!lines.some((l) => l.startsWith("\uD83E\uDDF9 ")));
+  assert.ok(/^(\u2B06\uFE0F|\u2B07\uFE0F|\u2705) (\u2B06\uFE0F|\u2B07\uFE0F|\u2705)$/.test(lines[2]), lines[2]); assert.ok(!/\uD83D\uDFE9|\uD83D\uDFE5/.test(lines.join("")), "no coloured squares"); assert.equal(lines[4], "\u2705 \u2705"); assert.ok(!lines.slice(0, -1).some((l) => l.startsWith("\uD83E\uDDF9 ")));
 });
 ok("a practice game is labelled as practice", () => { const p = { ...L.dailyPuzzle(3), daily: false }; assert.ok(L.shareText(p, [p.secret.id], "normal").includes("Mystery Thing (practice)")); });
 ok("scoring: a first-guess solve is worth 600 (900 on Hard), and more guesses can never beat fewer", () => {

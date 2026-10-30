@@ -1,6 +1,6 @@
 // Mystery Thing: the page. All the rules of the game are in logic.js; this file is the screen.
 import { byId, ROUNDS, countdownText, CATS, MODES, MODE_LABEL, PRACTICE, fmt, feedback, poolFor, remaining, norm, filterThings, dayNumber, dailyPuzzle, practicePuzzle, randomPuzzle, MULT, scoreGame, cleanSweep, shareText } from "./logic.js";
-import { breakStreak, bumpStreak, clearStatus, countEvent, milestoneText, paintFlames, pickMilestone, readStatus, showNewBadge, statusLine, streakNow, utcDay, writeStatus, writeStreak } from "../src/games.js";
+import { breakStreak, bumpStreak, clearStatus, copyText, countEvent, flameText, maybeAllDone, MILESTONES, milestoneText, nextButtonsHTML, paintCards, pickMilestone, readStatus, streakNow, utcDay, withFlame, writeStatus } from "../src/games.js";
 
 /** env.storage is the device's localStorage, or null when the browser will not allow it (the game still works, it just cannot save). */
 export function mountMystery(env) {
@@ -62,7 +62,7 @@ export function mountMystery(env) {
       ? "<b>" + items.length + "</b> of " + all.length + " match." + (topId ? " Enter guesses the top one." : "")
       : (M.narrow ? "<b>" + all.length + "</b> still possible." : "All <b>" + all.length + "</b> options.") + " Tap one to guess it.";
     wrap.innerHTML = '<ul class="list" id="list" aria-label="Things the mystery thing could be">' +
-      (items.length ? items.map((o) => { const taken = guesses.includes(o.id); return '<li><button type="button" class="item' + (o.id === topId ? " top" : "") + '" data-id="' + o.id + '"' + (taken ? " disabled" : "") + "><span>" + esc(o.name) + "</span>" + (taken ? '<span class="chips">' + chips(o) + "</span>" : "") + "</button></li>"; }).join("") : '<li class="none">Nothing matches. Clear the box to see them all.</li>') + "</ul>";
+      (items.length ? items.map((o) => { const taken = guesses.includes(o.id); return '<li><button type="button" class="item' + (o.id === topId ? " top" : "") + '" data-id="' + o.id + '"' + (taken ? " disabled" : "") + "><span>" + esc(o.name) + "</span>" + (taken ? '<span class="chips">' + chips(o) + "</span>" : "") + "</button></li>"; }).join("") : '<li class="nomatch">Nothing matches. Clear the box to see them all.</li>') + "</ul>";
     const ul = $("list");
     if (ul && !M.narrow && !q.trim()) ul.scrollTop = listScroll; // Normal and Hard keep your place in the list
   }
@@ -79,7 +79,9 @@ export function mountMystery(env) {
     const day = utcDay();
     if (!rec || (rec.d && rec.d !== day)) return; // no game today (a game from an earlier day with the same puzzle, before launch, does not count again)
     const st = readStats();
+    const hadToday = st.t && st.t.last === day;
     st.t = bumpStreak(st.t, day);
+    if (!hadToday && MILESTONES.includes(st.t.n)) countEvent("mystery-streak-" + st.t.n); // a streak reached 7, 30 or 100 days today
     const g = rec.g;
     const won = g[g.length - 1] === p.secret.id;
     if (won || g.includes("GIVEUP") || g.length >= ROUNDS) {
@@ -87,13 +89,13 @@ export function mountMystery(env) {
       if (st.fin !== day) { st.fin = day; st.played += 1; st.bestScore = Math.max(st.bestScore, scoreGame(p, g, rec.m).score); }
     }
     store.set("mt:stats", JSON.stringify(st));
-    writeStreak(storage, "mt", st.t);
   }
   function statsHTML() {
     const st = readStats();
     const box = (n, what) => '<div class="stat"><b>' + n + "</b><span>" + what + "</span></div>";
     return '<div class="stats">' + box(streakNow(st.t), "day streak") + box(streakNow(st.s), "solved in a row") + box(st.t ? st.t.best : 0, "best streak") + box(st.bestScore, "best score") + "</div>";
   }
+  const flameChip = () => { const n = streakNow(readStats().t); return n >= 2 ? ' <span class="fl">' + flameText(n) + "</span>" : ""; }; // the flame on the result card
   const milestoneToday = () => { const st = readStats(); return pickMilestone(st.t, st.s); };
   const milestoneBanner = () => { const m = isToday() ? milestoneToday() : null; return m ? '<p class="sweep">' + milestoneText(m) + "</p>" : ""; };
   // ---- the Reminder under the settings. Open on a first visit, folded away at the first guess ever, and after that it stays however the player last left it.
@@ -120,17 +122,14 @@ export function mountMystery(env) {
     const mine = ownStatus();
     if (mine) writeStatus(storage, "mt", mine.s, mine.t);
     else clearStatus(storage, "mt");
-    const paint = (id, line) => { const el = $(id); el.textContent = line.text; el.classList.toggle("done", line.done); };
-    paint("gs-mt", statusLine(mine));
-    paint("gs-cs", statusLine(readStatus(storage, "cs")));
-    $("newbadge").hidden = !showNewBadge();
-    paintFlames(storage);
-    const nx = $("nextcs");
-    if (nx) { const n = nextGameState(); nx.textContent = n.label; nx.className = "btn" + (n.primary ? " primary" : ""); }
+    paintCards(storage); // all three rows, the flames and the New badges
+    maybeAllDone(storage);
+    const nx = $("nextgames");
+    if (nx) nx.outerHTML = nextGameHTML();
   }
   function render() {
     updateTabs();
-    $("puzzleno").textContent = puzzle.daily ? "Puzzle #" + puzzle.no : puzzle.practice ? "Practice " + puzzle.practice + " of " + PRACTICE.length : "Practice puzzle";
+    $("puzzleno").textContent = puzzle.daily ? withFlame("Puzzle #" + puzzle.no, streakNow(readStats().t)) : puzzle.practice ? "Practice " + puzzle.practice + " of " + PRACTICE.length : "Practice puzzle";
     document.querySelectorAll("#modes button").forEach((b) => { b.setAttribute("aria-pressed", String(b.dataset.mode === mode)); b.disabled = locked(); });
     $("modehelp").textContent = MODES[mode].help;
     renderHelp();
@@ -152,18 +151,24 @@ export function mountMystery(env) {
     fresh = false;
   }
   // Share result (the phone's share sheet, where there is one) and Copy result, as in Clean Sweep. A daily puzzle has no Play another.
+  // When the browser will not let the page copy, the text is shown just under the buttons, already selected, so it can be copied by hand.
+  const COPYFAIL = '<div class="copyfail" id="copyfail" hidden><p>Your browser would not copy it for you. Select this text and copy it:</p><textarea class="copybox" id="copytext" readonly aria-label="Result text"></textarea></div>';
+  function showCopy(t) {
+    const box = $("copyfail"), ta = $("copytext");
+    if (!box || !ta) return;
+    ta.value = t;
+    ta.rows = t.split("\n").length + 1;
+    box.hidden = false;
+    ta.focus();
+    ta.select();
+    try { ta.setSelectionRange(0, t.length); } catch (err) { /* some browsers have no such call */ }
+  }
   const canShare = () => typeof navigator !== "undefined" && !!navigator && typeof navigator.share === "function";
   const shareButtons = () => (canShare()
     ? '<button class="btn primary" id="share" type="button">Share result</button><button class="btn" id="copy" type="button">Copy result</button>'
     : '<button class="btn primary" id="copy" type="button">Copy result</button>');
   // One button to the other game. Yellow to play it, quiet once it is done, and "Finish" if it was started.
-  function nextGameState() {
-    const cs = readStatus(storage, "cs");
-    if (cs && cs.s === "done") return { label: "\u2713 Clean Sweep done", primary: false };
-    if (cs && cs.s === "play") return { label: "Finish today\u2019s Clean Sweep", primary: true };
-    return { label: "Play today\u2019s Clean Sweep", primary: true };
-  }
-  const nextGameHTML = () => { const n = nextGameState(); return '<div class="nextgame"><a class="btn' + (n.primary ? " primary" : "") + '" id="nextcs" href="../">' + n.label + "</a></div>"; };
+  const nextGameHTML = () => nextButtonsHTML(storage, "mt", "../");
   // "Next puzzle in 6h 37m." counts down while the result is on screen. After midnight it offers the new puzzle instead.
   let cdTimer = null;
   const stopCountdown = () => { if (cdTimer !== null) { clearInterval(cdTimer); cdTimer = null; } };
@@ -188,11 +193,11 @@ export function mountMystery(env) {
     const calc = "<dt>Clues along the way</dt><dd>" + sg(sc.path) + "</dd>" + (sc.won ? "<dt>Solved it</dt><dd>" + sg(sc.solve) + "</dd><dt>" + gobjs().length + (gobjs().length === 1 ? " guess" : " guesses") + "</dt><dd>\u00D7" + sc.mult + "</dd>" : "<dt>Not solved</dt><dd>\u00D7" + sc.mult + "</dd>") + (sc.bonus !== 1 ? "<dt>Hard setting</dt><dd>\u00D7" + sc.bonus + "</dd>" : "");
     const detail = sc.per.map((x) => "<li>" + esc(x.g.name) + ": " + (x.solved ? "solved, " + sg(sc.solve) : puzzle.cs.map((c, k) => "<span>" + CATS[c].name.toLowerCase() + "</span> " + sg(x.pts[k])).join(", ")) + "</li>").join("");
     const scoreBlock = '<div class="score"><p class="big">' + sc.score + "<small>points</small></p><dl class=\"calc\">" + calc + "</dl><details><summary>How each guess scored</summary><ul>" + detail + "</ul></details></div>";
-    el.innerHTML = '<div class="end">' + (cleanSweep(puzzle, guesses) ? '<p class="sweep">\uD83E\uDDF9\u2728 Clean sweep! Every guess was green.</p>' : "") + milestoneBanner() + scoreBlock + '<h2>' + (won() ? "Got it in " + guesses.length + "." : "It was " + esc(lc(s.name)) + ".") + '</h2><p class="res">' + (won() ? "The mystery thing was " + esc(lc(s.name)) + "." : gaveUp() ? "You gave up, so here it is." : "Not this time.") + "</p><dl>" + lines + "</dl>" + (notes ? '<p class="note">' + esc(notes) + "</p>" : "") +
+    el.innerHTML = '<div class="end">' + (cleanSweep(puzzle, guesses) ? '<p class="sweep">\uD83E\uDDF9\u2728 Clean sweep! Every guess was green.</p>' : "") + milestoneBanner() + scoreBlock + '<h2>' + (won() ? "Got it in " + guesses.length + "." : "It was " + esc(lc(s.name)) + ".") + flameChip() + '</h2><p class="res">' + (won() ? "The mystery thing was " + esc(lc(s.name)) + "." : gaveUp() ? "You gave up, so here it is." : "Not this time.") + "</p><dl>" + lines + "</dl>" + (notes ? '<p class="note">' + esc(notes) + "</p>" : "") +
       (puzzle.practice
         ? '<div class="btns"><button class="btn primary" type="button" data-practice="' + (puzzle.practice % PRACTICE.length + 1) + '">Practice puzzle ' + (puzzle.practice % PRACTICE.length + 1) + '</button><button class="btn" id="today" type="button">Back to today\u2019s puzzle</button></div><p class="note2">Practice puzzles do not count towards your score.</p>'
         : (puzzle.daily
-          ? (isToday() ? statsHTML() : "") + '<div class="btns">' + shareButtons() + "</div>" + (isToday() ? '<p class="lockline" id="countdown">Next puzzle in ' + countdownText() + ".</p>" : "") + nextGameHTML()
+          ? (isToday() ? statsHTML() : "") + '<div class="btns">' + shareButtons() + "</div>" + COPYFAIL + (isToday() ? '<p class="lockline" id="countdown">Next puzzle in ' + countdownText() + ".</p>" : "") + nextGameHTML()
           : '<div class="btns"><button class="btn primary" id="copy" type="button">Copy result</button><button class="btn" id="another" type="button">Play another</button></div>') + (isToday() ? "" : '<button class="link" id="today" type="button">Back to today\u2019s puzzle</button>')) + "</div>";
     if (puzzle.daily && isToday() && $("countdown")) cdTimer = setInterval(tickCountdown, 30000);
   }
@@ -270,12 +275,13 @@ export function mountMystery(env) {
     else if (id === "today") newPuzzle(dailyPuzzle(dayNumber()));
     else if (id === "copy") {
       const t = shareText(puzzle, guesses, mode);
-      const done = () => { e.target.textContent = "Copied"; };
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, () => say(t));
-      else say(t);
+      copyText(t).then((ok) => { if (ok) e.target.textContent = "Copied"; else showCopy(t); });
     } else if (id === "share") {
       const t = shareText(puzzle, guesses, mode);
-      Promise.resolve(navigator.share({ text: t })).catch((err) => { if (!err || err.name !== "AbortError") say(t); }); // closing the share sheet is not an error
+      Promise.resolve(navigator.share({ text: t })).catch((err) => { // closing the share sheet is not an error
+        if (err && err.name === "AbortError") return;
+        copyText(t).then((ok) => { const b = $("copy"); if (ok && b) b.textContent = "Copied"; else if (!ok) showCopy(t); });
+      });
     }
   });
   $("newpz").addEventListener("click", () => newPuzzle(randomPuzzle(puzzle.secret.id)));
@@ -294,7 +300,7 @@ export function mountMystery(env) {
   $("partybtn").addEventListener("click", celebrate);
   $("remind").addEventListener("click", () => setHelp(!helpOpen()));
   $("clear").addEventListener("click", () => {
-    try { if (storage) for (const k of Object.keys(storage)) if (k.startsWith("mt:") && k !== "mt:mode") storage.removeItem(k); storage.removeItem("streak:mt"); } catch (e) { /* nothing stored, or storage blocked */ }
+    try { if (storage) for (const k of Object.keys(storage)) if (k.startsWith("mt:") && k !== "mt:mode") storage.removeItem(k); } catch (e) { /* nothing stored, or storage blocked */ }
     newPuzzle(dailyPuzzle(dayNumber()));
     showNote();
     say("Saved games cleared.");

@@ -1,6 +1,7 @@
 // Builds two self-contained pages, each with its CSS, JavaScript and facts inlined:
 //   dist/index.html          Clean Sweep
 //   dist/mystery/index.html  Mystery Thing
+//   dist/lineup/index.html   Line Up
 // (The real site does not use these: it serves the source files as they are. These are for trying the game from one file, and for the tests.)
 // Usage: node scripts/build.mjs
 import { readFile, writeFile, mkdir } from "node:fs/promises";
@@ -43,6 +44,7 @@ async function inlineFonts(css) {
 
 const facts = JSON.parse(await read("data/facts.json"));
 await mkdir(join(root, "dist/mystery"), { recursive: true });
+await mkdir(join(root, "dist/lineup"), { recursive: true });
 
 // ---- Clean Sweep ----
 {
@@ -69,4 +71,18 @@ await mkdir(join(root, "dist/mystery"), { recursive: true });
     .replace(/<script type="module" src="main.js"><\/script>/, `<script>\nglobalThis.__CLEANSWEEP_FACTS__ = ${JSON.stringify(facts)};\nglobalThis.__MYSTERY_DAYS__ = ${JSON.stringify(days)};\n(function () {\n${code}\n})();\n</script>`);
   await writeFile(join(root, "dist/mystery/index.html"), html);
   console.log(`Built dist/mystery/index.html (${Math.round(html.length / 1024)} KB)`);
+}
+
+// ---- Line Up ----
+{
+  const days = JSON.parse(await read("data/lineup-days.json"));
+  const code = await bundle(["src/version.js", "src/site.js", "src/games.js", "lineup/data.js", "lineup/schedule.js", "lineup/logic.js", "lineup/ui.js", "lineup/main.js"], true);
+  const css = await inlineFonts(await read("lineup/styles.css"));
+  let html = await read("lineup/index.html");
+  html = html
+    .replace(/<link rel="preload"[^>]*fonts\/[^>]*>\n?/g, "")
+    .replace(/<link rel="stylesheet" href="styles.css">/, `<style>\n${css}\n</style>`)
+    .replace(/<script type="module" src="main.js"><\/script>/, `<script>\nglobalThis.__CLEANSWEEP_FACTS__ = ${JSON.stringify(facts)};\nglobalThis.__LINEUP_DAYS__ = ${JSON.stringify(days)};\n(function () {\n${code}\n})();\n</script>`);
+  await writeFile(join(root, "dist/lineup/index.html"), html);
+  console.log(`Built dist/lineup/index.html (${Math.round(html.length / 1024)} KB)`);
 }

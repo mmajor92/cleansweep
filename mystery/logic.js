@@ -25,7 +25,7 @@ export const MODE_LABEL = { easy: "Easy", normal: "Medium", hard: "Hard" }; // t
 export const PRACTICE = [{ id: "eiffel", cs: ["length", "date"] }, { id: "giraffe", cs: ["weight", "speed"] }]; // the same for everyone, and not counted
 export const SQUARES = { 0: "\uD83D\uDFE9", 3: "\uD83D\uDFE5" };
 export const ICON = { length: "\uD83D\uDCCF", weight: "\u2696\uFE0F", speed: "\uD83D\uDCA8", date: "\uD83D\uDCC5" };
-export const SHARE_URL = "cleansweepdaily.fyi/mystery";
+export const SHARE_URL = "\uD83E\uDDF9 cleansweepdaily.fyi/mystery";
 export const yearsAgo = (y) => (y < 0 ? NOW_YEAR - y - 1 : NOW_YEAR - y);
 const NF0 = new Intl.NumberFormat("en-GB", { maximumFractionDigits: 0 });
 const NF1 = new Intl.NumberFormat("en-GB", { maximumFractionDigits: 1 });

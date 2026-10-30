@@ -5,7 +5,7 @@ import { captureScreen, playTransition } from "./transition.js";
 import { valueParts, valueText, figureText, displayName, differenceText, questionText, closerSides, closerQuestion, closerDifferenceText, formatNumber, yearLabel } from "./format.js";
 import { questionDeep, questionRatios, scoreRun, tierFor, SCORING } from "./score.js";
 import { loadState, saveState, recordPick, completeDay, currentStreak, dayRecord, prune } from "./store.js";
-import { paintCards, writeStatus, writeStreak } from "./games.js";
+import { MILESTONES, copyText, maybeAllDone, nextButtonsHTML, paintCards, withFlame, writeStatus } from "./games.js";
 
 /**
  * env: {
@@ -117,6 +117,7 @@ export function mountGame(env) {
     if (S.mode === "daily") {
       countEvent("finished");
       if (perfect) countEvent("clean-sweep");
+      if (MILESTONES.includes(store.stats.streak)) countEvent("streak-" + store.stats.streak); // a streak reached 7, 30 or 100 days today
     }
     if (perfect) sweepFx();
   }
@@ -136,6 +137,7 @@ export function mountGame(env) {
     if (S.mode === "daily") {
       recordPick(store, todayNum, pick);
       saveState(storage, store);
+      if (S.picks.length === 1) countEvent("started"); // the first answer of the day, counted once
     }
     render();
   }
@@ -348,7 +350,7 @@ export function mountGame(env) {
         `<div class="stat"><b>${store.stats.bestPct || 0}%</b><span>best score</span></div></div>`
       : "";
     return (
-      `<p class="kicker">${daily ? `Puzzle #${todayNum}` : `Practice ${S.practiceNo} of ${practiceTotal()}`}</p>` +
+      `<p class="kicker">${daily ? withFlame(`Puzzle #${todayNum}`, currentStreak(store, todayNum)) : `Practice ${S.practiceNo} of ${practiceTotal()}`}</p>` +
       `<p class="score">${sc.pct}<small>%</small></p>` +
       `<p class="name">${sc.total.toLocaleString("en-GB")} of ${sc.max.toLocaleString("en-GB")} points. ${msg}</p>` +
       `<p class="name">Longest sweep ${st.longest}. Cleaned ${st.correct} of ${RULES.chainLength}.</p>` +
@@ -357,8 +359,9 @@ export function mountGame(env) {
       `<div class="row">` +
       actionsHTML() +
       `</div>` +
-      (daily ? `<p class="lockline" id="countdown">Next puzzle in ${countdownText()}.</p>` : `<p class="lockline">Practice puzzles do not count towards your streak or best score.</p>`) +
       `<p class="toast" id="toast"></p>` +
+      (daily ? `<p class="lockline" id="countdown">Next puzzle in ${countdownText()}.</p>` : `<p class="lockline">Practice puzzles do not count towards your streak or best score.</p>`) +
+      (daily ? nextButtonsHTML(storage, "cs", "") : "") +
       `<details class="facts"><summary>How scoring works</summary>` +
       `<ul class="how"><li>Each right answer scores 100 points.</li><li>Easy x1, Medium x1.5, Close call x2. You see the tag first.</li><li>Deep cut (some days): x1.5 on top.</li><li>Each right answer in a row adds 10%.</li><li>A wrong answer scores 0 and breaks your sweep.</li><li>Your score is a % of the day's maximum.</li></ul></details>` +
       `<details class="facts"><summary>Facts in this puzzle</summary><ul>${list}</ul></details>`
@@ -373,15 +376,14 @@ export function mountGame(env) {
       if (S.phase === "done") writeStatus(storage, "cs", "done", "Done \u00b7 " + scoreRun(S.ratios, S.results, S.deep).pct + "%");
       else if (S.results.length > 0) writeStatus(storage, "cs", "play");
     }
-    // Its streak, as a note the other game can show on its card: n days in a row, the latest on the date of the last puzzle finished.
-    if (storage && store.stats.lastDone > 0) writeStreak(storage, "cs", { n: store.stats.streak, last: puzzleDate(store.stats.lastDone), best: store.stats.bestStreak });
     paintCards(storage);
+    if (S.mode === "daily" && S.phase === "done") maybeAllDone(storage);
   }
 
   function renderTop() {
     // The only button here is the way back from a practice puzzle. There is no Practice tab.
     root.tabs.innerHTML = S.mode === "daily" ? "" : `<button class="tab" data-mode="daily">Back to today's puzzle</button>`;
-    root.meta.textContent = S.mode === "daily" ? `Puzzle #${todayNum}` : `Practice ${S.practiceNo} of ${practiceTotal()}`;
+    root.meta.textContent = S.mode === "daily" ? withFlame(`Puzzle #${todayNum}`, currentStreak(store, todayNum)) : `Practice ${S.practiceNo} of ${practiceTotal()}`;
   }
 
   function renderChain() {
@@ -481,29 +483,19 @@ export function mountGame(env) {
   function copyResult() {
     const text = resultText();
     const toast = document.getElementById("toast");
-    const fallback = () => {
+    copyText(text).then((ok) => {
+      if (ok) { if (toast) toast.textContent = "Copied."; return; }
+      // Nothing would copy it for them: show the text in a box, selected, right under the buttons.
       const ta = document.createElement("textarea");
       ta.className = "copybox";
       ta.rows = 4;
       ta.value = text;
       ta.setAttribute("aria-label", "Result text");
-      root.card.appendChild(ta);
+      (toast || root.card).insertAdjacentElement(toast ? "afterend" : "beforeend", ta);
       ta.focus();
       ta.select();
-      try {
-        document.execCommand("copy");
-        toast.textContent = "Copied.";
-      } catch (e) {
-        toast.textContent = "Select the text above and copy it.";
-      }
-    };
-    try {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(() => (toast.textContent = "Copied."), fallback);
-      } else fallback();
-    } catch (e) {
-      fallback();
-    }
+      if (toast) toast.textContent = "Select the text below and copy it.";
+    });
   }
 
   document.addEventListener("click", (e) => {

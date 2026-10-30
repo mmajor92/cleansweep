@@ -15,7 +15,7 @@ test("every element the code asks for exists in the page (or is drawn by the cod
   const drawn = idsIn(ui); // ids that ui.js writes into its own HTML strings (the list, the buttons on the end card)
   const asked = [...ui.matchAll(/\$\("([A-Za-z0-9_-]+)"\)/g), ...main.matchAll(/getElementById\("([A-Za-z0-9_-]+)"\)/g)].map((m) => m[1]);
   assert.ok(asked.length > 30);
-  const missing = [...new Set(asked)].filter((id) => !pageIds.has(id) && !drawn.has(id));
+  const missing = [...new Set(asked)].filter((id) => !pageIds.has(id) && !drawn.has(id) && id !== "nextgames"); // nextgames is drawn by the shared module
   assert.deepEqual(missing, [], `asked for but not in the page: ${missing.join(", ")}`);
 });
 
@@ -35,15 +35,14 @@ test("the page has a title, a description, share-card tags that point at /myster
   assert.match(main, /"cleansweep:theme"/);
 });
 
-test("the two games link to each other, with a status line and a New badge on each card", () => {
+test("the games link to each other through the switcher, with an icon in each box and a New tag on the two newer games", () => {
   const cs = read("index.html");
-  for (const [name, page, href] of [["Clean Sweep", cs, 'href="mystery/"'], ["Mystery Thing", html, 'href="../"']]) {
-    assert.ok(page.includes(href), `${name} should link to the other game with ${href}`);
-    for (const id of ["gs-cs", "gs-mt", "newbadge"]) assert.ok(idsIn(page).has(id), `${name} page has no #${id}`);
+  for (const [name, page, hrefs] of [["Clean Sweep", cs, ["./", "mystery/", "lineup/"]], ["Mystery Thing", html, ["../", "./", "../lineup/"]]]) {
+    for (const href of hrefs) assert.ok(page.includes(`class="swb`) && page.includes(`href="${href}"`), `${name} should link with ${href}`);
+    for (const id of ["gs-cs", "gs-mt", "gs-lu", "newbadge", "newbadge-lu", "games"]) assert.ok(idsIn(page).has(id), `${name} page has no #${id}`);
+    assert.equal((page.match(/aria-current="page"/g) || []).length, 1, `${name}: exactly one box is the current page`);
+    assert.ok(!/gamerow|gf-cs|gf-mt|Today\u2019s puzzles<\/p>/.test(page), `${name}: the old rows and flames are gone`);
   }
-  assert.ok(cs.includes('aria-current="page"') && html.includes('aria-current="page"'));
-  assert.match(cs, /Today\u2019s puzzles/);
-  assert.match(html, /Today\u2019s puzzles/);
 });
 
 test("the testing controls are hidden unless the address ends in #debug", () => {
@@ -70,13 +69,13 @@ test("the site is deployed with the mystery folder, and the weekly job freezes M
   assert.match(read(".github/workflows/generate-puzzles.yml"), /npm run generate:ahead/);
 });
 
-test("the result card: Share and Copy like Clean Sweep, a countdown, one button to the other game, and no Play another on a daily result", () => {
+test("the result card: Share and Copy like Clean Sweep, a countdown, two buttons to the other games, and no Play another on a daily result", () => {
   assert.match(ui, /Share result/);
   assert.match(ui, /Copy result/);
   assert.match(ui, /navigator\.share/);
   assert.match(ui, /Next puzzle in /);
   assert.ok(!/Next: Clean Sweep/.test(ui) && !/Seven higher-or-lower/.test(ui), "the sentence above the Clean Sweep button should be gone");
-  for (const label of ["Play today\\u2019s Clean Sweep", "Finish today\\u2019s Clean Sweep", "\\u2713 Clean Sweep done"]) assert.ok(ui.includes(label), label);
+  assert.match(ui, /nextButtonsHTML\(storage, "mt", "\.\.\/"\)/, "two buttons, one for each of the other games");
   const daily = ui.slice(ui.indexOf("puzzle.daily\n          ?"), ui.indexOf(": '<div class=\"btns\"><button class=\"btn primary\" id=\"copy\""));
   assert.ok(daily.includes("shareButtons()") && !daily.includes("another"), "a daily result must not offer Play another");
 });
@@ -91,9 +90,12 @@ test("the status words are short: Not played, with no 'yet', anywhere", () => {
   for (const f of ["index.html", "mystery/index.html", "src/games.js", "README.md"]) assert.ok(!read(f).includes("Not played yet"), `${f} still says Not played yet`);
 });
 
-test("streaks: a flame line on each card, a stats row on the result card, a banner at a milestone, and never in the text people share", () => {
+test("streaks: a flame after the puzzle number and on the result card, a stats row, a banner at a milestone, and never in the text people share", () => {
   const cs = read("index.html"), logic = read("mystery/logic.js");
-  for (const [name, page] of [["Clean Sweep", cs], ["Mystery Thing", html]]) for (const id of ["gf-cs", "gf-mt", "games"]) assert.ok(idsIn(page).has(id), `${name} page has no #${id}`);
+  assert.ok(ui.includes('withFlame("Puzzle #" + puzzle.no, streakNow(readStats().t))'), "the flame goes after the puzzle number");
+  assert.match(ui, /flameChip\(\) \+ '<\/h2>/, "and on the result card");
+  assert.match(read("mystery/styles.css"), /\.end h2 \.fl \{/);
+  assert.ok(idsIn(cs).has("games") && idsIn(html).has("games"));
   for (const w of ["day streak", "solved in a row", "best streak", "best score"]) assert.ok(ui.includes(w), w);
   assert.match(ui, /milestoneBanner\(\)/);
   assert.match(ui, /syncStats\(\)/);

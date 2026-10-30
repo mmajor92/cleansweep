@@ -34,10 +34,10 @@
       <button class="theme" id="theme" type="button" aria-label="Switch theme"></button>
     </div>
   </div>
-  <p class="gtitle">Today’s puzzles</p>
-  <nav class="games" id="games" aria-label="Today’s puzzles">
-    <a class="gamecard" href="./" aria-current="page"><span class="gname">Clean Sweep</span><span class="gstat" id="gs-cs">Not played</span><span class="gflame" id="gf-cs"></span></a>
-    <a class="gamecard" href="mystery/"><span class="gname">Mystery Thing <span class="newbadge" id="newbadge">New</span></span><span class="gstat" id="gs-mt">Not played</span><span class="gflame" id="gf-mt"></span></a>
+  <nav class="sw" id="games" aria-label="Switch game">
+    <a class="swb cur" data-g="cs" href="./" aria-current="page"><span class="swn"><span class="full">Clean Sweep</span><span class="short">Sweep</span></span><i class="st none" id="gs-cs" aria-hidden="true"></i></a>
+    <a class="swb" data-g="mt" href="mystery/"><span class="swnew" id="newbadge">New</span><span class="swn"><span class="full">Mystery Thing</span><span class="short">Mystery</span></span><i class="st none" id="gs-mt" aria-hidden="true"></i></a>
+    <a class="swb" data-g="lu" href="lineup/"><span class="swnew" id="newbadge-lu">New</span><span class="swn"><span class="full">Line Up</span><span class="short">Line Up</span></span><i class="st none" id="gs-lu" aria-hidden="true"></i></a>
   </nav>
   <div class="firsttime" id="firsttime" role="note" hidden>
     <span>First time? Tap the <b>?</b> for a practice round!</span>
@@ -51,7 +51,6 @@
       <li>Seven questions. Get them all right for a Clean Sweep.</li>
     </ol>
     <div class="practice" id="practicebox">
-      <p>Want to try one first? There are two practice puzzles. They are the same for everyone, you can play them as often as you like, and they do not count towards your streak.</p>
       <div class="row">
         <button class="btn quiet" type="button" data-mode="practice" data-practice="1">Practice 1</button>
         <button class="btn quiet" type="button" data-mode="practice" data-practice="2">Practice 2</button>

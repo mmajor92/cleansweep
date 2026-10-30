@@ -4,6 +4,7 @@ import { mountGame } from "./ui.js";
 import { VERSION } from "./version.js";
 import { GOATCOUNTER_CODE } from "./site.js";
 import { STORAGE_KEY } from "./store.js";
+import { wireSwitcher } from "./games.js";
 
 async function loadJSON(url) {
   const res = await fetch(url, { cache: "no-cache" });
@@ -173,6 +174,7 @@ async function start() {
       p = p || generatePractice(n, entities);
       if (p) practicePuzzles.push(p);
     }
+    wireSwitcher(); // counts a tap on another game in the switcher
     mountGame({ root, storage: safeStorage(), todayNum: num, dailyPuzzle: daily, practicePuzzles, onAnswer: help ? help.dismiss : null });
   } catch (err) {
     root.card.innerHTML = `<p class="ask">Sorry, the puzzle could not load.</p><p class="fact">${String(err.message || err)}</p>`;

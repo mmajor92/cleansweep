@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Line Up</title>
+<meta name="description" content="Put six things in order, from the lightest to the heaviest, the oldest to the newest. A new puzzle every day.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="icon" href="icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Clean Sweep">
+<meta property="og:title" content="Line Up">
+<meta property="og:description" content="Put six things in order. A new puzzle every day.">
+<meta property="og:url" content="https://cleansweepdaily.fyi/lineup/">
+<meta property="og:image" content="https://cleansweepdaily.fyi/lineup/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script>try{var t=localStorage.getItem("cleansweep:theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preload" href="../src/fonts/bricolage-grotesque.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="../src/fonts/newsreader.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="mark" aria-hidden="true"><svg viewBox="0 0 46 46" aria-hidden="true"><g fill="var(--on-tape)"><rect x="6" y="30" width="5" height="9" rx="1.5"/><rect x="13.5" y="25" width="5" height="14" rx="1.5"/><rect x="21" y="20" width="5" height="19" rx="1.5"/><rect x="28.5" y="15" width="5" height="24" rx="1.5"/><rect x="36" y="10" width="5" height="29" rx="1.5"/></g></svg></div>
+      <div>
+        <h1>Line Up</h1>
+        <p class="sub" id="puzzleno">Puzzle</p>
+      </div>
+    </div>
+    <div class="topright">
+      <button class="helpbtn" id="helpbtn" type="button" aria-label="How to play" aria-expanded="false" aria-controls="help" title="How to play">?</button>
+      <button class="helpbtn" id="theme" type="button" aria-label="Switch theme"></button>
+    </div>
+  </header>
+  <nav class="sw" id="games" aria-label="Switch game">
+    <a class="swb" data-g="cs" href="../"><span class="swn"><span class="full">Clean Sweep</span><span class="short">Sweep</span></span><i class="st none" id="gs-cs" aria-hidden="true"></i></a>
+    <a class="swb" data-g="mt" href="../mystery/"><span class="swnew" id="newbadge">New</span><span class="swn"><span class="full">Mystery Thing</span><span class="short">Mystery</span></span><i class="st none" id="gs-mt" aria-hidden="true"></i></a>
+    <a class="swb cur" data-g="lu" href="./" aria-current="page"><span class="swnew" id="newbadge-lu">New</span><span class="swn"><span class="full">Line Up</span><span class="short">Line Up</span></span><i class="st none" id="gs-lu" aria-hidden="true"></i></a>
+  </nav>
+  <div class="firsttime" id="firsttime" role="note" hidden>
+    <span>First time? Tap the <b>?</b> for a practice round!</span>
+    <button class="btn primary mini" id="firsttimeclose" type="button">Got it</button>
+  </div>
+  <div class="help" id="help" hidden>
+    <h2>How to play</h2>
+    <ol>
+      <li>Put the six things in order, as it says above them. Tap one thing and then another to swap them, or drag one.</li>
+      <li>Press Check order. Anything in the right place turns green and locks. Then rearrange the rest.</li>
+      <li>You have three tries. Fewer tries is better.</li>
+    </ol>
+    <p class="small">Each puzzle is one kind of measure: <b>size</b> (a length or a height), <b>weight</b>, <b>speed</b> or <b>year</b>.</p>
+    <p class="small">How close together the six things are changes from day to day. You get one puzzle a day.</p>
+    <p class="small"><b>Points.</b> Each thing scores for the try it was right on (100, 60, then 35), with a little for a near miss. A clean sweep adds 100. Hard days count more.</p>
+    <div class="practice" id="practicebox">
+      <div class="pbtns">
+        <button class="btn" type="button" data-practice="1">Practice 1</button>
+        <button class="btn" type="button" data-practice="2">Practice 2</button>
+      </div>
+    </div>
+    <button class="btn primary" id="helpclose" type="button">Got it</button>
+  </div>
+  <div class="tools" id="tools" aria-label="Testing controls" hidden>
+    <span>For testing:</span>
+    <label for="pzno">Open puzzle <input id="pzno" type="number" min="1" max="999" inputmode="numeric"></label>
+    <button type="button" class="link" id="pzgo">Go</button>
+    <button type="button" class="link" id="clear">Clear saved games</button>
+    <button type="button" class="link" id="partybtn">Preview the party</button>
+  </div>
+  <p class="tierline" id="tier"></p>
+  <p class="prompt" id="prompt"></p>
+  <p class="promptsub" id="promptsub"></p>
+  <p class="endlabel" id="endtop"></p>
+  <ol class="board" id="board" aria-label="The six things, in your order"></ol>
+  <p class="endlabel bottom" id="endbottom"></p>
+  <p class="triesline" id="tries"></p>
+  <div class="checkrow" id="checkrow"><button class="btn primary" id="check" type="button">Check order</button></div>
+  <p class="msg" id="msg" role="status" aria-live="polite"></p>
+  <div class="hist" id="hist"></div>
+  <div id="end"></div>
+  <p class="ver" id="ver"></p>
+</div>
+<script type="module" src="main.js"></script>
+</body>
+</html>

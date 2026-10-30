@@ -4,7 +4,7 @@ A daily sweep of seven higher-or-lower questions. The aim is a **Clean Sweep**: 
 
 Categories: length, weight, date, how many, speed.
 
-There is a second game on the same site, **Mystery Thing** (see below).
+There are two more games on the same site: **Mystery Thing** and **Line Up** (see below), joined by a small switcher under each title.
 
 ## How a puzzle works
 
@@ -105,6 +105,33 @@ A second daily game on the same site, at `/mystery/`. One hidden object a day an
 - **Sharing.** The result is copied as a short card (clue icons, one row per guess, points) ending with `cleansweepdaily.fyi/mystery`.
 - **Difficulty.** For a player who always guesses something still consistent with the clues, a game takes about 3.4 guesses on Easy, 4.1 on Medium and 4.7 on Hard, and 84% of Hard games are solved within 6 (99% on Easy, 96% on Medium). Measured by a script that plays the game that way; real players will differ.
 
+## Line Up
+
+A third daily game, at `/lineup/`. **Six things** to put in order, for example from the lightest to the heaviest, the oldest to the newest, the slowest to the fastest or the smallest to the biggest. Each puzzle is one kind of measure. The player taps two things to swap them, or drags one (by its dots on a phone; from anywhere on the card with a mouse), then presses Check order. Whatever is in the right place turns green and **locks**; the rest are rearranged, for up to **three tries**. Fewer tries is better, and the real numbers are shown at the end.
+
+- **Points.** Each thing scores its best result over the tries: 100 if it is exactly right on try 1, 60 on try 2, 35 on try 3. A near miss earns part of that: one place out 40%, two out 15%, further out nothing (so 3rd instead of 2nd beats 4th). A clean sweep (everything right on try 1) adds 100. The whole score is then multiplied by how hard the day is: **Easy x1, Medium x1.25, Hard x1.5**, shown as a tag above the board. The most a day can score is 700 x the multiplier (1,050 on a Hard day). The rules are in `POINTS`, `TIER` and `scoreGame` in `lineup/logic.js`. The result card shows the score, how it was made up and "How scoring works"; "best score" is one of its four stats; the share card carries the score ("📊 Line Up #12 ⚡ 2/3 · 560 pts"). Practice puzzles have no tag and no score.
+- **How the day's tag is chosen.** From how close the closest two neighbours are (the day's `gap` in `data/lineup-days.json`): Hard under 1.65 times apart (under 15 years for dates), Medium under 2.2 times (under 40 years), otherwise Easy (`TIER_GAPS` in `lineup/logic.js`). That makes about 30% Hard, 40% Medium and 30% Easy.
+- **Why six, and why locks.** Telling the player which things are right (the green squares) is what makes it a deduction puzzle and gives the share card its rows. Locking only stops a right thing being moved by accident. `BOARD_SIZE` in `lineup/schedule.js` is the one setting for the board size: change it and redo the practice puzzles in `lineup/logic.js` and the frozen days.
+- **How hard it is, measured.** In a simulation of players who track every clue perfectly (so real people will do worse), the share who get a clean sweep went from 72% for an average player with five things, to 63% with six things, to **52% with the harder gaps now in use** (casual players 35%, good players 79%; nearly everyone still solves it in three tries). Once players arrive, `lineup-clean-sweep` against `lineup-finished` is the real number. The dial is `GAP_RANGE` in `lineup/schedule.js`; change it (and `TIER_GAPS`) and only days not yet frozen change.
+- **Where the facts come from.** The same `data/facts.json`. Any *verified* size, weight, speed or year of a well-known thing (`fame` 2 or 3) can be an item. A fact is worded on the board from its `phrase` ("the weight of a banana" becomes "A banana"; "the completion of the Eiffel Tower" becomes "Completion of the Eiffel Tower"). Facts with brackets in the phrase, or a few listed in `SKIP` in `lineup/data.js`, are left out. So a fact added for the other games can appear here, and a verified speed for something well known is the quickest way to add variety (speed is the thinnest pool).
+- **Which six on which day.** Frozen in `data/lineup-days.json`, like the other games. Day 1 is its `launchDate` (UTC; set it once, before launch). Days already in the file never change, and `npm run generate:ahead` (the weekly job) adds the next 21. The kind of puzzle never repeats two days running, six different things (never two from the same family) are chosen, at least two are well known, and **a board never repeats an earlier one**. A thing is not reused for 25 days unless the pool is too small. The difficulty is random for each day, so no weekday is always the easy one.
+- **Tries and locks.** A thing that was right in a try is locked in place and cannot be moved. The page saves the tries and the order after every move (`lu:<number>` on the player's device), so a reload carries on exactly where it was.
+- **A first-try win is a clean sweep:** a one-line "🧹 Clean sweep! 🧹" banner, and lots of brooms, soap and sparkles floating up the screen (the same ones as Clean Sweep's, and for a streak milestone too; nothing moves for anyone who prefers less motion).
+- **Streaks.** Like Mystery Thing: one for days tried (a day counts at the first check) and one for days solved in a row. The flame goes after the puzzle number ("Puzzle #12 · 🔥 12") and on the result card, from 2 days, and a banner marks the day a streak reaches 7, 30 or 100. The result card shows day streak, solved in a row, best streak and best score. Streaks are never part of the shared text.
+- **The result card** has Share result (the phone's share sheet, where there is one) and Copy result, the time until the next puzzle, and two half-width buttons, one for each of the other games.
+- **Sharing.** A headline with the puzzle number, the kind of measure, the tries and the score (`📊 Line Up #12 ⚖️ 2/3 · 560 pts`, or `X/3`), one row of green and red squares per try, and `🧹 cleansweepdaily.fyi/lineup`. The icons for the kinds of puzzle are 📏 size, ⚖️ weight, 📅 year and ⚡ speed (never 💨, which means dust in Clean Sweep).
+- **Files.** `lineup/logic.js` (rules, locking, points, share card, no screen), `data.js` (turns facts into board items), `schedule.js` (which things when, the difficulty, and `BOARD_SIZE`), `ui.js` (the screen), `main.js`, `index.html`, `styles.css`, and the logo and icons (`icon.svg`, `icon-32.png`, `apple-touch-icon.png`, `icon-512.png`, `social-preview.png`). Tests: `tests/lineup-*.test.mjs`. `npm run lint:data` also checks the practice puzzles, the frozen days and that no board repeats.
+- **Trying it by hand.** Open `/lineup/#debug` to show the testing controls (open puzzle N, clear saved games) and the hooks the browser tests use.
+- **Counting players.** Events `lineup-started` (the first check), `lineup-solved`, `lineup-finished` (solved, or all three tries used), `lineup-clean-sweep` (solved on the first try) and `lineup-streak-7`, `-30`, `-100`.
+
+## The three games together
+
+Under each title is the same narrow **switcher**: three small boxes, one for each game, each a link to that game, with the page you are on filled and underlined in yellow. A small icon in each box says how today's puzzle went there: a green tick (done), an orange dot (in progress), an empty ring (not played), a coral cross (finished without solving). The names shorten to "Sweep" and "Mystery" on phones narrower than 440 px. There are no scores or streaks in the switcher; each game shows its own flame after its own puzzle number and on its result card. Each box has a hover tip and a screen-reader label ("Mystery Thing, in progress").
+
+Each result card ends with **two half-width buttons, one for each of the other two games** (so the player chooses where to go next). A game that is not finished is a yellow "Play ..." or "Finish ..." button; a finished one is an outline button with its tick or cross. Every game's share card ends with 🧹 and its address. Copying goes through one routine for all three games (`copyText` in `src/games.js`): the browser's clipboard first, then the older copy command with a hidden box (many in-app browsers still allow it), and only if both fail a text box with the result, already selected, appears just under the Copy button so it can be copied by hand.
+
+Each game leaves a short note on the player's own device (`status:cs`, `status:mt`, `status:lu`, counted only on the day it was written) and reads the others', so the icons and buttons agree everywhere. Nothing is sent anywhere (`src/games.js`). The "New" tags go away by themselves (`MYSTERY_NEW_UNTIL`, `LINEUP_NEW_UNTIL` in that file). The light or dark choice is shared by all three. The counter also records `started` and `streak-7`, `-30`, `-100` for Clean Sweep, `switch-to-clean-sweep`, `switch-to-mystery` and `switch-to-lineup` for taps on a switcher box or a result-card button (so you can see which way people move between games), and `all-three-done`, once on the day a player has finished all three games.
+
 ## Run it
 
 Needs Node 20 or newer. There are no dependencies.
@@ -113,7 +140,7 @@ Needs Node 20 or newer. There are no dependencies.
 npm run serve      # http://localhost:8080
 npm test           # unit tests
 npm run lint:data  # checks every fact and generates three years of puzzles (about 30 seconds)
-npm run build      # writes dist/index.html and dist/mystery/index.html, each one self-contained file
+npm run build      # writes dist/index.html, dist/mystery/index.html and dist/lineup/index.html, each one self-contained file
 HARVEST_CONTACT="you@example.com" npm run harvest   # needs network: pulls candidate facts from Wikidata
 ```
 
@@ -122,6 +149,7 @@ HARVEST_CONTACT="you@example.com" npm run harvest   # needs network: pulls candi
 ```
 index.html, styles.css     the page
 mystery/                   the second game, Mystery Thing (see its section)
+lineup/                    the third game, Line Up (see its section)
 src/engine.js              rules, puzzle generator, validation (pure, no DOM)
 src/format.js              number, date and question text
 src/store.js               saved progress, daily lock, streaks (storage is injected)
@@ -131,8 +159,9 @@ src/games.js               the two games showing each other's progress, the New 
 data/facts.json            the production fact pool
 data/candidates.json       facts that are NOT verified, never used in puzzles
 data/mystery-days.json     Mystery Thing: which answer is on which day, frozen
+data/lineup-days.json      Line Up: which five things on which day, frozen
 puzzles/N.json             published puzzles, frozen (created by npm run generate)
-scripts/                   lint, generate, build, serve (lint-mystery and mystery-days are for Mystery Thing)
+scripts/                   lint, generate, build, serve (lint-mystery, lint-lineup, mystery-days and lineup-days are for the other two games)
 tests/                     node:test suites
 docs/adding-facts.md       how to add and verify facts
 ```

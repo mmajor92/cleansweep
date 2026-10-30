@@ -4,7 +4,7 @@ import { setData, setDays, setLaunch } from "./logic.js";
 import { mountMystery } from "./ui.js";
 import { VERSION } from "../src/version.js";
 import { GOATCOUNTER_CODE } from "../src/site.js";
-import { startCounter } from "../src/games.js";
+import { startCounter, wireSwitcher } from "../src/games.js";
 
 async function loadJSON(url) {
   const res = await fetch(url, { cache: "no-cache" });
@@ -54,6 +54,7 @@ function setupTheme() {
 async function start() {
   setupTheme();
   startCounter(GOATCOUNTER_CODE);
+  wireSwitcher();
   const ver = document.getElementById("ver");
   if (ver) ver.textContent = VERSION;
   try {

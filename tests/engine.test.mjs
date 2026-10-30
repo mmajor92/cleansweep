@@ -292,8 +292,8 @@ test("the share card has no web address until one is set, then ends with it", ()
 
 test("the share card ends with the TinyURL by default", () => {
   const p = generate(seedForPuzzle(5), entities);
-  assert.equal(RULES.shareUrl, "cleansweepdaily.fyi");
-  assert.ok(shareText(p, [true, false, true, true, true, true, true], 3).endsWith("\ncleansweepdaily.fyi"));
+  assert.equal(RULES.shareUrl, "\u{1F9F9} cleansweepdaily.fyi");
+  assert.ok(shareText(p, [true, false, true, true, true, true, true], 3).endsWith("\n\u{1F9F9} cleansweepdaily.fyi"));
 });
 
 test("no category icon clashes with the broom or the dust puff", () => {
