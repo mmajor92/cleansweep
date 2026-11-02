@@ -1,6 +1,15 @@
 # Changelog
 
-The version number is in `src/version.js` and shows at the bottom of the page. Change both together.
+The version number is in `src/version.js` and shows at the bottom of the page. Change both together. From v4 the numbers go v4.0 up to v4.19, and the update after that is v5.0.
+
+## v4.0
+
+- **New version numbers.** The numbers now go v4.0, v4.1 and so on up to v4.19. The update after v4.19 is v5.0.
+- **Line Up: the grey sentence under the prompt is gone.** It said "by top speed. Tap two to swap them, or drag one." while you played, and "The right order, with the real numbers." at the end. Both were obvious.
+- **A big round of speed facts.** 32 new things (animals such as the pronghorn and springbok, records such as the Thrust SSC and the TGV, cars, sports shots, weather and roller coasters), and the 29 speed facts that were not yet checked are now verified, with a source link. Line Up's pool of speeds grows from 52 to 104.
+- **Rough is fine.** Some sources are blogs or answer sites, because these are rough everyday speeds (a polar bear's top speed, a person's walking speed). We accept that.
+- **Left out on purpose.** The sailfish and swordfish (their speeds are disputed) and the speed of light (it always wins, so it makes a dull puzzle).
+- **When you will see them.** The new things appear in puzzles that have not been made yet. Days that are already published do not change.
 
 ## v3.19
 - **A third game: Line Up**, at `cleansweepdaily.fyi/lineup/`. Six things to put in order (lightest to heaviest, oldest to newest, slowest to fastest, or smallest to biggest), in up to three tries. Whatever is in the right place turns green and locks. Tap two things to swap them, or drag one: by its dots on a phone, from anywhere on the card with a mouse. A new puzzle every day, with the real numbers shown at the end, a share card of green and red squares, two practice puzzles, streaks, and a logo of five rising navy bars on the yellow tile. It uses the same facts as the other two games: any verified size, weight, speed or year of a well-known thing can be on a board. See "Line Up" in the README.

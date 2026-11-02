@@ -83,7 +83,7 @@ test("a fact from Wikidata says so, points at its Wikidata page, and has a check
       assert.match(f.checkedOn, /^\d{4}-\d{2}-\d{2}$/, `${e.id}/${cat}`);
     }
   }
-  assert.ok(n >= 28, `${n} facts are from Wikidata`);
+  assert.ok(n >= 23, `${n} facts are from Wikidata`); // 28 until v4.0, when five of them were checked and became verified
 });
 
 test("an unchecked fact says in a few words where it comes from, which is not a link, and has a check date", () => {

@@ -3971,9 +3971,10 @@
           "value": 112.65,
           "unit": "km/h",
           "approx": false,
-          "status": "definitional",
-          "source": "definition",
-          "basis": "70 miles per hour is 70 x 1.609344 = 112.65 km/h"
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Road_speed_limits_in_the_United_Kingdom",
+          "basis": "70 miles per hour is 70 x 1.609344 = 112.65 km/h",
+          "checkedOn": "2026-10-30"
         }
       },
       "family": "motorwaylimit",
@@ -4226,9 +4227,10 @@
           "value": 24.14,
           "unit": "km/h",
           "approx": false,
-          "status": "definitional",
-          "source": "definition",
-          "basis": "1.609344 km in 4 minutes is 24.14 km/h"
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Four-minute_mile",
+          "basis": "1.609344 km in 4 minutes is 24.14 km/h",
+          "checkedOn": "2026-10-30"
         }
       },
       "family": "fourminutemile",
@@ -7920,9 +7922,9 @@
           "value": 60,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "typical figure",
-          "checkedOn": "2026-10-26"
+          "status": "verified",
+          "source": "https://whatsthetea1.quora.com/https-www-quora-com-How-long-can-a-grey-wolf-run-at-its-top-speed-answer-Serge-Elia",
+          "checkedOn": "2026-10-30"
         },
         "length": {
           "phrase": "the height of a gray wolf at the shoulder",
@@ -7959,9 +7961,9 @@
           "value": 5,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "typical figure",
-          "checkedOn": "2026-10-21"
+          "status": "verified",
+          "source": "https://www.youtube.com/shorts/DNIWTI9rBxo",
+          "checkedOn": "2026-10-30"
         },
         "length": {
           "phrase": "the height of an average adult human",
@@ -7997,9 +7999,9 @@
           "value": 80,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "typical figure",
-          "checkedOn": "2026-10-26"
+          "status": "verified",
+          "source": "https://www.rankred.com/fastest-animals-in-the-world/",
+          "checkedOn": "2026-10-30"
         },
         "length": {
           "phrase": "the height of a male lion at the shoulder",
@@ -8086,9 +8088,9 @@
           "value": 65,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "typical figure",
-          "checkedOn": "2026-10-26"
+          "status": "verified",
+          "source": "https://animalstribune.com/mammals/plains-zebra/",
+          "checkedOn": "2026-10-30"
         },
         "length": {
           "phrase": "the height of a plains zebra at the shoulder",
@@ -8124,9 +8126,9 @@
           "value": 40,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "typical figure",
-          "checkedOn": "2026-10-26"
+          "status": "verified",
+          "source": "https://a-z-animals.com/blog/how-fast-can-polar-bears-run-discover-its-top-speed-compared-to-other-bears/",
+          "checkedOn": "2026-10-30"
         },
         "length": {
           "phrase": "the body length of a male polar bear",
@@ -8172,9 +8174,9 @@
           "value": 68,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "typical figure",
-          "checkedOn": "2026-10-26"
+          "status": "verified",
+          "source": "https://www.quora.com/How-did-people-react-to-the-experience-of-driving-a-Ford-Model-T-at-speeds-over-40-mph-compared-to-the-slower-pace-of-horse-drawn-transportation",
+          "checkedOn": "2026-10-30"
         },
         "date": {
           "phrase": "the launch of the Ford Model T",
@@ -8850,9 +8852,9 @@
           "value": 40,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "typical figure",
-          "checkedOn": "2026-10-26"
+          "status": "verified",
+          "source": "https://homework.study.com/explanation/how-fast-are-chimpanzees.html",
+          "checkedOn": "2026-10-30"
         },
         "length": {
           "phrase": "the standing height of an adult chimpanzee",
@@ -8889,9 +8891,9 @@
           "value": 60,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "typical figure",
-          "checkedOn": "2026-10-26"
+          "status": "verified",
+          "source": "https://www.theanimalfiles.com/mammals/hoofed_mammals/bison_american.html",
+          "checkedOn": "2026-10-30"
         },
         "length": {
           "phrase": "the height of a male bison at the shoulder",
@@ -9335,10 +9337,10 @@
           "value": 55350,
           "unit": "km/h",
           "approx": true,
-          "status": "wikidata",
+          "status": "verified",
           "source": "https://www.wikidata.org/wiki/Q48475",
           "note": "It is the only spacecraft to have visited Uranus and Neptune.",
-          "checkedOn": "2026-10-20"
+          "checkedOn": "2026-10-30"
         },
         "date": {
           "phrase": "the launch of Voyager 2",
@@ -9364,10 +9366,10 @@
           "value": 19550,
           "unit": "km/h",
           "approx": true,
-          "status": "wikidata",
-          "source": "https://www.wikidata.org/wiki/Q332",
+          "status": "verified",
+          "source": "https://www.space.com/41-neptune-the-other-blue-planet-in-our-solar-system.html",
           "note": "That is about 5.4 km per second.",
-          "checkedOn": "2026-10-20"
+          "checkedOn": "2026-10-30"
         },
         "date": {
           "phrase": "the discovery of Neptune",
@@ -9413,10 +9415,10 @@
           "value": 2485,
           "unit": "km/h",
           "approx": true,
-          "status": "wikidata",
+          "status": "verified",
           "source": "https://www.wikidata.org/wiki/Q34945",
           "note": "That is about Mach 2.3.",
-          "checkedOn": "2026-10-20"
+          "checkedOn": "2026-10-30"
         },
         "date": {
           "phrase": "the first flight of the F-14 Tomcat",
@@ -9442,10 +9444,10 @@
           "value": 595.5,
           "unit": "km/h",
           "approx": true,
-          "status": "wikidata",
-          "source": "https://www.wikidata.org/wiki/Q29190",
+          "status": "verified",
+          "source": "https://simple.wikipedia.org/wiki/Supermarine_Spitfire",
           "note": "Speeds varied by version.",
-          "checkedOn": "2026-10-20"
+          "checkedOn": "2026-10-30"
         },
         "date": {
           "phrase": "the first flight of the Spitfire",
@@ -9471,10 +9473,10 @@
           "value": 135,
           "unit": "km/h",
           "approx": true,
-          "status": "wikidata",
+          "status": "verified",
           "source": "https://www.wikidata.org/wiki/Q217964",
           "note": "Sources give 122 to 135 km/h.",
-          "checkedOn": "2026-10-20"
+          "checkedOn": "2026-10-30"
         },
         "date": {
           "phrase": "the first flight of the Hindenburg",
@@ -10164,9 +10166,9 @@
           "value": 70,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "typical figure",
-          "checkedOn": "2026-10-21"
+          "status": "verified",
+          "source": "https://www.vercalendario.info/en/what/guinness-records-for-fastest_speed_for_a_race_horse.html",
+          "checkedOn": "2026-10-30"
         },
         "weight": {
           "phrase": "the weight of a typical horse",
@@ -10202,9 +10204,9 @@
           "value": 0.3,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "typical figure",
-          "checkedOn": "2026-10-21"
+          "status": "verified",
+          "source": "https://animalfactguide.com/animal-facts/galapagos-tortoise/",
+          "checkedOn": "2026-10-30"
         },
         "weight": {
           "phrase": "the weight of an adult Galapagos giant tortoise",
@@ -10240,10 +10242,10 @@
           "value": 6.4,
           "unit": "km/h",
           "approx": false,
-          "status": "unchecked",
-          "source": "UK canal speed limit",
+          "status": "verified",
+          "source": "https://www.gov.uk/owning-a-boat/safety-on-inland-waterways",
           "note": "That is 4 miles an hour.",
-          "checkedOn": "2026-10-21"
+          "checkedOn": "2026-10-30"
         },
         "length": {
           "phrase": "the length of a typical canal narrowboat",
@@ -10289,9 +10291,9 @@
           "value": 2175,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "manufacturer specification",
-          "checkedOn": "2026-10-21"
+          "status": "verified",
+          "source": "https://www.airpower.gv.at/f-16_fighting-falcon/?lang=en",
+          "checkedOn": "2026-10-30"
         },
         "weight": {
           "phrase": "the empty weight of the F-16 Fighting Falcon",
@@ -10337,9 +10339,9 @@
           "value": 2410,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "manufacturer specification",
-          "checkedOn": "2026-10-21"
+          "status": "verified",
+          "source": "https://aerocorner.com/aircraft/lockheed-martin-f-22-raptor/",
+          "checkedOn": "2026-10-30"
         },
         "weight": {
           "phrase": "the empty weight of the F-22 Raptor",
@@ -10385,9 +10387,9 @@
           "value": 1960,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "manufacturer specification",
-          "checkedOn": "2026-10-21"
+          "status": "verified",
+          "source": "https://migflug.com/aircraft/f-35-lightning-ii/",
+          "checkedOn": "2026-10-30"
         },
         "weight": {
           "phrase": "the empty weight of the F-35 Lightning II",
@@ -10423,10 +10425,10 @@
           "value": 58500,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "NASA figure",
+          "status": "verified",
+          "source": "https://time.com/5955695/new-horizons-50-au/",
           "note": "It was the fastest launch of any spacecraft.",
-          "checkedOn": "2026-10-21"
+          "checkedOn": "2026-10-30"
         },
         "weight": {
           "phrase": "the launch weight of New Horizons",
@@ -10462,9 +10464,9 @@
           "value": 266000,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "NASA figure",
-          "checkedOn": "2026-10-21"
+          "status": "verified",
+          "source": "https://www.sciencealert.com/watch-live-as-nasa-s-juno-mission-attempts-to-enter-jupiter-s-orbit",
+          "checkedOn": "2026-10-30"
         },
         "weight": {
           "phrase": "the launch weight of Juno",
@@ -10500,10 +10502,10 @@
           "value": 3380,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "typical figure",
+          "status": "verified",
+          "source": "https://math.answers.com/other-math/Average_bullet_speed_of_aka-47",
           "note": "That is a standard 5.56 mm military round.",
-          "checkedOn": "2026-10-21"
+          "checkedOn": "2026-10-30"
         },
         "weight": {
           "phrase": "the weight of a rifle bullet",
@@ -10529,9 +10531,9 @@
           "value": 196000,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "typical figure",
-          "checkedOn": "2026-10-21"
+          "status": "verified",
+          "source": "https://science.nasa.gov/solar-system/comets/1p-halley/",
+          "checkedOn": "2026-10-30"
         },
         "length": {
           "phrase": "the length of the nucleus of Halley's Comet",
@@ -10916,9 +10918,9 @@
           "value": 830,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "typical figure (sources say 828 to 834)",
-          "checkedOn": "2026-10-26"
+          "status": "verified",
+          "source": "https://www.learn-atc.com/knowledge/aircraft/commercial-aircraft/airbus/airbus-a320",
+          "checkedOn": "2026-10-30"
         },
         "date": {
           "phrase": "the first flight of the Airbus A320",
@@ -11041,9 +11043,9 @@
           "value": 65,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "typical figure",
-          "checkedOn": "2026-10-26"
+          "status": "verified",
+          "source": "https://zooologist.com/how-fast-is-a-tiger/",
+          "checkedOn": "2026-10-30"
         }
       },
       "family": "tiger",
@@ -11145,9 +11147,9 @@
           "value": 35,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "typical figure",
-          "checkedOn": "2026-10-26"
+          "status": "verified",
+          "source": "https://resources.arctickingdom.com/10-fun-facts-about-walrus",
+          "checkedOn": "2026-10-30"
         }
       },
       "family": "walrus",
@@ -11381,9 +11383,9 @@
           "value": 111,
           "unit": "km/h",
           "approx": true,
-          "status": "unchecked",
-          "source": "typical figure",
-          "checkedOn": "2026-10-26"
+          "status": "verified",
+          "source": "https://www.guinnessworldrecords.com/world-records/fastest-bird-level-flight",
+          "checkedOn": "2026-10-30"
         },
         "length": {
           "phrase": "the length of a common swift",
@@ -12773,6 +12775,614 @@
         }
       },
       "family": "bigbellbell",
+      "fame": 2
+    },
+    {
+      "id": "baumgartner",
+      "name": "Felix Baumgartner's freefall",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of Felix Baumgartner's freefall",
+          "label": "Baumgartner freefall speed",
+          "value": 1357.6,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.guinnessworldrecords.com/world-records/107936-fastest-speed-in-freefall",
+          "checkedOn": "2026-10-30",
+          "note": "In 2012 he jumped from the edge of space and went faster than sound without an engine."
+        }
+      },
+      "family": "baumgartner",
+      "fame": 3
+    },
+    {
+      "id": "thrustssc",
+      "name": "The Thrust SSC",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of the Thrust SSC",
+          "label": "Thrust SSC top speed",
+          "value": 1227.985,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.guinnessworldrecords.jp/world-records/land-speed-(fastest-car)",
+          "checkedOn": "2026-10-30",
+          "note": "On 15 October 1997 Andy Green drove it faster than sound, the only car ever to do so."
+        }
+      },
+      "family": "thrustssc",
+      "fame": 3
+    },
+    {
+      "id": "badmintonsmash",
+      "name": "The fastest badminton smash",
+      "facts": {
+        "speed": {
+          "phrase": "the speed of the fastest badminton smash",
+          "label": "Fastest badminton smash",
+          "value": 565,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://yonex-fareast.com/satwiksairaj-rankireddy-and-tan-pearly-smash-guinness-world-records/",
+          "checkedOn": "2026-10-30",
+          "note": "Satwiksairaj Rankireddy hit it in a test in Tokyo in 2023. It is faster than a Formula 1 car."
+        }
+      },
+      "family": "badmintonsmash",
+      "fame": 2
+    },
+    {
+      "id": "tornadowind",
+      "name": "The fastest tornado wind",
+      "facts": {
+        "speed": {
+          "phrase": "the speed of the fastest tornado wind",
+          "label": "Fastest tornado wind",
+          "value": 486,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.guinnessworldrecords.com/world-records/73283-fastest-wind-speed-not-surface-speed",
+          "checkedOn": "2026-10-30",
+          "note": "Measured by radar in a tornado near Bridge Creek, Oklahoma, on 3 May 1999 (give or take 32 km/h)."
+        }
+      },
+      "family": "tornadowind",
+      "fame": 2
+    },
+    {
+      "id": "windgust",
+      "name": "The strongest wind gust ever recorded",
+      "facts": {
+        "speed": {
+          "phrase": "the speed of the strongest wind gust ever recorded",
+          "label": "Strongest wind gust",
+          "value": 408,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.guinnessworldrecords.com/world-records/73283-fastest-wind-speed-not-surface-speed",
+          "checkedOn": "2026-10-30",
+          "note": "Recorded on Barrow Island, Australia, in Cyclone Olivia on 10 April 1996."
+        }
+      },
+      "family": "windgust",
+      "fame": 2
+    },
+    {
+      "id": "veyron",
+      "name": "The Bugatti Veyron",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of the Bugatti Veyron",
+          "label": "Veyron top speed",
+          "value": 407.2,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://robbreport.com.au/?p=44048",
+          "checkedOn": "2026-10-30",
+          "note": "The first production car to pass 400 km/h. Reports range from 407 to 408 km/h."
+        }
+      },
+      "family": "veyron",
+      "fame": 3
+    },
+    {
+      "id": "ferrarif40",
+      "name": "The Ferrari F40",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of the Ferrari F40",
+          "label": "Ferrari F40 top speed",
+          "value": 324,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://robbreport.com.au/?p=44048",
+          "checkedOn": "2026-10-30",
+          "note": "The first production car to pass 320 km/h, in 1987."
+        }
+      },
+      "family": "ferrarif40",
+      "fame": 3
+    },
+    {
+      "id": "mclarenf1",
+      "name": "The McLaren F1",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of the McLaren F1",
+          "label": "McLaren F1 top speed",
+          "value": 386.4,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.autocarindia.com/car-news/world8217s-fastest-production-cars-416936",
+          "checkedOn": "2026-10-30",
+          "note": "It is still the fastest car with an engine that does not use a turbo or supercharger."
+        }
+      },
+      "family": "mclarenf1",
+      "fame": 3
+    },
+    {
+      "id": "baseballpitch",
+      "name": "The fastest baseball pitch",
+      "facts": {
+        "speed": {
+          "phrase": "the speed of the fastest baseball pitch",
+          "label": "Fastest baseball pitch",
+          "value": 170.3,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.topendsports.com/sport/fastest-sports.htm",
+          "checkedOn": "2026-10-30",
+          "note": "Aroldis Chapman threw it in 2010. Some sources give 169.1 km/h, its first reading."
+        }
+      },
+      "family": "baseballpitch",
+      "fame": 3
+    },
+    {
+      "id": "footballkick",
+      "name": "The fastest football kick",
+      "facts": {
+        "speed": {
+          "phrase": "the speed of the fastest football kick",
+          "label": "Fastest football kick",
+          "value": 129,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.topendsports.com/sport/fastest-sports.htm",
+          "checkedOn": "2026-10-30",
+          "note": "The Guinness record, set in Spain in 2001. Many claims of more are not measured."
+        }
+      },
+      "family": "footballkick",
+      "fame": 3
+    },
+    {
+      "id": "wildebeest",
+      "name": "A blue wildebeest",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of a blue wildebeest",
+          "label": "Wildebeest top speed",
+          "value": 80.5,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Fastest_animals",
+          "checkedOn": "2026-10-30",
+          "note": "Millions of them run across the Serengeti every year."
+        }
+      },
+      "family": "wildebeest",
+      "fame": 2
+    },
+    {
+      "id": "hare",
+      "name": "A brown hare",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of a brown hare",
+          "label": "Brown hare top speed",
+          "value": 72,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://worldatlas.com/animals/the-fastest-animals-in-the-world.html",
+          "checkedOn": "2026-10-30",
+          "note": "Sources range from 72 to 80 km/h."
+        }
+      },
+      "family": "hare",
+      "fame": 2
+    },
+    {
+      "id": "pronghorn",
+      "name": "A pronghorn",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of a pronghorn",
+          "label": "Pronghorn top speed",
+          "value": 88.5,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Fastest_animals",
+          "checkedOn": "2026-10-30",
+          "note": "It can hold about 56 km/h for 6 km, much further than a cheetah can run."
+        }
+      },
+      "family": "pronghorn",
+      "fame": 2
+    },
+    {
+      "id": "springbok",
+      "name": "A springbok",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of a springbok",
+          "label": "Springbok top speed",
+          "value": 88,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Fastest_animals",
+          "checkedOn": "2026-10-30",
+          "note": "It also leaps high into the air as it runs, a move called pronking."
+        }
+      },
+      "family": "springbok",
+      "fame": 2
+    },
+    {
+      "id": "quarterhorse",
+      "name": "An American quarter horse",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of an American quarter horse",
+          "label": "Quarter horse top speed",
+          "value": 88,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Fastest_animals",
+          "checkedOn": "2026-10-30",
+          "note": "Named for racing over a quarter of a mile (0.4 km)."
+        }
+      },
+      "family": "quarterhorse",
+      "fame": 2
+    },
+    {
+      "id": "hummingbird",
+      "name": "Anna's hummingbird",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of Anna's hummingbird",
+          "label": "Anna's hummingbird top speed",
+          "value": 98.3,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Fastest_animals",
+          "checkedOn": "2026-10-30",
+          "note": "Reached in a dive, relative to its size one of the fastest of any bird."
+        }
+      },
+      "family": "hummingbird",
+      "fame": 2
+    },
+    {
+      "id": "agerars",
+      "name": "The Koenigsegg Agera RS",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of the Koenigsegg Agera RS",
+          "label": "Agera RS top speed",
+          "value": 447.19,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Production_car_speed_record",
+          "checkedOn": "2026-10-30",
+          "note": "Record for a production car in 2017, measured by Racelogic."
+        }
+      },
+      "family": "agerars",
+      "fame": 2
+    },
+    {
+      "id": "tgv",
+      "name": "The TGV record run",
+      "facts": {
+        "speed": {
+          "phrase": "the speed of the TGV world record run",
+          "label": "TGV record speed",
+          "value": 574.8,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/List_of_vehicle_speed_records",
+          "checkedOn": "2026-10-30",
+          "note": "A specially tuned French TGV set the record for a normal wheeled train in April 2007."
+        }
+      },
+      "family": "tgv",
+      "fame": 2
+    },
+    {
+      "id": "golfdrive",
+      "name": "The fastest golf drive",
+      "facts": {
+        "speed": {
+          "phrase": "the speed of the fastest golf drive",
+          "label": "Fastest golf drive",
+          "value": 349.38,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://olympic.ca/2014/09/11/shuttlecock-and-balls-the-fastest-moving-objects-in-sport/",
+          "checkedOn": "2026-10-30",
+          "note": "The ball left Ryan Winther's club at this speed in 2013 (the Guinness record)."
+        }
+      },
+      "family": "golfdrive",
+      "fame": 2
+    },
+    {
+      "id": "luge",
+      "name": "The fastest luge run",
+      "facts": {
+        "speed": {
+          "phrase": "the speed of the fastest luge run",
+          "label": "Fastest luge run",
+          "value": 139.39,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.topendsports.com/sport/fastest-sports.htm",
+          "checkedOn": "2026-10-30",
+          "note": "Tony Benshoof reached it in training on the 2002 Olympic track in Utah."
+        }
+      },
+      "family": "luge",
+      "fame": 2
+    },
+    {
+      "id": "slapshot",
+      "name": "The hardest NHL slap shot",
+      "facts": {
+        "speed": {
+          "phrase": "the speed of the hardest NHL slap shot",
+          "label": "Hardest NHL slap shot",
+          "value": 175.1,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://olympic.ca/2014/09/11/shuttlecock-and-balls-the-fastest-moving-objects-in-sport/",
+          "checkedOn": "2026-10-30",
+          "note": "Zdeno Chara hit it at the 2012 NHL All-Star Skills Competition."
+        }
+      },
+      "family": "slapshot",
+      "fame": 2
+    },
+    {
+      "id": "skydiver",
+      "name": "A skydiver in freefall",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of a skydiver in freefall",
+          "label": "Skydiver top speed",
+          "value": 195,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.universetoday.com/articles/terminal-velocity",
+          "checkedOn": "2026-10-30",
+          "note": "Falling belly-down, about 195 km/h; head-down is much faster."
+        }
+      },
+      "family": "skydiver",
+      "fame": 3
+    },
+    {
+      "id": "tsunami",
+      "name": "A tsunami in deep ocean",
+      "facts": {
+        "speed": {
+          "phrase": "the speed of a tsunami in deep ocean",
+          "label": "Tsunami speed",
+          "value": 765,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.noaa.gov/jetstream/tsunamis/tsunami-propagation",
+          "checkedOn": "2026-10-30",
+          "note": "Nearly as fast as a jet airliner, and it slows right down near the shore."
+        }
+      },
+      "family": "tsunami",
+      "fame": 3
+    },
+    {
+      "id": "flyingscotsman",
+      "name": "The Flying Scotsman",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of the Flying Scotsman",
+          "label": "Flying Scotsman top speed",
+          "value": 161,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/LNER_Class_A3_4472_Flying_Scotsman",
+          "checkedOn": "2026-10-30",
+          "note": "In 1934 it became the first steam locomotive officially to reach 100 mph."
+        }
+      },
+      "family": "flyingscotsman",
+      "fame": 3
+    },
+    {
+      "id": "teslaplaid",
+      "name": "The Tesla Model S Plaid",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of the Tesla Model S Plaid",
+          "label": "Model S Plaid top speed",
+          "value": 322,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.evspecifications.com/en/model-speed/df813e7",
+          "checkedOn": "2026-10-30",
+          "note": "Tesla's own figure is 200 mph (322 km/h)."
+        }
+      },
+      "family": "teslaplaid",
+      "fame": 3
+    },
+    {
+      "id": "motogp",
+      "name": "A MotoGP bike",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of a MotoGP bike",
+          "label": "MotoGP top speed",
+          "value": 368.6,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.crash.net/motogp/news/1096405/1/jorge-martin-breaks-all-time-motogp-top-speed-record-mugello",
+          "checkedOn": "2026-10-30",
+          "note": "The all-time record for the class, set by Jorge Martin at Mugello."
+        }
+      },
+      "family": "motogp",
+      "fame": 2
+    },
+    {
+      "id": "indy500",
+      "name": "An Indy 500 qualifying lap",
+      "facts": {
+        "speed": {
+          "phrase": "the speed of the fastest Indy 500 qualifying lap",
+          "label": "Indy 500 qualifying record",
+          "value": 381.4,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://doctorindy.com/2021/05/18/indianapolis-500-1-lap-4-lap-track-records/",
+          "checkedOn": "2026-10-30",
+          "note": "Arie Luyendyk, 1996: 236.986 mph over four laps."
+        }
+      },
+      "family": "indy500",
+      "fame": 2
+    },
+    {
+      "id": "bloodhound",
+      "name": "Bloodhound LSR",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of Bloodhound LSR",
+          "label": "Bloodhound top speed",
+          "value": 1010.6,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.bloodhoundlsr.com/about-bloodhound-lsr/",
+          "checkedOn": "2026-10-30",
+          "note": "Its fastest run so far was 628 mph in South Africa in 2019."
+        }
+      },
+      "family": "bloodhound",
+      "fame": 2
+    },
+    {
+      "id": "bluebirdk7",
+      "name": "Bluebird K7",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of Bluebird K7",
+          "label": "Bluebird K7 top speed",
+          "value": 444.7,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.boats.com/on-the-water/bluebird-k7/",
+          "checkedOn": "2026-10-30",
+          "note": "Donald Campbell set a water speed record of 276.33 mph (444.7 km/h) in 1964."
+        }
+      },
+      "family": "bluebirdk7",
+      "fame": 2
+    },
+    {
+      "id": "formularossa",
+      "name": "Formula Rossa",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of Formula Rossa",
+          "label": "Formula Rossa top speed",
+          "value": 240,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://greatbigstory.com/worlds-fastest-roller-coaster/",
+          "checkedOn": "2026-10-30",
+          "note": "A roller coaster in Abu Dhabi, launched to 240 km/h in under five seconds."
+        }
+      },
+      "family": "formularossa",
+      "fame": 2
+    },
+    {
+      "id": "patricia",
+      "name": "Hurricane Patricia",
+      "facts": {
+        "speed": {
+          "phrase": "the speed of the wind in Hurricane Patricia",
+          "label": "Hurricane Patricia wind",
+          "value": 345,
+          "unit": "km/h",
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.theweathernetwork.com/en/news/weather/severe/october-23-2015-hurricane-patricia-remains-the-strongest-hurricane-ever-observed",
+          "checkedOn": "2026-10-30",
+          "note": "The strongest hurricane winds on record, off Mexico in 2015."
+        }
+      },
+      "family": "patricia",
+      "fame": 2
+    },
+    {
+      "id": "kingdaka",
+      "name": "Kingda Ka",
+      "facts": {
+        "speed": {
+          "phrase": "the top speed of Kingda Ka",
+          "label": "Kingda Ka top speed",
+          "value": 206,
+          "unit": "km/h",
+          "approx": false,
+          "status": "verified",
+          "source": "https://simple.wikipedia.org/wiki/Kingda_Ka",
+          "checkedOn": "2026-10-30",
+          "note": "The tallest roller coaster in the world when it opened in New Jersey."
+        }
+      },
+      "family": "kingdaka",
       "fame": 2
     }
   ]

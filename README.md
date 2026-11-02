@@ -55,7 +55,7 @@ All rights reserved, Michael Major (see `LICENSE`). The fonts are licensed separ
 
 ## Versions
 
-The version number (v1.1, v1.2 and so on) is in `src/version.js` and shows in small type at the bottom of the page. Bump it whenever you publish an update, so you can tell at a glance that the new files are live. Small changes go v1.1 to v1.9, then v2, then v2.1, and so on. Add a line to `CHANGELOG.md` too.
+The version number is in `src/version.js` and shows in small type at the bottom of the page. Bump it whenever you publish an update, so you can tell at a glance that the new files are live. From v4 the numbers go v4.0, v4.1 and so on up to v4.19, and the update after v4.19 is v5.0 (then v5.1 to v5.19, then v6.0). Add a line to `CHANGELOG.md` too.
 
 ## Warm-ups (switched off from puzzle 7)
 

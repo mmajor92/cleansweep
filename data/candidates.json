@@ -66,13 +66,6 @@
       "needs": "source for an average, ranges vary widely"
     },
     {
-      "id": "thrustssc",
-      "category": "speed",
-      "label": "ThrustSSC land speed record",
-      "value": 1228,
-      "needs": "official figure (1,227.985 km/h)"
-    },
-    {
       "id": "gust",
       "category": "speed",
       "label": "Strongest wind gust",

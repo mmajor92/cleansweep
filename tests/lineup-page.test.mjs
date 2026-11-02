@@ -120,3 +120,9 @@ test("the page says six things everywhere it says how many", () => {
   assert.ok(html.includes("Put the six things in order") && html.includes("Put six things in order"));
   assert.ok(!/\bfive things\b|\bPut five\b/i.test(html + ui + read("lineup/logic.js") + read("lineup/data.js")), "no leftover five");
 });
+
+test("there is no grey sentence under the prompt (it was obvious), so no element, style or text for it", () => {
+  assert.ok(!/promptsub/.test(html), "the page still has the grey line");
+  assert.ok(!/promptsub/.test(read("lineup/styles.css")), "the stylesheet still styles it");
+  assert.ok(!/promptsub|Tap two to swap|real numbers/.test(ui), "the code still writes it");
+});

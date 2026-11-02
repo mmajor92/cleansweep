@@ -119,7 +119,6 @@ export function mountLineUp(env) {
     $("puzzleno").textContent = puzzle.daily ? withFlame("Puzzle #" + puzzle.no, streakNow(readStats().t)) : "Practice " + puzzle.practice + " of " + PRACTICE.length;
     $("tier").innerHTML = puzzle.daily ? '<span class="tier ' + puzzle.tier + '">' + TIER[puzzle.tier].name + ' day</span><span class="tiernote">worth \u00d7' + TIER[puzzle.tier].mult + "</span>" : "";
     $("prompt").innerHTML = '<span class="ic" aria-hidden="true">' + c.icon + "</span>" + c.prompt;
-    $("promptsub").textContent = over() ? "The right order, with the real numbers." : c.hint + ". Tap two to swap them, or drag one.";
     $("endtop").textContent = "\u2191 " + c.ends[0];
     $("endbottom").textContent = c.ends[1] + " \u2193";
     $("tries").textContent = over() ? "" : "Try " + (tries.length + 1) + " of " + TRIES;
