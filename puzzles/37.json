@@ -1,0 +1,192 @@
+{
+  "seed": 293016,
+  "slack": 1,
+  "bridges": [
+    "iss"
+  ],
+  "legs": [
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "arcdetriomphe",
+        "family": "arcdetriomphe",
+        "name": "The Arc de Triomphe",
+        "hint": "",
+        "clue": "",
+        "cat": "date",
+        "phrase": "the completion of the Arc de Triomphe",
+        "label": "Arc de Triomphe completed",
+        "value": 1836,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.britannica.com/topic/Arc-de-Triomphe-de-lEtoile",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "un",
+          "family": "un",
+          "name": "The United Nations",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the founding of the United Nations",
+          "label": "UN founded",
+          "value": 1945,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.iclrs.org/?p=9666",
+          "note": "The charter came into force on 24 October 1945.",
+          "warmup": false,
+          "fame": 2
+        },
+        {
+          "ent": "dynatac",
+          "family": "dynatac",
+          "name": "The Motorola DynaTAC phone",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the Motorola DynaTAC going on sale",
+          "label": "DynaTAC on sale",
+          "value": 1983,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.guinnessworldrecords.com/world-records/118343-first-commercially-available-mobile-phone",
+          "note": "The first mobile phone you could buy cost $3,995 and gave 30 minutes of talk time.",
+          "warmup": false,
+          "fame": 3,
+          "closer": {
+            "rival": {
+              "ent": "kilimanjaro",
+              "family": "kilimanjaro",
+              "name": "Mount Kilimanjaro",
+              "label": "Kilimanjaro first climbed",
+              "phrase": "the first ascent of Mount Kilimanjaro",
+              "value": 1889,
+              "fame": 2,
+              "status": "verified",
+              "source": "https://en.wikipedia.org/wiki/Mount_Kilimanjaro"
+            },
+            "itemOn": "up",
+            "dItem": 38,
+            "dRival": 56
+          }
+        },
+        {
+          "ent": "pioneer10",
+          "family": "pioneer10",
+          "name": "Pioneer 10",
+          "hint": "the first spacecraft to fly past Jupiter",
+          "clue": "an American space probe",
+          "cat": "date",
+          "phrase": "the launch of Pioneer 10",
+          "label": "Pioneer 10 launched",
+          "value": 1972,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Pioneer_10",
+          "note": "It was the first spacecraft to cross the asteroid belt.",
+          "warmup": false,
+          "fame": 1
+        },
+        {
+          "ent": "a320",
+          "family": "a320",
+          "name": "The Airbus A320",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the first flight of the Airbus A320",
+          "label": "A320 first flight",
+          "value": 1987,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.croatiaairlines.com/fleet/Airbus-A-320-200",
+          "note": "It was the first airliner to use fly-by-wire controls.",
+          "warmup": false,
+          "fame": 2
+        },
+        {
+          "ent": "iss",
+          "family": "iss",
+          "name": "The International Space Station",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the launch of the first International Space Station module",
+          "label": "First ISS module launched",
+          "value": 1998,
+          "approx": false,
+          "status": "verified",
+          "source": "https://simple.wikipedia.com/wiki/ISS",
+          "note": "The Zarya module launched on 20 November 1998.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "speed",
+      "anchor": {
+        "ent": "iss",
+        "family": "iss",
+        "name": "The International Space Station",
+        "hint": "",
+        "clue": "",
+        "cat": "speed",
+        "phrase": "the orbital speed of the International Space Station",
+        "label": "ISS orbital speed",
+        "value": 27600,
+        "approx": false,
+        "status": "verified",
+        "source": "https://simple.wikipedia.com/wiki/ISS",
+        "note": "That is 7.66 km per second.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "apollo10",
+          "family": "apollo10",
+          "name": "Apollo 10",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the fastest speed humans have travelled (Apollo 10)",
+          "label": "Apollo 10 return speed",
+          "value": 39897,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.drivespark.com/off-beat/fastest-vehicles-in-the-world-across-land-water-air-space/articlecontent-pf18738-010560.html",
+          "note": "It set the record on 26 May 1969.",
+          "warmup": false,
+          "fame": 2
+        },
+        {
+          "ent": "planeturanus",
+          "family": "planeturanus",
+          "name": "Uranus",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the average orbital speed of Uranus",
+          "label": "Uranus orbital speed",
+          "value": 24500,
+          "approx": true,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/uranusfact.html",
+          "note": "",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": true,
+  "deepCutAt": 2,
+  "num": 37
+}

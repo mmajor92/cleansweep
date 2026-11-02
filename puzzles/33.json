@@ -1,0 +1,215 @@
+{
+  "seed": 261340,
+  "slack": 1,
+  "bridges": [
+    "piano",
+    "routemaster"
+  ],
+  "legs": [
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "komodo",
+        "family": "komodo",
+        "name": "A Komodo dragon",
+        "hint": "",
+        "clue": "",
+        "cat": "weight",
+        "phrase": "the weight of a Komodo dragon",
+        "label": "Komodo dragon weight",
+        "value": 70,
+        "approx": true,
+        "status": "verified",
+        "source": "https://globalconservation.org/endangered-species/komodo-dragon",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "lion",
+          "family": "lion",
+          "name": "A male African lion",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the weight of an adult male African lion",
+          "label": "A male lion",
+          "value": 190,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/lion",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "polarbear",
+          "family": "polarbear",
+          "name": "A male polar bear",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the weight of an adult male polar bear",
+          "label": "A male polar bear",
+          "value": 450,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/bear",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "parker",
+          "family": "parker",
+          "name": "The Parker Solar Probe",
+          "hint": "the spacecraft that flies closer to the Sun than any other",
+          "clue": "a NASA probe sent to study the Sun",
+          "cat": "weight",
+          "phrase": "the launch mass of the Parker Solar Probe",
+          "label": "Parker Solar Probe",
+          "value": 685,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Parker_Solar_Probe",
+          "note": "",
+          "warmup": false,
+          "fame": 1
+        },
+        {
+          "ent": "piano",
+          "family": "piano",
+          "name": "A piano",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the weight of a Steinway concert grand piano (the Model D)",
+          "label": "Concert grand weight",
+          "value": 480,
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Steinway_D-274",
+          "note": "That is about 1,060 pounds.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "count",
+      "anchor": {
+        "ent": "piano",
+        "family": "piano",
+        "name": "A piano",
+        "hint": "",
+        "clue": "",
+        "cat": "count",
+        "phrase": "the number of keys on a standard piano",
+        "label": "Piano keys",
+        "value": 88,
+        "approx": false,
+        "status": "definitional",
+        "source": "definition",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "routemaster",
+          "family": "routemaster",
+          "name": "A Routemaster double-decker bus",
+          "hint": "the open-platform red bus that served London until 2005",
+          "clue": "London's classic red double-decker bus",
+          "cat": "count",
+          "phrase": "the number of seats on a Routemaster double-decker bus",
+          "label": "Routemaster seats",
+          "value": 64,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/AEC_Routemaster",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "routemaster",
+        "family": "routemaster",
+        "name": "A Routemaster double-decker bus",
+        "hint": "the open-platform red bus that served London until 2005",
+        "clue": "London's classic red double-decker bus",
+        "cat": "date",
+        "phrase": "the first Routemaster bus entering service in London",
+        "label": "Routemaster enters service",
+        "value": 1956,
+        "approx": false,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/AEC_Routemaster",
+        "note": "They were withdrawn from regular service in 2005.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "walkman",
+          "family": "walkman",
+          "name": "The Sony Walkman",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the launch of the Sony Walkman",
+          "label": "Walkman launched",
+          "value": 1979,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.sony.com/en/SonyInfo/CorporateInfo/History/sonyhistory-c.html",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "maglev",
+          "family": "maglev",
+          "name": "The record maglev train",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the maglev train's 603 km/h record run",
+          "label": "Maglev record run",
+          "value": 2015,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.blick.ch/fr/monde/plus-haut-plus-vite-plus-loin-les-11-machines-les-plus-rapides-du-monde-id18312982.html",
+          "note": "",
+          "warmup": false,
+          "fame": 2,
+          "closer": {
+            "rival": {
+              "ent": "spirit",
+              "family": "spirit",
+              "name": "The Spirit of St. Louis",
+              "label": "Lindbergh crosses the Atlantic",
+              "phrase": "Lindbergh's flight across the Atlantic in the Spirit of St. Louis",
+              "value": 1927,
+              "fame": 2,
+              "status": "verified",
+              "source": "https://cradleofaviation.org/history/exhibits/exhibit-galleries/the_golden_age/spirit_of_st_louis.html"
+            },
+            "itemOn": "up",
+            "dItem": 36,
+            "dRival": 52
+          }
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": true,
+  "deepCutAt": 2,
+  "num": 33
+}
