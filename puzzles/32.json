@@ -1,0 +1,245 @@
+{
+  "seed": 253421,
+  "slack": 1,
+  "bridges": [
+    "jwst",
+    "shard",
+    "colosseum",
+    "rosetta"
+  ],
+  "legs": [
+    {
+      "cat": "count",
+      "anchor": {
+        "ent": "rubik",
+        "family": "rubik",
+        "name": "A Rubik's Cube",
+        "hint": "",
+        "clue": "",
+        "cat": "count",
+        "phrase": "the number of coloured stickers on a 3x3 Rubik's Cube",
+        "label": "Rubik's Cube stickers",
+        "value": 54,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.rubiks.com/en-us/about",
+        "note": "Nine on each of six faces.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "jwst",
+          "family": "jwst",
+          "name": "The James Webb Space Telescope",
+          "hint": "the successor to Hubble",
+          "clue": "a NASA infrared space telescope",
+          "cat": "count",
+          "phrase": "the number of mirror segments in the James Webb Space Telescope",
+          "label": "Webb mirror segments",
+          "value": 18,
+          "approx": false,
+          "status": "verified",
+          "source": "https://webb.nasa.gov/content/observatory/ote/mirrors/index.html",
+          "note": "Each is a gold-coated beryllium hexagon.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "jwst",
+        "family": "jwst",
+        "name": "The James Webb Space Telescope",
+        "hint": "the successor to Hubble",
+        "clue": "a NASA infrared space telescope",
+        "cat": "date",
+        "phrase": "the launch of the James Webb Space Telescope",
+        "label": "Webb launched",
+        "value": 2021,
+        "approx": false,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/Ariane_flight_VA256",
+        "note": "An Ariane 5 launched it on Christmas Day.",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "shard",
+          "family": "shard",
+          "name": "The Shard",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the inauguration of the Shard",
+          "label": "Shard inaugurated",
+          "value": 2012,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.the-shard.com/news-events/news-events/2017/the-shard-five-years-on/",
+          "note": "Its viewing gallery opened in February 2013.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "count",
+      "anchor": {
+        "ent": "shard",
+        "family": "shard",
+        "name": "The Shard",
+        "hint": "",
+        "clue": "",
+        "cat": "count",
+        "phrase": "the number of glass panels on The Shard",
+        "label": "Shard glass panels",
+        "value": 11000,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.the-shard.com/about/",
+        "note": "They cover about 56,000 square metres.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "eiffel",
+          "family": "eiffel",
+          "name": "The Eiffel Tower's iron pieces",
+          "hint": "the pieces of wrought iron that make up the Eiffel Tower",
+          "clue": "a famous Paris landmark",
+          "cat": "count",
+          "phrase": "the number of metal pieces in the Eiffel Tower",
+          "label": "Eiffel Tower metal pieces",
+          "value": 18038,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.wral.com/eiffel-tower-fast-facts/21522017/",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "colosseum",
+          "family": "colosseum",
+          "name": "The Colosseum",
+          "hint": "",
+          "clue": "",
+          "cat": "count",
+          "phrase": "the number of spectators the Colosseum could hold",
+          "label": "Colosseum capacity",
+          "value": 50000,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.worldhistory.org/Colosseum/.md",
+          "note": "Estimates run from 50,000 to 75,000.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "colosseum",
+        "family": "colosseum",
+        "name": "The Colosseum",
+        "hint": "",
+        "clue": "",
+        "cat": "date",
+        "phrase": "the opening of the Colosseum",
+        "label": "Colosseum opens",
+        "value": 80,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.worldhistory.org/Colosseum/.md",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "rosetta",
+          "family": "rosetta",
+          "name": "The Rosetta Stone",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the writing of the Rosetta Stone",
+          "label": "Rosetta Stone inscribed",
+          "value": -196,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Rosetta_Stone",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "rosetta",
+        "family": "rosetta",
+        "name": "The Rosetta Stone",
+        "hint": "",
+        "clue": "",
+        "cat": "weight",
+        "phrase": "the weight of the Rosetta Stone",
+        "label": "Rosetta Stone weight",
+        "value": 760,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.britishmuseum.org/collection/object/Y_EA24",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "zebra",
+          "family": "zebra",
+          "name": "A plains zebra",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the weight of an adult plains zebra",
+          "label": "A plains zebra",
+          "value": 300,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/zebra",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "lrv",
+          "family": "lrv",
+          "name": "The Apollo Lunar Roving Vehicle",
+          "hint": "the electric buggy driven on the Moon",
+          "clue": "a vehicle used on the Moon",
+          "cat": "weight",
+          "phrase": "the weight of the Apollo Lunar Roving Vehicle without a payload",
+          "label": "Lunar Rover weight",
+          "value": 210,
+          "approx": false,
+          "status": "verified",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_lrv.html",
+          "note": "It could carry 440 kg of astronauts, equipment and samples.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": false,
+  "deepCutAt": -1,
+  "num": 32
+}

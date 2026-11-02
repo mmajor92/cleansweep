@@ -1,0 +1,215 @@
+{
+  "seed": 277178,
+  "slack": 1,
+  "bridges": [
+    "chinook",
+    "f16"
+  ],
+  "legs": [
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "declaration",
+        "family": "declaration",
+        "name": "The Declaration of Independence",
+        "hint": "",
+        "clue": "",
+        "cat": "date",
+        "phrase": "the US Declaration of Independence",
+        "label": "Declaration of Independence",
+        "value": 1776,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.teachervision.com/world-history/resource/3851.html",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "christredeemer",
+          "family": "christredeemer",
+          "name": "Christ the Redeemer",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the inauguration of Christ the Redeemer",
+          "label": "Christ the Redeemer inaugurated",
+          "value": 1931,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/Christ-the-Redeemer",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "chinook",
+          "family": "chinook",
+          "name": "A Chinook helicopter",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the first flight of the Chinook",
+          "label": "Chinook first flight",
+          "value": 1961,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.boeing.com/history/products/ch-47-chinook.page",
+          "note": "",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "chinook",
+        "family": "chinook",
+        "name": "A Chinook helicopter",
+        "hint": "",
+        "clue": "",
+        "cat": "weight",
+        "phrase": "the weight of a Chinook helicopter",
+        "label": "Chinook weight",
+        "value": 10800,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.boeing.com/defense/ch-47-chinook",
+        "note": "",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "stonehenge",
+          "family": "stonehenge",
+          "name": "Stonehenge",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the weight of a Stonehenge sarsen stone",
+          "label": "Stonehenge stone weight",
+          "value": 25000,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.english-heritage.org.uk/visit/places/stonehenge/history-and-stories/building-stonehenge/",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "f22",
+          "family": "f22",
+          "name": "The F-22 Raptor",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the empty weight of the F-22 Raptor",
+          "label": "F-22 Raptor empty weight",
+          "value": 19700,
+          "approx": true,
+          "status": "unchecked",
+          "source": "manufacturer specification",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "f16",
+          "family": "f16",
+          "name": "The F-16 Fighting Falcon",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the empty weight of the F-16 Fighting Falcon",
+          "label": "F-16 Fighting Falcon empty weight",
+          "value": 8570,
+          "approx": true,
+          "status": "unchecked",
+          "source": "manufacturer specification",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "f16",
+        "family": "f16",
+        "name": "The F-16 Fighting Falcon",
+        "hint": "",
+        "clue": "",
+        "cat": "date",
+        "phrase": "the first flight of the F-16 Fighting Falcon",
+        "label": "F-16 Fighting Falcon first flies",
+        "value": 1974,
+        "approx": false,
+        "status": "unchecked",
+        "source": "well-known date",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "mallard",
+          "family": "mallard",
+          "name": "The steam locomotive Mallard",
+          "hint": "the world's fastest steam locomotive",
+          "clue": "a streamlined British steam locomotive",
+          "cat": "date",
+          "phrase": "Mallard's world steam speed record",
+          "label": "Mallard breaks the record",
+          "value": 1938,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/LNER_Class_A4_4468_Mallard",
+          "note": "It happened on 3 July 1938.",
+          "warmup": false,
+          "fame": 1
+        },
+        {
+          "ent": "starwars",
+          "family": "starwars",
+          "name": "Star Wars",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the first release of Star Wars",
+          "label": "Star Wars released",
+          "value": 1977,
+          "approx": false,
+          "status": "verified",
+          "source": "https://simple.wikipedia.com/wiki/1977",
+          "note": "It opened in cinemas on 25 May.",
+          "warmup": false,
+          "fame": 3,
+          "closer": {
+            "rival": {
+              "ent": "brooklynbridge",
+              "family": "brooklynbridge",
+              "name": "The Brooklyn Bridge",
+              "label": "Brooklyn Bridge opens",
+              "phrase": "the opening of the Brooklyn Bridge",
+              "value": 1883,
+              "fame": 3,
+              "status": "verified",
+              "source": "https://en.wikipedia.org/wiki/Brooklyn_Bridge"
+            },
+            "itemOn": "up",
+            "dItem": 39,
+            "dRival": 55
+          }
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": true,
+  "deepCutAt": 5,
+  "num": 35
+}

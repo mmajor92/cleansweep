@@ -1,0 +1,208 @@
+{
+  "seed": 300935,
+  "slack": 1,
+  "bridges": [
+    "stpauls"
+  ],
+  "legs": [
+    {
+      "cat": "length",
+      "anchor": {
+        "ent": "wembley",
+        "family": "wembley",
+        "name": "Wembley Stadium",
+        "hint": "",
+        "clue": "",
+        "cat": "length",
+        "phrase": "the height of the Wembley Arch",
+        "label": "Wembley Arch height",
+        "value": 134,
+        "approx": false,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/Wembley_Stadium",
+        "note": "Some sources give 133 m.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "titanic",
+          "family": "titanic",
+          "name": "The Titanic",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the length of the Titanic",
+          "label": "Titanic length",
+          "value": 269.1,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.titanicofficers.com/titanic.html",
+          "note": "Stood on end, it would be almost three times the height of the Statue of Liberty.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "pyramid",
+          "family": "pyramid",
+          "name": "The Great Pyramid",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the original height of the Great Pyramid",
+          "label": "Great Pyramid, original",
+          "value": 146.6,
+          "approx": false,
+          "status": "verified",
+          "source": "https://wikipedia.com/wiki/Great_Pyramid",
+          "note": "It has lost about 8 m of height since it was built.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "stpauls",
+          "family": "stpauls",
+          "name": "St Paul's Cathedral",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the height of St Paul's Cathedral",
+          "label": "St Paul's height",
+          "value": 111,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.stpauls.co.uk/history-collections/history/building-st-pauls",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "stpauls",
+        "family": "stpauls",
+        "name": "St Paul's Cathedral",
+        "hint": "",
+        "clue": "",
+        "cat": "date",
+        "phrase": "the completion of St Paul's Cathedral",
+        "label": "St Paul's completed",
+        "value": 1710,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.stpauls.co.uk/history-collections/history/building-st-pauls",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "parismetro",
+          "family": "parismetro",
+          "name": "The Paris Metro",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the opening of the Paris Metro",
+          "label": "Paris Metro opens",
+          "value": 1900,
+          "approx": false,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q50716",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "tube",
+          "family": "tube",
+          "name": "The London Underground",
+          "hint": "the Tube, the world's oldest underground railway",
+          "clue": "a capital city's underground railway",
+          "cat": "date",
+          "phrase": "the opening of the first London Underground line",
+          "label": "Tube opens",
+          "value": 1863,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/London_Underground",
+          "note": "It ran between Paddington and Farringdon on 10 January 1863.",
+          "warmup": false,
+          "fame": 3,
+          "closer": {
+            "rival": {
+              "ent": "everest",
+              "family": "everest",
+              "name": "Mount Everest",
+              "label": "Everest first climbed",
+              "phrase": "the first ascent of Mount Everest",
+              "value": 1953,
+              "fame": 3,
+              "status": "verified",
+              "source": "https://fr.vikidia.org/wiki/Everest"
+            },
+            "itemOn": "down",
+            "dItem": 37,
+            "dRival": 53
+          }
+        },
+        {
+          "ent": "declaration",
+          "family": "declaration",
+          "name": "The Declaration of Independence",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the US Declaration of Independence",
+          "label": "Declaration of Independence",
+          "value": 1776,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.teachervision.com/world-history/resource/3851.html",
+          "note": "",
+          "warmup": false,
+          "fame": 3,
+          "closer": {
+            "rival": {
+              "ent": "gameboy",
+              "family": "gameboy",
+              "name": "The original Game Boy",
+              "label": "Game Boy released",
+              "phrase": "the release of the original Game Boy",
+              "value": 1989,
+              "fame": 3,
+              "status": "verified",
+              "source": "https://www.nintendo.co.jp/hardware/gamelines/gameboy.html"
+            },
+            "itemOn": "down",
+            "dItem": 87,
+            "dRival": 126
+          }
+        },
+        {
+          "ent": "gunpowder",
+          "family": "gunpowder",
+          "name": "The Gunpowder Plot",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the discovery of the Gunpowder Plot",
+          "label": "Gunpowder Plot discovered",
+          "value": 1605,
+          "approx": false,
+          "status": "verified",
+          "source": "https://web.stanford.edu/class/engl113/page6.htm",
+          "note": "A plot to assassinate King James I was discovered, and Guy Fawkes was caught.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": false,
+  "deepCutAt": -1,
+  "num": 38
+}
