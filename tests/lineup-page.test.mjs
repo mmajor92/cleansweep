@@ -90,7 +90,7 @@ test("the words players see", () => {
 test("the counts: started at the first check, solved, finished, clean sweep, a streak milestone, each only for today's puzzle", () => {
   for (const name of ["lineup-started", "lineup-solved", "lineup-finished", "lineup-clean-sweep"]) assert.ok(ui.includes(`countEvent("${name}")`), name);
   assert.match(ui, /countEvent\("lineup-streak-" \+ st\.t\.n\)/);
-  assert.match(ui, /if \(puzzle\.daily && isToday\(\) && tries\.length === 1\) countEvent\("lineup-started"\)/);
+  assert.match(ui, /if \(puzzle\.daily && isToday\(\) && tries\.length === 1\) \{ countEvent\("lineup-started"\); countEvent\(mode === "easy" \? "lineup-mode-easy" : "lineup-mode-medium"\); \}/);
   assert.match(ui, /if \(over\(\) && puzzle\.daily && isToday\(\)\)/);
 });
 
@@ -125,4 +125,16 @@ test("there is no grey sentence under the prompt (it was obvious), so no element
   assert.ok(!/promptsub/.test(html), "the page still has the grey line");
   assert.ok(!/promptsub/.test(read("lineup/styles.css")), "the stylesheet still styles it");
   assert.ok(!/promptsub|Tap two to swap|real numbers/.test(ui), "the code still writes it");
+});
+
+test("two modes: Easy shows which are right and locks them, Medium only counts; Medium is the default, remembered, and locked after the first check", () => {
+  assert.match(html, /<div class="modes" id="modes"[^>]*>\s*<button[^>]*data-mode="easy"[^>]*>Easy<\/button>\s*<button[^>]*data-mode="normal" aria-pressed="true">Medium<\/button>/);
+  assert.match(ui, /const prefMode = \(\) => \(store\.get\("lu:mode"\) === "easy" \? "easy" : "normal"\)/, "new players start on Medium; the pick is remembered");
+  assert.match(ui, /if \(mode === "easy"\) right\.forEach/, "only Easy locks the right places");
+  assert.match(ui, /locked = mode === "easy" \? lockedPositions\(tries, puzzle\.solution\) : new Set\(\)/);
+  assert.match(ui, /JSON\.stringify\(\{ t: tries, c: order, d: recDay, m: mode \}\)/, "the mode is saved with the game");
+  assert.match(ui, /if \(tries\.length\) mode = rec\.m \|\| "easy"/, "a game started before there were two modes was played on Easy");
+  assert.match(ui, /const modeLocked = \(\) => !!puzzle && puzzle\.daily && tries\.length > 0/, "you can change it until your first check");
+  assert.match(ui, /scoreGame\(puzzle, tries, mode\)/); assert.equal((ui.match(/shareText\(puzzle, tries, mode\)/g) || []).length, 2, "both the copy and the share use the mode");
+  assert.match(ui, /store\.set\("lu:mode", b\.dataset\.mode\)/);
 });

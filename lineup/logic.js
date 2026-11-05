@@ -33,14 +33,18 @@ export const PRACTICE = [
 // The whole score is then multiplied by how hard the day is: Easy x1, Medium x1.25, Hard x1.5.
 export const POINTS = { base: 100, tryWeight: [1, 0.6, 0.35], near: [1, 0.4, 0.15], bonus: 100 };
 export const TIER = { easy: { name: "Easy", mult: 1 }, medium: { name: "Medium", mult: 1.25 }, hard: { name: "Hard", mult: 1.5 } };
+/** How much help you get, chosen before your first check. Easy shows which things are in the right place (they turn green and lock). Medium (called "normal" in the code, as in Mystery Thing)
+ *  only tells you how many are right, and is worth more. */
+export const MODE_MULT = { easy: 1, normal: 1.25 };
+export const MODE_LABEL = { easy: "Easy", normal: "Medium" };
 /** A day is Hard if its closest two neighbours are less than the first figure apart, Medium if less than the second (times apart for sizes, weights and speeds; years apart for dates). */
 export const TIER_GAPS = { size: [1.65, 2.2], date: [15, 40] };
 export function tierFor(cat, gap) {
   const [hard, medium] = cat === "date" ? TIER_GAPS.date : TIER_GAPS.size;
   return gap < hard ? "hard" : gap < medium ? "medium" : "easy";
 }
-/** The score for a game: { raw, bonus, mult, points, tier }. `tries` is the list of orders checked so far. */
-export function scoreGame(puzzle, tries) {
+/** The score for a game: { raw, bonus, mult, modeMult, points, tier }. `tries` is the list of orders checked so far. */
+export function scoreGame(puzzle, tries, mode = "easy") {
   let sum = 0;
   puzzle.solution.forEach((id, pos) => {
     let best = 0;
@@ -50,7 +54,8 @@ export function scoreGame(puzzle, tries) {
   const bonus = solvedTry(tries, puzzle.solution) === 1 ? POINTS.bonus : 0;
   const raw = Math.round(sum) + bonus;
   const mult = TIER[puzzle.tier || "easy"].mult;
-  return { raw, bonus, mult, points: Math.round(raw * mult), tier: puzzle.tier || "easy" };
+  const modeMult = MODE_MULT[mode] || 1;
+  return { raw, bonus, mult, modeMult, points: Math.round(raw * mult * modeMult), tier: puzzle.tier || "easy" };
 }
 
 // ---- numbers, worded as in Mystery Thing (a test checks they agree) ----
@@ -110,11 +115,15 @@ export function solvedTry(tries, solution) {
 }
 export const isOver = (tries, solution) => solvedTry(tries, solution) > 0 || tries.length >= TRIES;
 
-/** The result as it is shared: one row of squares per try, green where it was right. */
-export function shareText(puzzle, tries) {
+/** The result as it is shared: one row of squares per try. On Easy a square is green where that place was right. On Medium you were only ever told how many, so the green squares come first. */
+export function shareText(puzzle, tries, mode = "easy") {
   const n = solvedTry(tries, puzzle.solution);
-  const rows = tries.map((t) => rightPlaces(t, puzzle.solution).map((ok) => (ok ? TILE_RIGHT : TILE_WRONG)).join(""));
-  const head = "\uD83D\uDCCA Line Up" + (puzzle.daily ? " #" + puzzle.no : " (practice)") + " " + CAT[puzzle.cat].icon + " " + (n ? n : "X") + "/" + TRIES + (puzzle.daily ? " \u00b7 " + scoreGame(puzzle, tries).points + " pts" : "");
+  const rows = tries.map((t) => {
+    const right = rightPlaces(t, puzzle.solution);
+    if (mode === "normal") { const k = right.filter(Boolean).length; return TILE_RIGHT.repeat(k) + TILE_WRONG.repeat(right.length - k); }
+    return right.map((ok) => (ok ? TILE_RIGHT : TILE_WRONG)).join("");
+  });
+  const head = "\uD83D\uDCCA Line Up" + (puzzle.daily ? " #" + puzzle.no + " (" + MODE_LABEL[mode] + ")" : " (practice)") + " " + CAT[puzzle.cat].icon + " " + (n ? n : "X") + "/" + TRIES + (puzzle.daily ? " \u00b7 " + scoreGame(puzzle, tries, mode).points + " pts" : "");
   return [head, ...rows, SHARE_URL].join("\n");
 }
 

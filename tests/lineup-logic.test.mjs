@@ -72,19 +72,34 @@ test("the share card: a headline with the score, one row of squares per try, and
   const t1 = ["b", "a", "c", "e", "d"], t2 = ["a", "b", "c", "e", "d"], t3 = p.solution;
   const G = "\uD83D\uDFE9", R = "\uD83D\uDFE5", URL = "\uD83E\uDDF9 cleansweepdaily.fyi/lineup";
   const pts = (tries) => L.scoreGame(p, tries).points;
-  assert.equal(L.shareText(p, [t1, t2, t3]), ["\uD83D\uDCCA Line Up #5 \u2696\uFE0F 3/3 \u00b7 " + pts([t1, t2, t3]) + " pts", R + R + G + R + R, G + G + G + R + R, G.repeat(5), URL].join("\n"));
-  assert.equal(L.shareText(p, [t3]).split("\n")[0], "\uD83D\uDCCA Line Up #5 \u2696\uFE0F 1/3 \u00b7 900 pts", "a clean sweep of five on a hard day: (500 + 100) x 1.5");
-  assert.equal(L.shareText(p, [t1, t1, t1]).split("\n")[0], "\uD83D\uDCCA Line Up #5 \u2696\uFE0F X/3 \u00b7 " + pts([t1, t1, t1]) + " pts");
+  assert.equal(L.shareText(p, [t1, t2, t3]), ["\uD83D\uDCCA Line Up #5 (Easy) \u2696\uFE0F 3/3 \u00b7 " + pts([t1, t2, t3]) + " pts", R + R + G + R + R, G + G + G + R + R, G.repeat(5), URL].join("\n"));
+  assert.equal(L.shareText(p, [t3]).split("\n")[0], "\uD83D\uDCCA Line Up #5 (Easy) \u2696\uFE0F 1/3 \u00b7 900 pts", "a clean sweep of five on a hard day: (500 + 100) x 1.5");
+  assert.equal(L.shareText(p, [t1, t1, t1]).split("\n")[0], "\uD83D\uDCCA Line Up #5 (Easy) \u2696\uFE0F X/3 \u00b7 " + pts([t1, t1, t1]) + " pts");
   assert.equal(L.shareText({ ...p, daily: false, practice: 1, cat: "date" }, [t3]).split("\n")[0], "\uD83D\uDCCA Line Up (practice) \uD83D\uDCC5 1/3");
   for (const c of ["length", "weight", "date", "speed"]) assert.ok(L.CAT[c].icon && L.CAT[c].prompt && L.CAT[c].hint && L.CAT[c].ends.length === 2, c);
   assert.equal(L.CAT.speed.icon, "\u26A1", "lightning for speed, so the wind emoji only ever means dust");
   assert.ok(!/streak|\uD83D\uDD25/i.test(L.shareText(p, [t3])), "no streak in the shared text");
 });
 
+test("Medium mode: worth x1.25 on top of the day, and its share card only counts (green squares first), never showing which places were right", () => {
+  assert.deepEqual(L.MODE_MULT, { easy: 1, normal: 1.25 }); assert.deepEqual(L.MODE_LABEL, { easy: "Easy", normal: "Medium" });
+  const sol = ["a", "b", "c", "d", "e", "f"];
+  assert.equal(L.scoreGame({ solution: sol, tier: "easy" }, [sol], "normal").points, 875, "700 x 1.25");
+  assert.equal(L.scoreGame({ solution: sol, tier: "hard" }, [sol], "normal").points, 1313, "700 x 1.5 x 1.25, rounded");
+  assert.equal(L.scoreGame({ solution: sol, tier: "hard" }, [sol]).points, 1050, "Easy is unchanged");
+  assert.equal(L.scoreGame({ solution: sol, tier: "easy" }, [sol], "normal").modeMult, 1.25);
+  const p = { daily: true, no: 5, cat: "weight", solution: ["a", "b", "c", "d", "e"], tier: "easy" };
+  const t1 = ["b", "a", "c", "e", "d"], t2 = ["a", "b", "c", "e", "d"], t3 = p.solution; // one, three and five in the right place
+  const G = "\uD83D\uDFE9", R = "\uD83D\uDFE5";
+  const lines = L.shareText(p, [t1, t2, t3], "normal").split("\n");
+  assert.equal(lines[0], "\uD83D\uDCCA Line Up #5 (Medium) \u2696\uFE0F 3/3 \u00b7 " + L.scoreGame(p, [t1, t2, t3], "normal").points + " pts");
+  assert.deepEqual(lines.slice(1, 4), [G + R.repeat(4), G.repeat(3) + R.repeat(2), G.repeat(5)], "the counts, with the green squares first");
+  assert.notEqual(L.shareText(p, [t1], "normal").split("\n")[1], L.shareText(p, [t1], "easy").split("\n")[1], "Easy shows the places, Medium only the count");
+});
 test("points: each thing scores its best try (100, 60, 35), a near miss earns part of that, a clean sweep adds 100, and the day's difficulty multiplies it", () => {
   const sol = ["a", "b", "c", "d", "e", "f"], swap = (arr, i, j) => { const c = arr.slice(); [c[i], c[j]] = [c[j], c[i]]; return c; };
   const game = (tier) => ({ solution: sol, tier });
-  assert.deepEqual(L.scoreGame(game("easy"), [sol]), { raw: 700, bonus: 100, mult: 1, points: 700, tier: "easy" }, "six right on try 1: 600 and the bonus");
+  assert.deepEqual(L.scoreGame(game("easy"), [sol]), { raw: 700, bonus: 100, mult: 1, modeMult: 1, points: 700, tier: "easy" }, "six right on try 1: 600 and the bonus");
   assert.equal(L.scoreGame(game("medium"), [sol]).points, 875); assert.equal(L.scoreGame(game("hard"), [sol]).points, 1050);
   const near = swap(swap(sol, 0, 1), 4, 5); // four things one place out, two exact
   assert.equal(L.scoreGame(game("easy"), [near]).raw, 2 * 100 + 4 * 40, "exact scores 100, one place out 40");

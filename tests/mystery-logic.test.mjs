@@ -26,16 +26,16 @@ ok("the arrow points to the secret, and the colour says how near", () => {
   const cs = ["length", "weight"], pool = pick(cs);
   const a = pool.slice().sort((p, q) => p.c.length.v - q.c.length.v)[0], b = pool.find((x) => x !== a && x.c.length.v > a.c.length.v * 6);
   const f = L.feedback(a, b, cs, "easy");
-  assert.equal(f[0].dir, "up"); assert.equal(f[0].eq, false); assert.equal(f[0].lvl, 1); assert.equal(f[0].cls, 3, "more than 2 times away is red");
+  assert.equal(f[0].dir, "up"); assert.equal(f[0].eq, false); assert.equal(f[0].lvl, 3); assert.equal(f[0].cls, 3, "more than 5 times away is red");
   const same = L.feedback(a, a, cs, "easy"); assert.ok(same.every((x) => x.eq && x.cls === 0));
   const back = L.feedback(b, a, cs, "easy"); assert.equal(back[0].dir, "down", "from the other side the arrow flips");
 });
-ok("Easy and Normal give identical clues (an arrow and green or red); Hard gives arrows only, with no colour", () => {
+ok("Easy and Normal give identical clues (an arrow and four colours); Hard gives arrows only, with no colour", () => {
   const cs = ["length", "weight"], pool = pick(cs), seen = { easy: new Set(), normal: new Set(), hard: new Set() };
   for (let i = 0; i < 400; i++) { const a = pool[i % pool.length], b = pool[(i * 7 + 3) % pool.length]; const fe = L.feedback(a, b, cs, "easy"), fn = L.feedback(a, b, cs, "normal"), fh = L.feedback(a, b, cs, "hard");
     assert.deepEqual(fe, fn, "Easy and Normal differ"); for (const m of ["easy", "normal", "hard"]) L.feedback(a, b, cs, m).forEach((f) => seen[m].add(f.cls));
     fh.forEach((f, k) => { if (!f.eq) { assert.equal(f.cls, "n"); assert.equal(f.dir, fe[k].dir, "Hard must still give the arrow"); } }); }
-  assert.deepEqual([...seen.easy].sort(), [0, 3]); assert.ok(seen.hard.has("n") && !seen.hard.has(3) && !seen.hard.has(1), "Hard must never show green-or-red nearness: " + [...seen.hard]);
+  assert.deepEqual([...seen.easy].sort(), [0, 1, 2, 3]); assert.ok(seen.hard.has("n") && !seen.hard.has(3) && !seen.hard.has(1), "Hard must never show green-or-red nearness: " + [...seen.hard]);
 });
 ok("what is still possible: always includes the secret, only ever shrinks, and removes exactly the things that would have given different clues", () => {
   let first = [], n = 0;
@@ -52,6 +52,17 @@ ok("dates compare by years ago, so 1989 and 1993 are close and 1066 and 1969 are
   assert.equal(L.feedback(fake(1989), fake(1993), ["date"], "normal")[0].cls, 0);
   assert.equal(L.feedback(fake(1066), fake(1969), ["date"], "normal")[0].cls, 3);
   assert.equal(L.feedback(fake(1066), fake(1969), ["date"], "normal")[0].dir, "up", "a later year is up");
+});
+ok("the four colours: green within 30%, yellow within double or half, orange within 5 times, red beyond that", () => {
+  const fake = (v) => ({ c: { length: { v } } });
+  const cls = (a, b) => L.feedback(fake(a), fake(b), ["length"], "normal")[0].cls;
+  assert.equal(cls(100, 130), 0); assert.equal(cls(130, 100), 0, "the same from the other side");
+  assert.equal(cls(100, 131), 1); assert.equal(cls(100, 200), 1); assert.equal(cls(200, 100), 1);
+  assert.equal(cls(100, 201), 2); assert.equal(cls(100, 500), 2);
+  assert.equal(cls(100, 501), 3); assert.equal(cls(5, 100000), 3);
+  assert.equal(L.feedback(fake(100), fake(100), ["length"], "normal")[0].eq, true);
+  for (const m of ["easy", "normal"]) assert.deepEqual(L.MODES[m].words, ["very close", "quite close", "a bit far", "very far"]);
+  assert.equal(L.SQUARES[0] + L.SQUARES[1] + L.SQUARES[2] + L.SQUARES[3], "\uD83D\uDFE9\uD83D\uDFE8\uD83D\uDFE7\uD83D\uDFE5", "the share squares: green, yellow, orange, red");
 });
 ok("every secret can be found: it is in its own guess list, which has at least 50 objects", () => {
   for (const s of d.secrets) for (const p of s.pairs) { const pool = L.poolFor(p); assert.ok(pool.includes(L.byId[s.id]), s.id); assert.ok(pool.length >= 50, s.id + " " + pool.length); }
@@ -80,9 +91,9 @@ ok("typing finds things and skips a, an and the: pia, piano, a piano, the pia an
 const sweepExample = () => {
   for (let no = 1; no <= d.order.length; no++) { const p = L.dailyPuzzle(no); const g = L.poolFor(p.cs).find((o) => o !== p.secret && L.feedback(o, p.secret, p.cs, "normal").every((f) => f.lvl === 0 && !f.eq)); if (g) return { p, g }; }
 };
-const redExample = (p) => L.poolFor(p.cs).filter((o) => o !== p.secret && L.feedback(o, p.secret, p.cs, "normal").some((f) => f.lvl === 1)).slice(0, 2);
+const redExample = (p) => L.poolFor(p.cs).filter((o) => o !== p.secret && L.feedback(o, p.secret, p.cs, "normal").some((f) => f.lvl === 3)).slice(0, 2);
 const HALF = "\u2002", THIN = "\u2009", PADL = HALF + THIN, ICONS = { length: "\uD83D\uDCCF", weight: "\u2696\uFE0F", speed: "\uD83D\uDCA8", date: "\uD83D\uDCC5" };
-const CELL = new RegExp("^(?:" + PADL + "\u2705" + HALF + "|(?:\u2B06\uFE0F|\u2B07\uFE0F)(?:\uD83D\uDFE9|\uD83D\uDFE5)) (?:" + PADL + "\u2705" + HALF + "|(?:\u2B06\uFE0F|\u2B07\uFE0F)(?:\uD83D\uDFE9|\uD83D\uDFE5))$");
+const CELL = new RegExp("^(?:" + PADL + "\u2705" + HALF + "|(?:\u2B06\uFE0F|\u2B07\uFE0F)(?:\uD83D\uDFE9|\uD83D\uDFE8|\uD83D\uDFE7|\uD83D\uDFE5)) (?:" + PADL + "\u2705" + HALF + "|(?:\u2B06\uFE0F|\u2B07\uFE0F)(?:\uD83D\uDFE9|\uD83D\uDFE8|\uD83D\uDFE7|\uD83D\uDFE5))$");
 ok("the share card on Normal: headline, the clues centred over their columns, one row per guess, a centred tick row, the score and the address (no sweep line)", () => {
   const p = L.dailyPuzzle(3), [w1, w2] = redExample(p), ids = [w1.id, w2.id, p.secret.id];
   const t = L.shareText(p, ids, "normal"), lines = t.split("\n");
@@ -109,12 +120,12 @@ ok("a lost game says X/6 and has no tick row; a first-guess win says so", () => 
 ok("the Hard share: arrows only, one-emoji columns so nothing is padded, no sweep line", () => {
   const p = L.dailyPuzzle(3), [w1, w2] = redExample(p), ids = [w1.id, w2.id, p.secret.id], lines = L.shareText(p, ids, "hard").split("\n");
   assert.equal(lines[1], p.cs.map((c) => ICONS[c]).join(" "), "icons use the same one-space gap as the rows"); assert.ok(!lines.join("").includes(HALF) && !lines.join("").includes(THIN), "no padding on Hard");
-  assert.ok(/^(\u2B06\uFE0F|\u2B07\uFE0F|\u2705) (\u2B06\uFE0F|\u2B07\uFE0F|\u2705)$/.test(lines[2]), lines[2]); assert.ok(!/\uD83D\uDFE9|\uD83D\uDFE5/.test(lines.join("")), "no coloured squares"); assert.equal(lines[4], "\u2705 \u2705"); assert.ok(!lines.slice(0, -1).some((l) => l.startsWith("\uD83E\uDDF9 ")));
+  assert.ok(/^(\u2B06\uFE0F|\u2B07\uFE0F|\u2705) (\u2B06\uFE0F|\u2B07\uFE0F|\u2705)$/.test(lines[2]), lines[2]); assert.ok(!/\uD83D\uDFE9|\uD83D\uDFE8|\uD83D\uDFE7|\uD83D\uDFE5/.test(lines.join("")), "no coloured squares"); assert.equal(lines[4], "\u2705 \u2705"); assert.ok(!lines.slice(0, -1).some((l) => l.startsWith("\uD83E\uDDF9 ")));
 });
 ok("a practice game is labelled as practice", () => { const p = { ...L.dailyPuzzle(3), daily: false }; assert.ok(L.shareText(p, [p.secret.id], "normal").includes("Mystery Thing (practice)")); });
-ok("scoring: a first-guess solve is worth 600 (900 on Hard), and more guesses can never beat fewer", () => {
+ok("scoring: a first-guess solve is worth 600 (1,200 on Hard), and more guesses can never beat fewer", () => {
   const p = L.dailyPuzzle(3);
-  assert.equal(L.scoreGame(p, [p.secret.id], "normal").score, 600); assert.equal(L.scoreGame(p, [p.secret.id], "hard").score, 900); assert.equal(L.scoreGame(p, [p.secret.id], "easy").score, 600);
+  assert.equal(L.scoreGame(p, [p.secret.id], "normal").score, 600); assert.equal(L.scoreGame(p, [p.secret.id], "hard").score, 1200); assert.equal(L.scoreGame(p, [p.secret.id], "easy").score, 600);
   const best = (n) => (200 + (n - 1) * 40) * L.MULT[n]; for (let n = 1; n < 6; n++) assert.ok(best(n + 1) <= best(n) + 1e-9, `best with ${n + 1} guesses beats best with ${n}`);
 });
 ok("scoring: green earns more the closer, red loses more the further (to a cap of 30), exact is the top, half and double are the same", () => {
@@ -139,15 +150,18 @@ ok("the two practice puzzles are fixed: the Eiffel Tower (size and year) and a g
 ok("the settings are explained clearly: Easy says the list shrinks, Medium says it does not, both say what green and red mean, Hard is unchanged, and Normal is shown as Medium", () => {
   assert.deepEqual(L.MODE_LABEL, { easy: "Easy", normal: "Medium", hard: "Hard" });
   const e = L.MODES.easy.help, m = L.MODES.normal.help, h = L.MODES.hard.help;
-  assert.ok(/shrinks as you guess/.test(e) && /rule out/.test(e), e); assert.equal(m, "The list doesn\u2019t shrink. Green means within double or half, red means further off.");
-  for (const x of [e, m]) { assert.ok(/Green means within double or half, red means further off/.test(x), x); assert.ok(!/arrow and a colour/.test(x), "it should not repeat what is on screen: " + x); }
-  assert.equal(h, "The same list, but only arrows. No colours to say how near. Scores are multiplied by 1.5.");
+  assert.ok(/shrinks as you guess/.test(e) && /rule out/.test(e), e); assert.equal(m, "The list doesn\u2019t shrink. Green: very close. Yellow: quite close. Orange: a bit far. Red: very far.");
+  for (const x of [e, m]) { assert.ok(/Green: very close\. Yellow: quite close\. Orange: a bit far\. Red: very far\./.test(x), x); assert.ok(!/arrow and a colour/.test(x), "it should not repeat what is on screen: " + x); }
+  assert.equal(h, "The same list, but only arrows. No colours to say how near. Scores are multiplied by 2.");
   const p = L.dailyPuzzle(3); assert.ok(L.shareText(p, [p.secret.id], "normal").split("\n")[0].includes("(Medium)")); assert.ok(!L.shareText(p, [p.secret.id], "normal").includes("Normal"));
 });
-ok("a clean sweep is solving it with every guess green (or exact), on any setting", () => {
+ok("a clean sweep is solving it with every clue green (or exact) after your first guess, on any setting", () => {
   const { p, g } = sweepExample(), [far] = redExample(p);
   assert.equal(L.cleanSweep(p, [g.id, p.secret.id]), true); assert.equal(L.cleanSweep(p, [p.secret.id]), true, "a first-guess win is a clean sweep");
-  assert.equal(L.cleanSweep(p, [far.id, p.secret.id]), false, "one red guess ends it"); assert.equal(L.cleanSweep(p, [g.id]), false, "not solved"); assert.equal(L.cleanSweep(p, [g.id, "GIVEUP"]), false);
+  assert.equal(L.cleanSweep(p, [far.id, p.secret.id]), true, "the first guess is a shot in the dark, so even a red one is forgiven");
+  assert.equal(L.cleanSweep(p, [far.id, g.id, p.secret.id]), true, "a red first guess, then green");
+  assert.equal(L.cleanSweep(p, [g.id, far.id, p.secret.id]), false, "one red guess after the first ends it");
+  assert.equal(L.cleanSweep(p, [g.id]), false, "not solved"); assert.equal(L.cleanSweep(p, [g.id, "GIVEUP"]), false);
   for (const m of ["easy", "normal", "hard"]) assert.ok(L.shareText(p, [g.id, p.secret.id], m).split("\n")[0].endsWith("\uD83E\uDDF9\u2728"), "the share card shows it on " + m);
-  assert.ok(!L.shareText(p, [far.id, p.secret.id], "normal").split("\n")[0].includes("\u2728"));
+  assert.ok(!L.shareText(p, [g.id, far.id, p.secret.id], "normal").split("\n")[0].includes("\u2728"));
 });

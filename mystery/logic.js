@@ -15,15 +15,17 @@ export function setData(d) { OBJS = d.objs; SECRETS = d.secrets; byId = Object.f
 export function setDays(days) { DAYS = days.slice(); }
 export const ROUNDS = 6;
 export const CATS = { length: { name: "Size" }, weight: { name: "Weight" }, speed: { name: "Speed" }, date: { name: "Year" } };
-// The clues are the same on Easy and Normal (an arrow, and green or red). What changes is how much the list helps.
+// The clues are the same on Easy and Medium: an arrow and four colours. What changes is how much the list helps.
+// Green is within 30% of the real value, yellow within double or half, orange within 5 times, red further off.
+// Hard (arrows only) is not offered any more, but a Hard game saved before v4.1 still finishes as Hard, so it stays here.
 export const MODES = {
-  easy: { dir: true, T: [2], cls: [0, 3], words: ["close", "far"], colours: true, narrow: true, help: "The list shrinks as you guess, dropping anything your clues rule out. Green means within double or half, red means further off." },
-  normal: { dir: true, T: [2], cls: [0, 3], words: ["close", "far"], colours: true, narrow: false, help: "The list doesn’t shrink. Green means within double or half, red means further off." },
-  hard: { dir: true, T: [], cls: ["n"], words: [""], colours: false, narrow: false, help: "The same list, but only arrows. No colours to say how near. Scores are multiplied by 1.5." },
+  easy: { dir: true, T: [1.3, 2, 5], cls: [0, 1, 2, 3], words: ["very close", "quite close", "a bit far", "very far"], colours: true, narrow: true, help: "The list shrinks as you guess, dropping anything your clues rule out. Green: very close. Yellow: quite close. Orange: a bit far. Red: very far." },
+  normal: { dir: true, T: [1.3, 2, 5], cls: [0, 1, 2, 3], words: ["very close", "quite close", "a bit far", "very far"], colours: true, narrow: false, help: "The list doesn\u2019t shrink. Green: very close. Yellow: quite close. Orange: a bit far. Red: very far." },
+  hard: { dir: true, T: [], cls: ["n"], words: [""], colours: false, narrow: false, help: "The same list, but only arrows. No colours to say how near. Scores are multiplied by 2." },
 };
 export const MODE_LABEL = { easy: "Easy", normal: "Medium", hard: "Hard" }; // the setting called "normal" in the code is shown as Medium
 export const PRACTICE = [{ id: "eiffel", cs: ["length", "date"] }, { id: "giraffe", cs: ["weight", "speed"] }]; // the same for everyone, and not counted
-export const SQUARES = { 0: "\uD83D\uDFE9", 3: "\uD83D\uDFE5" };
+export const SQUARES = { 0: "\uD83D\uDFE9", 1: "\uD83D\uDFE8", 2: "\uD83D\uDFE7", 3: "\uD83D\uDFE5" };
 export const ICON = { length: "\uD83D\uDCCF", weight: "\u2696\uFE0F", speed: "\uD83D\uDCA8", date: "\uD83D\uDCC5" };
 export const SHARE_URL = "\uD83E\uDDF9 cleansweepdaily.fyi/mystery";
 export const yearsAgo = (y) => (y < 0 ? NOW_YEAR - y - 1 : NOW_YEAR - y);
@@ -108,7 +110,7 @@ export function randomPuzzle(notId) {
 // ---- Scoring. Closer guesses earn points, far ones lose a few, solving earns the most, and fewer guesses multiply it. ----
 // Nothing here is shown while you play, because a number like "+74" would tell you exactly how near you were. Only the guesses multiplier is shown live.
 export const MULT = [0, 3, 2.5, 2, 1.6, 1.3, 1]; // by number of guesses used
-export const HARD_BONUS = { easy: 1, normal: 1, hard: 1.5 };
+export const HARD_BONUS = { easy: 1, normal: 1, hard: 2 };
 const stepsOff = (g, s, c) => { const a = c === "date" ? yearsAgo(g.c[c].v) : g.c[c].v, b = c === "date" ? yearsAgo(s.c[c].v) : s.c[c].v; return Math.abs(Math.log2(a / b)); }; // how many doublings apart
 /** Green gives up to 20 (more the closer), red loses 5 per doubling beyond 2 times (never more than 30). */
 export function clueScore(g, s, c) {
@@ -130,11 +132,12 @@ export function scoreGame(p, guessIds, mode) {
   const bonus = HARD_BONUS[mode];
   return { per, path: Math.round(path), solve, mult, bonus, won, score: Math.round(Math.max(0, path + solve) * mult * bonus) };
 }
-/** A clean sweep: you solved it, and every clue on every guess was green (within double or half) or exact. Judged the same way on every setting, even Hard, where the colours are hidden. */
+/** A clean sweep: you solved it, and after your first guess every clue was green (within 30%) or exact. The first guess is a shot in the dark, so it is not judged.
+ *  Judged the same way on every setting, even Hard, where the colours are hidden. */
 export function cleanSweep(p, guessIds) {
   const real = guessIds.filter((g) => g !== "GIVEUP");
   if (!real.length || real[real.length - 1] !== p.secret.id) return false;
-  return real.every((id) => feedback(byId[id], p.secret, p.cs, "normal").every((f) => f.eq || f.lvl === 0));
+  return real.every((id, k) => k === 0 || feedback(byId[id], p.secret, p.cs, "normal").every((f) => f.eq || f.lvl === 0));
 }
 /**
  * The card people share: the clues, one row per guess (an arrow, and a colour except on Hard), your score, and the address. On Easy there is also the "sweep" line,

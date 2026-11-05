@@ -1,5 +1,5 @@
 // Line Up: the page. All the rules of the game are in logic.js; this file is the screen.
-import { CAT, PRACTICE, TIER, TRIES, scoreGame, byKey, countdownText, dayNumber, fmtValue, isOver, lockedPositions, practicePuzzle, puzzleFor, rightPlaces, shareText, solvedTry } from "./logic.js";
+import { CAT, MODE_LABEL, MODE_MULT, PRACTICE, TIER, TRIES, scoreGame, byKey, countdownText, dayNumber, fmtValue, isOver, lockedPositions, practicePuzzle, puzzleFor, rightPlaces, shareText, solvedTry } from "./logic.js";
 import { breakStreak, bumpStreak, clearStatus, copyText, countEvent, flameText, maybeAllDone, MILESTONES, milestoneText, nextButtonsHTML, paintCards, pickMilestone, streakNow, utcDay, withFlame, writeStatus } from "../src/games.js";
 
 const NF = new Intl.NumberFormat("en-GB");
@@ -20,9 +20,12 @@ export function mountLineUp(env) {
   let note = ""; // the line under the button
   let suppressClickUntil = 0; // a drag ends with a click we must ignore
   let cdTimer = null;
+  const prefMode = () => (store.get("lu:mode") === "easy" ? "easy" : "normal"); // new players start on Medium (called "normal" in the code); it remembers the last pick
+  let mode = prefMode(); // how much help you get: "easy" shows which are right and locks them, "normal" (shown as Medium) only counts
 
   const isToday = () => !!puzzle && puzzle.daily && puzzle.no === dayNumber();
   const over = () => isOver(tries, puzzle.solution);
+  const modeLocked = () => !!puzzle && puzzle.daily && tries.length > 0; // you can change mode until your first check
   const itemOf = (id) => puzzle.items.find((x) => x.id === id);
 
   // ---- saving: one record per daily puzzle, "lu:<number>" ----
@@ -32,7 +35,7 @@ export function mountLineUp(env) {
       if (!t || !Array.isArray(t.t)) return null;
       const ids = new Set(p.start);
       const ok = (a) => Array.isArray(a) && a.length === p.start.length && a.every((id) => ids.has(id)) && new Set(a).size === a.length;
-      return { t: t.t.filter(ok).slice(0, TRIES), c: ok(t.c) ? t.c : null, d: typeof t.d === "string" ? t.d : "" };
+      return { t: t.t.filter(ok).slice(0, TRIES), c: ok(t.c) ? t.c : null, d: typeof t.d === "string" ? t.d : "", m: t.m === "easy" || t.m === "normal" ? t.m : "" };
     } catch (e) { return null; }
   };
   function normalise() { // locked things sit in their right places; the others keep their order in the places that are left
@@ -41,12 +44,12 @@ export function mountLineUp(env) {
     order = puzzle.solution.map((_, i) => (locked.has(i) ? puzzle.solution[i] : rest.shift()));
   }
   function load() {
-    tries = []; order = puzzle.start.slice(); recDay = ""; sel = null; note = "";
-    if (puzzle.daily) { const rec = readRecord(puzzle.no, puzzle); if (rec) { tries = rec.t; recDay = rec.d; if (rec.c) order = rec.c; } }
-    locked = lockedPositions(tries, puzzle.solution);
+    tries = []; order = puzzle.start.slice(); recDay = ""; sel = null; note = ""; mode = prefMode();
+    if (puzzle.daily) { const rec = readRecord(puzzle.no, puzzle); if (rec) { tries = rec.t; recDay = rec.d; if (rec.c) order = rec.c; if (tries.length) mode = rec.m || "easy"; } } // a game started before there were two modes was played on Easy
+    locked = mode === "easy" ? lockedPositions(tries, puzzle.solution) : new Set();
     normalise();
   }
-  function save() { if (puzzle.daily) { if (!recDay) recDay = utcDay(); store.set("lu:" + puzzle.no, JSON.stringify({ t: tries, c: order, d: recDay })); } }
+  function save() { if (puzzle.daily) { if (!recDay) recDay = utcDay(); store.set("lu:" + puzzle.no, JSON.stringify({ t: tries, c: order, d: recDay, m: mode })); } }
 
   // ---- streaks and stats, kept on this device. "Tried" counts the days you checked an order, "solved" the days you got it right. ----
   const readStats = () => {
@@ -66,7 +69,7 @@ export function mountLineUp(env) {
     const n = solvedTry(rec.t, p.solution);
     if (n || rec.t.length >= TRIES) {
       st.s = n ? bumpStreak(st.s, day) : st.s && st.s.last === day ? st.s : breakStreak(st.s, day); // an unsolved day ends the solved streak
-      if (st.fin !== day) { st.fin = day; st.played += 1; st.best = Math.max(st.best || 0, scoreGame(p, rec.t).points); }
+      if (st.fin !== day) { st.fin = day; st.played += 1; st.best = Math.max(st.best || 0, scoreGame(p, rec.t, rec.m || "easy").points); }
     }
     store.set("lu:stats", JSON.stringify(st));
   }
@@ -111,13 +114,21 @@ export function mountLineUp(env) {
     }).join("");
   }
   function renderHistory() {
-    $("hist").innerHTML = tries.map((t, n) => '<div class="h"><b>Try ' + (n + 1) + '</b><span class="sq" aria-label="' + rightPlaces(t, puzzle.solution).filter(Boolean).length + ' of ' + puzzle.solution.length + ' right">' + rightPlaces(t, puzzle.solution).map((ok) => '<i class="' + (ok ? "ok" : "") + '"></i>').join("") + "</span></div>").join("");
+    $("hist").innerHTML = tries.map((t, n) => {
+      const right = rightPlaces(t, puzzle.solution), k = right.filter(Boolean).length;
+      const cells = mode === "easy" ? right : right.map((_, i) => i < k); // Medium shows how many, never which, so the green squares come first
+      return '<div class="h"><b>Try ' + (n + 1) + '</b><span class="sq" aria-label="' + k + " of " + right.length + ' right">' + cells.map((ok) => '<i class="' + (ok ? "ok" : "") + '"></i>').join("") + "</span>" + (mode === "easy" ? "" : "<span>" + k + " of " + right.length + "</span>") + "</div>";
+    }).join("");
   }
   function render() {
     updateTabs();
     const c = CAT[puzzle.cat];
     $("puzzleno").textContent = puzzle.daily ? withFlame("Puzzle #" + puzzle.no, streakNow(readStats().t)) : "Practice " + puzzle.practice + " of " + PRACTICE.length;
     $("tier").innerHTML = puzzle.daily ? '<span class="tier ' + puzzle.tier + '">' + TIER[puzzle.tier].name + ' day</span><span class="tiernote">worth \u00d7' + TIER[puzzle.tier].mult + "</span>" : "";
+    document.querySelectorAll("#modes button").forEach((b) => { b.setAttribute("aria-pressed", String(b.dataset.mode === mode)); b.disabled = modeLocked(); });
+    $("modehelp").hidden = modeLocked();
+    $("modehelp").textContent = mode === "easy" ? "Shows which things are in the right place: they turn green and lock." : "Only tells you how many are in the right place, not which. Worth \u00d7" + MODE_MULT.normal + ".";
+    $("modelock").textContent = modeLocked() ? "\uD83D\uDD12 Locked to " + MODE_LABEL[mode] + (isToday() ? " for today" : "") : puzzle.daily ? "You can change this until your first check." : "Practice: change it as often as you like.";
     $("prompt").innerHTML = '<span class="ic" aria-hidden="true">' + c.icon + "</span>" + c.prompt;
     $("endtop").textContent = "\u2191 " + c.ends[0];
     $("endbottom").textContent = c.ends[1] + " \u2193";
@@ -221,13 +232,13 @@ export function mountLineUp(env) {
     if (order.every((id, i) => id === last[i])) { note = "Move something first, then check."; $("msg").textContent = note; return; }
     tries.push(order.slice());
     const right = rightPlaces(order, puzzle.solution);
-    right.forEach((ok, i) => { if (ok) locked.add(i); });
+    if (mode === "easy") right.forEach((ok, i) => { if (ok) locked.add(i); });
     sel = null;
     save();
     syncStats();
     const count = right.filter(Boolean).length;
-    if (puzzle.daily && isToday() && tries.length === 1) countEvent("lineup-started"); // the first check of today's puzzle, counted once
-    note = over() ? "" : count + " in the right place. They are locked now. Move the rest.";
+    if (puzzle.daily && isToday() && tries.length === 1) { countEvent("lineup-started"); countEvent(mode === "easy" ? "lineup-mode-easy" : "lineup-mode-medium"); } // the first check of today's puzzle, counted once
+    note = over() ? "" : mode === "easy" ? count + " in the right place. They are locked now. Move the rest." : count + " of " + right.length + " in the right place. Have another go.";
     if (over() && puzzle.daily && isToday()) {
       const n = solvedTry(tries, puzzle.solution);
       if (n) countEvent("lineup-solved");
@@ -239,6 +250,12 @@ export function mountLineUp(env) {
     const e = $("end"); if (over() && e && e.scrollIntoView) e.scrollIntoView({ block: "nearest", behavior: "smooth" });
   }
   $("check").addEventListener("click", check);
+  $("modes").addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (!b || !b.dataset.mode || b.dataset.mode === mode || modeLocked()) return;
+    store.set("lu:mode", b.dataset.mode);
+    if (puzzle.daily) { mode = b.dataset.mode; sel = null; note = ""; render(); } else newPuzzle(practicePuzzle(puzzle.practice)); // a practice puzzle starts again in the new mode
+  });
 
   /** Brooms, soap and sparkles float up the screen, like Clean Sweep's. Nothing moves for anyone who has asked for less motion. */
   function celebrate() {
@@ -285,12 +302,12 @@ export function mountLineUp(env) {
   }
   /** The score on the result card: the big number, how it was made up, and how scoring works. */
   function scoreHTML() {
-    const r = scoreGame(puzzle, tries), T = TIER[r.tier];
+    const r = scoreGame(puzzle, tries, mode), T = TIER[r.tier];
     const line = (k, v) => "<dt>" + k + "</dt><dd>" + v + "</dd>";
     return '<div class="score"><p class="big">' + NF.format(r.points) + "<small>points</small></p>" +
-      '<dl class="calc">' + line("Things in the right place", NF.format(r.raw - r.bonus)) + (r.bonus ? line("Clean sweep bonus", "+" + r.bonus) : "") + line(T.name + " day", "\u00d7" + r.mult) + "</dl>" +
+      '<dl class="calc">' + line("Things in the right place", NF.format(r.raw - r.bonus)) + (r.bonus ? line("Clean sweep bonus", "+" + r.bonus) : "") + line(T.name + " day", "\u00d7" + r.mult) + (r.modeMult !== 1 ? line(MODE_LABEL[mode] + " mode", "\u00d7" + r.modeMult) : "") + "</dl>" +
       "<details><summary>How scoring works</summary><ul><li>Each thing scores for the try it was right on: 100 on the first, 60 on the second, 35 on the third.</li>" +
-      "<li>A thing one place out earns 40% of that, two places out 15%.</li><li>A clean sweep adds 100.</li><li>Then the day counts: Easy \u00d71, Medium \u00d71.25, Hard \u00d71.5. You see which before you start.</li></ul></details></div>";
+      "<li>A thing one place out earns 40% of that, two places out 15%.</li><li>A clean sweep adds 100.</li><li>Then the day counts: Easy \u00d71, Medium \u00d71.25, Hard \u00d71.5. You see which before you start.</li><li>Medium mode, where you are only told how many are right, counts \u00d71.25 on top of that.</li></ul></details></div>";
   }
   function renderEnd() {
     stopCountdown();
@@ -316,10 +333,10 @@ export function mountLineUp(env) {
     const id = e.target.id;
     if (id === "today") newPuzzle(puzzleFor(dayNumber()));
     else if (id === "copy") {
-      const t = shareText(puzzle, tries);
+      const t = shareText(puzzle, tries, mode);
       copyText(t).then((ok) => { if (ok) e.target.textContent = "Copied"; else showCopy(t); });
     } else if (id === "share") {
-      const t = shareText(puzzle, tries);
+      const t = shareText(puzzle, tries, mode);
       Promise.resolve(navigator.share({ text: t })).catch((err) => { // closing the share sheet is not an error
         if (err && err.name === "AbortError") return;
         copyText(t).then((ok) => { const b = $("copy"); if (ok && b) b.textContent = "Copied"; else if (!ok) showCopy(t); });

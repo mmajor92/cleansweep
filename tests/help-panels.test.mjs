@@ -19,7 +19,7 @@ test("no ? panel has the long 'Want to try one first?' paragraph, but each keeps
   }
 });
 
-test("Mystery Thing's ? panel: a white intro, six short numbered steps (one for each thing to know), and a white once-a-day line", () => {
+test("Mystery Thing's ? panel: a white intro, five short numbered steps (one for each thing to know), and a white once-a-day line", () => {
   const help = helpOf("mystery/index.html");
   const intros = [...help.matchAll(/<p class="intro">([\s\S]*?)<\/p>/g)].map((m) => m[1]);
   assert.deepEqual(intros, [
@@ -29,10 +29,9 @@ test("Mystery Thing's ? panel: a white intro, six short numbered steps (one for 
   const steps = [...help.matchAll(/<li>([\s\S]*?)<\/li>/g)].map((m) => m[1]);
   assert.deepEqual(steps, [
     "Each guess shows how its numbers compare with the mystery thing\u2019s. An arrow points the way: up means higher or later, down means lower or earlier.",
-    "Green means your guess is within double or half. Red is further off.",
+    "Green is very close (within 30%). Yellow is between half and double. Orange is within 5 times. Red is beyond that.",
     "<b>Easy</b> shrinks the list for you as you guess, removing anything it can\u2019t be.",
     "<b>Medium</b> doesn\u2019t shrink the list, but does show the colours.",
-    "<b>Hard</b> does neither.",
     "Use the clues to rule things out. You have six guesses. Closer guesses, and fewer of them, score more.",
   ]);
   assert.ok(!/class="small"/.test(help), "no grey paragraphs: the difficulty lines are steps now");

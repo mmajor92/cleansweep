@@ -113,3 +113,13 @@ test("the five counts: started at the first guess, solved, gave up, finished, an
   assert.match(ui, /if \(guesses\[guesses\.length - 1\] === puzzle\.secret\.id\) countEvent\("mystery-solved"\)/);
   assert.match(ui, /if \(isToday\(\)\) \{ countEvent\("mystery-gave-up"\); countEvent\("mystery-finished"\)/);
 });
+
+test("Hard is not offered any more (v4.1): the picker shows Easy and Medium, a saved Hard pick becomes Medium, and a Hard game already saved still finishes as Hard", () => {
+  const picker = html.match(/<div class="modes" id="modes"[\s\S]*?<\/div>/)[0];
+  assert.deepEqual([...picker.matchAll(/<button[^>]*data-mode="(\w+)"([^>]*)>([^<]*)</g)].map((m) => [m[1], /\bhidden\b/.test(m[2]), m[3]]), [["easy", false, "Easy"], ["normal", false, "Medium"], ["hard", true, "Hard"]], "Hard is in the page only so that an old Hard game can show it");
+  assert.match(ui, /const prefMode = \(\) => \(store\.get\("mt:mode"\) === "easy" \? "easy" : "normal"\)/, "a saved Hard pick becomes Medium");
+  assert.match(ui, /mode = prefMode\(\); if \(!puzzle\.daily\) return;/, "each puzzle starts from the pick");
+  assert.match(ui, /rec = \{ m: t\.m, g: t\.g\.filter\(okId\)/, "a saved game of any setting, Hard included, is still read");
+  assert.match(ui, /hardBtn\.hidden = mode !== "hard"/, "the Hard button shows only for a Hard game saved earlier");
+  assert.match(read("mystery/styles.css"), /\.modes button\[hidden\] \{ display: none; \}/);
+});

@@ -2,6 +2,15 @@
 
 The version number is in `src/version.js` and shows at the bottom of the page. Change both together. From v4 the numbers go v4.0 up to v4.19, and the update after that is v5.0.
 
+## v4.1
+
+- **Line Up has two modes: Easy and Medium.** Easy is how it worked before: after Check order, what is in the right place turns green and locks. Medium only tells you how many are in the right place, and nothing locks. You pick before your first check, a new player starts on Medium, and it remembers your pick (it locks for the day once you have checked, as in Mystery Thing). Medium is worth x1.25 on top of the day's tag, and its share card shows only the count, green squares first. The share card now names the mode, as Mystery Thing's does. Games already started stay on Easy.
+- **Mystery Thing has four colours on Easy and Medium.** Green is very close (within 30%), yellow is quite close (within double or half), orange is a bit far (within 5 times) and red is very far. Before, there was only green and red, and the green was too wide. With the extra colours a casual player solves 97% of games instead of 71%, and Easy's list shrinks faster. The share card uses 🟩🟨🟧🟥.
+- **Mystery Thing's clean sweep is easier to say:** after your first guess, every clue is green. The first guess is a shot in the dark, so it is not judged.
+- **Mystery Thing's Hard mode is gone.** It was too steep: only about 1 in 4 casual players could solve it, against 97% on Medium, and few would pick it. A Hard game already in progress finishes as Hard, and a saved Hard pick becomes Medium. The "?" panel loses its Hard line, and its colour line now reads: green is very close (within 30%), yellow is between half and double, orange is within 5 times, red is beyond that.
+- **The weekly puzzle job now starts at 06:23 UTC** instead of 06:00, away from the busiest moment on GitHub.
+- **New counts:** `lineup-mode-easy` and `lineup-mode-medium`, once a day at the first check.
+
 ## v4.0
 
 - **New version numbers.** The numbers now go v4.0, v4.1 and so on up to v4.19. The update after v4.19 is v5.0.

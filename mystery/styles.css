@@ -56,6 +56,7 @@ h1 { white-space: nowrap; font: 800 clamp(22px, 7.2vw, 34px)/1 var(--display); l
 .sub { font-style: italic; color: var(--muted); margin: 8px 0 0; font-size: 17px; }
 .modes { display: flex; gap: 6px; margin: 16px 0 0; }
 .modes button { flex: 1; font: 700 15px var(--display); padding: 9px 8px; border-radius: 10px; border: 2px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; }
+.modes button[hidden] { display: none; }
 .modes button[aria-pressed="true"] { background: var(--tape); color: var(--on-tape); border-color: var(--tape); }
 .modehelp { color: var(--muted); font-size: 15px; margin: 8px 0 0; }
 .clue { font-size: 20px; margin: 14px 0 4px; }

@@ -7,8 +7,8 @@ export function mountMystery(env) {
   const storage = env.storage || null;
   const $ = (id) => document.getElementById(id);
   const store = { get(k) { try { return storage ? storage.getItem(k) : null; } catch (e) { return null; } }, set(k, v) { try { if (storage) storage.setItem(k, v); } catch (e) { /* storage can be empty or blocked */ } } };
-  let mode = store.get("mt:mode");
-  if (!MODES[mode]) mode = "normal";
+  const prefMode = () => (store.get("mt:mode") === "easy" ? "easy" : "normal"); // Hard is not offered any more (v4.1): a saved Hard pick becomes Medium
+  let mode = prefMode();
   let puzzle = dailyPuzzle(dayNumber());
   let guesses = [];
   let fresh = false;
@@ -24,7 +24,7 @@ export function mountMystery(env) {
     return rec && rec.g.length ? rec : null;
   }
   let recDay = ""; // the day the saved game was started
-  const load = () => { guesses = []; recDay = ""; if (!puzzle.daily) return; const rec = readRecord(puzzle.no); if (rec) { guesses = rec.g; mode = rec.m; recDay = rec.d; } };
+  const load = () => { guesses = []; recDay = ""; mode = prefMode(); if (!puzzle.daily) return; const rec = readRecord(puzzle.no); if (rec) { guesses = rec.g; mode = rec.m; recDay = rec.d; } };
   const save = () => { if (puzzle.daily) { if (!recDay) recDay = utcDay(); store.set("mt:" + puzzle.no, JSON.stringify({ m: mode, g: guesses, d: recDay })); } };
   const locked = () => puzzle.daily && guesses.length > 0;
   const won = () => guesses[guesses.length - 1] === puzzle.secret.id;
@@ -131,6 +131,7 @@ export function mountMystery(env) {
     updateTabs();
     $("puzzleno").textContent = puzzle.daily ? withFlame("Puzzle #" + puzzle.no, streakNow(readStats().t)) : puzzle.practice ? "Practice " + puzzle.practice + " of " + PRACTICE.length : "Practice puzzle";
     document.querySelectorAll("#modes button").forEach((b) => { b.setAttribute("aria-pressed", String(b.dataset.mode === mode)); b.disabled = locked(); });
+    const hardBtn = document.querySelector("#modes [data-mode=hard]"); if (hardBtn) hardBtn.hidden = mode !== "hard"; // only a Hard game saved before v4.1 shows it
     $("modehelp").textContent = MODES[mode].help;
     renderHelp();
     $("modelock").textContent = locked()

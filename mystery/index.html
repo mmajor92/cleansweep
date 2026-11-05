@@ -51,10 +51,9 @@
     <p class="intro">A mystery thing is hidden in the list. Tap one to guess it, or type to find it.</p>
     <ol>
       <li>Each guess shows how its numbers compare with the mystery thing’s. An arrow points the way: up means higher or later, down means lower or earlier.</li>
-      <li>Green means your guess is within double or half. Red is further off.</li>
+      <li>Green is very close (within 30%). Yellow is between half and double. Orange is within 5 times. Red is beyond that.</li>
       <li><b>Easy</b> shrinks the list for you as you guess, removing anything it can’t be.</li>
       <li><b>Medium</b> doesn’t shrink the list, but does show the colours.</li>
-      <li><b>Hard</b> does neither.</li>
       <li>Use the clues to rule things out. You have six guesses. Closer guesses, and fewer of them, score more.</li>
     </ol>
     <p class="intro">You get one try a day: your difficulty locks when you make your first guess.</p>
@@ -69,7 +68,7 @@
   <div class="modes" id="modes" role="group" aria-label="How much help the clues give">
     <button type="button" data-mode="easy" aria-pressed="false">Easy</button>
     <button type="button" data-mode="normal" aria-pressed="true">Medium</button>
-    <button type="button" data-mode="hard" aria-pressed="false">Hard</button>
+    <button type="button" data-mode="hard" aria-pressed="false" hidden>Hard</button>
   </div>
   <button class="remind" id="remind" type="button" aria-expanded="true" aria-controls="modehelp">Reminder</button>
   <p class="modehelp" id="modehelp"></p>
