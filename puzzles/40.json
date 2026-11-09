@@ -1,0 +1,222 @@
+{
+  "seed": 316773,
+  "slack": 1,
+  "bridges": [
+    "lrv",
+    "blackmamba",
+    "baldeagle"
+  ],
+  "legs": [
+    {
+      "cat": "speed",
+      "anchor": {
+        "ent": "housefly",
+        "family": "housefly",
+        "name": "A housefly",
+        "hint": "",
+        "clue": "",
+        "cat": "speed",
+        "phrase": "the top speed of a housefly",
+        "label": "Housefly top speed",
+        "value": 7,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.sciencefocus.com/nature/how-fast-can-a-housefly-fly",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "lrv",
+          "family": "lrv",
+          "name": "The Apollo Lunar Roving Vehicle",
+          "hint": "the electric buggy driven on the Moon",
+          "clue": "a vehicle used on the Moon",
+          "cat": "speed",
+          "phrase": "the top speed of the Apollo Lunar Roving Vehicle",
+          "label": "Lunar rover top speed",
+          "value": 13,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nasa.gov/history/alsj/lrv.html",
+          "note": "",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "length",
+      "anchor": {
+        "ent": "lrv",
+        "family": "lrv",
+        "name": "The Apollo Lunar Roving Vehicle",
+        "hint": "the electric buggy driven on the Moon",
+        "clue": "a vehicle used on the Moon",
+        "cat": "length",
+        "phrase": "the length of the Apollo Lunar Roving Vehicle",
+        "label": "Lunar rover length",
+        "value": 3.1,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.nasa.gov/history/alsj/lrv.html",
+        "note": "",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "blackmamba",
+          "family": "blackmamba",
+          "name": "A black mamba",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the length of a black mamba",
+          "label": "Black mamba length",
+          "value": 2.5,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/black-mamba",
+          "note": "",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "speed",
+      "anchor": {
+        "ent": "blackmamba",
+        "family": "blackmamba",
+        "name": "A black mamba",
+        "hint": "",
+        "clue": "",
+        "cat": "speed",
+        "phrase": "the top speed of a black mamba",
+        "label": "Black mamba top speed",
+        "value": 20,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.britannica.com/animal/black-mamba",
+        "note": "",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "redfox",
+          "family": "redfox",
+          "name": "An adult male red fox",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the top speed of a red fox",
+          "label": "Fox top speed",
+          "value": 50,
+          "approx": true,
+          "status": "verified",
+          "source": "https://animaldiversity.org/accounts/Vulpes_vulpes/",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "ostrich",
+          "family": "ostrich",
+          "name": "An ostrich",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the top speed of an ostrich",
+          "label": "Ostrich top speed",
+          "value": 70,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/ostrich",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "baldeagle",
+          "family": "baldeagle",
+          "name": "A bald eagle",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the top speed of a bald eagle",
+          "label": "Bald eagle top speed",
+          "value": 56,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nationaleaglecenter.org/eagle-traits/",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "baldeagle",
+        "family": "baldeagle",
+        "name": "A bald eagle",
+        "hint": "",
+        "clue": "",
+        "cat": "weight",
+        "phrase": "the weight of a bald eagle",
+        "label": "Bald eagle weight",
+        "value": 4.5,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.nationaleaglecenter.org/eagle-traits/",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "newborn",
+          "family": "newborn",
+          "name": "A newborn baby",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the average weight of a newborn baby",
+          "label": "A newborn baby",
+          "value": 3.5,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nhs.uk/conditions/baby/babys-development/height-weight-and-head-circumference/baby-weight-and-height/",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "cat",
+          "family": "cat",
+          "name": "A domestic cat",
+          "hint": "an ordinary house cat",
+          "clue": "a household pet",
+          "cat": "weight",
+          "phrase": "the average weight of a domestic cat",
+          "label": "Domestic cat weight",
+          "value": 4.5,
+          "approx": true,
+          "status": "verified",
+          "source": "https://nrich.maths.org/content/id/7449/DiscussChoose.pdf",
+          "note": "That is about 10 pounds.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": false,
+  "deepCutAt": -1,
+  "num": 40
+}
