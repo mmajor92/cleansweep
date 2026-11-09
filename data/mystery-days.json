@@ -30,6 +30,12 @@
     {"id":"spitfire","cs":["speed","date"]},
     {"id":"colosseum","cs":["length","date"]},
     {"id":"elephant","cs":["weight","speed"]},
-    {"id":"bicycle","cs":["length","weight"]}
+    {"id":"bicycle","cs":["length","weight"]},
+    {"id":"bigben","cs":["length","date"]},
+    {"id":"tennisracket","cs":["length","weight"]},
+    {"id":"zebra","cs":["length","speed"]},
+    {"id":"camel","cs":["length","weight"]},
+    {"id":"modelt","cs":["speed","date"]},
+    {"id":"cards","cs":["length","weight"]}
   ]
 }

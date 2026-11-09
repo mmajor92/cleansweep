@@ -1,0 +1,238 @@
+{
+  "seed": 332611,
+  "slack": 1,
+  "bridges": [
+    "sloth",
+    "stanleycup",
+    "modelt"
+  ],
+  "legs": [
+    {
+      "cat": "count",
+      "anchor": {
+        "ent": "oscar",
+        "family": "oscar",
+        "name": "An Oscar statuette",
+        "hint": "",
+        "clue": "",
+        "cat": "count",
+        "phrase": "the number of spokes on the film reel under the Oscar statuette",
+        "label": "Oscar film reel spokes",
+        "value": 5,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.oscars.org/oscars/statuette",
+        "note": "They stand for the Academy's five original branches.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "sloth",
+          "family": "sloth",
+          "name": "A three-toed sloth",
+          "hint": "",
+          "clue": "",
+          "cat": "count",
+          "phrase": "the number of claws on each foot of a three-toed sloth",
+          "label": "Sloth claws",
+          "value": 3,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/sloth",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "sloth",
+        "family": "sloth",
+        "name": "A three-toed sloth",
+        "hint": "",
+        "clue": "",
+        "cat": "weight",
+        "phrase": "the weight of a three-toed sloth",
+        "label": "Sloth weight",
+        "value": 4,
+        "approx": true,
+        "status": "verified",
+        "source": "https://kids.britannica.com/students/article/sloth/277093",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "corgi",
+          "family": "corgi",
+          "name": "A Pembroke Welsh corgi",
+          "hint": "the dog the royal family is famous for",
+          "clue": "a small short-legged dog",
+          "cat": "weight",
+          "phrase": "the weight of an adult Pembroke Welsh corgi",
+          "label": "Corgi weight",
+          "value": 12,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.hillsvet.com.mx/content/dam/cp-sites/hills/hills-vet/es_mx/general/pdf/breeding_ideal_weight_ranges_canine_feline-secured.pdf",
+          "note": "Corgis weigh 10 to 14 kilograms.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "stanleycup",
+          "family": "stanleycup",
+          "name": "The Stanley Cup",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the weight of the Stanley Cup",
+          "label": "Stanley Cup weight",
+          "value": 15.5,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nhl.com/hall-of-fame/stanley-cup/facts",
+          "note": "",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "stanleycup",
+        "family": "stanleycup",
+        "name": "The Stanley Cup",
+        "hint": "",
+        "clue": "",
+        "cat": "date",
+        "phrase": "the start of the Stanley Cup",
+        "label": "Stanley Cup begins",
+        "value": 1892,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.nhl.com/hall-of-fame/stanley-cup/facts",
+        "note": "",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "sydneyoperahouse",
+          "family": "sydneyoperahouse",
+          "name": "The Sydney Opera House",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the opening of the Sydney Opera House",
+          "label": "Sydney Opera House opens",
+          "value": 1973,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Sydney_Opera_House",
+          "note": "Queen Elizabeth II opened it, 16 years after the design was chosen.",
+          "warmup": false,
+          "fame": 3,
+          "closer": {
+            "rival": {
+              "ent": "bastille",
+              "family": "bastille",
+              "name": "The French Revolution",
+              "label": "French Revolution begins",
+              "phrase": "the start of the French Revolution",
+              "value": 1789,
+              "fame": 3,
+              "status": "verified",
+              "source": "https://www.teachervision.com/world-history/resource/3851.html"
+            },
+            "itemOn": "up",
+            "dItem": 81,
+            "dRival": 103
+          }
+        },
+        {
+          "ent": "modelt",
+          "family": "modelt",
+          "name": "A 1909 Ford Model T",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the launch of the Ford Model T",
+          "label": "Model T launched",
+          "value": 1908,
+          "approx": false,
+          "status": "verified",
+          "source": "https://corporate.ford.com/articles/history/the-model-t",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "speed",
+      "anchor": {
+        "ent": "modelt",
+        "family": "modelt",
+        "name": "A 1909 Ford Model T",
+        "hint": "",
+        "clue": "",
+        "cat": "speed",
+        "phrase": "the top speed of a Ford Model T",
+        "label": "Model T top speed",
+        "value": 68,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.quora.com/How-did-people-react-to-the-experience-of-driving-a-Ford-Model-T-at-speeds-over-40-mph-compared-to-the-slower-pace-of-horse-drawn-transportation",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "brownbear",
+          "family": "brownbear",
+          "name": "A brown bear",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the top speed of a brown bear",
+          "label": "Brown bear top speed",
+          "value": 56,
+          "approx": true,
+          "status": "verified",
+          "source": "https://kids.britannica.com/students/article/brown-bear/643630",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "hindenburg",
+          "family": "hindenburg",
+          "name": "The Hindenburg",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the top speed of the airship Hindenburg",
+          "label": "Hindenburg top speed",
+          "value": 135,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.wikidata.org/wiki/Q217964",
+          "note": "Sources give 122 to 135 km/h.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": false,
+  "deepCutAt": -1,
+  "num": 42
+}

@@ -1,0 +1,215 @@
+{
+  "seed": 308854,
+  "slack": 1,
+  "bridges": [
+    "bigbellbell",
+    "container"
+  ],
+  "legs": [
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "forestelephant",
+        "family": "forestelephant",
+        "name": "An African forest elephant",
+        "hint": "the smaller elephant of the African rainforest",
+        "clue": "a kind of elephant",
+        "cat": "weight",
+        "phrase": "the weight of an adult African forest elephant",
+        "label": "A forest elephant",
+        "value": 3000,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.britannica.com/animal/African-forest-elephant",
+        "note": "Sources give 1,800 to 5,400 kg.",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "trex",
+          "family": "trex",
+          "name": "A Tyrannosaurus rex",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the estimated weight of an adult Tyrannosaurus rex",
+          "label": "A T. rex",
+          "value": 8000,
+          "approx": true,
+          "status": "verified",
+          "source": "https://newatlas.com/t-rex-computer-modeling/20165/",
+          "note": "Estimates run from about 6 to 9 tonnes.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "bigbellbell",
+          "family": "bigbellbell",
+          "name": "The bell called Big Ben",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the weight of the bell called Big Ben",
+          "label": "Big Ben bell weight",
+          "value": 13760,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.parliament.uk/about/living-heritage/building/palace/big-ben/facts-figures/",
+          "note": "",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "length",
+      "anchor": {
+        "ent": "bigbellbell",
+        "family": "bigbellbell",
+        "name": "The bell called Big Ben",
+        "hint": "",
+        "clue": "",
+        "cat": "length",
+        "phrase": "the width of the bell called Big Ben",
+        "label": "Big Ben bell width",
+        "value": 2.74,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.parliament.uk/about/living-heritage/building/palace/big-ben/facts-figures/",
+        "note": "",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "greatwhite",
+          "family": "greatwhite",
+          "name": "A great white shark",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the length of a great white shark",
+          "label": "Great white length",
+          "value": 4.5,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.ifaw.org/au/animals/great-white-sharks",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "wright",
+          "family": "wright",
+          "name": "The Wright Flyer's length",
+          "hint": "the aircraft that flew at Kitty Hawk in 1903",
+          "clue": "the first powered aeroplane",
+          "cat": "length",
+          "phrase": "the length of the Wright Flyer",
+          "label": "Wright Flyer length",
+          "value": 6.43,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Wright_Flyer",
+          "note": "",
+          "warmup": false,
+          "fame": 1
+        },
+        {
+          "ent": "blackcab",
+          "family": "blackcab",
+          "name": "A London black cab",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the length of a London black cab",
+          "label": "Black cab length",
+          "value": 4.6,
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/TX4",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "container",
+          "family": "container",
+          "name": "A standard 6 m shipping container",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the length of a standard shipping container",
+          "label": "Shipping container length",
+          "value": 6.06,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.iso.org/standard/60867.html",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "container",
+        "family": "container",
+        "name": "A standard 6 m shipping container",
+        "hint": "",
+        "clue": "",
+        "cat": "date",
+        "phrase": "the first container ship voyage",
+        "label": "First container ship",
+        "value": 1956,
+        "approx": false,
+        "status": "verified",
+        "source": "https://en.wikipedia.org/wiki/Ideal_X",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "lusitania",
+          "family": "lusitania",
+          "name": "The Lusitania",
+          "hint": "the Cunard liner sunk by a German U-boat in 1915",
+          "clue": "a British ocean liner",
+          "cat": "date",
+          "phrase": "the sinking of the Lusitania",
+          "label": "Lusitania sunk",
+          "value": 1915,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/RMS_Lusitania",
+          "note": "She was launched in 1906.",
+          "warmup": false,
+          "fame": 2,
+          "closer": {
+            "rival": {
+              "ent": "shard",
+              "family": "shard",
+              "name": "The Shard",
+              "label": "Shard inaugurated",
+              "phrase": "the inauguration of the Shard",
+              "value": 2012,
+              "fame": 3,
+              "status": "verified",
+              "source": "https://www.the-shard.com/news-events/news-events/2017/the-shard-five-years-on/"
+            },
+            "itemOn": "down",
+            "dItem": 41,
+            "dRival": 56
+          }
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": true,
+  "deepCutAt": 3,
+  "num": 39
+}
