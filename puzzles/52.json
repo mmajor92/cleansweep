@@ -1,0 +1,199 @@
+{
+  "seed": 411801,
+  "slack": 1,
+  "bridges": [
+    "concorde",
+    "dartboard"
+  ],
+  "legs": [
+    {
+      "cat": "speed",
+      "anchor": {
+        "ent": "saturn",
+        "family": "saturn",
+        "name": "The Saturn V",
+        "hint": "",
+        "clue": "",
+        "cat": "speed",
+        "phrase": "the speed of the Saturn V when its first stage burned out",
+        "label": "Saturn V speed at burnout",
+        "value": 9900,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.nasa.gov/history/sp-4206/ch3.htm",
+        "note": "That was at a height of about 67 km.",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "bullet",
+          "family": "bullet",
+          "name": "A rifle bullet",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the speed of a rifle bullet",
+          "label": "Rifle bullet speed",
+          "value": 3380,
+          "approx": true,
+          "status": "verified",
+          "source": "https://math.answers.com/other-math/Average_bullet_speed_of_aka-47",
+          "note": "That is a standard 5.56 mm military round.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "baumgartner",
+          "family": "baumgartner",
+          "name": "Felix Baumgartner's freefall",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the top speed of Felix Baumgartner's freefall",
+          "label": "Baumgartner freefall speed",
+          "value": 1357.6,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.guinnessworldrecords.com/world-records/107936-fastest-speed-in-freefall",
+          "note": "In 2012 he jumped from the edge of space and went faster than sound without an engine.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "concorde",
+          "family": "concorde",
+          "name": "Concorde",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the top cruising speed of Concorde",
+          "label": "Concorde cruise speed",
+          "value": 2179,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.britannica.com/technology/How-Fast-Was-the-Concorde-Jet",
+          "note": "At Mach 2 the heat stretched the airframe by 15 to 25 cm.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "count",
+      "anchor": {
+        "ent": "concorde",
+        "family": "concorde",
+        "name": "Concorde",
+        "hint": "",
+        "clue": "",
+        "cat": "count",
+        "phrase": "the number of Concorde aircraft that entered service",
+        "label": "Concordes in service",
+        "value": 14,
+        "approx": false,
+        "status": "verified",
+        "source": "https://kids.britannica.com/students/article/Concorde/476918",
+        "note": "British Airways and Air France retired them in 2003.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "exxonvaldez",
+          "family": "exxonvaldez",
+          "name": "The Exxon Valdez",
+          "hint": "the tanker behind the 1989 Alaska oil spill",
+          "clue": "an American oil tanker",
+          "cat": "count",
+          "phrase": "the number of crew on the Exxon Valdez",
+          "label": "Exxon Valdez crew",
+          "value": 21,
+          "approx": false,
+          "status": "verified",
+          "source": "https://shipstamps.co.uk/forum/viewtopic.php?p=10206",
+          "note": "",
+          "warmup": false,
+          "fame": 1
+        },
+        {
+          "ent": "letters",
+          "family": "letters",
+          "name": "The alphabet",
+          "hint": "",
+          "clue": "",
+          "cat": "count",
+          "phrase": "the number of letters in the English alphabet",
+          "label": "Letters in the alphabet",
+          "value": 26,
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "dartboard",
+          "family": "dartboard",
+          "name": "A dartboard",
+          "hint": "",
+          "clue": "",
+          "cat": "count",
+          "phrase": "the number of numbered segments on a dartboard",
+          "label": "Dartboard segments",
+          "value": 20,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.pdc.tv/rules-darts",
+          "note": "They are numbered 1 to 20.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "length",
+      "anchor": {
+        "ent": "dartboard",
+        "family": "dartboard",
+        "name": "A dartboard",
+        "hint": "",
+        "clue": "",
+        "cat": "length",
+        "phrase": "the diameter of a dartboard",
+        "label": "Dartboard diameter",
+        "value": 0.451,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.dimensions.com/element/dartboard",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "lion",
+          "family": "lion",
+          "name": "A male African lion",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the height of a male lion at the shoulder",
+          "label": "Lion height",
+          "value": 1.2,
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": true,
+  "deepCutAt": 3,
+  "num": 52
+}
