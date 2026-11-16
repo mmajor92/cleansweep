@@ -1,0 +1,208 @@
+{
+  "seed": 395963,
+  "slack": 1,
+  "bridges": [
+    "eiffel"
+  ],
+  "legs": [
+    {
+      "cat": "count",
+      "anchor": {
+        "ent": "costaconcordia",
+        "family": "costaconcordia",
+        "name": "The Costa Concordia",
+        "hint": "the Italian cruise ship that ran aground off Tuscany in 2012",
+        "clue": "an Italian cruise ship",
+        "cat": "count",
+        "phrase": "the number of passengers the Costa Concordia could carry",
+        "label": "Costa Concordia passengers",
+        "value": 3780,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.cbsnews.com/news/fact-sheet-the-costa-concordia-cruise-liner",
+        "note": "",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "qm2",
+          "family": "qm2",
+          "name": "Queen Mary 2",
+          "hint": "",
+          "clue": "",
+          "cat": "count",
+          "phrase": "the number of passengers Queen Mary 2 can carry",
+          "label": "Queen Mary 2 passengers",
+          "value": 2695,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Queen_Mary_2",
+          "note": "Its original capacity was 2,620.",
+          "warmup": false,
+          "fame": 2
+        },
+        {
+          "ent": "sputnik1",
+          "family": "sputnik1",
+          "name": "Sputnik 1",
+          "hint": "",
+          "clue": "",
+          "cat": "count",
+          "phrase": "the number of orbits Sputnik 1 made",
+          "label": "Sputnik 1 orbits",
+          "value": 1440,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.thisdayinaviation.com/tag/tyuratam/page/2/",
+          "note": "It burned up on 4 January 1958.",
+          "warmup": false,
+          "fame": 2
+        },
+        {
+          "ent": "eiffel",
+          "family": "eiffel",
+          "name": "The Eiffel Tower",
+          "hint": "",
+          "clue": "",
+          "cat": "count",
+          "phrase": "the number of steps to the top of the Eiffel Tower",
+          "label": "Eiffel Tower steps",
+          "value": 1665,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.wral.com/eiffel-tower-fast-facts/21522017/",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "eiffel",
+        "family": "eiffel",
+        "name": "The Eiffel Tower",
+        "hint": "",
+        "clue": "",
+        "cat": "date",
+        "phrase": "the completion of the Eiffel Tower",
+        "label": "Eiffel Tower inaugurated",
+        "value": 1889,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.manufacturing.net/iot/news/22118992/eiffel-tower-grows-even-higher",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "routemaster",
+          "family": "routemaster",
+          "name": "A Routemaster double-decker bus",
+          "hint": "the open-platform red bus that served London until 2005",
+          "clue": "London's classic red double-decker bus",
+          "cat": "date",
+          "phrase": "the first Routemaster bus entering service in London",
+          "label": "Routemaster enters service",
+          "value": 1956,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/AEC_Routemaster",
+          "note": "They were withdrawn from regular service in 2005.",
+          "warmup": false,
+          "fame": 3,
+          "closer": {
+            "rival": {
+              "ent": "brandenburg",
+              "family": "brandenburg",
+              "name": "The Brandenburg Gate",
+              "label": "Brandenburg Gate completed",
+              "phrase": "the completion of the Brandenburg Gate",
+              "value": 1791,
+              "fame": 2,
+              "status": "verified",
+              "source": "https://www.visitberlin.de/en/brandenburg-gate"
+            },
+            "itemOn": "up",
+            "dItem": 67,
+            "dRival": 98
+          }
+        },
+        {
+          "ent": "iss",
+          "family": "iss",
+          "name": "The International Space Station",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the launch of the first International Space Station module",
+          "label": "First ISS module launched",
+          "value": 1998,
+          "approx": false,
+          "status": "verified",
+          "source": "https://simple.wikipedia.com/wiki/ISS",
+          "note": "The Zarya module launched on 20 November 1998.",
+          "warmup": false,
+          "fame": 3,
+          "closer": {
+            "rival": {
+              "ent": "blackpooltower",
+              "family": "blackpooltower",
+              "name": "Blackpool Tower",
+              "label": "Blackpool Tower opens",
+              "phrase": "the opening of Blackpool Tower",
+              "value": 1894,
+              "fame": 2,
+              "status": "verified",
+              "source": "https://www.theblackpooltower.com/explore/about-us/tower-facts/"
+            },
+            "itemOn": "up",
+            "dItem": 42,
+            "dRival": 62
+          }
+        },
+        {
+          "ent": "juno",
+          "family": "juno",
+          "name": "Juno",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the launch of Juno",
+          "label": "Juno launched",
+          "value": 2011,
+          "approx": false,
+          "status": "unchecked",
+          "source": "well-known date",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "threegorges",
+          "family": "threegorges",
+          "name": "The Three Gorges Dam",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the opening of the Three Gorges Dam",
+          "label": "Three Gorges Dam opens",
+          "value": 2003,
+          "approx": true,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q12514",
+          "note": "The whole project was finished in 2012.",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": false,
+  "deepCutAt": -1,
+  "num": 50
+}
