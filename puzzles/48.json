@@ -1,0 +1,215 @@
+{
+  "seed": 380125,
+  "slack": 1,
+  "bridges": [
+    "tutmask",
+    "stratocaster"
+  ],
+  "legs": [
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "thermopylae",
+        "family": "thermopylae",
+        "name": "The Battle of Thermopylae",
+        "hint": "",
+        "clue": "",
+        "cat": "date",
+        "phrase": "the Battle of Thermopylae",
+        "label": "Battle of Thermopylae",
+        "value": -480,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.worldhistory.org/timeline/Hellenic_World",
+        "note": "Three hundred Spartans held the pass against the Persian army.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "vesuvius",
+          "family": "vesuvius",
+          "name": "The eruption of Mount Vesuvius",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the eruption of Mount Vesuvius",
+          "label": "Vesuvius erupts",
+          "value": 79,
+          "approx": false,
+          "status": "verified",
+          "source": "https://westernciv.com/chronology/rome/",
+          "note": "It buried Pompeii and Herculaneum.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "hagiasophia",
+          "family": "hagiasophia",
+          "name": "The Hagia Sophia",
+          "hint": "the great church built by Emperor Justinian in Constantinople",
+          "clue": "a famous church in Constantinople",
+          "cat": "date",
+          "phrase": "the completion of the Hagia Sophia",
+          "label": "Hagia Sophia completed",
+          "value": 537,
+          "approx": false,
+          "status": "verified",
+          "source": "https://human.libretexts.org/Courses/Harrisburg_Area_Community_College/History_101%3A_World_History_I_(Malick_and_Gurian)/08%3A_Western_Europe_and_Byzantium_circa_500-1000_CE/8.01%3A_Chronology",
+          "note": "It was built in under six years, from 532, for Emperor Justinian.",
+          "warmup": false,
+          "fame": 2,
+          "closer": {
+            "rival": {
+              "ent": "battlemarathon",
+              "family": "battlemarathon",
+              "name": "The Battle of Marathon",
+              "label": "Battle of Marathon",
+              "phrase": "the Battle of Marathon",
+              "value": -490,
+              "fame": 3,
+              "status": "verified",
+              "source": "https://www.worldhistory.org/timeline/Hellenic_World"
+            },
+            "itemOn": "up",
+            "dItem": 458,
+            "dRival": 568
+          }
+        },
+        {
+          "ent": "tutmask",
+          "family": "tutmask",
+          "name": "Tutankhamun's gold mask",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the making of Tutankhamun's gold mask",
+          "label": "Tutankhamun's mask made",
+          "value": -1323,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/Tutankhamun",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "tutmask",
+        "family": "tutmask",
+        "name": "Tutankhamun's gold mask",
+        "hint": "",
+        "clue": "",
+        "cat": "weight",
+        "phrase": "the weight of Tutankhamun's gold mask",
+        "label": "Tutankhamun's mask weight",
+        "value": 10.23,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.britannica.com/topic/Tutankhamun",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "stratocaster",
+          "family": "stratocaster",
+          "name": "A Fender Stratocaster",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the weight of a Fender Stratocaster",
+          "label": "Stratocaster weight",
+          "value": 3.6,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.fender.com/en-US/electric-guitars/stratocaster/",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "length",
+      "anchor": {
+        "ent": "stratocaster",
+        "family": "stratocaster",
+        "name": "A Fender Stratocaster",
+        "hint": "",
+        "clue": "",
+        "cat": "length",
+        "phrase": "the length of a Fender Stratocaster",
+        "label": "Stratocaster length",
+        "value": 0.99,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.fender.com/en-US/electric-guitars/stratocaster/",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "barbell",
+          "family": "barbell",
+          "name": "An Olympic barbell",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the length of a men's Olympic barbell",
+          "label": "Barbell length",
+          "value": 2.2,
+          "approx": false,
+          "status": "unchecked",
+          "source": "IWF rules",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "galapagos",
+          "family": "galapagos",
+          "name": "A Galapagos giant tortoise",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the shell length of a Galapagos giant tortoise",
+          "label": "Galapagos tortoise shell",
+          "value": 1.2,
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "note": "",
+          "warmup": false,
+          "fame": 2
+        },
+        {
+          "ent": "tennis",
+          "family": "tennis",
+          "name": "A tennis net",
+          "hint": "the net across the middle of a tennis court",
+          "clue": "part of a racket-sport court",
+          "cat": "length",
+          "phrase": "the height of a tennis net at the centre",
+          "label": "Tennis net height",
+          "value": 0.914,
+          "approx": false,
+          "status": "verified",
+          "source": "https://itftennis.com/media/7221/2025-rules-of-tennis-english.pdf",
+          "note": "That is exactly 3 feet. It is higher at the posts.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": false,
+  "deepCutAt": -1,
+  "num": 48
+}

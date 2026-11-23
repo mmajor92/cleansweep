@@ -1,0 +1,199 @@
+{
+  "seed": 403882,
+  "slack": 1,
+  "bridges": [
+    "polarbear",
+    "blackcab"
+  ],
+  "legs": [
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "f1car",
+        "family": "f1car",
+        "name": "A Formula 1 car",
+        "hint": "the fastest speed ever recorded in an F1 race",
+        "clue": "a racing car",
+        "cat": "weight",
+        "phrase": "the minimum weight of a 2026 Formula 1 car, with its driver but without fuel",
+        "label": "F1 car minimum weight",
+        "value": 768,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.fia.com/regulation/category/110",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "polarbear",
+          "family": "polarbear",
+          "name": "A male polar bear",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the weight of an adult male polar bear",
+          "label": "A male polar bear",
+          "value": 450,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/bear",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "length",
+      "anchor": {
+        "ent": "polarbear",
+        "family": "polarbear",
+        "name": "A male polar bear",
+        "hint": "",
+        "clue": "",
+        "cat": "length",
+        "phrase": "the body length of a male polar bear",
+        "label": "Polar bear length",
+        "value": 2.5,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.britannica.com/animal/polar-bear",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "moose",
+          "family": "moose",
+          "name": "A moose",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the height of a moose",
+          "label": "Moose height",
+          "value": 1.9,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/summary/moose-mammal",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "greatwhite",
+          "family": "greatwhite",
+          "name": "A great white shark",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the length of a great white shark",
+          "label": "Great white length",
+          "value": 4.5,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.ifaw.org/au/animals/great-white-sharks",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "tiger",
+          "family": "tiger",
+          "name": "A tiger",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the length of a tiger",
+          "label": "Tiger length",
+          "value": 2.8,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/tiger",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "blackcab",
+          "family": "blackcab",
+          "name": "A London black cab",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the length of a London black cab",
+          "label": "Black cab length",
+          "value": 4.6,
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/TX4",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "blackcab",
+        "family": "blackcab",
+        "name": "A London black cab",
+        "hint": "",
+        "clue": "",
+        "cat": "weight",
+        "phrase": "the weight of an empty electric London black cab",
+        "label": "Black cab weight",
+        "value": 2230,
+        "approx": false,
+        "status": "verified",
+        "source": "https://levc.com/tx/",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "x15",
+          "family": "x15",
+          "name": "The North American X-15",
+          "hint": "a rocket plane that flew to the edge of space",
+          "clue": "an American rocket plane from the 1960s",
+          "cat": "weight",
+          "phrase": "the empty weight of the X-15",
+          "label": "X-15 empty weight",
+          "value": 6620,
+          "approx": false,
+          "status": "verified",
+          "source": "https://airwingmedia.com/?p=10460",
+          "note": "Fully loaded it weighed 15,420 kg.",
+          "warmup": false,
+          "fame": 1
+        },
+        {
+          "ent": "orca",
+          "family": "orca",
+          "name": "A killer whale",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the weight of an adult male killer whale",
+          "label": "A killer whale",
+          "value": 4000,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/killer-whale",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": true,
+  "deepCutAt": 5,
+  "num": 51
+}

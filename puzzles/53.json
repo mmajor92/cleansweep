@@ -1,0 +1,199 @@
+{
+  "seed": 419720,
+  "slack": 1,
+  "bridges": [
+    "newborn",
+    "swift"
+  ],
+  "legs": [
+    {
+      "cat": "count",
+      "anchor": {
+        "ent": "bones",
+        "family": "bones",
+        "name": "Human bones",
+        "hint": "",
+        "clue": "",
+        "cat": "count",
+        "phrase": "the number of bones in an adult human body",
+        "label": "Adult human bones",
+        "value": 206,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.themeasureofthings.com/CountOfThings/results.php?amt=127",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "newborn",
+          "family": "newborn",
+          "name": "A newborn baby",
+          "hint": "",
+          "clue": "",
+          "cat": "count",
+          "phrase": "the number of bones in a newborn baby's body",
+          "label": "Bones in a newborn",
+          "value": 300,
+          "approx": true,
+          "status": "verified",
+          "source": "https://kidshealth.org/en/parents/bones-muscles-joints.html",
+          "note": "Many fuse together, leaving 206 in an adult.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "length",
+      "anchor": {
+        "ent": "newborn",
+        "family": "newborn",
+        "name": "A newborn baby",
+        "hint": "",
+        "clue": "",
+        "cat": "length",
+        "phrase": "the length of a newborn baby",
+        "label": "Newborn length",
+        "value": 0.5,
+        "approx": true,
+        "status": "unchecked",
+        "source": "WHO growth standards",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "banana",
+          "family": "banana",
+          "name": "A banana",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the length of a banana",
+          "label": "Banana length",
+          "value": 0.18,
+          "approx": true,
+          "status": "unchecked",
+          "source": "USDA FoodData Central",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "gameboy",
+          "family": "gameboy",
+          "name": "The original Game Boy",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the length of the original Game Boy",
+          "label": "Game Boy length",
+          "value": 0.148,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nintendo.co.jp/hardware/gamelines/gameboy.html",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "iphone1",
+          "family": "iphone1",
+          "name": "The original iPhone",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the height of the original iPhone",
+          "label": "iPhone height",
+          "value": 0.115,
+          "approx": false,
+          "status": "verified",
+          "source": "https://support.apple.com/kb/SP2",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "swift",
+          "family": "swift",
+          "name": "A common swift",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the length of a common swift",
+          "label": "Swift length",
+          "value": 0.17,
+          "approx": true,
+          "status": "unchecked",
+          "source": "typical figure",
+          "note": "",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "speed",
+      "anchor": {
+        "ent": "swift",
+        "family": "swift",
+        "name": "A common swift",
+        "hint": "",
+        "clue": "",
+        "cat": "speed",
+        "phrase": "the top speed of a common swift",
+        "label": "Swift top speed",
+        "value": 111,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.guinnessworldrecords.com/world-records/fastest-bird-level-flight",
+        "note": "",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "baldeagle",
+          "family": "baldeagle",
+          "name": "A bald eagle",
+          "hint": "",
+          "clue": "",
+          "cat": "speed",
+          "phrase": "the top speed of a bald eagle",
+          "label": "Bald eagle top speed",
+          "value": 56,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.nationaleaglecenter.org/eagle-traits/",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "seawise",
+          "family": "seawise",
+          "name": "The Seawise Giant",
+          "hint": "the longest ship ever built",
+          "clue": "an oil tanker",
+          "cat": "speed",
+          "phrase": "the top speed of the supertanker Seawise Giant",
+          "label": "Seawise Giant speed",
+          "value": 30.6,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.guinnessworldrecords.com/world-records/largest-oil-tanker-ever",
+          "note": "That is 16.5 knots.",
+          "warmup": false,
+          "fame": 1
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": true,
+  "deepCutAt": 6,
+  "num": 53
+}

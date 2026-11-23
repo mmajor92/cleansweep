@@ -36,6 +36,20 @@
     {"id":"zebra","cs":["length","speed"]},
     {"id":"camel","cs":["length","weight"]},
     {"id":"modelt","cs":["speed","date"]},
-    {"id":"cards","cs":["length","weight"]}
+    {"id":"cards","cs":["length","weight"]},
+    {"id":"stratocaster","cs":["weight","date"]},
+    {"id":"sloth","cs":["length","speed"]},
+    {"id":"bison","cs":["length","weight"]},
+    {"id":"stonehenge","cs":["length","date"]},
+    {"id":"banana","cs":["length","weight"]},
+    {"id":"gameboy","cs":["length","date"]},
+    {"id":"planetmars","cs":["length","weight"]},
+    {"id":"bolt","cs":["weight","speed"]},
+    {"id":"themoon","cs":["length","weight"]},
+    {"id":"fuji","cs":["length","date"]},
+    {"id":"greyhound","cs":["weight","speed"]},
+    {"id":"lion","cs":["length","weight"]},
+    {"id":"human","cs":["weight","speed"]},
+    {"id":"saltcroc","cs":["length","weight"]}
   ]
 }

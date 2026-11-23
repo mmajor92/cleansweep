@@ -37,6 +37,16 @@
     {"cat":"weight","ids":["angel","bigbellbell","oscar","stonehenge","snookerball","cessna172"],"gap":1.82},
     {"cat":"speed","ids":["titanic","b747","voyager1","sloth","shuttle","eurofighter"],"gap":2.18},
     {"cat":"weight","ids":["winebottle","londoneye","basketball","gorilla","chimp","bugatti"],"gap":2.02},
-    {"cat":"date","ids":["shanghai","diana","a380","moon","pearlharbor","wall"],"gap":8}
+    {"cat":"date","ids":["shanghai","diana","a380","moon","pearlharbor","wall"],"gap":8},
+    {"cat":"length","ids":["hadrian","starrynight","everest","blackmamba","goldengate","cuttysark"],"gap":3.23},
+    {"cat":"date","ids":["evergiven","arcdetriomphe","agincourt","dc3","mayflower","muhammad"],"gap":83},
+    {"cat":"length","ids":["sydneyoperahouse","perseverance","sydney","housefly","rugbyball","taipei101"],"gap":2.26},
+    {"cat":"weight","ids":["saturn","bigben","gherkin","cntower","shotput","komodo"],"gap":3.37},
+    {"cat":"date","ids":["soyuz","denali","shard","monalisa","tiger1","ussr"],"gap":21},
+    {"cat":"length","ids":["qm2","b737","brooklynbridge","blackcab","dolphin","brandenburg"],"gap":1.52},
+    {"cat":"speed","ids":["iss","baumgartner","juno","spitfire","f22","voyager2"],"gap":1.78},
+    {"cat":"weight","ids":["libertybell","reindeer","greyhound","christredeemer","polarbear","liver"],"gap":2.1},
+    {"cat":"date","ids":["sack410","stpauls","augustusdeath","curiosity","statue","rushmore"],"gap":55},
+    {"cat":"weight","ids":["redfox","bicycle","ostrich","discus","forestelephant","rosetta"],"gap":2.15}
   ]
 }

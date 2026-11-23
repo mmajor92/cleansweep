@@ -1,0 +1,199 @@
+{
+  "seed": 427639,
+  "slack": 1,
+  "bridges": [
+    "iss",
+    "londoneye"
+  ],
+  "legs": [
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "cntower",
+        "family": "cntower",
+        "name": "The CN Tower",
+        "hint": "",
+        "clue": "",
+        "cat": "date",
+        "phrase": "the opening of the CN Tower",
+        "label": "CN Tower opens",
+        "value": 1976,
+        "approx": false,
+        "status": "verified",
+        "source": "https://thecanadianencyclopedia.ca/en/article/cn-tower",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "iss",
+          "family": "iss",
+          "name": "The International Space Station",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the launch of the first International Space Station module",
+          "label": "First ISS module launched",
+          "value": 1998,
+          "approx": false,
+          "status": "verified",
+          "source": "https://simple.wikipedia.com/wiki/ISS",
+          "note": "The Zarya module launched on 20 November 1998.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "length",
+      "anchor": {
+        "ent": "iss",
+        "family": "iss",
+        "name": "The International Space Station",
+        "hint": "",
+        "clue": "",
+        "cat": "length",
+        "phrase": "the length of the International Space Station's main truss",
+        "label": "ISS truss length",
+        "value": 109,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.guinnessworldrecords.com/world-records/85691-largest-space-station",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "whitehouse",
+          "family": "whitehouse",
+          "name": "The White House",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the length of the White House",
+          "label": "White House length",
+          "value": 51.2,
+          "approx": true,
+          "status": "wikidata",
+          "source": "https://www.wikidata.org/wiki/Q35525",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "hmsvictory",
+          "family": "hmsvictory",
+          "name": "HMS Victory",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the length of HMS Victory",
+          "label": "HMS Victory length",
+          "value": 69.34,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/HMS_Victory",
+          "note": "",
+          "warmup": false,
+          "fame": 2
+        },
+        {
+          "ent": "londoneye",
+          "family": "londoneye",
+          "name": "The London Eye",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the height of the London Eye",
+          "label": "London Eye height",
+          "value": 135,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.com/wiki/London_Eye",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "londoneye",
+        "family": "londoneye",
+        "name": "The London Eye",
+        "hint": "",
+        "clue": "",
+        "cat": "weight",
+        "phrase": "the weight of the London Eye wheel and capsules",
+        "label": "London Eye, total",
+        "value": 2100000,
+        "approx": false,
+        "status": "verified",
+        "source": "https://dev.bookbrowse.com/mag/btb/index.cfm/book_number/2090/the-london-eye-mystery",
+        "note": "Each of the 32 capsules weighs 10 tonnes.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "crawler",
+          "family": "crawler",
+          "name": "NASA's crawler-transporter",
+          "hint": "the giant tracked machine that carries rockets to the launch pad",
+          "clue": "a giant tracked vehicle at Kennedy Space Center",
+          "cat": "weight",
+          "phrase": "the weight of NASA's crawler-transporter",
+          "label": "Crawler-transporter weight",
+          "value": 2721000,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.guinnessworldrecords.com/world-records/62680-largest-land-transport-vehicle",
+          "note": "NASA gives about 2,860 tonnes for the original and about 3,000 tonnes for the upgraded one.",
+          "warmup": false,
+          "fame": 2
+        },
+        {
+          "ent": "shuttle",
+          "family": "shuttle",
+          "name": "The Space Shuttle",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the weight of the Space Shuttle at liftoff",
+          "label": "Space Shuttle at liftoff",
+          "value": 2030000,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.slideshare.net/sanketzade/satellite-launching-vehicles-72055476",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "olympicpool",
+          "family": "olympicpool",
+          "name": "An Olympic swimming pool",
+          "hint": "the 50-metre pool used at the Olympics",
+          "clue": "a competition swimming pool",
+          "cat": "weight",
+          "phrase": "the weight of the water in an Olympic swimming pool of minimum depth",
+          "label": "Olympic pool water",
+          "value": 2500000,
+          "approx": false,
+          "status": "definitional",
+          "source": "definition",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": false,
+  "deepCutAt": -1,
+  "num": 54
+}
