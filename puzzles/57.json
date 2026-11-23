@@ -1,0 +1,199 @@
+{
+  "seed": 451396,
+  "slack": 1,
+  "bridges": [
+    "starrynight",
+    "soyuz"
+  ],
+  "legs": [
+    {
+      "cat": "length",
+      "anchor": {
+        "ent": "baseballbat",
+        "family": "baseballbat",
+        "name": "A baseball bat",
+        "hint": "",
+        "clue": "",
+        "cat": "length",
+        "phrase": "the length of a baseball bat",
+        "label": "Baseball bat length",
+        "value": 0.86,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.mlb.com/glossary/rules/baseball-bat",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "ostrich",
+          "family": "ostrich",
+          "name": "An ostrich",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the height of an ostrich",
+          "label": "Ostrich height",
+          "value": 2.5,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.britannica.com/animal/ostrich",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "dolphin",
+          "family": "dolphin",
+          "name": "A bottlenose dolphin",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the length of a bottlenose dolphin",
+          "label": "Dolphin length",
+          "value": 3,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.mcsuk.org/ocean-learning/wildlife-a-z/bottlenose-dolphin/",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "panda",
+          "family": "panda",
+          "name": "A giant panda",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the body length of a giant panda",
+          "label": "Panda length",
+          "value": 1.5,
+          "approx": true,
+          "status": "verified",
+          "source": "https://nationalzoo.si.edu/animals/giant-panda",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "starrynight",
+          "family": "starrynight",
+          "name": "The Starry Night",
+          "hint": "",
+          "clue": "",
+          "cat": "length",
+          "phrase": "the height of The Starry Night",
+          "label": "Starry Night height",
+          "value": 0.737,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.moma.org/collection/works/79802",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "starrynight",
+        "family": "starrynight",
+        "name": "The Starry Night",
+        "hint": "",
+        "clue": "",
+        "cat": "date",
+        "phrase": "the painting of The Starry Night",
+        "label": "Starry Night painted",
+        "value": 1889,
+        "approx": false,
+        "status": "verified",
+        "source": "https://www.moma.org/collection/works/79802",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "soyuz",
+          "family": "soyuz",
+          "name": "A Soyuz spacecraft",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the first crewed flight of Soyuz",
+          "label": "Soyuz first crewed flight",
+          "value": 1967,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.nasa.gov/history/55-years-ago-soyuz-1/",
+          "note": "",
+          "warmup": false,
+          "fame": 2
+        }
+      ]
+    },
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "soyuz",
+        "family": "soyuz",
+        "name": "A Soyuz spacecraft",
+        "hint": "",
+        "clue": "",
+        "cat": "weight",
+        "phrase": "the weight of a Soyuz spacecraft",
+        "label": "Soyuz weight",
+        "value": 7200,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/Soyuz_spacecraft",
+        "note": "",
+        "warmup": false,
+        "fame": 2
+      },
+      "items": [
+        {
+          "ent": "elephant",
+          "family": "elephant",
+          "name": "An elephant",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the average weight of an adult African bush elephant",
+          "label": "African elephant (average)",
+          "value": 6000,
+          "approx": true,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Largest_and_heaviest_animals",
+          "note": "The record is over 10 tonnes.",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "f16",
+          "family": "f16",
+          "name": "The F-16 Fighting Falcon",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the empty weight of the F-16 Fighting Falcon",
+          "label": "F-16 Fighting Falcon empty weight",
+          "value": 8570,
+          "approx": true,
+          "status": "unchecked",
+          "source": "manufacturer specification",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": false,
+  "deepCutAt": -1,
+  "num": 57
+}

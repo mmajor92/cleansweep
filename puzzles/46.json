@@ -1,0 +1,222 @@
+{
+  "seed": 364287,
+  "slack": 1,
+  "bridges": [
+    "panda",
+    "mini",
+    "christredeemer"
+  ],
+  "legs": [
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "ostrich",
+        "family": "ostrich",
+        "name": "An ostrich",
+        "hint": "",
+        "clue": "",
+        "cat": "weight",
+        "phrase": "the weight of an adult ostrich",
+        "label": "An ostrich",
+        "value": 115,
+        "approx": true,
+        "status": "verified",
+        "source": "https://nationalzoo.si.edu/animals/ostrich",
+        "note": "The biggest males exceed 150 kg.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "dolphin",
+          "family": "dolphin",
+          "name": "A bottlenose dolphin",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the weight of a bottlenose dolphin",
+          "label": "Dolphin weight",
+          "value": 250,
+          "approx": true,
+          "status": "verified",
+          "source": "https://seaworld.org/animals/all-about/bottlenose-dolphin/characteristics/",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        },
+        {
+          "ent": "panda",
+          "family": "panda",
+          "name": "A giant panda",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the weight of an adult giant panda",
+          "label": "A giant panda",
+          "value": 100,
+          "approx": true,
+          "status": "verified",
+          "source": "https://www.wwf.org.uk/sites/default/files/2019-08/Species_Fact_Sheets.pdf",
+          "note": "Adults weigh 85 to 125 kg.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "length",
+      "anchor": {
+        "ent": "panda",
+        "family": "panda",
+        "name": "A giant panda",
+        "hint": "",
+        "clue": "",
+        "cat": "length",
+        "phrase": "the body length of a giant panda",
+        "label": "Panda length",
+        "value": 1.5,
+        "approx": true,
+        "status": "verified",
+        "source": "https://nationalzoo.si.edu/animals/giant-panda",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "bigben",
+          "family": "bigben",
+          "name": "Big Ben's bell height",
+          "hint": "the Great Bell, which is Big Ben itself",
+          "clue": "part of London's most famous clock",
+          "cat": "length",
+          "phrase": "the height of the Big Ben bell",
+          "label": "Big Ben bell height",
+          "value": 2.2,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Big_Ben",
+          "note": "",
+          "warmup": false,
+          "fame": 1
+        },
+        {
+          "ent": "nelson",
+          "family": "nelson",
+          "name": "The statue on Nelson's Column",
+          "hint": "the statue of Admiral Nelson at the top",
+          "clue": "part of a London monument",
+          "cat": "length",
+          "phrase": "the height of the statue of Nelson on top of Nelson's Column",
+          "label": "Nelson statue height",
+          "value": 5.5,
+          "approx": false,
+          "status": "verified",
+          "source": "https://en.wikipedia.org/wiki/Nelson%27s_Column",
+          "note": "",
+          "warmup": false,
+          "fame": 2
+        },
+        {
+          "ent": "mini",
+          "family": "mini",
+          "name": "The original Mini",
+          "hint": "the classic small car designed by Alec Issigonis",
+          "clue": "a small British car",
+          "cat": "length",
+          "phrase": "the length of an original Mini car",
+          "label": "Mini length",
+          "value": 3.05,
+          "approx": false,
+          "status": "verified",
+          "source": "https://dlab.epfl.ch/wikispeedia/wpcd/wp/m/Mini.htm",
+          "note": "The brief was a box 10 feet long.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "date",
+      "anchor": {
+        "ent": "mini",
+        "family": "mini",
+        "name": "The original Mini",
+        "hint": "the classic small car designed by Alec Issigonis",
+        "clue": "a small British car",
+        "cat": "date",
+        "phrase": "the launch of the original Mini",
+        "label": "Mini launched",
+        "value": 1959,
+        "approx": false,
+        "status": "verified",
+        "source": "https://dlab.epfl.ch/wikispeedia/wpcd/wp/m/Mini.htm",
+        "note": "It was announced on 26 August 1959.",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "christredeemer",
+          "family": "christredeemer",
+          "name": "Christ the Redeemer",
+          "hint": "",
+          "clue": "",
+          "cat": "date",
+          "phrase": "the inauguration of Christ the Redeemer",
+          "label": "Christ the Redeemer inaugurated",
+          "value": 1931,
+          "approx": false,
+          "status": "verified",
+          "source": "https://www.britannica.com/topic/Christ-the-Redeemer",
+          "note": "",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    },
+    {
+      "cat": "weight",
+      "anchor": {
+        "ent": "christredeemer",
+        "family": "christredeemer",
+        "name": "Christ the Redeemer",
+        "hint": "",
+        "clue": "",
+        "cat": "weight",
+        "phrase": "the weight of Christ the Redeemer",
+        "label": "Christ the Redeemer weight",
+        "value": 635000,
+        "approx": true,
+        "status": "verified",
+        "source": "https://www.britannica.com/topic/Christ-the-Redeemer",
+        "note": "",
+        "warmup": false,
+        "fame": 3
+      },
+      "items": [
+        {
+          "ent": "iss",
+          "family": "iss",
+          "name": "The International Space Station",
+          "hint": "",
+          "clue": "",
+          "cat": "weight",
+          "phrase": "the mass of the International Space Station",
+          "label": "International Space Station",
+          "value": 419725,
+          "approx": true,
+          "status": "verified",
+          "source": "https://simple.wikipedia.com/wiki/ISS",
+          "note": "Its mass changes as modules are added.",
+          "warmup": false,
+          "fame": 3
+        }
+      ]
+    }
+  ],
+  "warmUp": false,
+  "deepCut": true,
+  "deepCutAt": 2,
+  "num": 46
+}
